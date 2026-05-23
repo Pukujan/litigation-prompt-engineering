@@ -5,8 +5,29 @@ import { join, extname } from "path";
 export const TREE_IGNORE_DIRS = ["node_modules", ".git", "dist", "build", ".DS_Store"];
 export const TREE_IGNORE_FILES = [".DS_Store"];
 
+/** Runtime / large paths (gitignored or handoff noise) — skip entire subtrees. */
+export const TREE_IGNORE_PREFIXES = [
+  "data/case-filing-ai/batches",
+  "eval-bundles",
+  "case-exports"
+];
+
 const EXCLUDE_DIRS = new Set(TREE_IGNORE_DIRS);
 const EXCLUDE_FILES = new Set(TREE_IGNORE_FILES);
+
+function normalizeRel(rel) {
+  return String(rel || "").replace(/\\/g, "/").replace(/^\.\//, "");
+}
+
+function isIgnoredPrefix(relPath, ignorePrefixes) {
+  const rel = normalizeRel(relPath);
+  if (!rel) return false;
+  for (const prefix of ignorePrefixes) {
+    const p = normalizeRel(prefix).replace(/\/$/, "");
+    if (rel === p || rel.startsWith(`${p}/`)) return true;
+  }
+  return false;
+}
 
 function renderTreeText(nodes, prefix = "") {
   const lines = [];
@@ -24,7 +45,7 @@ function renderTreeText(nodes, prefix = "") {
   return lines;
 }
 
-async function walkDir(absDir, relBase = "") {
+async function walkDir(absDir, relBase = "", ignorePrefixes = []) {
   const entries = await readdir(absDir, { withFileTypes: true });
   const dirs = [];
   const files = [];
@@ -32,6 +53,8 @@ async function walkDir(absDir, relBase = "") {
   for (const ent of entries) {
     if (ent.isDirectory()) {
       if (EXCLUDE_DIRS.has(ent.name)) continue;
+      const rel = relBase ? `${relBase}/${ent.name}` : ent.name;
+      if (isIgnoredPrefix(rel, ignorePrefixes)) continue;
       dirs.push(ent.name);
     } else if (ent.isFile()) {
       if (EXCLUDE_FILES.has(ent.name)) continue;
@@ -60,7 +83,7 @@ async function walkDir(absDir, relBase = "") {
 
   for (const name of dirs) {
     const rel = relBase ? `${relBase}/${name}` : name;
-    const sub = await walkDir(join(absDir, name), rel);
+    const sub = await walkDir(join(absDir, name), rel, ignorePrefixes);
     flatPaths.push(...sub.flatPaths);
     children.push({
       name,
@@ -105,15 +128,18 @@ function countStats(flatPaths, treeChildren) {
 
 /**
  * @param {string} repoRoot
+ * @param {{ ignorePrefixes?: string[] }} [options]
  * @returns {Promise<{ rootName: string, tree: object, treeText: string, stats: object, flatPaths: string[] }>}
  */
-export async function buildRepoTree(repoRoot) {
+export async function buildRepoTree(repoRoot, options = {}) {
+  const ignorePrefixes = options.ignorePrefixes ?? TREE_IGNORE_PREFIXES;
   const rootName = repoRoot.split("/").pop() || "repo";
-  const walked = await walkDir(repoRoot);
+  const walked = await walkDir(repoRoot, "", ignorePrefixes);
   const stats = countStats(walked.flatPaths, walked.children);
   const treeText = [rootName + "/", ...renderTreeText(walked.children)].join("\n");
   return {
     rootName,
+    excludePrefixes: ignorePrefixes,
     tree: {
       name: rootName,
       type: "directory",

@@ -45,11 +45,12 @@ npm --prefix backend run condense-models   # or POST /api/model-condenser/conden
 |------|--------|
 | `consolidated-models.json` | Model condenser — schema inventory |
 | `consolidated-prompts.json` | All `.prompt.md` / `.prompt.js` + manifests |
-| `consolidated-file-structure.json` | Full file tree (tree ignore rules) |
+| `consolidated-file-structure.json` | ASCII `treeText` only + `stats` (not nested JSON / flat path lists) |
 
 ## File tree ignore (consolidated-file-structure)
 
-Same as pre-push dev log: `node_modules`, `.git`, `dist`, `build`.
+Directory names: `node_modules`, `.git`, `dist`, `build`.  
+Skipped subtrees: `data/case-filing-ai/batches`, `eval-bundles`, `case-exports`.
 
 ## Deprecated
 

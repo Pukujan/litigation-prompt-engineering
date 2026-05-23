@@ -168,6 +168,7 @@ async function main() {
     repositoryTree: {
       capturedAt: new Date().toISOString(),
       excludeDirs: TREE_IGNORE_DIRS,
+      excludePrefixes: tree.excludePrefixes,
       treeIgnoreFlag: 'tree -I "node_modules|.git|dist|build"',
       stats: tree.stats,
       treeText: tree.treeText,
