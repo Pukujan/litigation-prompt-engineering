@@ -14,4 +14,4 @@ This folder describes the **modular monolith platform starter** and how **archit
 | [Publishing the CLI](./PUBLISHING.md) | Release `@pukujan/create-modular-monolith` to npm |
 | [Case Filing AI starter](./case-filing-ai/README.md) | Domain blueprint, module split, pipeline, guardrails, and DB schema |
 
-Canonical repository: [https://github.com/Pukujan/litigation-workflow-application](https://github.com/Pukujan/litigation-workflow-application)
+Canonical repository: [https://github.com/Pukujan/litigation-prompt-engineering](https://github.com/Pukujan/litigation-prompt-engineering)
