@@ -1,0 +1,587 @@
+{
+  "meta": {
+    "generatedAt": "2026-05-23T16:51:20.402Z",
+    "repositoryRoot": "/Users/teresaguajardo/Documents/coding/legal-prmpt-eng",
+    "condensedBy": "condense-prompts",
+    "description": "Consolidated prompt templates for legal-prmpt-eng (active + starter reference).",
+    "promptCount": 18
+  },
+  "caseFilingPromptVersions": {
+    "sourcePath": "backend/src/modules/case-filing-ai/prompts/promptVersions.js",
+    "versions": {
+      "v1": {
+        "key": "v1",
+        "id": "v1",
+        "masterCaseFiling": "master-case-filing.prompt.md",
+        "description": "Original master prompt."
+      },
+      "compact": {
+        "key": "compact",
+        "id": "compact",
+        "masterCaseFiling": "master-case-filing.compact.prompt.md",
+        "description": "Bounded snapshot + strict JSON output (recommended for 6+ documents)."
+      },
+      "v2": {
+        "key": "v2",
+        "id": "v2",
+        "masterCaseFiling": "master-case-filing.compact.prompt.md",
+        "description": "Alias for compact."
+      },
+      "v001": {
+        "key": "v001",
+        "id": "v001",
+        "masterCaseFiling": "v001_master-case-filing.prompt.md",
+        "description": "Ranked rule sources + documentFacts / ruleBasedTasks output shape."
+      }
+    }
+  },
+  "moduleManifests": {
+    "backend/src/modules/_reference/prompts/manifest.json": {
+      "module": "_reference",
+      "prompts": [
+        {
+          "id": "example-assistant",
+          "version": "1.0.0",
+          "file": "templates/example.prompt.js",
+          "description": "Example prompt for ${title}",
+          "variables": [
+            "matterId"
+          ]
+        }
+      ]
+    },
+    "backend/src/modules/case-workflow/prompts/manifest.json": {
+      "module": "case-workflow",
+      "prompts": [
+        {
+          "id": "case-state-update",
+          "version": "1.0.0",
+          "file": "templates/case-state-update.prompt.js",
+          "description": "Update CaseStateSnapshot after processing one document",
+          "variables": [
+            "previousSnapshot",
+            "documentExtraction",
+            "documentTasks",
+            "humanReviewItems",
+            "textVersions"
+          ]
+        }
+      ]
+    },
+    "backend/src/modules/court-rules/prompts/manifest.json": {
+      "module": "court-rules",
+      "prompts": [
+        {
+          "id": "rule-context",
+          "version": "1.0.0",
+          "file": "templates/rule-context.prompt.js",
+          "description": "Apply layered court, county, judge, and firm rules",
+          "variables": [
+            "suppliedRules",
+            "caseContext",
+            "documentContext"
+          ]
+        }
+      ]
+    },
+    "backend/src/modules/filing-pipeline/prompts/manifest.json": {
+      "module": "filing-pipeline",
+      "prompts": [
+        {
+          "id": "orchestrator",
+          "version": "1.0.0",
+          "file": "templates/orchestrator.prompt.js",
+          "description": "Coordinate one-document-at-a-time pipeline execution",
+          "variables": [
+            "documentMetadata",
+            "caseStateSnapshot",
+            "caseContext",
+            "relevantRules"
+          ]
+        }
+      ]
+    },
+    "backend/src/modules/filing-text-vault/prompts/manifest.json": {
+      "module": "filing-text-vault",
+      "prompts": [
+        {
+          "id": "filing-text-vault",
+          "version": "1.0.0",
+          "file": "templates/filing-text-vault.prompt.js",
+          "description": "Versioned text storage for embedded, OCR, AI, and human-reviewed text",
+          "variables": [
+            "documentId",
+            "caseId"
+          ]
+        }
+      ]
+    },
+    "backend/src/modules/human-review/prompts/manifest.json": {
+      "module": "human-review",
+      "prompts": [
+        {
+          "id": "human-review",
+          "version": "1.0.0",
+          "file": "templates/human-review.prompt.js",
+          "description": "Create mandatory review items for OCR and visual uncertainty only",
+          "variables": [
+            "documentText",
+            "documentMetadata"
+          ]
+        }
+      ]
+    },
+    "backend/src/modules/task-docketing/prompts/manifest.json": {
+      "module": "task-docketing",
+      "prompts": [
+        {
+          "id": "task-deadline",
+          "version": "1.0.0",
+          "file": "templates/task-deadline.prompt.js",
+          "description": "Generate source-supported tasks and deadlines",
+          "variables": [
+            "documentText",
+            "ruleContext",
+            "caseContext"
+          ]
+        }
+      ]
+    }
+  },
+  "inventory": [
+    {
+      "id": "templates_example_prompt_js",
+      "path": "backend/src/modules/_reference/prompts/templates/example.prompt.js",
+      "module": "_reference",
+      "fileName": "example.prompt.js",
+      "variables": [
+        "matterId"
+      ],
+      "byteLength": 255,
+      "modifiedAt": "2026-05-23T03:42:03.361Z"
+    },
+    {
+      "id": "master-case-filing_compact_prompt_md",
+      "path": "backend/src/modules/case-filing-ai/prompts/master-case-filing.compact.prompt.md",
+      "module": "case-filing-ai",
+      "fileName": "master-case-filing.compact.prompt.md",
+      "variables": [
+        "documentText",
+        "fileMetadata",
+        "partRuleText",
+        "priorCaseSnapshot"
+      ],
+      "byteLength": 2071,
+      "modifiedAt": "2026-05-23T13:45:10.746Z"
+    },
+    {
+      "id": "master-case-filing_prompt_md",
+      "path": "backend/src/modules/case-filing-ai/prompts/master-case-filing.prompt.md",
+      "module": "case-filing-ai",
+      "fileName": "master-case-filing.prompt.md",
+      "variables": [
+        "documentText",
+        "fileMetadata",
+        "partRuleText",
+        "priorCaseSnapshot"
+      ],
+      "byteLength": 1793,
+      "modifiedAt": "2026-05-23T13:45:10.692Z"
+    },
+    {
+      "id": "rule-parse_prompt_md",
+      "path": "backend/src/modules/case-filing-ai/prompts/rule-parse.prompt.md",
+      "module": "case-filing-ai",
+      "fileName": "rule-parse.prompt.md",
+      "variables": [
+        "partRuleText"
+      ],
+      "byteLength": 410,
+      "modifiedAt": "2026-05-23T13:45:10.746Z"
+    },
+    {
+      "id": "v001_master-case-filing_prompt_md",
+      "path": "backend/src/modules/case-filing-ai/prompts/v001_master-case-filing.prompt.md",
+      "module": "case-filing-ai",
+      "fileName": "v001_master-case-filing.prompt.md",
+      "variables": [
+        "documentText",
+        "fileMetadata",
+        "partRuleText",
+        "priorCaseSnapshot",
+        "rankedRules"
+      ],
+      "byteLength": 1987,
+      "modifiedAt": "2026-05-23T15:52:01.144Z"
+    },
+    {
+      "id": "templates_case-state-update_prompt_js",
+      "path": "backend/src/modules/case-workflow/prompts/templates/case-state-update.prompt.js",
+      "module": "case-workflow",
+      "fileName": "case-state-update.prompt.js",
+      "variables": [
+        "documentExtraction",
+        "documentTasks",
+        "humanReviewItems",
+        "previousSnapshot",
+        "textVersions"
+      ],
+      "byteLength": 1184,
+      "modifiedAt": "2026-05-23T13:45:10.746Z"
+    },
+    {
+      "id": "templates_rule-context_prompt_js",
+      "path": "backend/src/modules/court-rules/prompts/templates/rule-context.prompt.js",
+      "module": "court-rules",
+      "fileName": "rule-context.prompt.js",
+      "variables": [
+        "caseContext",
+        "documentContext",
+        "suppliedRules"
+      ],
+      "byteLength": 829,
+      "modifiedAt": "2026-05-23T13:45:10.668Z"
+    },
+    {
+      "id": "templates_orchestrator_prompt_js",
+      "path": "backend/src/modules/filing-pipeline/prompts/templates/orchestrator.prompt.js",
+      "module": "filing-pipeline",
+      "fileName": "orchestrator.prompt.js",
+      "variables": [
+        "caseContext",
+        "caseStateSnapshot",
+        "documentMetadata",
+        "relevantRules"
+      ],
+      "byteLength": 1873,
+      "modifiedAt": "2026-05-23T13:45:10.692Z"
+    },
+    {
+      "id": "templates_filing-text-vault_prompt_js",
+      "path": "backend/src/modules/filing-text-vault/prompts/templates/filing-text-vault.prompt.js",
+      "module": "filing-text-vault",
+      "fileName": "filing-text-vault.prompt.js",
+      "variables": [
+        "caseId",
+        "documentId"
+      ],
+      "byteLength": 636,
+      "modifiedAt": "2026-05-23T13:45:10.746Z"
+    },
+    {
+      "id": "templates_human-review_prompt_js",
+      "path": "backend/src/modules/human-review/prompts/templates/human-review.prompt.js",
+      "module": "human-review",
+      "fileName": "human-review.prompt.js",
+      "variables": [
+        "documentMetadata",
+        "documentText"
+      ],
+      "byteLength": 1065,
+      "modifiedAt": "2026-05-23T13:45:10.746Z"
+    },
+    {
+      "id": "templates_task-deadline_prompt_js",
+      "path": "backend/src/modules/task-docketing/prompts/templates/task-deadline.prompt.js",
+      "module": "task-docketing",
+      "fileName": "task-deadline.prompt.js",
+      "variables": [
+        "caseContext",
+        "documentText",
+        "ruleContext"
+      ],
+      "byteLength": 1057,
+      "modifiedAt": "2026-05-23T13:45:10.746Z"
+    },
+    {
+      "id": "starter_case-state-update_prompt_md",
+      "path": "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/case-state-update.prompt.md",
+      "module": "starter-handoff",
+      "fileName": "case-state-update.prompt.md",
+      "variables": [],
+      "byteLength": 846,
+      "modifiedAt": "2026-05-23T08:00:32.000Z"
+    },
+    {
+      "id": "starter_fact-extraction_prompt_md",
+      "path": "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/fact-extraction.prompt.md",
+      "module": "starter-handoff",
+      "fileName": "fact-extraction.prompt.md",
+      "variables": [],
+      "byteLength": 923,
+      "modifiedAt": "2026-05-23T08:00:32.000Z"
+    },
+    {
+      "id": "starter_filing-text-vault_prompt_md",
+      "path": "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/filing-text-vault.prompt.md",
+      "module": "starter-handoff",
+      "fileName": "filing-text-vault.prompt.md",
+      "variables": [],
+      "byteLength": 439,
+      "modifiedAt": "2026-05-23T08:00:32.000Z"
+    },
+    {
+      "id": "starter_human-review_prompt_md",
+      "path": "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/human-review.prompt.md",
+      "module": "starter-handoff",
+      "fileName": "human-review.prompt.md",
+      "variables": [],
+      "byteLength": 834,
+      "modifiedAt": "2026-05-23T08:00:32.000Z"
+    },
+    {
+      "id": "starter_orchestrator_prompt_md",
+      "path": "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/orchestrator.prompt.md",
+      "module": "starter-handoff",
+      "fileName": "orchestrator.prompt.md",
+      "variables": [],
+      "byteLength": 1588,
+      "modifiedAt": "2026-05-23T08:00:32.000Z"
+    },
+    {
+      "id": "starter_rule-context_prompt_md",
+      "path": "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/rule-context.prompt.md",
+      "module": "starter-handoff",
+      "fileName": "rule-context.prompt.md",
+      "variables": [],
+      "byteLength": 548,
+      "modifiedAt": "2026-05-23T08:00:32.000Z"
+    },
+    {
+      "id": "starter_task-deadline_prompt_md",
+      "path": "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/task-deadline.prompt.md",
+      "module": "starter-handoff",
+      "fileName": "task-deadline.prompt.md",
+      "variables": [],
+      "byteLength": 794,
+      "modifiedAt": "2026-05-23T08:00:32.000Z"
+    }
+  ],
+  "prompts": {
+    "backend/src/modules/_reference/prompts/templates/example.prompt.js": {
+      "id": "templates_example_prompt_js",
+      "path": "backend/src/modules/_reference/prompts/templates/example.prompt.js",
+      "module": "_reference",
+      "fileName": "example.prompt.js",
+      "variables": [
+        "matterId"
+      ],
+      "byteLength": 255,
+      "modifiedAt": "2026-05-23T03:42:03.361Z",
+      "content": "export const id = \"example-assistant\";\nexport const version = \"1.0.0\";\nexport const variables = [\"matterId\"];\n\nexport const template = `You are a legal workflow assistant for module _reference.\nMatter id: {{matterId}}\nRespond with structured JSON only.`;\n"
+    },
+    "backend/src/modules/case-filing-ai/prompts/master-case-filing.compact.prompt.md": {
+      "id": "master-case-filing_compact_prompt_md",
+      "path": "backend/src/modules/case-filing-ai/prompts/master-case-filing.compact.prompt.md",
+      "module": "case-filing-ai",
+      "fileName": "master-case-filing.compact.prompt.md",
+      "variables": [
+        "documentText",
+        "fileMetadata",
+        "partRuleText",
+        "priorCaseSnapshot"
+      ],
+      "byteLength": 2071,
+      "modifiedAt": "2026-05-23T13:45:10.746Z",
+      "content": "You are processing one synthetic NYSCEF-style filing at a time.\n\nInputs:\n- Current document text:\n{{documentText}}\n\n- Current file metadata:\n{{fileMetadata}}\n\n- Prior CaseStateSnapshot (may be truncated to recent items):\n{{priorCaseSnapshot}}\n\n- Relevant part rule text:\n{{partRuleText}}\n\nRules:\n- Prior case context can guide interpretation.\n- Only the current document can confirm new facts.\n- Do not overwrite confirmed facts silently.\n- Save AI output as unreviewed.\n- Only require human review for OCR, handwriting, checkbox, stamp, postal receipt, signature/date, or visual uncertainty.\n- If embedded text appears incomplete or garbled, mark ocr_needed.\n- Later documents may enrich, correct, or supersede earlier provisional data.\n- When part rule text is supplied, apply only that text.\n- When no part rule text was supplied, extract applicable part rules from the current document only. Do not invent rules.\n\nSnapshot size rules (important):\n- In updatedCaseSnapshot, include only changes caused by THIS document.\n- Do not repeat the entire prior snapshot.\n- Keep each list in updatedCaseSnapshot to at most 8 items (most recent / most relevant only).\n- Prefer short strings in confirmedFacts and auditNotes.\n\nOutput rules (important):\n- Return ONE valid JSON object only.\n- No markdown fences, no commentary before or after JSON.\n- Use double-quoted keys and strings.\n\nReturn strict JSON only:\n{\n  \"documentMetadata\": {},\n  \"extractionQuality\": {},\n  \"docketEntry\": {},\n  \"caseUpdates\": {},\n  \"parties\": [],\n  \"witnesses\": [],\n  \"tasks\": [],\n  \"deadlines\": [],\n  \"humanReviewItems\": [],\n  \"updatedCaseSnapshot\": {},\n  \"auditNotes\": [],\n  \"inferredPartRuleText\": \"\",\n  \"partRuleExtracts\": []\n}\n\nWhen part rule text was supplied, leave inferredPartRuleText empty and partRuleExtracts as an empty array unless the current document explicitly adds new rule language not already captured.\nWhen no part rule text was supplied, populate inferredPartRuleText with concise extracted rule language from the current document and partRuleExtracts with structured snippets.\n"
+    },
+    "backend/src/modules/case-filing-ai/prompts/master-case-filing.prompt.md": {
+      "id": "master-case-filing_prompt_md",
+      "path": "backend/src/modules/case-filing-ai/prompts/master-case-filing.prompt.md",
+      "module": "case-filing-ai",
+      "fileName": "master-case-filing.prompt.md",
+      "variables": [
+        "documentText",
+        "fileMetadata",
+        "partRuleText",
+        "priorCaseSnapshot"
+      ],
+      "byteLength": 1793,
+      "modifiedAt": "2026-05-23T13:45:10.692Z",
+      "content": "You are processing one synthetic NYSCEF-style filing at a time.\n\nInputs:\n- Current document text:\n{{documentText}}\n\n- Current file metadata:\n{{fileMetadata}}\n\n- Prior CaseStateSnapshot:\n{{priorCaseSnapshot}}\n\n- Relevant part rule text:\n{{partRuleText}}\n\nRules:\n- Prior case context can guide interpretation.\n- Only the current document can confirm new facts.\n- Do not overwrite confirmed facts silently.\n- Save AI output as unreviewed.\n- Only require human review for OCR, handwriting, checkbox, stamp, postal receipt, signature/date, or visual uncertainty.\n- If embedded text appears incomplete or garbled, mark ocr_needed.\n- Later documents may enrich, correct, or supersede earlier provisional data.\n- When part rule text is supplied, apply only that text.\n- When no part rule text was supplied for this batch, extract any applicable part rules, judge's rules, scheduling orders, or court practice instructions that appear in the current document. Do not invent rules not stated in the document.\n- Do not invent court practices.\n\nReturn strict JSON only (no markdown fences):\n{\n  \"documentMetadata\": {},\n  \"extractionQuality\": {},\n  \"docketEntry\": {},\n  \"caseUpdates\": {},\n  \"parties\": [],\n  \"witnesses\": [],\n  \"tasks\": [],\n  \"deadlines\": [],\n  \"humanReviewItems\": [],\n  \"updatedCaseSnapshot\": {},\n  \"auditNotes\": [],\n  \"inferredPartRuleText\": \"\",\n  \"partRuleExtracts\": []\n}\n\nWhen part rule text was supplied, leave inferredPartRuleText empty and partRuleExtracts as an empty array unless the current document explicitly adds new rule language not already captured.\nWhen no part rule text was supplied, populate inferredPartRuleText with concise extracted rule language from the current document and partRuleExtracts with structured snippets (e.g. rule title, requirement, deadline basis).\n"
+    },
+    "backend/src/modules/case-filing-ai/prompts/rule-parse.prompt.md": {
+      "id": "rule-parse_prompt_md",
+      "path": "backend/src/modules/case-filing-ai/prompts/rule-parse.prompt.md",
+      "module": "case-filing-ai",
+      "fileName": "rule-parse.prompt.md",
+      "variables": [
+        "partRuleText"
+      ],
+      "byteLength": 410,
+      "modifiedAt": "2026-05-23T13:45:10.746Z",
+      "content": "Parse the supplied part rule text into structured JSON for reuse in a case filing pipeline.\n\nPart rule text:\n{{partRuleText}}\n\nReturn strict JSON only:\n{\n  \"partName\": null,\n  \"judgeName\": null,\n  \"county\": null,\n  \"court\": null,\n  \"rules\": [],\n  \"schedulingNotes\": [],\n  \"deadlinePolicies\": [],\n  \"sourceSummary\": \"\",\n  \"confidence\": \"high|medium|low\"\n}\n\nDo not invent rules not present in the supplied text.\n"
+    },
+    "backend/src/modules/case-filing-ai/prompts/v001_master-case-filing.prompt.md": {
+      "id": "v001_master-case-filing_prompt_md",
+      "path": "backend/src/modules/case-filing-ai/prompts/v001_master-case-filing.prompt.md",
+      "module": "case-filing-ai",
+      "fileName": "v001_master-case-filing.prompt.md",
+      "variables": [
+        "documentText",
+        "fileMetadata",
+        "partRuleText",
+        "priorCaseSnapshot",
+        "rankedRules"
+      ],
+      "byteLength": 1987,
+      "modifiedAt": "2026-05-23T15:52:01.144Z",
+      "content": "You are processing one synthetic NYSCEF-style filing at a time.\n\nInputs:\n- Current document text:\n{{documentText}}\n\n- Current file metadata:\n{{fileMetadata}}\n\n- Prior CaseStateSnapshot:\n{{priorCaseSnapshot}}\n\n- Relevant part rule text (user-supplied for this batch, if any):\n{{partRuleText}}\n\n- Ranked applicable rule sources (fixture/store; most specific first):\n{{rankedRules}}\n\nRules:\n- Prior case context can guide interpretation.\n- Only the current document can confirm new facts.\n- Do not overwrite confirmed facts silently.\n- Save AI output as unreviewed.\n- Prefer higher-authority ranked rules over lower when they conflict.\n- Part-specific rules control over general county rules when both apply.\n- Case-specific orders control over judge/part rules; later orders control earlier orders.\n- When part rule text is supplied, apply only that text plus ranked sources that do not conflict.\n- When no part rule text was supplied, extract applicable rules from the document and ranked sources.\n- Do not invent court practices.\n\nReturn strict JSON only (no markdown fences):\n{\n  \"documentFacts\": {\n    \"documentMetadata\": {},\n    \"extractionQuality\": {},\n    \"docketEntry\": {},\n    \"caseUpdates\": {},\n    \"parties\": [],\n    \"witnesses\": [],\n    \"humanReviewItems\": []\n  },\n  \"ruleSourcesApplied\": [],\n  \"ruleBasedTasks\": [],\n  \"caseOrderTasks\": [],\n  \"deadlines\": [],\n  \"updatedCaseSnapshot\": {},\n  \"auditNotes\": [],\n  \"inferredPartRuleText\": \"\",\n  \"partRuleExtracts\": []\n}\n\nEach task or deadline in ruleBasedTasks / caseOrderTasks / deadlines may include:\nsourceAuthority, sourceName, sourceDocNo, ruleSourceApplied, authorityRank, supersedes, sourceText, sourcePage.\n\nruleSourcesApplied: list ruleIds from the ranked block that influenced this extraction.\n\nWhen part rule text was supplied, leave inferredPartRuleText empty unless the document adds new rule language.\nWhen no part rule text was supplied, populate inferredPartRuleText and partRuleExtracts from the current document.\n"
+    },
+    "backend/src/modules/case-workflow/prompts/templates/case-state-update.prompt.js": {
+      "id": "templates_case-state-update_prompt_js",
+      "path": "backend/src/modules/case-workflow/prompts/templates/case-state-update.prompt.js",
+      "module": "case-workflow",
+      "fileName": "case-state-update.prompt.js",
+      "variables": [
+        "documentExtraction",
+        "documentTasks",
+        "humanReviewItems",
+        "previousSnapshot",
+        "textVersions"
+      ],
+      "byteLength": 1184,
+      "modifiedAt": "2026-05-23T13:45:10.746Z",
+      "content": "export const id = \"case-state-update\";\nexport const version = \"1.0.0\";\nexport const variables = [\n  \"previousSnapshot\",\n  \"documentExtraction\",\n  \"documentTasks\",\n  \"humanReviewItems\",\n  \"textVersions\"\n];\n\nexport const template = `# Case State Update Prompt\n\nUpdate the case snapshot after processing one document.\n\nInputs:\n- previous CaseStateSnapshot: {{previousSnapshot}}\n- current document extraction: {{documentExtraction}}\n- current document tasks/deadlines: {{documentTasks}}\n- current document human-review items: {{humanReviewItems}}\n- current document text versions: {{textVersions}}\n\nRules:\n1. Preserve prior confirmed facts.\n2. Add newly discovered facts.\n3. Enrich partial facts when current document supports the update.\n4. Do not silently overwrite conflicts.\n5. If a prior provisional fact is corrected by current document, mark the old value as corrected_later.\n6. If a later order supersedes an earlier deadline, mark the earlier deadline as superseded.\n7. Only OCR/handwriting/visual uncertainty creates mandatory human review.\n8. Normal AI outputs remain ai_extracted_unreviewed until corrected or promoted.\n9. Save a new CaseStateSnapshot after every document.`;\n"
+    },
+    "backend/src/modules/court-rules/prompts/templates/rule-context.prompt.js": {
+      "id": "templates_rule-context_prompt_js",
+      "path": "backend/src/modules/court-rules/prompts/templates/rule-context.prompt.js",
+      "module": "court-rules",
+      "fileName": "rule-context.prompt.js",
+      "variables": [
+        "caseContext",
+        "documentContext",
+        "suppliedRules"
+      ],
+      "byteLength": 829,
+      "modifiedAt": "2026-05-23T13:45:10.668Z",
+      "content": "export const id = \"rule-context\";\nexport const version = \"1.0.0\";\nexport const variables = [\"suppliedRules\", \"caseContext\", \"documentContext\"];\n\nexport const template = `# Rule Context Prompt\n\nApply only the supplied rules for this run.\n\nSupplied rules:\n{{suppliedRules}}\n\nCase context:\n{{caseContext}}\n\nDocument context:\n{{documentContext}}\n\nDo not invent court practices.\n\nIf no applicable rule is supplied, return \\`rule_context_missing\\`.\n\nIf a rule may apply but judge/part/case type is not confirmed, mark the task as \\`conditional_rule_based\\`.\n\nRule priority:\n1. Current court order text\n2. Later court order over earlier court order\n3. Judge/part rule\n4. County rule\n5. Court-wide rule\n6. Firm/internal workflow rule\n\nReturn applicableRule, ruleSource, condition, affectedTaskOrDeadline, requiredHandling, confidence.`;\n"
+    },
+    "backend/src/modules/filing-pipeline/prompts/templates/orchestrator.prompt.js": {
+      "id": "templates_orchestrator_prompt_js",
+      "path": "backend/src/modules/filing-pipeline/prompts/templates/orchestrator.prompt.js",
+      "module": "filing-pipeline",
+      "fileName": "orchestrator.prompt.js",
+      "variables": [
+        "caseContext",
+        "caseStateSnapshot",
+        "documentMetadata",
+        "relevantRules"
+      ],
+      "byteLength": 1873,
+      "modifiedAt": "2026-05-23T13:45:10.692Z",
+      "content": "export const id = \"orchestrator\";\nexport const version = \"1.0.0\";\nexport const variables = [\n  \"documentMetadata\",\n  \"caseStateSnapshot\",\n  \"caseContext\",\n  \"relevantRules\"\n];\n\nexport const template = `# Orchestrator Prompt\n\nYou are the orchestrator for a case filing AI pipeline.\n\nProcess ONE filing document at a time.\n\nYou will receive:\n- the current document: {{documentMetadata}}\n- the current CaseStateSnapshot: {{caseStateSnapshot}}\n- known case context from prior documents: {{caseContext}}\n- relevant court/judge/part/case-type rules: {{relevantRules}}\n\nRules:\n- Prior case context may guide interpretation.\n- Prior case context does not confirm facts in the current document.\n- Only the current document can confirm new facts from that document.\n- Do not overwrite existing confirmed facts silently.\n- Later documents may enrich, correct, or conflict with earlier extracted models.\n- Only OCR, handwriting, checkbox, stamp, postal receipt, signature/date, or visual uncertainty requires mandatory human review.\n- Normal AI extraction may be saved as unreviewed/provisional with source and confidence.\n\nPipeline:\n1. Identify document metadata.\n2. Check embedded text quality.\n3. Use OCR only if needed.\n4. Save embedded/OCR text to filing-text-vault.\n5. Classify document type.\n6. Extract facts from the current document.\n7. Compare extracted facts against prior CaseStateSnapshot.\n8. Enrich incomplete models if the current document adds new information.\n9. Mark conflicts if the current document disagrees with prior confirmed facts.\n10. Extract docket entry.\n11. Retrieve relevant rules.\n12. Generate provisional tasks/deadlines if source-supported.\n13. Apply court/judge/part rules only if applicable.\n14. Create mandatory human-review items only for OCR/handwriting/visual uncertainty.\n15. Save AI parsed output as unreviewed.\n16. Update CaseStateSnapshot.`;\n"
+    },
+    "backend/src/modules/filing-text-vault/prompts/templates/filing-text-vault.prompt.js": {
+      "id": "templates_filing-text-vault_prompt_js",
+      "path": "backend/src/modules/filing-text-vault/prompts/templates/filing-text-vault.prompt.js",
+      "module": "filing-text-vault",
+      "fileName": "filing-text-vault.prompt.js",
+      "variables": [
+        "caseId",
+        "documentId"
+      ],
+      "byteLength": 636,
+      "modifiedAt": "2026-05-23T13:45:10.746Z",
+      "content": "export const id = \"filing-text-vault\";\nexport const version = \"1.0.0\";\nexport const variables = [\"documentId\", \"caseId\"];\n\nexport const template = `# Filing Text Vault Prompt\n\nSave every text version separately for document {{documentId}} in case {{caseId}}.\n\nFor each document, save:\n1. embedded_text if available\n2. ocr_text if OCR was used\n3. ai_parsed_text\n4. human_reviewed_text only after human correction/approval\n\nDefault status:\n- embedded_text = unreviewed\n- ocr_text = unreviewed\n- ai_parsed_text = unreviewed\n- human_reviewed_text = reviewed\n\nDo not replace old versions.\nCreate a new version for every meaningful change.`;\n"
+    },
+    "backend/src/modules/human-review/prompts/templates/human-review.prompt.js": {
+      "id": "templates_human-review_prompt_js",
+      "path": "backend/src/modules/human-review/prompts/templates/human-review.prompt.js",
+      "module": "human-review",
+      "fileName": "human-review.prompt.js",
+      "variables": [
+        "documentMetadata",
+        "documentText"
+      ],
+      "byteLength": 1065,
+      "modifiedAt": "2026-05-23T13:45:10.746Z",
+      "content": "export const id = \"human-review\";\nexport const version = \"1.0.0\";\nexport const variables = [\"documentText\", \"documentMetadata\"];\n\nexport const template = `# Human Review Prompt\n\nOnly create mandatory human-review items for visual or OCR uncertainty.\n\nDocument metadata:\n{{documentMetadata}}\n\nDocument text:\n{{documentText}}\n\nMandatory review triggers:\n- handwriting\n- unclear handwritten date\n- OCR-garbled text\n- checkbox that controls meaning\n- faint stamp\n- unclear filed/entered/so-ordered stamp\n- postal receipt or certified mail card\n- signature/date ambiguity\n- notary date ambiguity\n- rotated or low-quality page\n- cropped area needed for verification\n\nDo NOT require human review merely because:\n- AI extracted a party name\n- AI classified a document\n- AI created a provisional task\n- AI identified a phase\n- AI carried forward case context\n\nThose should be saved as ai_extracted_unreviewed unless there is visual uncertainty.\n\nReturn documentNumber, pageNumber, location, issue, reason, suggestedHumanAction, cropFile if available, blocking true/false.`;\n"
+    },
+    "backend/src/modules/task-docketing/prompts/templates/task-deadline.prompt.js": {
+      "id": "templates_task-deadline_prompt_js",
+      "path": "backend/src/modules/task-docketing/prompts/templates/task-deadline.prompt.js",
+      "module": "task-docketing",
+      "fileName": "task-deadline.prompt.js",
+      "variables": [
+        "caseContext",
+        "documentText",
+        "ruleContext"
+      ],
+      "byteLength": 1057,
+      "modifiedAt": "2026-05-23T13:45:10.746Z",
+      "content": "export const id = \"task-deadline\";\nexport const version = \"1.0.0\";\nexport const variables = [\"documentText\", \"ruleContext\", \"caseContext\"];\n\nexport const template = `# Task and Deadline Prompt\n\nCreate tasks and deadlines only when supported by:\n- explicit text in the current document\n- a court order\n- a demand\n- a notice\n- supplied judge/part/county rule\n- approved deterministic calculation\n\nDocument text:\n{{documentText}}\n\nRule context:\n{{ruleContext}}\n\nCase context:\n{{caseContext}}\n\nEvery task must include:\n- taskDescription\n- responsibleParty\n- dueDate or no_fixed_due_date\n- triggerDocument\n- sourcePage\n- calculationMethod\n- confidence\n- status: ai_extracted_unreviewed | source_supported_auto_saved | conditional | needs_ocr_review | corrected_later | superseded\n\nIf the role is unclear, do not force it.\n\nUse deposition_role_unknown, witness_role_unknown, needs_context, or conditional.\n\nDo not label a deposition as plaintiff, defendant, or non-party unless the document clearly supports it.\n\nLater documents may enrich or correct the role.`;\n"
+    },
+    "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/case-state-update.prompt.md": {
+      "id": "starter_case-state-update_prompt_md",
+      "path": "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/case-state-update.prompt.md",
+      "module": "starter-handoff",
+      "fileName": "case-state-update.prompt.md",
+      "variables": [],
+      "byteLength": 846,
+      "modifiedAt": "2026-05-23T08:00:32.000Z",
+      "content": "# Case State Update Prompt\n\nUpdate the case snapshot after processing one document.\n\nInputs:\n- previous CaseStateSnapshot\n- current document extraction\n- current document tasks/deadlines\n- current document human-review items\n- current document text versions\n\nRules:\n1. Preserve prior confirmed facts.\n2. Add newly discovered facts.\n3. Enrich partial facts when current document supports the update.\n4. Do not silently overwrite conflicts.\n5. If a prior provisional fact is corrected by current document, mark the old value as corrected_later.\n6. If a later order supersedes an earlier deadline, mark the earlier deadline as superseded.\n7. Only OCR/handwriting/visual uncertainty creates mandatory human review.\n8. Normal AI outputs remain ai_extracted_unreviewed until corrected or promoted.\n9. Save a new CaseStateSnapshot after every document.\n"
+    },
+    "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/fact-extraction.prompt.md": {
+      "id": "starter_fact-extraction_prompt_md",
+      "path": "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/fact-extraction.prompt.md",
+      "module": "starter-handoff",
+      "fileName": "fact-extraction.prompt.md",
+      "variables": [],
+      "byteLength": 923,
+      "modifiedAt": "2026-05-23T08:00:32.000Z",
+      "content": "# Fact Extraction Prompt\n\nExtract facts from the current document only.\n\nYou may use prior CaseStateSnapshot as context to understand the case, but do not treat prior context as proof that the current document confirms the same fact.\n\nExtract:\n- index number\n- county\n- court\n- caption\n- plaintiffs\n- infant plaintiffs\n- defendants\n- judge\n- part\n- counsel\n- filed date\n- service date\n- related case references\n- case type\n- witnesses\n- facility/provider references\n\nFor each fact, return:\n- fieldName\n- value\n- sourceDocumentNumber\n- sourcePage\n- confidence\n- status: confirmed_by_current_document | carried_forward_context | newly_discovered | enriched_from_current_document | conflict_needs_review | visual_review_required\n\nIf the current document does not clearly show a fact, but the prior snapshot contains it, carry it forward as context.\n\nDo not guess. Do not overwrite confirmed facts. Do not force unknown roles.\n"
+    },
+    "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/filing-text-vault.prompt.md": {
+      "id": "starter_filing-text-vault_prompt_md",
+      "path": "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/filing-text-vault.prompt.md",
+      "module": "starter-handoff",
+      "fileName": "filing-text-vault.prompt.md",
+      "variables": [],
+      "byteLength": 439,
+      "modifiedAt": "2026-05-23T08:00:32.000Z",
+      "content": "# Filing Text Vault Prompt\n\nSave every text version separately.\n\nFor each document, save:\n1. embedded_text if available\n2. ocr_text if OCR was used\n3. ai_parsed_text\n4. human_reviewed_text only after human correction/approval\n\nDefault status:\n- embedded_text = unreviewed\n- ocr_text = unreviewed\n- ai_parsed_text = unreviewed\n- human_reviewed_text = reviewed\n\nDo not replace old versions.\nCreate a new version for every meaningful change.\n"
+    },
+    "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/human-review.prompt.md": {
+      "id": "starter_human-review_prompt_md",
+      "path": "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/human-review.prompt.md",
+      "module": "starter-handoff",
+      "fileName": "human-review.prompt.md",
+      "variables": [],
+      "byteLength": 834,
+      "modifiedAt": "2026-05-23T08:00:32.000Z",
+      "content": "# Human Review Prompt\n\nOnly create mandatory human-review items for visual or OCR uncertainty.\n\nMandatory review triggers:\n- handwriting\n- unclear handwritten date\n- OCR-garbled text\n- checkbox that controls meaning\n- faint stamp\n- unclear filed/entered/so-ordered stamp\n- postal receipt or certified mail card\n- signature/date ambiguity\n- notary date ambiguity\n- rotated or low-quality page\n- cropped area needed for verification\n\nDo NOT require human review merely because:\n- AI extracted a party name\n- AI classified a document\n- AI created a provisional task\n- AI identified a phase\n- AI carried forward case context\n\nThose should be saved as ai_extracted_unreviewed unless there is visual uncertainty.\n\nReturn documentNumber, pageNumber, location, issue, reason, suggestedHumanAction, cropFile if available, blocking true/false.\n"
+    },
+    "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/orchestrator.prompt.md": {
+      "id": "starter_orchestrator_prompt_md",
+      "path": "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/orchestrator.prompt.md",
+      "module": "starter-handoff",
+      "fileName": "orchestrator.prompt.md",
+      "variables": [],
+      "byteLength": 1588,
+      "modifiedAt": "2026-05-23T08:00:32.000Z",
+      "content": "# Orchestrator Prompt\n\nYou are the orchestrator for a case filing AI pipeline.\n\nProcess ONE filing document at a time.\n\nYou will receive:\n- the current document\n- the current CaseStateSnapshot\n- known case context from prior documents\n- relevant court/judge/part/case-type rules\n\nRules:\n- Prior case context may guide interpretation.\n- Prior case context does not confirm facts in the current document.\n- Only the current document can confirm new facts from that document.\n- Do not overwrite existing confirmed facts silently.\n- Later documents may enrich, correct, or conflict with earlier extracted models.\n- Only OCR, handwriting, checkbox, stamp, postal receipt, signature/date, or visual uncertainty requires mandatory human review.\n- Normal AI extraction may be saved as unreviewed/provisional with source and confidence.\n\nPipeline:\n1. Identify document metadata.\n2. Check embedded text quality.\n3. Use OCR only if needed.\n4. Save embedded/OCR text to filing-text-vault.\n5. Classify document type.\n6. Extract facts from the current document.\n7. Compare extracted facts against prior CaseStateSnapshot.\n8. Enrich incomplete models if the current document adds new information.\n9. Mark conflicts if the current document disagrees with prior confirmed facts.\n10. Extract docket entry.\n11. Retrieve relevant rules.\n12. Generate provisional tasks/deadlines if source-supported.\n13. Apply court/judge/part rules only if applicable.\n14. Create mandatory human-review items only for OCR/handwriting/visual uncertainty.\n15. Save AI parsed output as unreviewed.\n16. Update CaseStateSnapshot.\n"
+    },
+    "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/rule-context.prompt.md": {
+      "id": "starter_rule-context_prompt_md",
+      "path": "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/rule-context.prompt.md",
+      "module": "starter-handoff",
+      "fileName": "rule-context.prompt.md",
+      "variables": [],
+      "byteLength": 548,
+      "modifiedAt": "2026-05-23T08:00:32.000Z",
+      "content": "# Rule Context Prompt\n\nApply only the supplied rules for this run.\n\nDo not invent court practices.\n\nIf no applicable rule is supplied, return `rule_context_missing`.\n\nIf a rule may apply but judge/part/case type is not confirmed, mark the task as `conditional_rule_based`.\n\nRule priority:\n1. Current court order text\n2. Later court order over earlier court order\n3. Judge/part rule\n4. County rule\n5. Court-wide rule\n6. Firm/internal workflow rule\n\nReturn applicableRule, ruleSource, condition, affectedTaskOrDeadline, requiredHandling, confidence.\n"
+    },
+    "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/task-deadline.prompt.md": {
+      "id": "starter_task-deadline_prompt_md",
+      "path": "work-log/handoffs/001_2026-05-23_starter_case-filing-ai-updated/prompts/task-deadline.prompt.md",
+      "module": "starter-handoff",
+      "fileName": "task-deadline.prompt.md",
+      "variables": [],
+      "byteLength": 794,
+      "modifiedAt": "2026-05-23T08:00:32.000Z",
+      "content": "# Task and Deadline Prompt\n\nCreate tasks and deadlines only when supported by:\n- explicit text in the current document\n- a court order\n- a demand\n- a notice\n- supplied judge/part/county rule\n- approved deterministic calculation\n\nEvery task must include:\n- taskDescription\n- responsibleParty\n- dueDate or no_fixed_due_date\n- triggerDocument\n- sourcePage\n- calculationMethod\n- confidence\n- status: ai_extracted_unreviewed | source_supported_auto_saved | conditional | needs_ocr_review | corrected_later | superseded\n\nIf the role is unclear, do not force it.\n\nUse deposition_role_unknown, witness_role_unknown, needs_context, or conditional.\n\nDo not label a deposition as plaintiff, defendant, or non-party unless the document clearly supports it.\n\nLater documents may enrich or correct the role.\n"
+    }
+  }
+}

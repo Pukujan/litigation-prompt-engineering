@@ -1,0 +1,21 @@
+---
+description: Document every new HTTP route in module API.md and docs/API.md registry
+globs: backend/src/modules/**/routes/**/*.js,backend/src/modules/**/index.js,docs/**/API.md,docs/API.md
+alwaysApply: false
+---
+
+# API documentation contract
+
+When you add or change an Express route under `backend/src/modules/<module>/routes/`:
+
+1. **Append** to `docs/<module>/API.md`:
+   - `## Endpoint quick reference` table: Method | Path | Description
+   - Detailed `### \`METHOD /path\`` section if non-trivial
+2. **Append** to `docs/API.md` → `## Endpoint registry`:
+   - Full path `/api/<module-id>/...`, module label, short description
+3. Run `npm run lint:api-docs` and fix failures before finishing.
+
+Path in module doc = route relative to base (`/health`, not `/api/module/health`).
+Registry path = full path including `/api/<module-id>`.
+
+Read [docs/architecture/API_DOCUMENTATION_CONTRACT.md](docs/architecture/API_DOCUMENTATION_CONTRACT.md) for the full checklist.

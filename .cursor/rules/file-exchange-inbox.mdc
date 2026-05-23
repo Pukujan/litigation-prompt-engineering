@@ -1,0 +1,29 @@
+---
+description: Mandatory file-exchange inbox before processing inbound bundles or PDFs
+alwaysApply: true
+---
+
+# File exchange inbox (mandatory)
+
+**Always apply** when the user provides files, bundles, PDFs, golden datasets, or asks to run `process-batch`, ingest golden, or import from Downloads.
+
+## Before any processing
+
+1. Run **`npm run import:file-exchange -- "<source-path>"`** unless files are already under `file-exchange/imports/{UTC-stamp}/`.
+2. Use **`formatExchangeTimestamp()`** from `backend/src/shared/utils/formatExchangeTimestamp.js` for the folder name — never ad-hoc slug folders.
+3. Record the stamp in your reply (e.g. `imports/2026-05-23_15-59-43Z/`) so exports can use a matching `exports/{stamp}/`.
+
+## Then
+
+- Ingest golden from that stamp: `npm run ingest:golden-parsed`, `npm run ingest:golden-expected`.
+- Point `process-batch` / `curl` uploads at PDFs **inside** `file-exchange/imports/{stamp}/`, not `Downloads/` or repo root.
+- Copy deliverables to `file-exchange/exports/{stamp}/` when done.
+- Consolidated repo snapshots: `file-exchange/exports/consolidated-*.json` (`npm run condense:all`).
+
+## Do not
+
+- Skip import to save time.
+- Process from `~/Downloads/...` directly.
+- Create `imports/synthetic-case-001-.../` without a UTC stamp.
+
+See [AGENTS.md](../../AGENTS.md), [file-exchange/README.md](../../file-exchange/README.md), and [REPO_ARTIFACT_LAYOUT.md](../../docs/architecture/REPO_ARTIFACT_LAYOUT.md).

@@ -1,0 +1,12 @@
+{
+  "snapshotId": "snapshot_after_doc_001",
+  "caseId": "case_001_synthetic",
+  "afterDocNo": 1,
+  "currentPhase": "commencement",
+  "currentMiniPhase": "summons_filed",
+  "confirmedFacts": [],
+  "openTasks": [],
+  "completedTasks": [],
+  "deadlines": [],
+  "auditNotes": []
+}

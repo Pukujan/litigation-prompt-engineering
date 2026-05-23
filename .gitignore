@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.DS_Store
+export/
+.env
+.env.local
+backend/.env
+frontend/.env.local
+data/case-filing-ai/batches/
+eval-bundles/
+case-exports/

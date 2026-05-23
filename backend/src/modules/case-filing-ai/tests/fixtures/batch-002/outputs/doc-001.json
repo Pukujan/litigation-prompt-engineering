@@ -1,0 +1,13 @@
+{
+  "docKey": "doc-001",
+  "docIndex": 1,
+  "storedName": "001-test.pdf",
+  "originalName": "001-test.pdf",
+  "fileKind": "pdf",
+  "docketEntry": { "filingType": "SUMMONS AND VERIFIED COMPLAINT" },
+  "documentMetadata": { "pageCount": 7 },
+  "parties": [],
+  "tasks": [],
+  "deadlines": [],
+  "humanReviewItems": []
+}

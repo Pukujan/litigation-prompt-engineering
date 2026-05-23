@@ -1,0 +1,17 @@
+{
+  "snapshotId": "snapshot_after_doc_001",
+  "caseId": "case_queens_999999_2025",
+  "afterDocNo": 1,
+  "currentPhase": "commencement",
+  "currentMiniPhase": "summons_and_complaint_filed",
+  "confirmedFacts": [],
+  "carriedForwardContext": [],
+  "openTasks": [],
+  "completedTasks": [],
+  "conditionalTasks": [],
+  "deadlines": [],
+  "supersededDeadlines": [],
+  "unresolvedHumanReviewItems": [],
+  "conflicts": [],
+  "auditNotes": []
+}

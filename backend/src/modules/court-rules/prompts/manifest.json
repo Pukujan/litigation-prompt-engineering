@@ -1,0 +1,12 @@
+{
+  "module": "court-rules",
+  "prompts": [
+    {
+      "id": "rule-context",
+      "version": "1.0.0",
+      "file": "templates/rule-context.prompt.js",
+      "description": "Apply layered court, county, judge, and firm rules",
+      "variables": ["suppliedRules", "caseContext", "documentContext"]
+    }
+  ]
+}

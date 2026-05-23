@@ -1,0 +1,12 @@
+{
+  "ruleId": "cplr-3212-summary",
+  "authority": "cplr",
+  "title": "CPLR 3212 — Summary judgment",
+  "county": null,
+  "part": null,
+  "court": null,
+  "phase": "dispositive",
+  "documentTypes": ["motion"],
+  "text": "Summary judgment motions require sufficient record support; deadlines derive from court order or scheduling rules.",
+  "tags": ["summary_judgment", "motion"]
+}

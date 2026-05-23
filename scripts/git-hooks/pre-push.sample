@@ -1,0 +1,15 @@
+#!/bin/sh
+# Optional pre-push reminder — install:
+#   cp scripts/git-hooks/pre-push.sample .git/hooks/pre-push && chmod +x .git/hooks/pre-push
+#
+# Enforce agent log for HEAD (strict):
+#   DEVLOG_STRICT=1 npm run dev-log:pre-push -- --check
+
+if [ "$DEVLOG_STRICT" = "1" ]; then
+  npm run dev-log:pre-push -- --check || exit 1
+else
+  echo "pre-push: consider npm run dev-log:pre-push -- --slug <topic> (human + agent audit)"
+  echo "pre-push: strict check: DEVLOG_STRICT=1 (set in hook or env)"
+fi
+
+exit 0

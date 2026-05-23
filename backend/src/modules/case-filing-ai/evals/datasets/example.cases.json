@@ -1,0 +1,12 @@
+{
+  "cases": [
+    {
+      "id": "health-shape",
+      "description": "Health payload includes module name",
+      "input": {},
+      "expect": {
+        "status": "ok"
+      }
+    }
+  ]
+}

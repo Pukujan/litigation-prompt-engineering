@@ -1,0 +1,72 @@
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3001";
+
+async function readResponseBody(response) {
+  const raw = await response.text();
+  if (!raw) return null;
+
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return raw;
+  }
+}
+
+function errorMessageFromBody(body, status) {
+  if (typeof body === "string" && body.trim()) {
+    return body.trim();
+  }
+  if (body && typeof body === "object") {
+    return body.error || body.message || `Request failed: ${status}`;
+  }
+  return `Request failed: ${status}`;
+}
+
+async function parseResponse(response) {
+  const body = await readResponseBody(response);
+
+  if (!response.ok) {
+    throw new Error(errorMessageFromBody(body, response.status));
+  }
+
+  return body;
+}
+
+export async function apiGet(path) {
+  const response = await fetch(`${BASE_URL}${path}`);
+  return parseResponse(response);
+}
+
+export async function apiPost(path, body) {
+  const response = await fetch(`${BASE_URL}${path}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body)
+  });
+  return parseResponse(response);
+}
+
+export async function apiPostForm(path, formData) {
+  const response = await fetch(`${BASE_URL}${path}`, {
+    method: "POST",
+    body: formData
+  });
+  return parseResponse(response);
+}
+
+export async function apiPatch(path, body) {
+  const response = await fetch(`${BASE_URL}${path}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body)
+  });
+  return parseResponse(response);
+}
+
+export async function apiDelete(path, body) {
+  const response = await fetch(`${BASE_URL}${path}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body ?? {})
+  });
+  return parseResponse(response);
+}

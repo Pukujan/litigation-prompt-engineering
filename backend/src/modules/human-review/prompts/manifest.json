@@ -1,0 +1,12 @@
+{
+  "module": "human-review",
+  "prompts": [
+    {
+      "id": "human-review",
+      "version": "1.0.0",
+      "file": "templates/human-review.prompt.js",
+      "description": "Create mandatory review items for OCR and visual uncertainty only",
+      "variables": ["documentText", "documentMetadata"]
+    }
+  ]
+}

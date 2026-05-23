@@ -1,0 +1,1182 @@
+{
+  "meta": {
+    "datasetId": "synthetic_case_001_queens_hhc_medmal_training",
+    "name": "Synthetic Case 001 Golden Dataset / Ground Truth Fixture",
+    "generatedAt": "2026-05-23T14:07:37.944237+00:00",
+    "purpose": "Human-reviewed expected outputs for evaluating the Case Filing AI pipeline against the synthetic NYSCEF-style filing sequence.",
+    "importantNote": "Golden/eval fixture for synthetic case flow; expected-output baseline, not legal advice or court-certified record.",
+    "syntheticDataNotice": "This dataset is fully synthetic training/evaluation data. No real NYSCEF files, real party identities, real case facts, sealed/confidential data, or bulk-collected NYSCEF data were used in this generated synthetic version. It preserves procedural workflow structure for private docketing, OCR-routing, eval, and guardrail testing only.",
+    "privacyTransform": {
+      "names": "replaced with fake common names",
+      "indexNumber": "changed",
+      "dates": "shifted while preserving relative docketing gaps",
+      "medicalFacts": "generalized to similar synthetic med-mal/birth-injury categories",
+      "judgeCountyPart": "kept same/similar enough to test rule behavior, while case identity and facts are synthetic"
+    }
+  },
+  "caseIdentity": {
+    "caseId": "synthetic_case_001_queens_905421_2027_santos_v_mchhc",
+    "county": "Queens",
+    "court": "Supreme Court of the State of New York, County of Queens",
+    "indexNumber": "905421/2027",
+    "caseName": "Maria Santos as Parent and Natural Guardian of A.M.S., an Infant v. Metropolitan City Health and Hospitals Corporation",
+    "caseType": "medical_malpractice_hhc_infant_personal_injury",
+    "plaintiff": "Maria Santos as Parent and Natural Guardian of A.M.S., an Infant",
+    "defendant": "Metropolitan City Health and Hospitals Corporation",
+    "facility": "Queens Metropolitan Hospital Center",
+    "judgeName": "Hon. Kevin J. Kerrigan",
+    "partName": "Queens Medical Malpractice Part / Civil Term Part 10",
+    "confidence": "high",
+    "synthetic": true,
+    "syntheticNotice": "Fictional case identity for private training/eval use only."
+  },
+  "expectedProcessingRule": {
+    "processOrder": [
+      "NYSCEF document number ascending",
+      "filed date/time ascending",
+      "filename order",
+      "upload order"
+    ],
+    "coreRule": "Prior case snapshot may guide interpretation, but only the current document can confirm, enrich, correct, or supersede facts/tasks/deadlines.",
+    "snapshotUpdateRule": "Run doc-level eval/guardrail check before promoting extracted items into rolling case snapshot."
+  },
+  "documentExpectedOutputs": [
+    {
+      "docIndex": 1,
+      "docKey": "doc-001",
+      "expectedDocumentType": "SUMMONS_AND_VERIFIED_COMPLAINT",
+      "expectedTitle": "Summons and Verified Complaint",
+      "expectedFilingDate": "2027-09-14",
+      "expectedReceivedDate": "2027-09-15",
+      "expectedNyscefDocNo": 1,
+      "expectedPageCount": 7,
+      "expectedExtractionQuality": {
+        "method": "ocr_or_visual_review_required",
+        "ocr_needed": true,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "ocr_test_reason": "Synthetic complaint includes signature/verification/date region requiring visual OCR review."
+      },
+      "expectedConfirmedFacts": [
+        "Main action commenced by summons and verified complaint.",
+        "Plaintiff is Maria Santos as Parent and Natural Guardian of A.M.S., an infant.",
+        "Defendant is Metropolitan City Health and Hospitals Corporation.",
+        "Case alleges medical malpractice / birth injury related to Queens Metropolitan Hospital Center.",
+        "Claims include lack of informed consent."
+      ],
+      "expectedTasks": [
+        {
+          "taskType": "VERIFY_SERVICE_FOR_RESPONSE_DEADLINE",
+          "taskDescription": "Verify service date and service method before calculating any defendant answer/appearance deadline.",
+          "status": "needs_source_trigger",
+          "dueDate": null,
+          "dueDateStatus": "needs_review",
+          "confidence": "high",
+          "missingTrigger": "affidavit/proof of service showing service date and service method"
+        }
+      ],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [
+        {
+          "issue": "signature_or_verification_date_visual_review",
+          "reason": "Complaint verification/signature/date area may contain handwritten or visual-only information.",
+          "blocking": false,
+          "status": "pending"
+        },
+        {
+          "issue": "synthetic_ocr_required_test_case",
+          "reason": "Synthetic complaint includes signature/verification/date region requiring visual OCR review.",
+          "blocking": false,
+          "status": "pending"
+        }
+      ],
+      "mustNotCreate": [
+        "final answer deadline from summons filing date alone",
+        "completed service task unless affidavit/proof of service has been processed",
+        "completed notice of claim task unless supported by notice/order/service document"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used."
+    },
+    {
+      "docIndex": 2,
+      "docKey": "doc-002",
+      "expectedDocumentType": "CERTIFICATE_OF_MERIT",
+      "expectedTitle": "Certificate of Merit",
+      "expectedFilingDate": "2027-09-15",
+      "expectedNyscefDocNo": 2,
+      "expectedPageCount": 1,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "ocr_needed": false,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "ocr_test_reason": null
+      },
+      "expectedConfirmedFacts": [
+        "Certificate of Merit was filed under CPLR 3012-a.",
+        "Plaintiff counsel certified consultation with a licensed physician regarding medical malpractice claims."
+      ],
+      "expectedTasks": [],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [
+        {
+          "issue": "signature_date_visual_review",
+          "reason": "Certificate of Merit may contain signature/date visual information.",
+          "blocking": false,
+          "status": "pending"
+        }
+      ],
+      "mustNotCreate": [
+        "deadline for defendant to respond to certificate of merit",
+        "final answer deadline unless service date and service method are verified"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used."
+    },
+    {
+      "docIndex": 3,
+      "docKey": "doc-003",
+      "expectedDocumentType": "EXHIBITS_SUPPORTING_SUMMONS_AND_COMPLAINT",
+      "expectedTitle": "Exhibit(s) - Supporting Documents to S&C",
+      "expectedFilingDate": "2027-09-15",
+      "expectedNyscefDocNo": 3,
+      "expectedPageCount": 19,
+      "expectedConfirmedFacts": [
+        "Supporting documents relate to the summons and complaint.",
+        "Prior notice/order/notice-of-claim context exists and should be linked as source context, not blindly marked completed."
+      ],
+      "expectedTasks": [],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [
+        {
+          "issue": "handwritten_or_unclear_service_date",
+          "reason": "Prior service/date material included in supporting exhibits may require visual confirmation.",
+          "blocking": false,
+          "status": "pending"
+        }
+      ],
+      "mustNotCreate": [
+        "new final deadline unless the exhibit supplies a controlling trigger",
+        "completed notice of claim task without tying it to a specific source page/order/service record"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "ocr_needed": false,
+        "ocr_test_reason": null
+      }
+    },
+    {
+      "docIndex": 4,
+      "docKey": "doc-004",
+      "expectedDocumentType": "NOTICE_OF_COMMENCEMENT_OF_ACTION_FOR_PERSONAL_INJURIES",
+      "expectedTitle": "Notice of Commencement of Action for Personal Injuries",
+      "expectedFilingDate": "2027-09-16",
+      "expectedNyscefDocNo": 4,
+      "expectedPageCount": 29,
+      "expectedConfirmedFacts": [
+        "CPLR 306-c notice of commencement was filed/served for a personal injury action.",
+        "Department of Health / notice recipient context exists."
+      ],
+      "expectedTasks": [],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [
+        {
+          "issue": "handwritten_index_date_or_notary_visual_review",
+          "reason": "Notice page contains handwriting/date/notary-style fields.",
+          "blocking": false,
+          "status": "pending"
+        },
+        {
+          "issue": "postal_receipt_visual_review",
+          "reason": "Postal receipt/certified mailing material may require visual verification.",
+          "blocking": false,
+          "status": "pending"
+        },
+        {
+          "issue": "synthetic_ocr_required_test_case",
+          "reason": "Synthetic notice packet includes postal receipt and handwritten/notary-style fields.",
+          "blocking": false,
+          "status": "pending"
+        }
+      ],
+      "mustNotCreate": [
+        "answer deadline from notice of commencement alone",
+        "confirmed service of summons and complaint unless the document specifically proves it"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedExtractionQuality": {
+        "method": "ocr_or_visual_review_required",
+        "ocr_needed": true,
+        "ocr_test_reason": "Synthetic notice packet includes postal receipt and handwritten/notary-style fields."
+      }
+    },
+    {
+      "docIndex": 5,
+      "docKey": "doc-005",
+      "expectedDocumentType": "AFFIRMATION_AFFIDAVIT_OF_SERVICE",
+      "expectedTitle": "AOS re S&C served on MCMCHHC",
+      "expectedFilingDate": "2027-09-16",
+      "expectedNyscefDocNo": 5,
+      "expectedPageCount": 4,
+      "expectedConfirmedFacts": [
+        "Affidavit/affirmation of service was filed regarding service of summons and complaint on MCMCHHC.",
+        "Service was made on MCMCHHC via MCHHCService@nychhc.org according to the affidavit/affirmation context."
+      ],
+      "expectedTasks": [
+        {
+          "taskType": "RESPONSE_DEADLINE_VERIFICATION",
+          "taskDescription": "Review AOS details and service method before confirming response deadline.",
+          "status": "source_supported_auto_saved",
+          "dueDate": null,
+          "dueDateStatus": "needs_review",
+          "confidence": "medium",
+          "sourceTrigger": "Doc 5 affidavit/affirmation of service"
+        }
+      ],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [
+        {
+          "issue": "handwritten_index_date_signature_visual_review",
+          "reason": "AOS includes signature/date/index fields that may require visual review.",
+          "blocking": false,
+          "status": "pending"
+        }
+      ],
+      "mustNotCreate": [
+        "confirmed answer deadline unless calculation rule and service method are explicitly supported",
+        "wrong service email such as nychhe.org"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "ocr_needed": false,
+        "ocr_test_reason": null
+      }
+    },
+    {
+      "docIndex": 6,
+      "docKey": "doc-006",
+      "expectedDocumentType": "ANSWER",
+      "expectedTitle": "Answer - Metropolitan City Health and Hospitals Corporation",
+      "expectedFilingDate": "2027-10-05",
+      "expectedNyscefDocNo": 6,
+      "expectedPageCount": 9,
+      "expectedConfirmedFacts": [
+        "MCMCHHC appeared/answered.",
+        "Defense counsel is Dawson, Kim & Patel LLP",
+        "Attorney contact includes Andrea Miller / amiller@dkp-defense.example."
+      ],
+      "expectedTasks": [
+        {
+          "taskType": "ANSWER_RECEIVED",
+          "taskDescription": "Mark defendant answer as filed/received.",
+          "status": "source_supported_auto_saved",
+          "dueDate": null,
+          "dueDateStatus": "no_fixed_due_date",
+          "confidence": "high"
+        }
+      ],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [],
+      "mustNotCreate": [
+        "open answer deadline after answer has been filed",
+        "default risk based only on earlier provisional response deadline"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "ocr_needed": false,
+        "ocr_test_reason": null
+      }
+    },
+    {
+      "docIndex": 7,
+      "docKey": "doc-007",
+      "expectedDocumentType": "DEMAND_FOR_BILL_OF_PARTICULARS",
+      "expectedTitle": "Demand for Bill of Particulars - MCMCHHC",
+      "expectedFilingDate": "2027-10-05",
+      "expectedNyscefDocNo": 7,
+      "expectedPageCount": 9,
+      "expectedConfirmedFacts": [
+        "Defendant served a demand for bill of particulars.",
+        "Demand indicates response expected within 20 days unless otherwise extended/stipulated."
+      ],
+      "expectedTasks": [
+        {
+          "taskType": "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND",
+          "taskDescription": "Prepare/serve plaintiff bill of particulars response to MCMCHHC demand.",
+          "status": "source_supported_auto_saved",
+          "dueDate": null,
+          "dueDateStatus": "calculated_or_needs_review",
+          "confidence": "medium",
+          "sourceTrigger": "Doc 7 demand language"
+        }
+      ],
+      "expectedDeadlines": [
+        {
+          "type": "BP_RESPONSE_DEADLINE_CANDIDATE",
+          "date": null,
+          "status": "needs_calculation_verification",
+          "sourceTrigger": "Doc 7 demand for bill of particulars",
+          "missingOrReviewReason": "Confirm service date/method and any stipulation/order before final deadline promotion."
+        }
+      ],
+      "expectedHumanReviewItems": [],
+      "mustNotCreate": [
+        "final BP deadline without confirming service trigger and calculation basis"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "ocr_needed": false,
+        "ocr_test_reason": null
+      }
+    },
+    {
+      "docIndex": 8,
+      "docKey": "doc-008",
+      "expectedDocumentType": "NOTICE_TO_TAKE_DEPOSITION",
+      "expectedTitle": "Notice to Take Deposition - MCMCHHC",
+      "expectedFilingDate": "2027-10-05",
+      "expectedNyscefDocNo": 8,
+      "expectedPageCount": 1,
+      "expectedConfirmedFacts": [
+        "Defendant noticed plaintiff deposition/oral examination.",
+        "Date/time/location are to be agreed or court-directed, not fixed by this document."
+      ],
+      "expectedTasks": [
+        {
+          "taskType": "SCHEDULE_PLAINTIFF_DEPOSITION",
+          "taskDescription": "Coordinate plaintiff deposition date/time/location.",
+          "status": "conditional",
+          "dueDate": null,
+          "dueDateStatus": "no_fixed_due_date",
+          "confidence": "high"
+        }
+      ],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [],
+      "mustNotCreate": [
+        "fixed deposition date from Doc 8 if date/time/location are not actually set"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "ocr_needed": false,
+        "ocr_test_reason": null
+      }
+    },
+    {
+      "docIndex": 9,
+      "docKey": "doc-009",
+      "expectedDocumentType": "BILL_OF_PARTICULARS",
+      "expectedTitle": "Bill of Particulars",
+      "expectedFilingDate": "2027-10-25",
+      "expectedNyscefDocNo": 9,
+      "expectedPageCount": 28,
+      "expectedConfirmedFacts": [
+        "Plaintiff served/filed bill of particulars.",
+        "BP provides more detailed allegations/injuries and should enrich case facts."
+      ],
+      "expectedTasks": [
+        {
+          "taskType": "BP_SERVED",
+          "taskDescription": "Mark plaintiff bill of particulars as served/filed.",
+          "status": "source_supported_auto_saved",
+          "dueDate": null,
+          "dueDateStatus": "no_fixed_due_date",
+          "confidence": "high"
+        }
+      ],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [
+        {
+          "issue": "verification_signature_date_visual_review",
+          "reason": "BP verification/signature/date requires visual review.",
+          "blocking": false,
+          "status": "pending"
+        }
+      ],
+      "mustNotCreate": [
+        "duplicate BP response task as still open if BP has been served/filed"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "ocr_needed": false,
+        "ocr_test_reason": null
+      }
+    },
+    {
+      "docIndex": 10,
+      "docKey": "doc-010",
+      "expectedDocumentType": "NOTICE_OF_MEDICAL_MALPRACTICE_ACTION",
+      "expectedTitle": "Notice of Medical Malpractice Action",
+      "expectedFilingDate": "2027-11-03",
+      "expectedNyscefDocNo": 10,
+      "expectedPageCount": 8,
+      "expectedConfirmedFacts": [
+        "Notice of Medical Malpractice Action was filed."
+      ],
+      "expectedTasks": [],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [
+        {
+          "issue": "affidavit_service_date_visual_review",
+          "reason": "Affidavit/service date area may require visual confirmation.",
+          "blocking": false,
+          "status": "pending"
+        }
+      ],
+      "mustNotCreate": [
+        "PC date unless the RJI/court scheduling document supplies it"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "ocr_needed": false,
+        "ocr_test_reason": null
+      }
+    },
+    {
+      "docIndex": 11,
+      "docKey": "doc-011",
+      "expectedDocumentType": "RJI_MEDICAL_MALPRACTICE",
+      "expectedTitle": "RJI re Notice of Medical/Dental/Podiatric Malpractice",
+      "expectedFilingDate": "2027-11-03",
+      "expectedNyscefDocNo": 11,
+      "expectedPageCount": 2,
+      "expectedConfirmedFacts": [
+        "RJI / medical malpractice scheduling request was filed."
+      ],
+      "expectedTasks": [
+        {
+          "taskType": "AWAIT_PRELIMINARY_CONFERENCE_ORDER",
+          "taskDescription": "Await or monitor preliminary conference scheduling/order after RJI.",
+          "status": "conditional",
+          "dueDate": null,
+          "dueDateStatus": "no_fixed_due_date",
+          "confidence": "medium"
+        }
+      ],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [],
+      "mustNotCreate": [
+        "final PC order deadlines before actual PC order is processed"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "ocr_needed": false,
+        "ocr_test_reason": null
+      }
+    },
+    {
+      "docIndex": 12,
+      "docKey": "doc-012",
+      "expectedDocumentType": "PRELIMINARY_CONFERENCE_ORDER",
+      "expectedTitle": "Preliminary Conference Order",
+      "expectedFilingDate": "2027-11-23",
+      "expectedNyscefDocNo": 12,
+      "expectedPageCount": 8,
+      "expectedExtractionQuality": {
+        "method": "ocr_or_visual_review_required",
+        "ocr_needed": true,
+        "reviewStatus": "ai_extracted_unreviewed_with_visual_review_items",
+        "ocr_test_reason": "Synthetic PC order includes scanned order pages, checkboxes, dates, and signature fields."
+      },
+      "expectedConfirmedFacts": [
+        "Judge/part confirmed as Hon. Kevin J. Kerrigan / Queens Medical Malpractice Part.",
+        "Preliminary Conference Order was issued/filed on 2027-11-23.",
+        "Compliance Conference date is 2028-07-19.",
+        "NOI deadline in PC order is 2028-12-21."
+      ],
+      "expectedTasks": [
+        {
+          "taskType": "PLAINTIFF_AUTHORIZATIONS",
+          "taskDescription": "Plaintiff authorizations due 30 days from PC order.",
+          "status": "source_supported_auto_saved",
+          "dueDate": "2027-12-23",
+          "dueDateStatus": "calculated",
+          "confidence": "high",
+          "sourceTrigger": "Doc 12 PC order dated 2027-11-23"
+        },
+        {
+          "taskType": "PLAINTIFF_RECORD_COPIES_IF_REQUESTED",
+          "taskDescription": "Plaintiff record copies due 14 days from PC order if requested/cost paid.",
+          "status": "conditional",
+          "dueDate": "2027-12-07",
+          "dueDateStatus": "calculated",
+          "confidence": "medium"
+        },
+        {
+          "taskType": "DEFENDANT_RULES_REGULATIONS",
+          "taskDescription": "Defendant hospital rules/regulations due.",
+          "status": "source_supported_auto_saved",
+          "dueDate": "2027-12-23",
+          "dueDateStatus": "fixed_or_calculated_from_order",
+          "confidence": "high"
+        },
+        {
+          "taskType": "PLAINTIFF_EBT",
+          "taskDescription": "Plaintiff EBT on or before 2028-03-01.",
+          "status": "source_supported_auto_saved",
+          "dueDate": "2028-03-01",
+          "dueDateStatus": "fixed",
+          "confidence": "high"
+        },
+        {
+          "taskType": "MCHHC_WITNESS_EBT_1",
+          "taskDescription": "First MCHHC witness EBT on or before 2028-03-31.",
+          "status": "source_supported_auto_saved",
+          "dueDate": "2028-03-31",
+          "dueDateStatus": "fixed",
+          "confidence": "high"
+        },
+        {
+          "taskType": "MCHHC_WITNESS_EBT_2",
+          "taskDescription": "Second MCHHC witness EBT on or before 2028-05-01.",
+          "status": "source_supported_auto_saved",
+          "dueDate": "2028-05-01",
+          "dueDateStatus": "fixed",
+          "confidence": "high"
+        },
+        {
+          "taskType": "MCHHC_WITNESS_EBT_3",
+          "taskDescription": "Third MCHHC witness EBT on or before 2028-06-01.",
+          "status": "source_supported_auto_saved",
+          "dueDate": "2028-06-01",
+          "dueDateStatus": "fixed",
+          "confidence": "high"
+        },
+        {
+          "taskType": "COMPLIANCE_CONFERENCE_SUBMISSION",
+          "taskDescription": "Submit compliance conference stipulation/order for 2028-07-19 no later than 11:00 AM under Part 10 MCHHC med-mal rules.",
+          "status": "source_supported_auto_saved",
+          "dueDate": "2028-07-19T11:00:00",
+          "dueDateStatus": "fixed",
+          "confidence": "high"
+        },
+        {
+          "taskType": "NOTE_OF_ISSUE",
+          "taskDescription": "NOI due by 2028-12-21 per PC order.",
+          "status": "source_supported_auto_saved",
+          "dueDate": "2028-12-21",
+          "dueDateStatus": "fixed",
+          "confidence": "high"
+        }
+      ],
+      "expectedDeadlines": [
+        {
+          "type": "AUTHORIZATIONS",
+          "date": "2027-12-23"
+        },
+        {
+          "type": "PLAINTIFF_EBT",
+          "date": "2028-03-01"
+        },
+        {
+          "type": "MCHHC_EBT_1",
+          "date": "2028-03-31"
+        },
+        {
+          "type": "MCHHC_EBT_2",
+          "date": "2028-05-01"
+        },
+        {
+          "type": "MCHHC_EBT_3",
+          "date": "2028-06-01"
+        },
+        {
+          "type": "COMPLIANCE_CONFERENCE",
+          "date": "2028-07-19"
+        },
+        {
+          "type": "NOI",
+          "date": "2028-12-21"
+        }
+      ],
+      "expectedHumanReviewItems": [
+        {
+          "issue": "pc_order_ocr_visual_review",
+          "reason": "PC order appears scanned/visual with checkboxes/dates/signatures requiring OCR and review.",
+          "blocking": true,
+          "status": "pending"
+        },
+        {
+          "issue": "synthetic_ocr_required_test_case",
+          "reason": "Synthetic PC order includes scanned order pages, checkboxes, dates, and signature fields.",
+          "blocking": true,
+          "status": "pending"
+        }
+      ],
+      "mustNotCreate": [
+        "treat Kerrigan as confirmed judge before Doc 12 unless supported by related-case context only",
+        "ignore Part 10 MCHHC med-mal 11:00 AM CC submission rule when rule text is supplied"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used."
+    },
+    {
+      "docIndex": 13,
+      "docKey": "doc-013",
+      "expectedDocumentType": "COMPLIANCE_CONFERENCE_ORDER",
+      "expectedTitle": "Compliance Conference Order",
+      "expectedFilingDate": "2028-07-19",
+      "expectedNyscefDocNo": 13,
+      "expectedPageCount": 6,
+      "expectedExtractionQuality": {
+        "method": "ocr_or_visual_review_required",
+        "ocr_needed": true,
+        "reviewStatus": "ai_extracted_unreviewed_with_visual_review_items",
+        "ocr_test_reason": "Synthetic CC order includes scanned/visual conference order fields and unclear time/date areas."
+      },
+      "expectedConfirmedFacts": [
+        "Compliance Conference Order was filed on 2028-07-19.",
+        "Plaintiff EBT is marked done.",
+        "Defendant further responses due 2028-08-28 for placenta pathology demand and policies/procedures.",
+        "Delivery room log issue to be revisited after defendant EBTs.",
+        "Dana Brooks Allen, MD EBT scheduled for 2028-10-13 at 10:00 AM.",
+        "Rachel Monroe, MD EBT scheduled for 2028-12-25, time unclear.",
+        "Plaintiff reserves rights to depose Priya Raman, MD, CNM Emily O’Brien, and alternate neonatal witness after Henry/Ferrara.",
+        "Post-EBT demand responses due within 20 days of receipt.",
+        "New NOI due date is 2029-04-19.",
+        "CPLR 3216 demand creates dismissal risk if NOI not filed by deadline.",
+        "Pretrial conference scheduled for 2029-08-23 at 9:30 AM in Courtroom 48."
+      ],
+      "expectedTasks": [
+        {
+          "taskType": "DEFENDANT_FURTHER_RESPONSES",
+          "taskDescription": "Defendant further responses due for placenta pathology demand and policies/procedures.",
+          "status": "source_supported_auto_saved",
+          "dueDate": "2028-08-28",
+          "dueDateStatus": "fixed",
+          "confidence": "high"
+        },
+        {
+          "taskType": "CARLA_ROGERS_HENRY_MD_EBT",
+          "taskDescription": "Dana Brooks Allen, MD EBT scheduled.",
+          "status": "source_supported_auto_saved",
+          "dueDate": "2028-10-13T10:00:00",
+          "dueDateStatus": "fixed",
+          "confidence": "high"
+        },
+        {
+          "taskType": "LAUREN_FERRARA_MD_EBT",
+          "taskDescription": "Rachel Monroe, MD EBT scheduled, time unclear.",
+          "status": "needs_review",
+          "dueDate": "2028-12-25",
+          "dueDateStatus": "fixed_date_time_unclear",
+          "confidence": "medium"
+        },
+        {
+          "taskType": "NOTE_OF_ISSUE",
+          "taskDescription": "NOI due by 2029-04-19 per CC order / CPLR 3216 demand.",
+          "status": "source_supported_auto_saved",
+          "dueDate": "2029-04-19",
+          "dueDateStatus": "fixed",
+          "confidence": "high"
+        },
+        {
+          "taskType": "PRETRIAL_CONFERENCE",
+          "taskDescription": "Pretrial conference scheduled.",
+          "status": "source_supported_auto_saved",
+          "dueDate": "2029-08-23T09:30:00",
+          "dueDateStatus": "fixed",
+          "confidence": "high"
+        }
+      ],
+      "expectedDeadlines": [
+        {
+          "type": "DEFENDANT_FURTHER_RESPONSES",
+          "date": "2028-08-28"
+        },
+        {
+          "type": "CARLA_ROGERS_HENRY_MD_EBT",
+          "date": "2028-10-13T10:00:00"
+        },
+        {
+          "type": "LAUREN_FERRARA_MD_EBT",
+          "date": "2028-12-25",
+          "status": "time_unclear"
+        },
+        {
+          "type": "NOI",
+          "date": "2029-04-19",
+          "supersedes": "2028-12-21"
+        },
+        {
+          "type": "PRETRIAL_CONFERENCE",
+          "date": "2029-08-23T09:30:00"
+        }
+      ],
+      "expectedHumanReviewItems": [
+        {
+          "issue": "cc_order_ocr_visual_review",
+          "reason": "CC order has OCR/checkbox/date/signature uncertainty.",
+          "blocking": true,
+          "status": "pending"
+        },
+        {
+          "issue": "lauren_ferrara_ebt_time_unclear",
+          "reason": "EBT date is visible but time is unclear.",
+          "blocking": false,
+          "status": "pending"
+        },
+        {
+          "issue": "synthetic_ocr_required_test_case",
+          "reason": "Synthetic CC order includes scanned/visual conference order fields and unclear time/date areas.",
+          "blocking": true,
+          "status": "pending"
+        }
+      ],
+      "mustNotCreate": [
+        "leave original 2028-12-21 NOI deadline as active without marking superseded",
+        "treat all reserved EBTs as fixed dates"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used."
+    },
+    {
+      "docIndex": 14,
+      "docKey": "doc-014",
+      "expectedDocumentType": "COMPLIANCE_CONFERENCE_ORDER_DUPLICATE_OR_REFILED_WITH_CPLR_3216_DEMAND",
+      "expectedTitle": "Compliance Conference Order + CPLR 3216 Demand",
+      "expectedFilingDate": "2028-08-18",
+      "expectedNyscefDocNo": 14,
+      "expectedPageCount": 6,
+      "expectedConfirmedFacts": [
+        "Doc 14 appears duplicative or refiling of CC order content with CPLR 3216 demand page.",
+        "CPLR 3216 demand / NOI risk remains controlling.",
+        "NOI due 2029-04-19 remains active unless superseded by later order."
+      ],
+      "expectedTasks": [
+        {
+          "taskType": "NOI_3216_RISK_MONITOR",
+          "taskDescription": "Monitor CPLR 3216 demand / NOI due date of 2029-04-19.",
+          "status": "source_supported_auto_saved",
+          "dueDate": "2029-04-19",
+          "dueDateStatus": "fixed",
+          "confidence": "high"
+        }
+      ],
+      "expectedDeadlines": [
+        {
+          "type": "NOI",
+          "date": "2029-04-19"
+        },
+        {
+          "type": "PRETRIAL_CONFERENCE",
+          "date": "2029-08-23T09:30:00"
+        }
+      ],
+      "expectedHumanReviewItems": [
+        {
+          "issue": "duplicate_order_or_refiling_confirmation",
+          "reason": "Confirm whether Doc 14 is duplicate/refiling or contains changed terms.",
+          "blocking": false,
+          "status": "pending"
+        }
+      ],
+      "mustNotCreate": [
+        "duplicate all Doc 13 tasks as new independent obligations if Doc 14 is merely duplicative/refiled",
+        "ignore CPLR 3216 risk"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "ocr_needed": false,
+        "ocr_test_reason": null
+      }
+    }
+  ],
+  "snapshotExpectedOutputs": {
+    "after_doc_001": {
+      "snapshotId": "snapshot_after_doc_001_expected",
+      "caseId": "synthetic_case_001_queens_905421_2027_santos_v_mchhc",
+      "afterDocNo": 1,
+      "currentPhase": "CASE_COMMENCED",
+      "currentMiniPhase": "SUMMONS_AND_COMPLAINT_FILED",
+      "confirmedFacts": [
+        "Main action commenced by summons and verified complaint.",
+        "Plaintiff is infant parent/guardian.",
+        "Defendant is MCMCHHC.",
+        "Case concerns alleged med-mal at Queens Metropolitan Hospital Center."
+      ],
+      "openTasks": [
+        {
+          "taskType": "VERIFY_SERVICE_FOR_RESPONSE_DEADLINE",
+          "status": "needs_source_trigger"
+        }
+      ],
+      "completedTasks": [
+        "Filed summons and complaint"
+      ],
+      "deadlines": [],
+      "supersededDeadlines": [],
+      "conflicts": [],
+      "auditNotes": [
+        "Do not mark summons served or answer deadline confirmed from filing date alone."
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic snapshot expected output for eval testing."
+    },
+    "after_doc_002": {
+      "snapshotId": "snapshot_after_doc_002_expected",
+      "caseId": "synthetic_case_001_queens_905421_2027_santos_v_mchhc",
+      "afterDocNo": 2,
+      "currentPhase": "CASE_COMMENCED",
+      "currentMiniPhase": "CERTIFICATE_OF_MERIT_FILED",
+      "confirmedFacts": [
+        "Summons and complaint filed.",
+        "Certificate of Merit filed under CPLR 3012-a.",
+        "Plaintiff counsel certified physician consultation."
+      ],
+      "openTasks": [
+        {
+          "taskType": "VERIFY_SERVICE_FOR_RESPONSE_DEADLINE",
+          "status": "needs_source_trigger"
+        }
+      ],
+      "completedTasks": [
+        "Filed summons and complaint",
+        "Filed Certificate of Merit"
+      ],
+      "deadlines": [],
+      "supersededDeadlines": [],
+      "conflicts": [],
+      "auditNotes": [
+        "Certificate of Merit does not create a defendant response deadline.",
+        "Any response deadline based on filing date alone should be downgraded or rejected."
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic snapshot expected output for eval testing."
+    },
+    "after_doc_004": {
+      "snapshotId": "snapshot_after_doc_004_expected",
+      "caseId": "synthetic_case_001_queens_905421_2027_santos_v_mchhc",
+      "afterDocNo": 4,
+      "currentPhase": "CASE_COMMENCED_NOTICE_CONTEXT_FILED",
+      "currentMiniPhase": "NOTICE_OF_COMMENCEMENT_FILED",
+      "confirmedFacts": [
+        "Summons and complaint filed.",
+        "Certificate of Merit filed.",
+        "Supporting documents and Notice of Commencement filed.",
+        "Notice of claim/order context exists but should remain source-linked."
+      ],
+      "openTasks": [
+        {
+          "taskType": "VERIFY_SERVICE_FOR_RESPONSE_DEADLINE",
+          "status": "needs_source_trigger"
+        }
+      ],
+      "completedTasks": [
+        "Filed summons and complaint",
+        "Filed Certificate of Merit",
+        "Filed supporting documents",
+        "Filed Notice of Commencement of Action for Personal Injuries"
+      ],
+      "deadlines": [],
+      "supersededDeadlines": [],
+      "unresolvedHumanReviewItemsExpected": [
+        "signature/date visual review",
+        "postal receipt visual review",
+        "handwritten date/index review"
+      ],
+      "conflicts": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic snapshot expected output for eval testing."
+    },
+    "after_doc_008": {
+      "snapshotId": "snapshot_after_doc_008_expected",
+      "caseId": "synthetic_case_001_queens_905421_2027_santos_v_mchhc",
+      "afterDocNo": 8,
+      "currentPhase": "ISSUE_JOINED_DISCOVERY_DEMANDS",
+      "currentMiniPhase": "ANSWER_BP_DEMAND_DEPOSITION_NOTICE",
+      "confirmedFacts": [
+        "AOS regarding service on MCMCHHC filed.",
+        "MCMCHHC answer filed.",
+        "Defense counsel Amabile & Erman appeared.",
+        "Demand for Bill of Particulars served/filed.",
+        "Notice to Take Deposition served/filed without fixed date/time."
+      ],
+      "openTasks": [
+        {
+          "taskType": "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND",
+          "status": "source_supported_auto_saved_or_needs_deadline_verification"
+        },
+        {
+          "taskType": "SCHEDULE_PLAINTIFF_DEPOSITION",
+          "status": "conditional"
+        }
+      ],
+      "completedTasks": [
+        "Filed summons and complaint",
+        "Filed Certificate of Merit",
+        "Filed AOS",
+        "Defendant answer filed"
+      ],
+      "deadlines": [
+        {
+          "type": "BP_RESPONSE_DEADLINE_CANDIDATE",
+          "status": "needs_calculation_verification"
+        }
+      ],
+      "supersededDeadlines": [
+        {
+          "type": "PROVISIONAL_RESPONSE_DEADLINE_FROM_DOC_001_OR_002",
+          "status": "unsupported_or_superseded_by_answer_filed"
+        }
+      ],
+      "conflicts": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic snapshot expected output for eval testing."
+    },
+    "after_doc_012": {
+      "snapshotId": "snapshot_after_doc_012_expected",
+      "caseId": "synthetic_case_001_queens_905421_2027_santos_v_mchhc",
+      "afterDocNo": 12,
+      "currentPhase": "DISCOVERY_SCHEDULED_BY_PC_ORDER",
+      "currentMiniPhase": "PRELIMINARY_CONFERENCE_ORDER_FILED",
+      "confirmedFacts": [
+        "Judge/part confirmed as Hon. Kevin J. Kerrigan / Queens Medical Malpractice Part.",
+        "PC order filed 2027-11-23.",
+        "Compliance Conference scheduled 2028-07-19.",
+        "NOI due 2028-12-21 under PC order."
+      ],
+      "openTasks": [
+        "Plaintiff authorizations due 2027-12-23",
+        "Defendant hospital rules/regulations due 2027-12-23",
+        "Plaintiff EBT by 2028-03-01",
+        "MCHHC witness EBTs by 2028-03-31, 2028-05-01, and 2028-06-01",
+        "Compliance Conference submission due 2028-07-19 by 11:00 AM",
+        "NOI due 2028-12-21"
+      ],
+      "completedTasks": [
+        "Filed summons and complaint",
+        "Filed Certificate of Merit",
+        "Defendant answer filed",
+        "Bill of Particulars filed",
+        "RJI/medical malpractice notice filed",
+        "PC order filed"
+      ],
+      "deadlines": [
+        {
+          "type": "AUTHORIZATIONS",
+          "date": "2027-12-23"
+        },
+        {
+          "type": "PLAINTIFF_EBT",
+          "date": "2028-03-01"
+        },
+        {
+          "type": "MCHHC_EBT_1",
+          "date": "2028-03-31"
+        },
+        {
+          "type": "MCHHC_EBT_2",
+          "date": "2028-05-01"
+        },
+        {
+          "type": "MCHHC_EBT_3",
+          "date": "2028-06-01"
+        },
+        {
+          "type": "COMPLIANCE_CONFERENCE",
+          "date": "2028-07-19"
+        },
+        {
+          "type": "NOI",
+          "date": "2028-12-21"
+        }
+      ],
+      "supersededDeadlines": [],
+      "unresolvedHumanReviewItemsExpected": [
+        "PC order OCR/visual review"
+      ],
+      "conflicts": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic snapshot expected output for eval testing."
+    },
+    "after_doc_014": {
+      "snapshotId": "snapshot_after_doc_014_expected",
+      "caseId": "synthetic_case_001_queens_905421_2027_santos_v_mchhc",
+      "afterDocNo": 14,
+      "currentPhase": "DISCOVERY_POST_COMPLIANCE_CONFERENCE",
+      "currentMiniPhase": "CC_ORDER_3216_NOI_RISK",
+      "confirmedFacts": [
+        "Plaintiff EBT marked done.",
+        "Defendant further responses due 2028-08-28.",
+        "Dana Brooks Allen, MD EBT scheduled 2028-10-13 at 10:00 AM.",
+        "Rachel Monroe, MD EBT scheduled 2028-12-25, time unclear.",
+        "NOI due 2029-04-19 under CC order / CPLR 3216 demand.",
+        "Pretrial conference scheduled 2029-08-23 at 9:30 AM in Courtroom 48."
+      ],
+      "openTasks": [
+        "Defendant further responses due 2028-08-28",
+        "Dana Brooks Allen, MD EBT 2028-10-13 10:00 AM",
+        "Rachel Monroe, MD EBT 2028-12-25 time unclear",
+        "Monitor reserved EBT rights for Harishankar, O’Hearn, and alternate neonatal witness",
+        "Respond to post-EBT demands within 20 days of receipt",
+        "NOI due 2029-04-19",
+        "Pretrial conference 2029-08-23 9:30 AM Courtroom 48"
+      ],
+      "completedTasks": [
+        "Plaintiff EBT marked done",
+        "Compliance Conference Order filed"
+      ],
+      "deadlines": [
+        {
+          "type": "DEFENDANT_FURTHER_RESPONSES",
+          "date": "2028-08-28"
+        },
+        {
+          "type": "CARLA_ROGERS_HENRY_MD_EBT",
+          "date": "2028-10-13T10:00:00"
+        },
+        {
+          "type": "LAUREN_FERRARA_MD_EBT",
+          "date": "2028-12-25",
+          "status": "time_unclear"
+        },
+        {
+          "type": "NOI",
+          "date": "2029-04-19"
+        },
+        {
+          "type": "PRETRIAL_CONFERENCE",
+          "date": "2029-08-23T09:30:00"
+        }
+      ],
+      "supersededDeadlines": [
+        {
+          "type": "NOI",
+          "oldDate": "2028-12-21",
+          "newDate": "2029-04-19",
+          "supersededBy": "Doc 13/14 Compliance Conference Order / CPLR 3216 demand"
+        }
+      ],
+      "unresolvedHumanReviewItemsExpected": [
+        "CC order OCR/visual review",
+        "Ferrara EBT time unclear",
+        "duplicate/refiling confirmation for Doc 14"
+      ],
+      "conflicts": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic snapshot expected output for eval testing."
+    }
+  },
+  "negativeGuardrailTests": [
+    {
+      "id": "no_answer_deadline_from_filing_date",
+      "description": "Do not create a final answer/appearance deadline from summons or complaint filing date alone.",
+      "expectedBehavior": "Create a needs_source_trigger task instead of final deadline."
+    },
+    {
+      "id": "no_certificate_of_merit_response_deadline",
+      "description": "Do not create a defendant response deadline to the Certificate of Merit.",
+      "failIfTextIncludes": [
+        "Deadline for defendant to respond to certificate of merit",
+        "response deadline to certificate of merit"
+      ],
+      "expectedBehavior": "Doc 2 only confirms Certificate of Merit filed under CPLR 3012-a."
+    },
+    {
+      "id": "no_completed_notice_of_claim_without_source",
+      "description": "Do not mark notice of claim completed unless supported by specific notice/order/service source.",
+      "expectedBehavior": "Treat as source-linked context unless current document supports completion."
+    },
+    {
+      "id": "no_fixed_deposition_date_without_actual_date",
+      "appliesToDocs": [
+        8
+      ],
+      "description": "Do not create fixed deposition date from notice saying date/time/location to be agreed or court-directed.",
+      "expectedBehavior": "Create scheduling task with no_fixed_due_date."
+    },
+    {
+      "id": "supersede_old_noi_after_cc_order",
+      "appliesAfterDoc": 13,
+      "description": "After Doc 13/14, old 2028-12-21 NOI must be superseded and 2029-04-19 active.",
+      "expectedBehavior": "Active NOI deadline is 2029-04-19; old NOI deadline is superseded."
+    },
+    {
+      "id": "no_duplicate_doc_014_tasks",
+      "appliesToDocs": [
+        14
+      ],
+      "description": "If Doc 14 is duplicate/refiling, do not duplicate all Doc 13 tasks as new obligations.",
+      "expectedBehavior": "Confirm/refine existing CC obligations and flag duplicate/refiling review if needed."
+    }
+  ],
+  "evalComparisonConfig": {
+    "exactMatchFields": [
+      "expectedDocumentType",
+      "expectedFilingDate",
+      "expectedNyscefDocNo",
+      "caseIdentity.indexNumber",
+      "caseIdentity.county",
+      "caseIdentity.judgeName",
+      "caseIdentity.partName"
+    ],
+    "semanticMatchFields": [
+      "expectedConfirmedFacts",
+      "expectedTasks.taskDescription",
+      "snapshotExpectedOutputs.*.confirmedFacts",
+      "snapshotExpectedOutputs.*.openTasks"
+    ],
+    "guardrailFields": [
+      "mustNotCreate",
+      "negativeGuardrailTests"
+    ],
+    "criticalFailureRules": [
+      "Creating a final answer/response deadline without verified service date and method.",
+      "Creating a deadline for defendant to respond to Certificate of Merit.",
+      "Leaving superseded NOI deadline active after a later controlling CC order changes it.",
+      "Treating visual/OCR uncertainty as confirmed fact without review status."
+    ]
+  },
+  "schemaCompatibility": {
+    "uploadedInventoryFile": "Pasted code.json",
+    "compatibleModelNames": [
+      "DocumentProcessingOutput",
+      "CaseStateSnapshotModel",
+      "TaskModel",
+      "HumanReviewItemModel",
+      "BatchProcessingResult"
+    ],
+    "note": "Uses expected* fields so it can sit beside actual runtime outputs without pretending to be a runtime output file."
+  },
+  "ocrTestPlan": {
+    "ocrNeededDocs": [
+      1,
+      4,
+      12,
+      13
+    ],
+    "ocrNotNeededDocs": [
+      2,
+      3,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      14
+    ],
+    "rule": "OCR is intentionally required on selected synthetic documents to test OCR routing and human-review flags.",
+    "note": "These OCR flags are synthetic testing conditions, not claims about any real source document."
+  }
+}

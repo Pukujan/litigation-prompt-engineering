@@ -1,0 +1,18 @@
+{
+  "module": "case-workflow",
+  "prompts": [
+    {
+      "id": "case-state-update",
+      "version": "1.0.0",
+      "file": "templates/case-state-update.prompt.js",
+      "description": "Update CaseStateSnapshot after processing one document",
+      "variables": [
+        "previousSnapshot",
+        "documentExtraction",
+        "documentTasks",
+        "humanReviewItems",
+        "textVersions"
+      ]
+    }
+  ]
+}

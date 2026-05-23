@@ -1,0 +1,12 @@
+{
+  "caseId": "case_queens_999999_2025",
+  "county": "Queens",
+  "court": "Supreme Court of the State of New York",
+  "indexNumber": "999999/2025",
+  "caseName": "Doe v. ABC Hospital",
+  "caseType": "medical_malpractice",
+  "judgeName": null,
+  "partName": null,
+  "currentPhase": "commencement",
+  "currentMiniPhase": "summons_and_complaint_filed"
+}

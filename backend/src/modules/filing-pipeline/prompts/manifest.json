@@ -1,0 +1,17 @@
+{
+  "module": "filing-pipeline",
+  "prompts": [
+    {
+      "id": "orchestrator",
+      "version": "1.0.0",
+      "file": "templates/orchestrator.prompt.js",
+      "description": "Coordinate one-document-at-a-time pipeline execution",
+      "variables": [
+        "documentMetadata",
+        "caseStateSnapshot",
+        "caseContext",
+        "relevantRules"
+      ]
+    }
+  ]
+}

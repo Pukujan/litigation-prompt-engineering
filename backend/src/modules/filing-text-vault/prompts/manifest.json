@@ -1,0 +1,12 @@
+{
+  "module": "filing-text-vault",
+  "prompts": [
+    {
+      "id": "filing-text-vault",
+      "version": "1.0.0",
+      "file": "templates/filing-text-vault.prompt.js",
+      "description": "Versioned text storage for embedded, OCR, AI, and human-reviewed text",
+      "variables": ["documentId", "caseId"]
+    }
+  ]
+}

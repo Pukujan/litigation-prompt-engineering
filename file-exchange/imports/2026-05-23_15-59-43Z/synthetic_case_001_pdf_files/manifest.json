@@ -1,0 +1,96 @@
+{
+  "syntheticDataNotice": "SYNTHETIC TRAINING DATA - No real NYSCEF files, real party identities, real case facts, sealed/confidential data, or bulk-collected NYSCEF data were used.",
+  "caseId": "synthetic_case_001_queens_905421_2027_santos_v_mchhc",
+  "ocrTestDocs": [
+    1,
+    4,
+    12,
+    13
+  ],
+  "files": [
+    {
+      "docIndex": 1,
+      "filename": "doc_001_SUMMONS_AND_VERIFIED_COMPLAINT.pdf",
+      "mode": "image_only_ocr_test",
+      "ocr_needed": true
+    },
+    {
+      "docIndex": 2,
+      "filename": "doc_002_CERTIFICATE_OF_MERIT.pdf",
+      "mode": "embedded_text_pdf",
+      "ocr_needed": false
+    },
+    {
+      "docIndex": 3,
+      "filename": "doc_003_EXHIBITS_SUPPORTING_SUMMONS_AND_COMPLAINT.pdf",
+      "mode": "embedded_text_pdf",
+      "ocr_needed": false
+    },
+    {
+      "docIndex": 4,
+      "filename": "doc_004_NOTICE_OF_COMMENCEMENT_OF_ACTION_FOR_PERSONAL_INJURIES.pdf",
+      "mode": "image_only_ocr_test",
+      "ocr_needed": true
+    },
+    {
+      "docIndex": 5,
+      "filename": "doc_005_AFFIRMATION_AFFIDAVIT_OF_SERVICE.pdf",
+      "mode": "embedded_text_pdf",
+      "ocr_needed": false
+    },
+    {
+      "docIndex": 6,
+      "filename": "doc_006_ANSWER.pdf",
+      "mode": "embedded_text_pdf",
+      "ocr_needed": false
+    },
+    {
+      "docIndex": 7,
+      "filename": "doc_007_DEMAND_FOR_BILL_OF_PARTICULARS.pdf",
+      "mode": "embedded_text_pdf",
+      "ocr_needed": false
+    },
+    {
+      "docIndex": 8,
+      "filename": "doc_008_NOTICE_TO_TAKE_DEPOSITION.pdf",
+      "mode": "embedded_text_pdf",
+      "ocr_needed": false
+    },
+    {
+      "docIndex": 9,
+      "filename": "doc_009_BILL_OF_PARTICULARS.pdf",
+      "mode": "embedded_text_pdf",
+      "ocr_needed": false
+    },
+    {
+      "docIndex": 10,
+      "filename": "doc_010_NOTICE_OF_MEDICAL_MALPRACTICE_ACTION.pdf",
+      "mode": "embedded_text_pdf",
+      "ocr_needed": false
+    },
+    {
+      "docIndex": 11,
+      "filename": "doc_011_RJI_MEDICAL_MALPRACTICE.pdf",
+      "mode": "embedded_text_pdf",
+      "ocr_needed": false
+    },
+    {
+      "docIndex": 12,
+      "filename": "doc_012_PRELIMINARY_CONFERENCE_ORDER.pdf",
+      "mode": "image_only_ocr_test",
+      "ocr_needed": true
+    },
+    {
+      "docIndex": 13,
+      "filename": "doc_013_COMPLIANCE_CONFERENCE_ORDER.pdf",
+      "mode": "image_only_ocr_test",
+      "ocr_needed": true
+    },
+    {
+      "docIndex": 14,
+      "filename": "doc_014_COMPLIANCE_CONFERENCE_ORDER_DUPLICATE_OR_REFILED_WITH_CPLR_3.pdf",
+      "mode": "embedded_text_pdf",
+      "ocr_needed": false
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "module": "task-docketing",
+  "prompts": [
+    {
+      "id": "task-deadline",
+      "version": "1.0.0",
+      "file": "templates/task-deadline.prompt.js",
+      "description": "Generate source-supported tasks and deadlines",
+      "variables": ["documentText", "ruleContext", "caseContext"]
+    }
+  ]
+}

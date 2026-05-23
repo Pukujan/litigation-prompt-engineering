@@ -1,0 +1,12 @@
+{"time":"2026-05-23T15:45:00Z","contract":"repoArtifactLayout","from":null,"to":"v001","reason":"Initial REPO_ARTIFACT_LAYOUT and file-exchange","author":"agent"}
+{"time":"2026-05-23T15:45:00Z","contract":"fileExchange","from":null,"to":"v001","reason":"file-exchange/ imports and exports dated folders","author":"agent"}
+{"time":"2026-05-23T15:46:00Z","contract":"caseFilingStorageLayout","from":null,"to":"v001","reason":"storageLayout.contract.js and storagePaths.js","author":"agent"}
+{"time":"2026-05-23T15:46:00Z","contract":"parsedDocumentArtifacts","from":null,"to":"v001","reason":"parsed-documents artifact names and audit events","author":"agent"}
+{"time":"2026-05-23T17:00:00Z","contract":"pipelineVersions","from":"case_001-v0-wiped","to":"case_001-v1-parsed-synthetic","reason":"Ingested synthetic golden parsed baseline (14 docs)","author":"agent"}
+{"time":"2026-05-23T17:00:00Z","contract":"ruleAuthority","from":null,"to":"v001","reason":"Court rules services and authority rank enum","author":"agent"}
+{"time":"2026-05-23T18:00:00Z","contract":"pipelineVersions","from":"case_001-v1-parsed-synthetic","to":"case_001-v2-full-expected","reason":"Ingested full doc/snapshot golden from bundle ground_truth.json","author":"agent"}
+{"time":"2026-05-23T19:00:00Z","contract":"fileExchange","from":"v001","to":"v001","reason":"AGENTS.md + alwaysApply file-exchange-inbox rule; import:file-exchange script","author":"agent"}
+{"time":"2026-05-23T20:00:00Z","contract":"consolidatedExports","from":null,"to":"v001","reason":"file-exchange/exports consolidated-*.json + models/ mirror; condense:all","author":"agent"}
+{"time":"2026-05-23T20:00:00Z","contract":"prePushDevLog","from":null,"to":"v001","reason":"Paired human MD + agent JSON pre-push logs; API/tree/test audits","author":"agent"}
+{"time":"2026-05-23T20:00:00Z","contract":"apiDocumentationRegistry","from":null,"to":"v001","reason":"docs/API.md registry contract for dev-log api inventory","author":"agent"}
+{"time":"2026-05-23T20:01:00Z","contract":"fileExchange","from":"v001","to":"v001","reason":"Human-readable stamps; consolidated exports at exports root; contract doc","author":"agent"}
