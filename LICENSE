@@ -1,21 +1,54 @@
-MIT License
+# Pukujan Litigation Prompt Engineering License
 
-Copyright (c) 2026 Pukujan
+Copyright (c) 2026 Pukujan. All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This repository (**litigation-prompt-engineering** / legal-prmpt-eng), including all
+source code, prompts, schemas, documentation, eval fixtures, and data layout
+conventions, is proprietary. No rights are granted except as stated below.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+## Permitted use
+
+1. **Private use** — You may clone and run this software for your own internal
+   research, development, and operation of litigation document pipelines, subject
+   to the restrictions below.
+
+2. **Attribution (required)** — If you share, fork publicly, or distribute any
+   portion of this repository (including prompts, architecture scripts, or eval
+   fixtures), you must include **visible attribution** in a prominent place
+   (typically README), such as:
+
+   > Litigation Prompt Engineering — Copyright (c) Pukujan  
+   > https://github.com/Pukujan/litigation-prompt-engineering
+
+   You must retain copyright and license notices in `LICENSE` and `NOTICE`
+   files you do not replace.
+
+3. **Platform layer** — Portions derived from
+   [@pukujan/create-modular-monolith](https://github.com/Pukujan/create-modular-monolith)
+   remain subject to the Pukujan Modular Monolith Platform License for those
+   files. See [NOTICE](NOTICE).
+
+## Restrictions
+
+- Do not remove or obscure copyright or attribution notices.
+- Do not redistribute, sublicense, or sell this repository or substantial
+  excerpts (including prompt templates, golden evals, or domain modules) without
+  written permission from the copyright holder.
+- Do not republish prompts or pipelines as a competing product or template without
+  permission.
+- Do not use the Pukujan name or branding to imply endorsement of your product.
+- This software does not provide legal advice; use is at your own risk.
+
+## No warranty
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING
+FROM USE OF THE SOFTWARE.
+
+## Licensing inquiries
+
+For permissions beyond this license (commercial license, partnership, or
+white-label use), contact via  
+https://github.com/Pukujan/litigation-prompt-engineering/issues

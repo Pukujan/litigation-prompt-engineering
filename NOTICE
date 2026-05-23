@@ -1,0 +1,24 @@
+Litigation Prompt Engineering
+
+Copyright (c) 2026 Pukujan. All rights reserved.
+
+https://github.com/Pukujan/litigation-prompt-engineering
+
+---
+
+## Platform attribution
+
+Architecture platform files in this repository (contracts, file-exchange layout,
+dev-log tooling, and related scripts) incorporate or sync with
+@pukujan/create-modular-monolith:
+
+https://github.com/Pukujan/create-modular-monolith
+
+Those platform portions remain subject to the Pukujan Modular Monolith Platform
+License. When exporting architecture-only changes, use `npm run export:architecture-starter`
+and publish via the create-modular-monolith package.
+
+---
+
+Retain this NOTICE (or equivalent credit in README) when sharing or forking
+any substantial portion of this repository.
