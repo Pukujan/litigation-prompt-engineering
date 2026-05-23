@@ -176,6 +176,24 @@ function copyCursor(target) {
   console.log("  ✓ .cursor/");
 }
 
+function copyGithubCi(target) {
+  const src = join(repoRoot, ".github/workflows/ci.yml");
+  if (!existsSync(src)) return;
+  const dest = join(target, ".github/workflows/ci.yml");
+  mkdirSync(join(target, ".github/workflows"), { recursive: true });
+  cpSync(src, dest);
+  console.log("  ✓ .github/workflows/ci.yml");
+}
+
+function copyPlatformArchitectureDoc(target) {
+  const src = join(repoRoot, "docs/architecture/PLATFORM_ARCHITECTURE.md");
+  const dest = join(target, "docs/architecture/PLATFORM_ARCHITECTURE.md");
+  if (existsSync(src)) {
+    cpSync(src, dest);
+    console.log("  ✓ docs/architecture/PLATFORM_ARCHITECTURE.md");
+  }
+}
+
 function copySharedContracts(target) {
   const sharedContracts = join(target, "backend/src/shared/contracts");
   mkdirSync(sharedContracts, { recursive: true });
@@ -185,11 +203,61 @@ function copySharedContracts(target) {
 function writeStarterRootFiles(target) {
   cpSync(join(templatesRoot, "package.starter.json"), join(target, "package.json"));
   cpSync(join(templatesRoot, "AGENTS.starter.md"), join(target, "AGENTS.md"));
+  cpSync(join(templatesRoot, "README.starter.md"), join(target, "README.md"));
   cpSync(join(repoRoot, ".gitignore"), join(target, ".gitignore"));
-  cpSync(join(repoRoot, "README.md"), join(target, "README.md"));
+  cpSync(join(templatesRoot, "LICENSE.starter"), join(target, "LICENSE"));
+  cpSync(join(templatesRoot, "NOTICE.starter"), join(target, "NOTICE"));
   mkdirSync(join(target, "models"), { recursive: true });
   writeFileSync(join(target, "models/.gitkeep"), "");
-  console.log("  ✓ package.json, AGENTS.md, models/.gitkeep");
+  console.log("  ✓ package.json, AGENTS.md, README, LICENSE, NOTICE, models/.gitkeep");
+}
+
+function patchStarterScripts(target) {
+  cpSync(
+    join(templatesRoot, "condense-prompts.starter.mjs"),
+    join(target, "scripts/condense-prompts.mjs")
+  );
+  cpSync(
+    join(templatesRoot, "modelCondenser.service.starter.js"),
+    join(
+      target,
+      "backend/src/modules/model-condenser/services/modelCondenser.service.js"
+    )
+  );
+  cpSync(
+    join(templatesRoot, "api-inventory.starter.mjs"),
+    join(target, "scripts/lib/api-inventory.mjs")
+  );
+  cpSync(
+    join(templatesRoot, "modelCondenser.service.test.starter.js"),
+    join(
+      target,
+      "backend/src/modules/model-condenser/tests/unit/modelCondenser.service.test.js"
+    )
+  );
+  const repoTreePath = join(target, "scripts/lib/repo-tree.mjs");
+  let repoTree = readFileSync(repoTreePath, "utf8");
+  repoTree = repoTree.replace(
+    /export const TREE_IGNORE_PREFIXES = \[[\s\S]*?\];/,
+    'export const TREE_IGNORE_PREFIXES = ["data"];'
+  );
+  writeFileSync(repoTreePath, repoTree);
+
+  const fileStructurePath = join(target, "scripts/condense-file-structure.mjs");
+  let fileStructure = readFileSync(fileStructurePath, "utf8");
+  fileStructure = fileStructure.replace(
+    "and runtime batch/export paths.",
+    "and runtime data/ (if present)."
+  );
+  writeFileSync(fileStructurePath, fileStructure);
+
+  const fxReadme = join(target, "file-exchange/README.md");
+  if (existsSync(fxReadme)) {
+    let fx = readFileSync(fxReadme, "utf8");
+    fx = fx.replace("case-filing APIs", "your module APIs");
+    writeFileSync(fxReadme, fx);
+  }
+  console.log("  ✓ starter patches (prompts, model-condenser, repo-tree, api-inventory)");
 }
 
 function writeManifest(target) {
@@ -339,9 +407,12 @@ function main() {
   copyFileExchange(target);
   copyWorkLog(target);
   copyCursor(target);
+  copyGithubCi(target);
+  copyPlatformArchitectureDoc(target);
 
   console.log("\nRoot:");
   writeStarterRootFiles(target);
+  patchStarterScripts(target);
   patchLintRepoArtifacts(target);
   writeManifest(target);
   writeExportReadme(target);

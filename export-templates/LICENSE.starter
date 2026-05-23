@@ -1,0 +1,11 @@
+# Platform license (scaffolded from create-modular-monolith)
+
+Copyright (c) 2026 Pukujan. All rights reserved.
+
+This project includes platform files from @pukujan/create-modular-monolith.
+See NOTICE for attribution requirements and  
+https://github.com/Pukujan/create-modular-monolith/blob/main/LICENSE  
+for the full Pukujan Modular Monolith Platform License.
+
+Application code you add to this repository is yours. Platform files you retain
+remain subject to the license above until you replace them.
