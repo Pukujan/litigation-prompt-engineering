@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | **This repo** | Full product: Case Filing AI + platform contracts, file-exchange, dev logs |
-| **Architecture starter** | [`@pukujan/create-modular-monolith`](https://github.com/Pukujan/create-modular-monolith) — domain-agnostic scaffold (`npm create @pukujan/modular-monolith@2.1.0`) |
+| **Architecture starter** | [`@pukujan/create-modular-monolith`](https://github.com/Pukujan/create-modular-monolith) — domain-agnostic scaffold (`npm create @pukujan/modular-monolith@2.2.0`) |
 
 [![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen)](package.json)
 

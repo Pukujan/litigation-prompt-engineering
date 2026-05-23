@@ -35,5 +35,7 @@
 | 005 | 2026-05-23 | 16-54 | [human](./dev-logs/human/005_2026-05-23_16-54_dev-log_pre-push-dual-dev-log-system.md) | [agent](./dev-logs/agent/005_2026-05-23_16-54_dev-log-agent_pre-push-dual-dev-log-system.json) |
 | 005 | 2026-05-23 | 16-57 | [human](./dev-logs/human/005_2026-05-23_16-57_dev-log_api-inventory-and-tree-ignores.md) | [agent](./dev-logs/agent/005_2026-05-23_16-57_dev-log-agent_api-inventory-and-tree-ignores.json) |
 | 005 | 2026-05-23 | 16-59 | [human](./dev-logs/human/005_2026-05-23_16-59_dev-log_two-part-human-dev-log.md) | [agent](./dev-logs/agent/005_2026-05-23_16-59_dev-log-agent_two-part-human-dev-log.json) |
+| 005 | 2026-05-23 | 17-00 | [human](./dev-logs/human/005_2026-05-23_17-00_dev-log_e2e-test.md) | [agent](./dev-logs/agent/005_2026-05-23_17-00_dev-log-agent_e2e-test.json) |
+| 005 | 2026-05-23 | **17-36** | **[architecture CI / npm / README](./dev-logs/human/005_2026-05-23_17-36_dev-log_architecture-ci-npm-readme.md)** | **[agent](./dev-logs/agent/005_2026-05-23_17-36_dev-log-agent_architecture-ci-npm-readme.json)** |
 
-Architecture narrative: [docs/DEVLOG_V2.md](../docs/DEVLOG_V2.md).
+Architecture narrative: [docs/DEVLOG_V2.md](../docs/DEVLOG_V2.md) · Platform gates: [docs/architecture/EVAL_AND_CI.md](../docs/architecture/EVAL_AND_CI.md).
