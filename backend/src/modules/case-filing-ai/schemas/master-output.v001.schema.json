@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "master-output.v001",
+  "title": "Master prompt output (v001)",
+  "type": "object",
+  "required": ["documentFacts", "updatedCaseSnapshot"],
+  "properties": {
+    "documentFacts": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "documentMetadata": { "type": "object" },
+        "extractionQuality": { "type": "object" },
+        "docketEntry": { "type": "object" },
+        "caseUpdates": { "type": "object" },
+        "parties": { "type": "array" },
+        "witnesses": { "type": "array" },
+        "humanReviewItems": { "type": "array" }
+      }
+    },
+    "ruleSourcesApplied": { "type": "array" },
+    "ruleBasedTasks": { "type": "array" },
+    "caseOrderTasks": { "type": "array" },
+    "deadlines": { "type": "array" },
+    "updatedCaseSnapshot": { "type": "object" },
+    "auditNotes": { "type": "array" },
+    "inferredPartRuleText": { "type": "string" },
+    "partRuleExtracts": { "type": "array" }
+  },
+  "additionalProperties": true
+}

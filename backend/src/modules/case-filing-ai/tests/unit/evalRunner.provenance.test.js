@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { createGoldenDatasetService } from "../../services/goldenDataset.service.js";
 import { createEvalRunnerService } from "../../services/evalRunner.service.js";
-import { buildRunMetadata } from "../../utils/runMetadata.js";
+import { buildRunMetadata } from "../../services/runMetadata.service.js";
 import { getModuleConfig } from "../../config/index.js";
 
 test("evalRunner attaches runMetadata to document eval report", async () => {

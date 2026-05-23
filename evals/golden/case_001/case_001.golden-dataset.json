@@ -1,0 +1,13 @@
+{
+  "caseId": "case_001",
+  "legalCaseId": "case_001_synthetic_maria_demo",
+  "caseIdentity": {
+    "caseId": "case_001_synthetic_maria_demo"
+  },
+  "description": "Minimal CI golden slice (doc 001 + snapshot checkpoint 1)",
+  "documentCount": 1,
+  "snapshotCheckpoints": [1, 2, 4, 8, 12, 14],
+  "goldenDatasetVersion": "case_001-ci-minimal",
+  "synthetic": true,
+  "syntheticDataNotice": "Committed fixture for lint:repo-artifacts and npm run test:evals in CI."
+}

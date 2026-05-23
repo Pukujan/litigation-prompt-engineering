@@ -11,6 +11,7 @@ This folder describes the **modular monolith platform starter** and how **archit
 | [Starter pack](./STARTER_PACK.md) | What ships in the repo, how to run it, and how to add modules |
 | [Architecture guardrails](./architecture/ARCHITECTURE_GUARDRAILS.md) | Module contracts, boundaries, naming, and how enforcement works |
 | [Module internal contract](./architecture/MODULE_INTERNAL_CONTRACT.md) | MVC layers, prompts, evals, tests inside each feature module |
+| [Evals, regression, and CI gates](./architecture/EVAL_AND_CI.md) | Golden evals, `test:evals`, GitHub Actions gates |
 | [Publishing the CLI](./PUBLISHING.md) | Release `@pukujan/create-modular-monolith` to npm |
 | [Case Filing AI starter](./case-filing-ai/README.md) | Domain blueprint, module split, pipeline, guardrails, and DB schema |
 

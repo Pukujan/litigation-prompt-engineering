@@ -1,0 +1,5 @@
+{
+  "version": "ci-minimal-v1",
+  "documentIdentityWeight": 1,
+  "notes": "Minimal config for CI regression; extend when ingesting full synthetic golden."
+}

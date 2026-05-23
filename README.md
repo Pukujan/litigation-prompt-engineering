@@ -177,11 +177,14 @@ Canonical layout contract: [REPO_ARTIFACT_LAYOUT.md](docs/architecture/REPO_ARTI
 ## Architecture checks
 
 ```bash
+npm run test:ci             # all gates: lint + unit tests + golden regression
 npm run lint:architecture   # boundaries + layers + api-docs
 npm run lint:contracts
 npm test
-npm run test:evals          # golden case regression (when fixtures present)
+npm run test:evals          # offline golden regression (no API key)
 ```
+
+**What is a CI gate / eval regression?** See [docs/architecture/EVAL_AND_CI.md](docs/architecture/EVAL_AND_CI.md).
 
 ---
 

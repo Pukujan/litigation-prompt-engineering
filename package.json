@@ -18,6 +18,7 @@
     "rerun:batch-evals": "node scripts/rerun-batch-evals.mjs",
     "lint:architecture": "npm --prefix backend run lint:architecture",
     "test": "npm --prefix backend test && npm --prefix frontend test",
+    "test:ci": "npm run lint:contracts && npm run lint:repo-artifacts && npm run lint:architecture && npm test && npm run test:evals",
     "test:evals": "node scripts/run-module-evals.mjs",
     "new:module": "node scripts/new-module.mjs",
     "condense-prompts": "node scripts/condense-prompts.mjs",

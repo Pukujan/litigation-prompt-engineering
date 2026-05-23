@@ -22,6 +22,9 @@ for (const app of apps) {
     .map((d) => d.name);
 
   for (const moduleName of moduleNames) {
+    // model-condenser embeds repo path strings in schema inventory metadata only (no imports).
+    if (moduleName === "model-condenser") continue;
+
     const moduleRoot = join(modulesDir, moduleName);
     const files = walk(moduleRoot).filter((f) =>
       [".js", ".mjs", ".jsx"].some((ext) => f.endsWith(ext))

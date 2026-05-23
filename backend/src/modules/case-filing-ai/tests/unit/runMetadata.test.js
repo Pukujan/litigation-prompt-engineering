@@ -4,7 +4,7 @@ import {
   buildRunMetadata,
   runMetadataNote,
   attachRunMetadataToReport
-} from "../../utils/runMetadata.js";
+} from "../../services/runMetadata.service.js";
 
 test("buildRunMetadata includes prompt version and template", () => {
   const meta = buildRunMetadata({

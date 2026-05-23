@@ -5,7 +5,7 @@ import {
   normalizedEquals,
   normalizedIncludes
 } from "../utils/evalNormalize.js";
-import { attachRunMetadataToReport } from "../utils/runMetadata.js";
+import { attachRunMetadataToReport } from "./runMetadata.service.js";
 import { attachEvalProvenance } from "../utils/evalProvenance.js";
 import { runRuleAuthorityChecks } from "../utils/runRuleAuthorityChecks.js";
 import { runParsedDocumentChecks } from "../utils/runParsedDocumentChecks.js";

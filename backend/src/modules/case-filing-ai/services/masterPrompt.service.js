@@ -5,6 +5,10 @@ import { AppError } from "../../../shared/http/errors.js";
 import { resolvePromptVersion } from "../prompts/promptVersions.js";
 import { prepareSnapshotForPrompt, truncateDocumentText } from "../utils/snapshotContext.js";
 import { normalizeMasterOutput } from "../utils/normalizeMasterOutput.js";
+import {
+  validateMasterOutput,
+  formatValidationErrors
+} from "../utils/validateMasterOutput.js";
 
 const moduleDir = join(dirname(fileURLToPath(import.meta.url)), "..");
 const RULE_PARSE_PROMPT_PATH = join(moduleDir, "prompts", "rule-parse.prompt.md");
@@ -93,35 +97,52 @@ export function createMasterPromptService({
     });
   }
 
+  function assertSchemaValid(parsed, { allowRetry }) {
+    const { valid, errors } = validateMasterOutput(parsed, versionSpec.id);
+    if (valid) return parsed;
+    const detail = formatValidationErrors(errors);
+    const err = new AppError(`Master prompt output failed schema validation: ${detail}`, 502);
+    err.validationErrors = errors;
+    if (allowRetry) throw err;
+    throw err;
+  }
+
   async function completeAndParse(messages, { allowRetry = true } = {}) {
     const completion = await requestMasterCompletion(messages, {
       useJsonObject: true
     });
 
     try {
-      return { completion, parsed: parseJsonResponse(completion.content) };
+      const parsed = parseJsonResponse(completion.content);
+      return { completion, parsed: assertSchemaValid(parsed, { allowRetry: false }) };
     } catch (firstError) {
       if (!jsonRetry || !allowRetry) {
         throw firstError;
       }
 
+      const validationHint =
+        firstError.validationErrors?.length > 0
+          ? ` Schema errors: ${formatValidationErrors(firstError.validationErrors)}.`
+          : "";
+
       const retryCompletion = await requestMasterCompletion(
         [
           { role: "system", content: JSON_RETRY_SYSTEM },
           messages[1],
-          { role: "assistant", content: completion.content },
+          { role: "assistant", content: completion.content ?? "" },
           {
             role: "user",
             content:
-              "Your response was not valid JSON. Return only a single valid JSON object matching the required schema. No markdown, no explanation."
+              `Your response was not valid JSON or did not match the required schema.${validationHint} Return only a single valid JSON object. No markdown, no explanation.`
           }
         ],
         { useJsonObject: true }
       );
 
+      const parsed = parseJsonResponse(retryCompletion.content);
       return {
         completion: retryCompletion,
-        parsed: parseJsonResponse(retryCompletion.content)
+        parsed: assertSchemaValid(parsed, { allowRetry: false })
       };
     }
   }

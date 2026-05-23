@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "master-output.v1",
+  "title": "Master prompt output (legacy v1 / compact)",
+  "type": "object",
+  "required": ["updatedCaseSnapshot"],
+  "properties": {
+    "documentMetadata": { "type": "object" },
+    "extractionQuality": { "type": "object" },
+    "docketEntry": { "type": "object" },
+    "caseUpdates": { "type": "object" },
+    "parties": { "type": "array" },
+    "witnesses": { "type": "array" },
+    "tasks": { "type": "array" },
+    "deadlines": { "type": "array" },
+    "humanReviewItems": { "type": "array" },
+    "updatedCaseSnapshot": { "type": "object" },
+    "auditNotes": { "type": "array" },
+    "inferredPartRuleText": { "type": "string" },
+    "partRuleExtracts": { "type": "array" }
+  },
+  "additionalProperties": true
+}

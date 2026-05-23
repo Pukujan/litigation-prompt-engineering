@@ -6,7 +6,8 @@ import {
   storedFilenameFor,
   SUPPORTED_UPLOAD_HINT
 } from "../utils/document-upload.js";
-import { buildRunMetadata } from "../utils/runMetadata.js";
+import { buildRunMetadata } from "./runMetadata.service.js";
+import { createTraceId, docTraceId } from "../../../shared/utils/traceId.js";
 
 function extractDocNumber(name) {
   const match = String(name).match(/(\d+)/);
@@ -229,6 +230,7 @@ export function createUploadBatchService({
 
     const batchId = await nextBatchId();
     await store.createBatch(batchId);
+    const batchTraceId = createTraceId(`batch_${batchId}`);
 
     const { effectiveText, source, userProvidedRule } = await bootstrapRuleState(batchId, {
       partRuleText,
@@ -239,6 +241,7 @@ export function createUploadBatchService({
     await store.appendProcessingLog(batchId, {
       step: "batch_started",
       batchId,
+      batchTraceId,
       fileCount: supportedFiles.length,
       partRuleSource: source
     });
@@ -253,10 +256,13 @@ export function createUploadBatchService({
       const docIndex = i + 1;
       const storedName = storedFilenameFor(docIndex, file.originalname);
       const docKey = `doc-${String(docIndex).padStart(3, "0")}`;
+      const traceId = docTraceId(batchTraceId, docIndex);
 
       await store.saveUpload(batchId, storedName, file.buffer);
       await store.appendProcessingLog(batchId, {
         step: "document_started",
+        batchTraceId,
+        traceId,
         docIndex,
         storedName,
         originalName: file.originalname
@@ -362,6 +368,8 @@ export function createUploadBatchService({
           originalName: file.originalname,
           fileKind,
           status: "completed",
+          batchTraceId,
+          traceId,
           model,
           usage,
           runMetadata,
@@ -407,10 +415,13 @@ export function createUploadBatchService({
 
         await store.appendProcessingLog(batchId, {
           step: "document_completed",
+          batchTraceId,
+          traceId,
           docIndex,
           storedName,
           fileKind,
-          ocr_needed: mergedQuality.ocr_needed ?? false
+          ocr_needed: mergedQuality.ocr_needed ?? false,
+          promptVersion: runMetadata?.promptVersion ?? null
         });
       } catch (error) {
         const failure = {
@@ -418,6 +429,8 @@ export function createUploadBatchService({
           docIndex,
           storedName,
           originalName: file.originalname,
+          batchTraceId,
+          traceId,
           status: "failed",
           error: {
             message: error?.message ?? String(error),
@@ -431,6 +444,8 @@ export function createUploadBatchService({
 
         await store.appendProcessingLog(batchId, {
           step: "document_failed",
+          batchTraceId,
+          traceId,
           docIndex,
           storedName,
           originalName: file.originalname,
@@ -448,6 +463,7 @@ export function createUploadBatchService({
 
     await store.appendProcessingLog(batchId, {
       step: "batch_completed",
+      batchTraceId,
       batchStatus,
       processedCount: successCount,
       failedCount: failedDocuments.length,

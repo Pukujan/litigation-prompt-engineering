@@ -32,8 +32,8 @@ function lengthWithinTolerance(actual, expected, tolerance = 0.15) {
  * @param {Object} params
  * @param {string} params.batchId
  * @param {number} params.docIndex
- * @param {import('../utils/storagePaths.js').createStoragePaths} params.storagePaths
- * @param {import('../services/goldenDataset.service.js').createGoldenDatasetService} params.goldenDataset
+ * @param {object} params.storagePaths — from createStoragePaths()
+ * @param {object} params.goldenDataset — from createGoldenDatasetService()
  */
 export async function runParsedDocumentChecks({
   batchId,
