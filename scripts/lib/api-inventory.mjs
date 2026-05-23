@@ -153,7 +153,10 @@ export async function collectApiInventory(repoRoot) {
 
   const cli = [
     { command: "npm run dev-log:pre-push", purpose: "Paired human + agent dev logs" },
-    { command: "npm run condense:all", purpose: "consolidated-models/prompts/file-structure → file-exchange/exports/" },
+    {
+      command: "npm run condense:all",
+      purpose: "consolidated-models/prompts/file-structure → file-exchange/exports/{stamp}_consolidated/"
+    },
     { command: "npm run import:file-exchange", purpose: "Inbound bundle → file-exchange/imports/{stamp}/" },
     { command: "npm run ingest:golden-parsed", purpose: "Parsed cache → evals/golden/case_001/parsed/" },
     { command: "npm run ingest:golden-expected", purpose: "Ground truth → doc_NNN.expected.json" },

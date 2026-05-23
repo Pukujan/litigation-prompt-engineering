@@ -40,6 +40,7 @@ const SCRIPTS_KEEP = new Set([
   "condense-models.mjs",
   "condense-prompts.mjs",
   "condense-file-structure.mjs",
+  "condense-all.mjs",
   "consolidated-output.mjs",
   "write-pre-push-dev-log.mjs",
   "verify-dev-log.mjs",

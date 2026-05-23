@@ -53,11 +53,13 @@ try {
     await import("../backend/src/shared/utils/consolidatedExport.js");
   const modelsPath = join(repoRoot, "models", CONSOLIDATED_FILENAMES.models);
   const json = await readFile(modelsPath, "utf8");
-  await writeConsolidatedExport(repoRoot, CONSOLIDATED_FILENAMES.models, json);
-  const exportRel = `${CONSOLIDATED_EXPORT_DIR}/${CONSOLIDATED_FILENAMES.models}`;
+  const written = await writeConsolidatedExport(repoRoot, CONSOLIDATED_FILENAMES.models, json, {
+    condensedBy: "model-condenser"
+  });
 
   console.log(`Model condenser: ${result.modelCount} models`);
-  console.log(`  → ${exportRel}`);
+  console.log(`  → ${written.exportPath} (audit)`);
+  console.log(`  → ${CONSOLIDATED_EXPORT_DIR}/${CONSOLIDATED_FILENAMES.models} (latest)`);
   console.log(`  → models/${CONSOLIDATED_FILENAMES.models} (API mirror)`);
   console.log(`Generated at: ${result.generatedAt}`);
 } catch (error) {

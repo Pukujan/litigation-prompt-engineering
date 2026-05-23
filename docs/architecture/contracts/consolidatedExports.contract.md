@@ -7,25 +7,28 @@
 
 Regenerable **repo snapshots** for human handoff and agent onboarding — not runtime filing data.
 
-## Primary paths (handoff)
+## Primary paths (audit trail)
+
+Each condense run writes a **dated, timestamped folder** (same stamp convention as imports):
 
 ```text
-file-exchange/exports/
+file-exchange/exports/{2026-05-23_15-59-43Z}_consolidated/
   consolidated-models.json
   consolidated-prompts.json
   consolidated-file-structure.json
+  manifest.json                 ← artifact index for the run
 ```
 
-## Mirror paths (API / git)
+`npm run condense:all` uses one shared stamp for all three files in a single folder.
+
+## Latest pointers (agents / API)
 
 ```text
-models/
-  consolidated-models.json      ← model-condenser API writes here first
-  consolidated-prompts.json
-  consolidated-file-structure.json
+file-exchange/exports/consolidated-*.json   ← overwritten each run (latest)
+models/consolidated-*.json                  ← API mirror (latest)
 ```
 
-Every condense run writes **both** export and mirror.
+Every condense run writes **dated folder + latest copies**.
 
 ## Commands
 

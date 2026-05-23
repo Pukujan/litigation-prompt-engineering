@@ -151,8 +151,10 @@ async function main() {
     prompts
   };
 
-  const { exportPath, modelsPath } = await writeConsolidatedArtifact("prompts", doc);
-  console.log(`Consolidated ${inventory.length} prompts → ${exportPath} (+ ${modelsPath})`);
+  const { exportPath, datedExportDir, modelsPath } = await writeConsolidatedArtifact("prompts", doc);
+  console.log(
+    `Consolidated ${inventory.length} prompts → ${exportPath} (${datedExportDir}/, mirror ${modelsPath})`
+  );
 }
 
 main().catch((err) => {

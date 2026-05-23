@@ -32,9 +32,12 @@ async function main() {
     flatPaths
   };
 
-  const { exportPath, modelsPath } = await writeConsolidatedArtifact("fileStructure", doc);
+  const { exportPath, datedExportDir, modelsPath } = await writeConsolidatedArtifact(
+    "fileStructure",
+    doc
+  );
   console.log(
-    `Consolidated ${stats.fileCount} files, ${stats.directoryCount} dirs → ${exportPath} (+ ${modelsPath})`
+    `Consolidated ${stats.fileCount} files, ${stats.directoryCount} dirs → ${exportPath} (${datedExportDir}/, mirror ${modelsPath})`
   );
 }
 

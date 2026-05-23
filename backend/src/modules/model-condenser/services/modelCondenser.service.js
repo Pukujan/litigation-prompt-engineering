@@ -489,7 +489,9 @@ export async function condenseModels({
     const { writeConsolidatedExport } = await import(
       "../../../shared/utils/consolidatedExport.js"
     );
-    await writeConsolidatedExport(repoRoot, consolidatedFileName, jsonText);
+    await writeConsolidatedExport(repoRoot, consolidatedFileName, jsonText, {
+      condensedBy: "model-condenser"
+    });
   }
 
   const exampleInstanceCount = Object.keys(consolidated.exampleInstances ?? {}).length;

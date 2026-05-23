@@ -28,11 +28,11 @@ Repo-wide rules for AI agents working in **legal-prmpt-eng**. Module-specific ru
    file-exchange/exports/{stamp}/
    ```
 
-5. **Consolidated snapshots** (models / prompts / file tree) — regenerate into the stable export folder:
+5. **Consolidated snapshots** (models / prompts / file tree):
    ```bash
    npm run condense:all
    ```
-   → `file-exchange/exports/consolidated-*.json` (also mirrored under `models/` for the API).
+   → `file-exchange/exports/{stamp}_consolidated/` (dated audit folder + `manifest.json`). Latest: `exports/consolidated-*.json` and `models/` mirror.
 
 ### Do not
 

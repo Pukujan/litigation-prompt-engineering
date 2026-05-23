@@ -18,7 +18,7 @@ alwaysApply: true
 - Ingest golden from that stamp: `npm run ingest:golden-parsed`, `npm run ingest:golden-expected`.
 - Point `process-batch` / `curl` uploads at PDFs **inside** `file-exchange/imports/{stamp}/`, not `Downloads/` or repo root.
 - Copy deliverables to `file-exchange/exports/{stamp}/` when done.
-- Consolidated repo snapshots: `file-exchange/exports/consolidated-*.json` (`npm run condense:all`).
+- Consolidated repo snapshots: `file-exchange/exports/{stamp}_consolidated/` (`npm run condense:all`); latest copies at `exports/consolidated-*.json`.
 
 ## Do not
 

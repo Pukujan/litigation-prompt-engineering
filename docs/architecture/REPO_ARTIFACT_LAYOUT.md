@@ -39,8 +39,8 @@ parsed/doc-NNN/              # optional parse golden (v2)
 ## File exchange
 
 Imports: `file-exchange/imports/{2026-05-23_15-59-43Z}/`  
-Session exports: `file-exchange/exports/{stamp}/`  
-Consolidated snapshots: `file-exchange/exports/consolidated-*.json`
+Session exports: `file-exchange/exports/{stamp}_{label}/`  
+Consolidated snapshots: `file-exchange/exports/{stamp}_consolidated/` (+ latest `consolidated-*.json` at `exports/` root)
 
 See [file-exchange/README.md](../../file-exchange/README.md) and [contracts/fileExchange.contract.md](./contracts/fileExchange.contract.md).
 
