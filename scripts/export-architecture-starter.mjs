@@ -7,7 +7,7 @@
  *   npm run export:architecture-starter -- --to packages/create-modular-monolith/template
  */
 import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync, rmSync, readdirSync } from "fs";
-import { join, dirname } from "path";
+import { join, dirname, resolve, isAbsolute } from "path";
 import { fileURLToPath } from "url";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -45,7 +45,8 @@ const SCRIPTS_KEEP = new Set([
   "verify-dev-log.mjs",
   "import-to-file-exchange.mjs",
   "resolve-import-stamp.mjs",
-  "export-consolidated-models.mjs"
+  "export-consolidated-models.mjs",
+  "run-module-evals.mjs"
 ]);
 
 const DOCS_KEEP_FILES = new Set([
@@ -58,7 +59,10 @@ const DOCS_KEEP_FILES = new Set([
 function parseArgs(argv) {
   let target = join(repoRoot, "export/architecture-starter");
   for (let i = 0; i < argv.length; i += 1) {
-    if (argv[i] === "--to" && argv[i + 1]) target = join(process.cwd(), argv[++i]);
+    if (argv[i] === "--to" && argv[i + 1]) {
+      const raw = argv[++i];
+      target = isAbsolute(raw) ? raw : resolve(process.cwd(), raw);
+    }
   }
   return { target };
 }
