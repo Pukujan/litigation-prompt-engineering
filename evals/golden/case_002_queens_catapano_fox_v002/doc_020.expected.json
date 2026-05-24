@@ -1,0 +1,69 @@
+{
+  "docIndex": 20,
+  "docKey": "doc-020",
+  "expectedDocumentType": "PLAINTIFF_POST_EBT_DEMANDS",
+  "expectedTitle": "doc_020_PLAINTIFF_POST_EBT_DEMANDS.pdf",
+  "expectedFilingDate": "2028-03-19",
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": 20,
+  "expectedPageCount": 1,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1453,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "notes": "Document clearly states post-EBT demands, response deadline, and rule sources."
+  },
+  "expectedConfirmedFacts": [],
+  "expectedParties": [],
+  "expectedTasks": [
+    {
+      "taskType": "RESPOND_TO_POST_EBT_DEMANDS",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2028-04-08",
+      "sourceAuthority": "cplr_3120_discovery_and_inspection",
+      "sourceName": "CPLR 3120",
+      "sourceDocNo": 20,
+      "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+      "authorityRank": 50,
+      "sourceText": "Response requested within 20 days after service."
+    }
+  ],
+  "expectedDeadlines": [
+    {
+      "deadlineType": "POST_EBT_DEMAND_RESPONSE",
+      "date": "2028-04-08",
+      "sourceDocNo": 20,
+      "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+      "status": "source_supported_auto_saved",
+      "sourceText": "Response requested within 20 days after service."
+    }
+  ],
+  "expectedHumanReviewItems": [
+    "Verify service date of Post-EBT Demands and calculate response deadline. Confirm that defendant's deposition was completed and that the demands are proper under CPLR 3120 and 3101."
+  ],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "doc_013_pc_order",
+    "doc_015_cc_order",
+    "doc_017_so_ordered_stipulation",
+    "doc_018_cc_order",
+    "doc_019_duplicate_or_refiled_cc_order",
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

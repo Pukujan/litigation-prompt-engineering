@@ -1,0 +1,60 @@
+{
+  "auditedAt": "2026-05-24T18:41:29.614Z",
+  "caseId": "case_002_queens_catapano_fox_v002",
+  "goldenDatasetVersion": "synthetic_queens_tcf_001_rule_authority_v001",
+  "authoringRunId": "adca49f7-6564-43c5-a86f-8ed87384e0e8",
+  "importStamp": "2026-05-24_17-42-31Z",
+  "batchStatus": "completed",
+  "reviewStatus": "promoted",
+  "models": {
+    "authorModel": "deepseek/deepseek-v4-pro",
+    "visionOcrModel": "qwen/qwen2.5-vl-7b-instruct",
+    "runtimeEvalModelNote": "Runtime batches use MODEL_TEXT_REASONING; golden uses authorModel above."
+  },
+  "prompts": {
+    "masterPromptVersion": "v001",
+    "ruleMatchPromptVersion": "v1",
+    "taskDeadlinePromptVersion": "task-docketing/task-deadline-1.0.0",
+    "snapshotPromptVersion": "v1"
+  },
+  "pipeline": {
+    "parserVersion": "pdf-embedded-v1",
+    "ocrVersion": "openrouter-vision-v1",
+    "ruleSetVersion": "queens_catapano_fox_medmal_rule_authority_v001",
+    "pipelineVersions": {
+      "app": "2.0.0",
+      "storageLayout": "v001",
+      "parsedArtifacts": "v001",
+      "parser": "pdf-embedded-v1",
+      "ocr": "openrouter-vision-v1",
+      "masterPrompt": "v001",
+      "rulePrompt": "v1",
+      "snapshotPrompt": "v1",
+      "ruleSet": "queens_catapano_fox_medmal_rule_authority_v001",
+      "goldenDataset": "synthetic_queens_tcf_001_rule_authority_v001",
+      "masterPromptVersion": "v001",
+      "ruleSetVersion": "queens_catapano_fox_medmal_rule_authority_v001"
+    }
+  },
+  "inventory": {
+    "modelInventoryVersion": "2026-05-24T17:58:17.244Z",
+    "promptInventoryVersion": "2026-05-24T17:58:16.633Z",
+    "modelInventoryPath": "/Users/teresaguajardo/Documents/coding/legal-prmpt-eng/consolidated-files/consolidated-models.json",
+    "promptInventoryPath": "/Users/teresaguajardo/Documents/coding/legal-prmpt-eng/consolidated-files/consolidated-prompts.json"
+  },
+  "artifacts": {
+    "pipelineVersionsFile": "pipeline_versions.expected.json",
+    "authoringRunFile": "authoring_run.json",
+    "versionHistoryFile": "VERSION_HISTORY.jsonl",
+    "syntheticNoticeFile": "SYNTHETIC_DATA_NOTICE.md"
+  },
+  "promoteChecklist": [
+    "Human reviewed doc_NNN.expected.json and snapshot checkpoints",
+    "authoring_run.json batchStatus is completed",
+    "pipeline_versions.expected.json pins match intended prompt/rule versions",
+    "SYNTHETIC_DATA_NOTICE.md present",
+    "npm run promote:golden -- --case <caseId> --version <version> --confirm"
+  ],
+  "promotedAt": "2026-05-24T18:42:53.248Z",
+  "promotedBy": "cli"
+}

@@ -79,6 +79,44 @@ export function DemoGovernanceTab({ bundle, caseDetail }) {
           </p>
         </article>
       </section>
+
+      <section className="panel">
+        <h4>Pipeline & model pins</h4>
+        <div className="demo-table-wrap">
+          <table className="demo-table">
+            <thead>
+              <tr>
+                <th>Pin</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Author model (golden)</td>
+                <td>
+                  <code>{lineage.authorModel ?? "—"}</code>
+                </td>
+              </tr>
+              <tr>
+                <td>Golden case id</td>
+                <td>
+                  <code>{lineage.goldenCaseId ?? "—"}</code>
+                </td>
+              </tr>
+              <tr>
+                <td>Import stamp</td>
+                <td>
+                  <code>{caseDetail?.importStamp ?? "—"}</code>
+                </td>
+              </tr>
+              <tr>
+                <td>Fixture replay</td>
+                <td>{bundle?.replayLabel ?? (bundle?.replay ? "yes" : "no")}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </div>
   );
 }

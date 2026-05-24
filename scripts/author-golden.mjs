@@ -3,7 +3,9 @@
  * Run golden authoring pipeline → evals/golden-staging/{caseId}/{version}/
  * Usage: npm run author:golden -- --case case_002 --import-stamp 2026-05-23_15-59-43Z --legal-case-id synthetic_case_002
  */
+import { join } from "path";
 import { runAuthorGoldenCli } from "../backend/src/modules/golden-authoring/cli/authorGoldenCli.js";
+import { DEFAULT_GOLDEN_AUTHORING_MODEL } from "../backend/src/modules/golden-authoring/config/defaults.js";
 import { resolveImportStamp, importDirForStamp } from "./resolve-import-stamp.mjs";
 
 function parseArgs(argv) {
@@ -30,16 +32,21 @@ async function main() {
     process.exit(1);
   }
 
-  const importStamp = opts.importStamp
-    ? await resolveImportStamp(opts.importStamp)
-    : opts.importDir
-      ? null
-      : await resolveImportStamp();
+  let importDir = opts.importDir;
+  let importStamp = opts.importStamp ?? null;
 
-  const importDir = opts.importDir ?? importDirForStamp(importStamp);
+  if (!importDir) {
+    importStamp = importStamp ? await resolveImportStamp(importStamp) : await resolveImportStamp();
+    const stampDir = importDirForStamp(importStamp);
+    const packageName =
+      process.env.GOLDEN_IMPORT_PACKAGE ?? "synthetic_queens_catapano_fox_case_v002";
+    importDir = join(stampDir, packageName);
+  }
 
   console.log(`Import: ${importDir}`);
-  console.log(`Author model: ${process.env.MODEL_GOLDEN_AUTHORING || "anthropic/claude-sonnet-4"}`);
+  console.log(
+    `Author model: ${process.env.MODEL_GOLDEN_AUTHORING || DEFAULT_GOLDEN_AUTHORING_MODEL}`
+  );
 
   const result = await runAuthorGoldenCli({
     caseSlug: opts.caseSlug,
@@ -56,7 +63,10 @@ async function main() {
   console.log(`  status:     ${result.batchStatus}`);
   console.log(`  staging:    ${result.stagingDir}`);
   console.log(`  documents:  ${result.documentCount}`);
-  console.log("\nReview staging, then: npm run promote:golden -- --case", result.caseId, "--version", result.version);
+  console.log(
+    "\nReview staging, then:\n  npm run promote:golden --",
+    `--case ${result.caseId} --version ${result.version} --confirm`
+  );
 }
 
 main().catch((err) => {

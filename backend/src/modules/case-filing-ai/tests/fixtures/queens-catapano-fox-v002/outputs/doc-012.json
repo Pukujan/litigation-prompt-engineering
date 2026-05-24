@@ -1,0 +1,455 @@
+{
+  "docKey": "doc-012",
+  "docIndex": 12,
+  "storedName": "012-doc_012_PROPOSED_PRELIMINARY_CONFERENCE_ORDER.pdf",
+  "originalName": "doc_012_PROPOSED_PRELIMINARY_CONFERENCE_ORDER.pdf",
+  "fileKind": "pdf",
+  "status": "completed",
+  "batchTraceId": "golden_adca49f7_77d7c6889abf",
+  "traceId": "golden_adca49f7_77d7c6889abf_doc012",
+  "model": "deepseek/deepseek-v4-pro-20260423",
+  "usage": {
+    "prompt_tokens": 3064,
+    "completion_tokens": 14538,
+    "total_tokens": 17602,
+    "cost": 0.0704016,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0704016,
+      "upstream_inference_prompt_cost": 0.0064344,
+      "upstream_inference_completions_cost": 0.0639672
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 11577,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "runMetadata": {
+    "promptVersion": "v001",
+    "promptTemplate": "v001_master-case-filing.prompt.md",
+    "promptLabel": "v001",
+    "snapshotMergeMode": "legacy",
+    "openRouterModel": "deepseek/deepseek-v4-pro-20260423",
+    "masterPromptJsonRetry": true,
+    "omitAuditNotesInPrompt": true
+  },
+  "pipelineVersions": null,
+  "parsedDocumentCacheUsed": false,
+  "textSourceUsed": "embedded_text",
+  "reviewStatusAtEvalTime": null,
+  "ruleSourcesChecked": [
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "rankedRules": [
+    {
+      "ruleId": "queens_medmal_part_rules_catapano_fox",
+      "authority": "part",
+      "title": "Medical, Dental and Podiatric Malpractice Conference and Part Rules - Justice Tracy Catapano-Fox",
+      "text": "Medical, Dental and Podiatric Malpractice Conference and Part Rules - Justice Tracy Catapano-Fox",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    },
+    {
+      "ruleId": "queens_medmal_cc_form",
+      "authority": "county",
+      "title": "Queens Medical Malpractice Compliance Conference Order form",
+      "text": "Queens Medical Malpractice Compliance Conference Order form",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    },
+    {
+      "ruleId": "queens_medmal_pc_form",
+      "authority": "county",
+      "title": "Queens Medical Malpractice Preliminary Conference Order form",
+      "text": "Queens Medical Malpractice Preliminary Conference Order form",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    }
+  ],
+  "documentMetadata": {
+    "docIndex": 12,
+    "storedName": "012-doc_012_PROPOSED_PRELIMINARY_CONFERENCE_ORDER.pdf",
+    "originalName": "doc_012_PROPOSED_PRELIMINARY_CONFERENCE_ORDER.pdf",
+    "fileKind": "pdf",
+    "pageCount": 2,
+    "mimeType": "application/pdf",
+    "sizeBytes": 4010,
+    "documentType": "PROPOSED_PRELIMINARY_CONFERENCE_ORDER",
+    "documentTitle": "Proposed Preliminary Conference Order",
+    "filedDate": "2027-03-20",
+    "judge": "Hon. Tracy Catapano-Fox",
+    "part": "Medical, Dental and Podiatric Malpractice Part (Courtroom 48)",
+    "appearances": {
+      "plaintiff": "Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+      "defense": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+    }
+  },
+  "extractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 2114,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "notes": "Synthetic document with clear content."
+  },
+  "docketEntry": {
+    "docNo": 12,
+    "filedDate": "2027-03-20",
+    "documentType": "PROPOSED_PRELIMINARY_CONFERENCE_ORDER",
+    "title": "Proposed Preliminary Conference Order",
+    "filedBy": "Unknown"
+  },
+  "caseUpdates": {},
+  "parties": [],
+  "witnesses": [],
+  "tasks": [
+    {
+      "taskId": "REVIEW_PROPOSED_PRELIMINARY_CONFERENCE_ORDER",
+      "taskType": "REVIEW_DOCUMENT",
+      "description": "Review proposed preliminary conference order for completeness and compliance with part rules.",
+      "status": "conditional",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "queens_medmal_pc_form",
+      "assignedTo": "Court"
+    },
+    {
+      "taskId": "TRACK_PROPOSED_PLAINTIFF_DEPOSITION_DATE",
+      "taskType": "TRACK_DEADLINE",
+      "description": "Track proposed plaintiff deposition date of 2027-06-19.",
+      "status": "conditional",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox",
+      "dueDate": "2027-06-19"
+    },
+    {
+      "taskId": "TRACK_PROPOSED_AUTHORIZATIONS_AND_RECORDS_EXCHANGE",
+      "taskType": "TRACK_DISCOVERY",
+      "description": "Track proposed authorizations and records exchange provisions in proposed preliminary conference order.",
+      "status": "conditional",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "queens_medmal_pc_form"
+    }
+  ],
+  "deadlines": [
+    {
+      "deadlineType": "PROPOSED_PLAINTIFF_DEPOSITION",
+      "date": "2027-06-19",
+      "status": "conditional",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox"
+    }
+  ],
+  "humanReviewItems": [
+    "Review proposed preliminary conference order for consistency with part rules and case status. Ensure all required provisions are included.",
+    "Confirm that the proposed plaintiff deposition date of 2027-06-19 is within 90 days of the anticipated preliminary conference order date.",
+    "Verify that the proposed order addresses all outstanding discovery demands and deadlines."
+  ],
+  "auditNotes": [
+    "Processed Doc 12: Proposed Preliminary Conference Order. Added conditional tasks and deadlines. No confirmed facts updated.",
+    "Existing conditional task TRACK_PLAINTIFF_DEPOSITION_NOTICE (from Doc 5) may be superseded by new proposed deposition date, but kept for now.",
+    "Proposed order is conditional; all dates and provisions are subject to court approval."
+  ],
+  "rawMasterResult": {
+    "documentMetadata": {
+      "docIndex": 12,
+      "storedName": "012-doc_012_PROPOSED_PRELIMINARY_CONFERENCE_ORDER.pdf",
+      "originalName": "doc_012_PROPOSED_PRELIMINARY_CONFERENCE_ORDER.pdf",
+      "fileKind": "pdf",
+      "pageCount": 2,
+      "mimeType": "application/pdf",
+      "sizeBytes": 4010,
+      "documentType": "PROPOSED_PRELIMINARY_CONFERENCE_ORDER",
+      "documentTitle": "Proposed Preliminary Conference Order",
+      "filedDate": "2027-03-20",
+      "judge": "Hon. Tracy Catapano-Fox",
+      "part": "Medical, Dental and Podiatric Malpractice Part (Courtroom 48)",
+      "appearances": {
+        "plaintiff": "Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "defense": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+      }
+    },
+    "extractionQuality": {
+      "confidence": "high",
+      "notes": "Synthetic document with clear content."
+    },
+    "docketEntry": {
+      "docNo": 12,
+      "filedDate": "2027-03-20",
+      "documentType": "PROPOSED_PRELIMINARY_CONFERENCE_ORDER",
+      "title": "Proposed Preliminary Conference Order",
+      "filedBy": "Unknown"
+    },
+    "caseUpdates": {},
+    "parties": [],
+    "witnesses": [],
+    "tasks": [
+      {
+        "taskId": "REVIEW_PROPOSED_PRELIMINARY_CONFERENCE_ORDER",
+        "taskType": "REVIEW_DOCUMENT",
+        "description": "Review proposed preliminary conference order for completeness and compliance with part rules.",
+        "status": "conditional",
+        "sourceDocNo": 12,
+        "ruleSourceApplied": "queens_medmal_pc_form",
+        "assignedTo": "Court"
+      },
+      {
+        "taskId": "TRACK_PROPOSED_PLAINTIFF_DEPOSITION_DATE",
+        "taskType": "TRACK_DEADLINE",
+        "description": "Track proposed plaintiff deposition date of 2027-06-19.",
+        "status": "conditional",
+        "sourceDocNo": 12,
+        "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox",
+        "dueDate": "2027-06-19"
+      },
+      {
+        "taskId": "TRACK_PROPOSED_AUTHORIZATIONS_AND_RECORDS_EXCHANGE",
+        "taskType": "TRACK_DISCOVERY",
+        "description": "Track proposed authorizations and records exchange provisions in proposed preliminary conference order.",
+        "status": "conditional",
+        "sourceDocNo": 12,
+        "ruleSourceApplied": "queens_medmal_pc_form"
+      }
+    ],
+    "deadlines": [
+      {
+        "deadlineType": "PROPOSED_PLAINTIFF_DEPOSITION",
+        "date": "2027-06-19",
+        "status": "conditional",
+        "sourceDocNo": 12,
+        "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox"
+      }
+    ],
+    "humanReviewItems": [
+      "Review proposed preliminary conference order for consistency with part rules and case status. Ensure all required provisions are included.",
+      "Confirm that the proposed plaintiff deposition date of 2027-06-19 is within 90 days of the anticipated preliminary conference order date.",
+      "Verify that the proposed order addresses all outstanding discovery demands and deadlines."
+    ],
+    "updatedCaseSnapshot": {
+      "snapshotId": "snapshot_after_doc_12",
+      "caseId": "synthetic_queens_tcf_001",
+      "afterDocNo": 12,
+      "currentPhase": "discovery",
+      "currentMiniPhase": "bill_of_particulars_served",
+      "county": "Queens",
+      "part": "Medical, Dental and Podiatric Malpractice Part",
+      "partName": "Medical, Dental and Podiatric Malpractice Part",
+      "court": "SUPREME COURT OF THE STATE OF NEW YORK, COUNTY OF QUEENS",
+      "judgeName": "Hon. Tracy Catapano-Fox",
+      "caseType": "medical_malpractice",
+      "case": {
+        "county": "Queens",
+        "part": "Medical, Dental and Podiatric Malpractice Part",
+        "partName": "Medical, Dental and Podiatric Malpractice Part",
+        "court": "Supreme Court of the State of New York, County of Queens",
+        "judgeName": "Hon. Tracy Catapano-Fox",
+        "caseType": "medical_malpractice"
+      },
+      "confirmedFacts": [
+        "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+        "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+        "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+        "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+        "Nature of suit: medical malpractice - prenatal, delivery, newborn, and pediatric care.",
+        "Index Number: 900001/2026.",
+        "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox.",
+        "Plaintiff filed Notice of Commencement of Action for Personal Injuries pursuant to CPLR 306-c on 2026-11-12.",
+        "Summons and complaint are referenced as initiating papers.",
+        "Defendants filed Verified Answer on 2026-12-03, denying liability and asserting affirmative defenses.",
+        "Issue joined as of 2026-12-03.",
+        "Defense counsel appears for both defendants.",
+        "Defendants served Demand for Bill of Particulars on 2026-12-03, demanding a verified bill of particulars within 30 days after service.",
+        "Defendants served a Notice to Take Deposition Upon Oral Examination for plaintiff, setting a proposed deposition date of April 30, 2027.",
+        "Defendants served Demand for Authorizations on 2026-12-03, demanding HIPAA-compliant authorizations for various records pursuant to CPLR 3120.",
+        "Defendants served Demand for Statements and Photographs on 2026-12-03, demanding production of statements, photographs, recordings, reports, and related materials within 14 days after receipt, pursuant to CPLR 3101.",
+        "Defendants served Demand Pursuant to Medicare, Medicaid and SCHIP Extension Act on 2026-12-03, demanding lien/benefit information within 20 days.",
+        "Plaintiff filed Notice of Medical Malpractice Action on 2027-02-28 (NYSCEF Doc. No. 9) pursuant to CPLR 3406(a) and 22 NYCRR 202.56(a).",
+        "Request for Judicial Intervention (RJI) filed on 2027-02-28 for medical, dental or podiatric malpractice case.",
+        "RJI identifies case as tort / medical, dental or podiatric malpractice matter.",
+        "RJI places case into Queens Medical, Dental and Podiatric Malpractice Part workflow.",
+        "RJI triggers monitoring for preliminary conference scheduling or order issuance.",
+        "Plaintiff served Verified Bill of Particulars on 2027-03-18 (NYSCEF Doc. No. 11) in response to defendants' demand (Doc. No. 4)."
+      ],
+      "carriedForwardContext": [],
+      "openTasks": [
+        "RESPOND_TO_AUTHORIZATION_DEMANDS",
+        "RESPOND_TO_STATEMENTS_AND_PHOTOS_DEMAND",
+        "RESPOND_TO_MEDICARE_MEDICAID_SCHIP_DEMAND"
+      ],
+      "completedTasks": [
+        "ANSWER_RECEIVED",
+        "TRACK_MEDICAL_MALPRACTICE_NOTICE",
+        "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND"
+      ],
+      "conditionalTasks": [
+        "TRACK_PLAINTIFF_DEPOSITION_NOTICE",
+        "AWAIT_MEDMAL_PRELIMINARY_CONFERENCE",
+        "REVIEW_BILL_OF_PARTICULARS_FOR_DISCOVERY_NEEDS",
+        "REVIEW_PROPOSED_PRELIMINARY_CONFERENCE_ORDER",
+        "TRACK_PROPOSED_PLAINTIFF_DEPOSITION_DATE",
+        "TRACK_PROPOSED_AUTHORIZATIONS_AND_RECORDS_EXCHANGE"
+      ],
+      "deadlines": [
+        {
+          "deadlineType": "BP_RESPONSE_DEADLINE",
+          "date": "2027-01-02",
+          "sourceDocNo": 4,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+          "status": "superseded",
+          "supersededBy": "Bill of Particulars served on 2027-03-18 (Doc. No. 11)",
+          "notes": "Original deadline was 2027-01-02. Service occurred on 2027-03-18, which is late. This deadline is now superseded by the actual service date, but lateness may be an issue."
+        },
+        {
+          "deadlineType": "PLAINTIFF_EBT_NOTICE_DATE",
+          "date": "2027-04-30",
+          "sourceDocNo": 5,
+          "ruleSourceApplied": "cplr_article_31_disclosure",
+          "status": "conditional"
+        },
+        {
+          "deadlineType": "MEDICARE_MEDICAID_SCHIP_DEMAND_RESPONSE",
+          "date": "2026-12-23",
+          "sourceDocNo": 8,
+          "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+          "status": "conditional"
+        },
+        {
+          "deadlineType": "PROPOSED_PLAINTIFF_DEPOSITION",
+          "date": "2027-06-19",
+          "sourceDocNo": 12,
+          "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox",
+          "status": "conditional"
+        }
+      ],
+      "supersededDeadlines": [
+        {
+          "deadlineType": "BP_RESPONSE_DEADLINE",
+          "date": "2027-01-02",
+          "sourceDocNo": 4,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars"
+        }
+      ],
+      "unresolvedHumanReviewItems": [
+        "Verify service date of Demand Pursuant to Medicare, Medicaid and SCHIP Extension Act. Response deadline calculated based on assumed service date of 2026-12-03. Adjust if service occurred later.",
+        "Notice states that required pleadings and bill of particulars materials have been filed or served. Verify if bill of particulars response has been served and update RESPOND_TO_BILL_OF_PARTICULARS_DEMAND task accordingly.",
+        "Bill of Particulars served on 2027-03-18 is late relative to the 30-day demand deadline of 2027-01-02. Determine if a stipulation or court order extended the time.",
+        "Review the content of the Bill of Particulars for completeness and compliance with CPLR 3043. The synthetic document does not provide the actual allegations or claimed injuries.",
+        "Confirm that the Bill of Particulars was verified as required by CPLR 3044.",
+        "Review proposed preliminary conference order for consistency with part rules and case status. Ensure all required provisions are included.",
+        "Confirm that the proposed plaintiff deposition date of 2027-06-19 is within 90 days of the anticipated preliminary conference order date.",
+        "Verify that the proposed order addresses all outstanding discovery demands and deadlines."
+      ],
+      "conflicts": [],
+      "_promptContextNote": "auditNotes omitted from prompt input to save context. Full audit trail remains in case-snapshot.json on disk."
+    },
+    "auditNotes": [
+      "Processed Doc 12: Proposed Preliminary Conference Order. Added conditional tasks and deadlines. No confirmed facts updated.",
+      "Existing conditional task TRACK_PLAINTIFF_DEPOSITION_NOTICE (from Doc 5) may be superseded by new proposed deposition date, but kept for now.",
+      "Proposed order is conditional; all dates and provisions are subject to court approval."
+    ],
+    "inferredPartRuleText": "",
+    "partRuleExtracts": [],
+    "ruleSourcesApplied": [
+      "queens_medmal_pc_form",
+      "queens_medmal_part_rules_catapano_fox",
+      "doc_012_proposed_pc_order"
+    ],
+    "documentFacts": {
+      "documentMetadata": {
+        "docIndex": 12,
+        "storedName": "012-doc_012_PROPOSED_PRELIMINARY_CONFERENCE_ORDER.pdf",
+        "originalName": "doc_012_PROPOSED_PRELIMINARY_CONFERENCE_ORDER.pdf",
+        "fileKind": "pdf",
+        "pageCount": 2,
+        "mimeType": "application/pdf",
+        "sizeBytes": 4010,
+        "documentType": "PROPOSED_PRELIMINARY_CONFERENCE_ORDER",
+        "documentTitle": "Proposed Preliminary Conference Order",
+        "filedDate": "2027-03-20",
+        "judge": "Hon. Tracy Catapano-Fox",
+        "part": "Medical, Dental and Podiatric Malpractice Part (Courtroom 48)",
+        "appearances": {
+          "plaintiff": "Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+          "defense": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+        }
+      },
+      "extractionQuality": {
+        "confidence": "high",
+        "notes": "Synthetic document with clear content."
+      },
+      "docketEntry": {
+        "docNo": 12,
+        "filedDate": "2027-03-20",
+        "documentType": "PROPOSED_PRELIMINARY_CONFERENCE_ORDER",
+        "title": "Proposed Preliminary Conference Order",
+        "filedBy": "Unknown"
+      },
+      "caseUpdates": {},
+      "parties": [],
+      "witnesses": [],
+      "humanReviewItems": [
+        "Review proposed preliminary conference order for consistency with part rules and case status. Ensure all required provisions are included.",
+        "Confirm that the proposed plaintiff deposition date of 2027-06-19 is within 90 days of the anticipated preliminary conference order date.",
+        "Verify that the proposed order addresses all outstanding discovery demands and deadlines."
+      ]
+    },
+    "ruleBasedTasks": [
+      {
+        "taskId": "REVIEW_PROPOSED_PRELIMINARY_CONFERENCE_ORDER",
+        "taskType": "REVIEW_DOCUMENT",
+        "description": "Review proposed preliminary conference order for completeness and compliance with part rules.",
+        "status": "conditional",
+        "sourceDocNo": 12,
+        "ruleSourceApplied": "queens_medmal_pc_form",
+        "assignedTo": "Court"
+      },
+      {
+        "taskId": "TRACK_PROPOSED_PLAINTIFF_DEPOSITION_DATE",
+        "taskType": "TRACK_DEADLINE",
+        "description": "Track proposed plaintiff deposition date of 2027-06-19.",
+        "status": "conditional",
+        "sourceDocNo": 12,
+        "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox",
+        "dueDate": "2027-06-19"
+      },
+      {
+        "taskId": "TRACK_PROPOSED_AUTHORIZATIONS_AND_RECORDS_EXCHANGE",
+        "taskType": "TRACK_DISCOVERY",
+        "description": "Track proposed authorizations and records exchange provisions in proposed preliminary conference order.",
+        "status": "conditional",
+        "sourceDocNo": 12,
+        "ruleSourceApplied": "queens_medmal_pc_form"
+      }
+    ],
+    "caseOrderTasks": []
+  }
+}

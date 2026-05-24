@@ -1,0 +1,34 @@
+{
+  "snapshotId": "after_doc_001",
+  "caseId": "synthetic_queens_tcf_001",
+  "afterDocNo": 1,
+  "currentPhase": "commencement",
+  "currentMiniPhase": "service",
+  "confirmedFacts": [
+    "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+    "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+    "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+    "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+    "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+    "Nature of suit: medical malpractice - prenatal and obstetrical care.",
+    "Index Number: 900001/2026.",
+    "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox."
+  ],
+  "openTasks": [],
+  "completedTasks": [],
+  "deadlines": [],
+  "supersededDeadlines": [],
+  "conflicts": [],
+  "auditNotes": [
+    "Bootstrap case context from golden dataset for rule matching.",
+    "Extracted parties and case details from Summons and Verified Complaint. No specific deadlines set as service date unknown. Part rules applied but no immediate tasks triggered.",
+    "Processed 001-doc_001_SUMMONS_AND_VERIFIED_COMPLAINT.pdf as document 1"
+  ],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic snapshot expected output for eval testing.",
+  "expectedRuleAuthorityState": {
+    "activeRuleSetVersion": null,
+    "authorityHierarchy": {},
+    "ruleSourcesAvailable": []
+  }
+}

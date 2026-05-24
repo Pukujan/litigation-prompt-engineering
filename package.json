@@ -17,6 +17,8 @@
     "ingest:golden-v002": "node scripts/ingest-golden-rule-authority-v002.mjs",
     "author:golden": "node scripts/author-golden.mjs",
     "promote:golden": "node scripts/promote-golden.mjs",
+    "ingest:demo-fixtures": "node scripts/ingest-demo-fixtures-from-authoring.mjs",
+    "sync:import-rule-catalog": "node scripts/sync-import-rule-catalog.mjs",
     "sync:court-rules-fixtures": "node scripts/sync-court-rules-fixtures.mjs",
     "eval:golden": "node scripts/eval-golden.mjs",
     "import:file-exchange": "node scripts/import-to-file-exchange.mjs",

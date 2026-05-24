@@ -1,0 +1,3 @@
+Upon filing of an answer, issue is joined and the case proceeds to discovery tracking under the applicable part rules.
+
+{"ruleId":"queens_medmal_part_rules_catapano_fox","extractedText":"Answer filing triggers issue joining and discovery tracking."}

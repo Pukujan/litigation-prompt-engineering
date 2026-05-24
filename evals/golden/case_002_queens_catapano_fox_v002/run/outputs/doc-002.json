@@ -1,0 +1,336 @@
+{
+  "docKey": "doc-002",
+  "docIndex": 2,
+  "storedName": "002-doc_002_NOTICE_OF_COMMENCEMENT_PERSONAL_INJURIES.pdf",
+  "originalName": "doc_002_NOTICE_OF_COMMENCEMENT_PERSONAL_INJURIES.pdf",
+  "fileKind": "pdf",
+  "status": "completed",
+  "batchTraceId": "golden_adca49f7_77d7c6889abf",
+  "traceId": "golden_adca49f7_77d7c6889abf_doc002",
+  "model": "deepseek/deepseek-v4-pro-20260423",
+  "usage": {
+    "prompt_tokens": 1573,
+    "completion_tokens": 1242,
+    "total_tokens": 2815,
+    "cost": 0.0052741,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0052741,
+      "upstream_inference_prompt_cost": 0.0020449,
+      "upstream_inference_completions_cost": 0.0032292
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "runMetadata": {
+    "promptVersion": "v001",
+    "promptTemplate": "v001_master-case-filing.prompt.md",
+    "promptLabel": "v001",
+    "snapshotMergeMode": "legacy",
+    "openRouterModel": "deepseek/deepseek-v4-pro-20260423",
+    "masterPromptJsonRetry": true,
+    "omitAuditNotesInPrompt": true
+  },
+  "pipelineVersions": null,
+  "parsedDocumentCacheUsed": false,
+  "textSourceUsed": "embedded_text",
+  "reviewStatusAtEvalTime": null,
+  "ruleSourcesChecked": [
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "rankedRules": [
+    {
+      "ruleId": "queens_medmal_part_rules_catapano_fox",
+      "authority": "part",
+      "title": "Medical, Dental and Podiatric Malpractice Conference and Part Rules - Justice Tracy Catapano-Fox",
+      "text": "Medical, Dental and Podiatric Malpractice Conference and Part Rules - Justice Tracy Catapano-Fox",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    },
+    {
+      "ruleId": "queens_medmal_cc_form",
+      "authority": "county",
+      "title": "Queens Medical Malpractice Compliance Conference Order form",
+      "text": "Queens Medical Malpractice Compliance Conference Order form",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    },
+    {
+      "ruleId": "queens_medmal_pc_form",
+      "authority": "county",
+      "title": "Queens Medical Malpractice Preliminary Conference Order form",
+      "text": "Queens Medical Malpractice Preliminary Conference Order form",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    }
+  ],
+  "documentMetadata": {
+    "docType": "NOTICE_OF_COMMENCEMENT_PERSONAL_INJURIES",
+    "docTitle": "Notice of Commencement of Action for Personal Injuries",
+    "filedDate": "2026-11-12",
+    "indexNumber": "900001/2026",
+    "nyscefDocNo": 2,
+    "judge": "Hon. Tracy Catapano-Fox",
+    "part": "Medical, Dental and Podiatric Malpractice Part (Courtroom 48)"
+  },
+  "extractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1438,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "notes": "Synthetic document with clear metadata and content."
+  },
+  "docketEntry": {
+    "docNo": 2,
+    "docType": "NOTICE_OF_COMMENCEMENT_PERSONAL_INJURIES",
+    "title": "Notice of Commencement of Action for Personal Injuries",
+    "filedDate": "2026-11-12",
+    "pageCount": 1
+  },
+  "caseUpdates": {
+    "newFacts": [
+      "Plaintiff filed Notice of Commencement of Action for Personal Injuries pursuant to CPLR 306-c on 2026-11-12.",
+      "Summons and complaint are referenced as initiating papers."
+    ],
+    "modifiedFacts": [],
+    "confirmedFacts": [
+      "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+      "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+      "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+      "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+      "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+      "Nature of suit: medical malpractice - prenatal and obstetrical care.",
+      "Index Number: 900001/2026.",
+      "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox."
+    ]
+  },
+  "parties": [
+    {
+      "name": "Jane Doe as Parent and Natural Guardian of A.D., an Infant",
+      "role": "plaintiff",
+      "counsel": "Hudson River Trial Law PLLC by Alex Morgan, Esq."
+    },
+    {
+      "name": "Jordan Smith, M.D.",
+      "role": "defendant",
+      "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+    },
+    {
+      "name": "Jordan Smith, M.D., P.C.",
+      "role": "defendant",
+      "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+    }
+  ],
+  "witnesses": [],
+  "tasks": [],
+  "deadlines": [],
+  "humanReviewItems": [],
+  "auditNotes": [
+    "Document is a Notice of Commencement of Action for Personal Injuries under CPLR 306-c.",
+    "No new tasks or deadlines triggered by this filing.",
+    "All metadata and party information consistent with prior snapshot."
+  ],
+  "rawMasterResult": {
+    "documentMetadata": {
+      "docType": "NOTICE_OF_COMMENCEMENT_PERSONAL_INJURIES",
+      "docTitle": "Notice of Commencement of Action for Personal Injuries",
+      "filedDate": "2026-11-12",
+      "indexNumber": "900001/2026",
+      "nyscefDocNo": 2,
+      "judge": "Hon. Tracy Catapano-Fox",
+      "part": "Medical, Dental and Podiatric Malpractice Part (Courtroom 48)"
+    },
+    "extractionQuality": {
+      "confidence": "high",
+      "notes": "Synthetic document with clear metadata and content."
+    },
+    "docketEntry": {
+      "docNo": 2,
+      "docType": "NOTICE_OF_COMMENCEMENT_PERSONAL_INJURIES",
+      "title": "Notice of Commencement of Action for Personal Injuries",
+      "filedDate": "2026-11-12",
+      "pageCount": 1
+    },
+    "caseUpdates": {
+      "newFacts": [
+        "Plaintiff filed Notice of Commencement of Action for Personal Injuries pursuant to CPLR 306-c on 2026-11-12.",
+        "Summons and complaint are referenced as initiating papers."
+      ],
+      "modifiedFacts": [],
+      "confirmedFacts": [
+        "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+        "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+        "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+        "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+        "Nature of suit: medical malpractice - prenatal and obstetrical care.",
+        "Index Number: 900001/2026.",
+        "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox."
+      ]
+    },
+    "parties": [
+      {
+        "name": "Jane Doe as Parent and Natural Guardian of A.D., an Infant",
+        "role": "plaintiff",
+        "counsel": "Hudson River Trial Law PLLC by Alex Morgan, Esq."
+      },
+      {
+        "name": "Jordan Smith, M.D.",
+        "role": "defendant",
+        "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+      },
+      {
+        "name": "Jordan Smith, M.D., P.C.",
+        "role": "defendant",
+        "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+      }
+    ],
+    "witnesses": [],
+    "tasks": [],
+    "deadlines": [],
+    "humanReviewItems": [],
+    "updatedCaseSnapshot": {
+      "snapshotId": "snapshot_after_doc_2",
+      "caseId": "synthetic_queens_tcf_001",
+      "afterDocNo": 2,
+      "currentPhase": "commencement",
+      "currentMiniPhase": "notice_of_commencement",
+      "county": "Queens",
+      "part": null,
+      "partName": "Medical, Dental and Podiatric Malpractice Part",
+      "court": "Supreme Court of the State of New York, County of Queens",
+      "judgeName": "Hon. Tracy Catapano-Fox",
+      "caseType": "medical_malpractice",
+      "case": {
+        "county": "Queens",
+        "part": null,
+        "partName": "Medical, Dental and Podiatric Malpractice Part",
+        "court": "Supreme Court of the State of New York, County of Queens",
+        "judgeName": "Hon. Tracy Catapano-Fox",
+        "caseType": "medical_malpractice"
+      },
+      "confirmedFacts": [
+        "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+        "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+        "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+        "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+        "Nature of suit: medical malpractice - prenatal and obstetrical care.",
+        "Index Number: 900001/2026.",
+        "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox.",
+        "Plaintiff filed Notice of Commencement of Action for Personal Injuries pursuant to CPLR 306-c on 2026-11-12.",
+        "Summons and complaint are referenced as initiating papers."
+      ],
+      "carriedForwardContext": [],
+      "openTasks": [],
+      "completedTasks": [],
+      "conditionalTasks": [],
+      "deadlines": [],
+      "supersededDeadlines": [],
+      "unresolvedHumanReviewItems": [],
+      "conflicts": []
+    },
+    "auditNotes": [
+      "Document is a Notice of Commencement of Action for Personal Injuries under CPLR 306-c.",
+      "No new tasks or deadlines triggered by this filing.",
+      "All metadata and party information consistent with prior snapshot."
+    ],
+    "inferredPartRuleText": "",
+    "partRuleExtracts": [],
+    "ruleSourcesApplied": [
+      "cplr_306_c_notice_of_commencement"
+    ],
+    "documentFacts": {
+      "documentMetadata": {
+        "docType": "NOTICE_OF_COMMENCEMENT_PERSONAL_INJURIES",
+        "docTitle": "Notice of Commencement of Action for Personal Injuries",
+        "filedDate": "2026-11-12",
+        "indexNumber": "900001/2026",
+        "nyscefDocNo": 2,
+        "judge": "Hon. Tracy Catapano-Fox",
+        "part": "Medical, Dental and Podiatric Malpractice Part (Courtroom 48)"
+      },
+      "extractionQuality": {
+        "confidence": "high",
+        "notes": "Synthetic document with clear metadata and content."
+      },
+      "docketEntry": {
+        "docNo": 2,
+        "docType": "NOTICE_OF_COMMENCEMENT_PERSONAL_INJURIES",
+        "title": "Notice of Commencement of Action for Personal Injuries",
+        "filedDate": "2026-11-12",
+        "pageCount": 1
+      },
+      "caseUpdates": {
+        "newFacts": [
+          "Plaintiff filed Notice of Commencement of Action for Personal Injuries pursuant to CPLR 306-c on 2026-11-12.",
+          "Summons and complaint are referenced as initiating papers."
+        ],
+        "modifiedFacts": [],
+        "confirmedFacts": [
+          "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+          "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+          "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+          "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+          "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+          "Nature of suit: medical malpractice - prenatal and obstetrical care.",
+          "Index Number: 900001/2026.",
+          "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox."
+        ]
+      },
+      "parties": [
+        {
+          "name": "Jane Doe as Parent and Natural Guardian of A.D., an Infant",
+          "role": "plaintiff",
+          "counsel": "Hudson River Trial Law PLLC by Alex Morgan, Esq."
+        },
+        {
+          "name": "Jordan Smith, M.D.",
+          "role": "defendant",
+          "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+        },
+        {
+          "name": "Jordan Smith, M.D., P.C.",
+          "role": "defendant",
+          "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+        }
+      ],
+      "witnesses": [],
+      "humanReviewItems": []
+    },
+    "ruleBasedTasks": [],
+    "caseOrderTasks": []
+  }
+}

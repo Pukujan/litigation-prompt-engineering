@@ -1,0 +1,57 @@
+{
+  "docIndex": 16,
+  "docKey": "doc-016",
+  "expectedDocumentType": "STIPULATION_DISCOVERY_REQUEST_TO_SO_ORDER",
+  "expectedTitle": "doc_016_STIPULATION_DISCOVERY_REQUEST_TO_SO_ORDER.pdf",
+  "expectedFilingDate": "2027-09-15",
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": 16,
+  "expectedPageCount": 1,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1402,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "completeness": "complete"
+  },
+  "expectedConfirmedFacts": [],
+  "expectedParties": [],
+  "expectedTasks": [
+    {
+      "taskName": "REVIEW_DISCOVERY_STIPULATION_FOR_SO_ORDER",
+      "status": "conditional",
+      "dueDate": null,
+      "sourceAuthority": "Case-specific proposed stipulation (Doc. No. 16)",
+      "ruleSourceApplied": "discovery_stipulation_rules",
+      "sourceDocNo": 16,
+      "sourceText": "Parties stipulate to extend plaintiff deposition to 2027-10-24 and defendants' depositions to 2027-11-24; not controlling until so-ordered.",
+      "notes": "Stipulation must be so-ordered by the court to become binding. Monitor for court action."
+    }
+  ],
+  "expectedDeadlines": [],
+  "expectedHumanReviewItems": [
+    "Verify if stipulation is timely or if plaintiff deposition deadline of 2027-07-29 has already passed without compliance; determine if court will so-order retroactive extension.",
+    "Review whether the proposed dates conflict with any other deadlines; the compliance conference is set for 2027-12-15, and proposed depositions are before that date, but confirm with court schedule."
+  ],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "doc_013_pc_order",
+    "doc_015_cc_order",
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

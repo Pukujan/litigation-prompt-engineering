@@ -1,5 +1,6 @@
 import { mkdir, writeFile, copyFile, readFile } from "fs/promises";
 import { join, dirname } from "path";
+import { buildGoldenAuditRecord } from "./goldenAudit.service.js";
 
 const SYNTHETIC_NOTICE =
   "Synthetic expected output; no real NYSCEF file/data used.";
@@ -142,6 +143,17 @@ export function createGoldenExporterService({ stagingStore }) {
 
     await writeJsonFile(join(outDir, "pipeline_versions.expected.json"), pipelineVersionsExpected);
 
+    const goldenAudit = await buildGoldenAuditRecord({
+      repoRoot: stagingStore.repoRoot,
+      authoringRun,
+      pipelineVersions,
+      pipelineVersionsExpected,
+      caseId,
+      version,
+      importStamp
+    });
+    await writeJsonFile(join(outDir, "golden_audit.json"), goldenAudit);
+
     const goldenDataset = {
       meta: {
         datasetId: version,
@@ -154,7 +166,11 @@ export function createGoldenExporterService({ stagingStore }) {
         syntheticDataNotice: SYNTHETIC_NOTICE,
         authoringRunId: authoringRun.runId,
         authorModel: authoringRun.authorModel,
-        importStamp
+        masterPromptVersion: authoringRun.masterPromptVersion,
+        modelInventoryVersion: pipelineVersionsExpected.modelInventoryVersion,
+        promptInventoryVersion: pipelineVersionsExpected.promptInventoryVersion,
+        importStamp,
+        auditArtifact: "golden_audit.json"
       },
       caseIdentity,
       expectedProcessingRule: {

@@ -2,6 +2,7 @@ import { join } from "path";
 import { fileURLToPath } from "url";
 import { resolveArtifactPaths } from "../../../shared/config/resolveArtifactPaths.js";
 import { resolveCaseFilingProfile } from "../../case-filing-ai/utils/resolveCaseFilingProfile.js";
+import { DEFAULT_GOLDEN_AUTHORING_MODEL } from "./defaults.js";
 
 const repoRoot = join(fileURLToPath(new URL(".", import.meta.url)), "../../../../..");
 
@@ -31,8 +32,7 @@ export function getGoldenAuthoringConfig() {
     openRouter: {
       apiKey: process.env.OPENROUTER_API_KEY || "",
       model:
-        process.env.MODEL_GOLDEN_AUTHORING ||
-        "anthropic/claude-sonnet-4",
+        process.env.MODEL_GOLDEN_AUTHORING || DEFAULT_GOLDEN_AUTHORING_MODEL,
       visionOcrModel:
         process.env.MODEL_VISION_OCR || "qwen/qwen2.5-vl-7b-instruct",
       siteUrl: process.env.OPENROUTER_SITE_URL || "http://localhost:5173",

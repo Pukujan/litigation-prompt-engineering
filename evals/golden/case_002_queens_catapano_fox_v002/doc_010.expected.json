@@ -1,0 +1,59 @@
+{
+  "docIndex": 10,
+  "docKey": "doc-010",
+  "expectedDocumentType": "",
+  "expectedTitle": "doc_010_RJI_MEDICAL_DENTAL_PODIATRIC_MALPRACTICE.pdf",
+  "expectedFilingDate": null,
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": 10,
+  "expectedPageCount": 2,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1715,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "notes": "Synthetic document with clear metadata and content. All facts extracted from provided text."
+  },
+  "expectedConfirmedFacts": [
+    "Request for Judicial Intervention (RJI) filed on 2027-02-28 for medical, dental or podiatric malpractice case.",
+    "RJI identifies case as tort / medical, dental or podiatric malpractice matter.",
+    "RJI places case into Queens Medical, Dental and Podiatric Malpractice Part workflow.",
+    "RJI triggers monitoring for preliminary conference scheduling or order issuance."
+  ],
+  "expectedParties": [],
+  "expectedTasks": [
+    {
+      "taskId": "AWAIT_MEDMAL_PRELIMINARY_CONFERENCE",
+      "description": "Monitor for preliminary conference scheduling or order issuance following RJI filing.",
+      "status": "conditional",
+      "sourceAuthority": "Part Rules",
+      "sourceName": "Medical, Dental and Podiatric Malpractice Conference and Part Rules - Justice Tracy Catapano-Fox",
+      "sourceDocNo": 10,
+      "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox",
+      "authorityRank": 70,
+      "sourceText": "Upon filing of an answer, issue is joined and the case proceeds to discovery tracking under the applicable part rules.",
+      "sourcePage": "N/A"
+    }
+  ],
+  "expectedDeadlines": [],
+  "expectedHumanReviewItems": [],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "docIndex": 15,
+  "docKey": "doc-015",
+  "expectedDocumentType": "ORDER_COMPLIANCE_CONFERENCE",
+  "expectedTitle": "doc_015_ORDER_COMPLIANCE_CONFERENCE.pdf",
+  "expectedFilingDate": "2027-08-14",
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": null,
+  "expectedPageCount": 1,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1508,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "issues": []
+  },
+  "expectedConfirmedFacts": [],
+  "expectedParties": [],
+  "expectedTasks": [
+    {
+      "taskName": "TRACK_COMPLIANCE_CONFERENCE_ORDER",
+      "status": "source_supported_auto_saved",
+      "dueDate": null,
+      "sourceDocNo": 15,
+      "ruleSourceApplied": "doc_015_cc_order",
+      "authorityRank": 90,
+      "sourceText": "Compliance Conference Order is issued.",
+      "sourcePage": 1,
+      "notes": "Order issued; monitor compliance with its terms and upcoming dates."
+    }
+  ],
+  "expectedDeadlines": [
+    {
+      "deadlineType": "COMPLIANCE_CONFERENCE",
+      "date": "2027-12-15",
+      "sourceDocNo": 15,
+      "ruleSourceApplied": "doc_015_cc_order",
+      "status": "source_supported_auto_saved",
+      "notes": "Conference/control date set by Compliance Conference Order."
+    },
+    {
+      "deadlineType": "PRETRIAL_OR_FURTHER_CONFERENCE",
+      "date": "2028-02-11",
+      "sourceDocNo": 15,
+      "ruleSourceApplied": "doc_015_cc_order",
+      "status": "source_supported_auto_saved",
+      "notes": "Pretrial or further compliance date set by Compliance Conference Order."
+    }
+  ],
+  "expectedHumanReviewItems": [
+    "Review whether the Compliance Conference Order supersedes any prior discovery deadlines, particularly the deposition deadlines set in the Preliminary Conference Order (Doc. No. 13). The order states it may supersede earlier discovery dates where inconsistent, but no explicit inconsistency is apparent. Confirm with court rules or practice."
+  ],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "doc_013_pc_order",
+    "doc_015_cc_order",
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "docIndex": 8,
+  "docKey": "doc-008",
+  "expectedDocumentType": "Demand Pursuant to Medicare, Medicaid and SCHIP Extension Act",
+  "expectedTitle": "Demand Pursuant to Medicare, Medicaid and SCHIP Extension Act",
+  "expectedFilingDate": "2026-12-03",
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": null,
+  "expectedPageCount": null,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1468,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "issues": []
+  },
+  "expectedConfirmedFacts": [],
+  "expectedParties": [],
+  "expectedTasks": [
+    {
+      "taskType": "RESPOND_TO_MEDICARE_MEDICAID_SCHIP_DEMAND",
+      "status": "needs_service_date",
+      "dueDate": null,
+      "sourceDocNo": 8,
+      "sourceAuthority": "CPLR 3120",
+      "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+      "supercedes": null,
+      "sourceText": "Demand requests response within 20 days.",
+      "sourcePage": 1
+    }
+  ],
+  "expectedDeadlines": [
+    {
+      "deadlineType": "MEDICARE_MEDICAID_SCHIP_DEMAND_RESPONSE",
+      "date": "2026-12-23",
+      "sourceDocNo": 8,
+      "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+      "sourceText": "Demand requests response within 20 days. Assuming service on filed date 2026-12-03.",
+      "sourcePage": 1,
+      "supersedes": null,
+      "status": "conditional"
+    }
+  ],
+  "expectedHumanReviewItems": [
+    {
+      "item": "Verify service date of this demand. The document states 'Demand requests response within 20 days' but does not specify when service occurred. For deadline calculation, assumed service date equals filed date of 2026-12-03, giving a response deadline of 2026-12-23. If service was later, adjust deadline accordingly."
+    }
+  ],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

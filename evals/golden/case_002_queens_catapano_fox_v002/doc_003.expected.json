@@ -1,0 +1,75 @@
+{
+  "docIndex": 3,
+  "docKey": "doc-003",
+  "expectedDocumentType": "",
+  "expectedTitle": "doc_003_ANSWER.pdf",
+  "expectedFilingDate": "2026-12-03",
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": 3,
+  "expectedPageCount": 1,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1326,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "isSynthetic": true,
+    "notes": "Verified Answer extracted from structured synthetic NYSCEF filing."
+  },
+  "expectedConfirmedFacts": [],
+  "expectedParties": [
+    {
+      "name": "Jane Doe as Parent and Natural Guardian of A.D., an Infant",
+      "role": "plaintiff",
+      "attorney": "Alex Morgan, Esq.",
+      "firm": "Hudson River Trial Law PLLC"
+    },
+    {
+      "name": "Jordan Smith, M.D.",
+      "role": "defendant",
+      "attorney": "Taylor Reed, Esq.",
+      "firm": "Harbor Defense & Medical Liability LLP"
+    },
+    {
+      "name": "Jordan Smith, M.D., P.C.",
+      "role": "defendant",
+      "attorney": "Taylor Reed, Esq.",
+      "firm": "Harbor Defense & Medical Liability LLP"
+    }
+  ],
+  "expectedTasks": [
+    {
+      "taskType": "ANSWER_RECEIVED",
+      "status": "source_supported_auto_saved",
+      "dueDate": null,
+      "sourceAuthority": "Document Content",
+      "sourceName": null,
+      "sourceDocNo": 3,
+      "ruleSourceApplied": null,
+      "authorityRank": null,
+      "supersedes": null,
+      "sourceText": "ANSWER_RECEIVED | status=source_supported_auto_saved | dueDate=",
+      "sourcePage": null
+    }
+  ],
+  "expectedDeadlines": [],
+  "expectedHumanReviewItems": [],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

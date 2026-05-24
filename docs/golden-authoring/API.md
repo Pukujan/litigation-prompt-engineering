@@ -4,6 +4,8 @@ Base path: `/api/golden-authoring`
 
 Requires `GOLDEN_AUTHORING_API_ENABLED=true`. When `GOLDEN_AUTHORING_API_KEY` is set, send header `X-Golden-Authoring-Key` or `Authorization: Bearer <key>`.
 
+Default author model: `deepseek/deepseek-v4-pro` (`MODEL_GOLDEN_AUTHORING`). Each staging export includes `golden_audit.json` and `pipeline_versions.expected.json` for promote-time audit.
+
 ## Endpoints
 
 | Method | Path | Description |

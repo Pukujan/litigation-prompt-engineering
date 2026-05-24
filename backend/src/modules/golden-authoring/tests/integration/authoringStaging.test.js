@@ -59,4 +59,15 @@ test("goldenExporter writes staging bundle files", async () => {
   const runRaw = await readFile(join(result.outDir, "authoring_run.json"), "utf8");
   const run = JSON.parse(runRaw);
   assert.equal(run.runId, "run-test");
+
+  const auditRaw = await readFile(join(result.outDir, "golden_audit.json"), "utf8");
+  const audit = JSON.parse(auditRaw);
+  assert.equal(audit.authoringRunId, "run-test");
+  assert.equal(audit.models.authorModel, "test-model");
+  assert.equal(audit.reviewStatus, "pending_human_review");
+
+  const pinsRaw = await readFile(join(result.outDir, "pipeline_versions.expected.json"), "utf8");
+  const pins = JSON.parse(pinsRaw);
+  assert.equal(pins.authorModel, "test-model");
+  assert.equal(pins.goldenDatasetVersion, version);
 });

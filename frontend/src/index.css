@@ -1079,3 +1079,159 @@ a {
   border-radius: 6px;
   background: #1a1218;
 }
+
+.demo-source-doc-list {
+  margin-top: 16px;
+}
+
+.demo-source-doc-list ul {
+  margin: 8px 0 0;
+  padding-left: 1.2rem;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.demo-source-doc-list a {
+  color: #6ea8fe;
+}
+
+.demo-cli-hint {
+  font-size: 12px;
+  background: #0b1020;
+  padding: 10px;
+  border-radius: 6px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+
+/* Demo charts + Legal Ops (imported 07E pattern, dark theme) */
+.demo-charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.demo-chart-panel {
+  min-height: 280px;
+}
+
+.demo-table--compact th,
+.demo-table--compact td {
+  font-size: 12px;
+  padding: 6px 8px;
+}
+
+.demo-table-total-row td {
+  border-top: 2px solid #3657a7;
+  background: rgba(54, 87, 167, 0.08);
+}
+
+.case-filing-demo .ops-datalog-shell {
+  color: #e8ecff;
+}
+
+.case-filing-demo .ops-datalog-hero,
+.case-filing-demo .ops-datalog-panel {
+  background: #121a31;
+  border-color: #233257;
+  box-shadow: none;
+}
+
+.case-filing-demo .ops-datalog-hero h2,
+.case-filing-demo .ops-datalog-section-head h3,
+.case-filing-demo .ops-datalog-section-head h4 {
+  color: #f5f7ff;
+}
+
+.case-filing-demo .ops-datalog-kicker {
+  color: #a8b4d8;
+}
+
+.case-filing-demo .ops-datalog-hero p,
+.case-filing-demo .ops-datalog-footnote {
+  color: #a8b4d8;
+}
+
+.case-filing-demo .ops-datalog-stats,
+.case-filing-demo .ops-datalog-stats--dark {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.case-filing-demo .ops-datalog-stats div {
+  background: #0b1020;
+  border: 1px solid #233257;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.case-filing-demo .ops-datalog-stats span {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #a8b4d8;
+}
+
+.case-filing-demo .ops-datalog-stats b {
+  display: block;
+  margin-top: 4px;
+  font-size: 20px;
+  color: #f5f7ff;
+}
+
+.case-filing-demo .ops-datalog-qa {
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #233257;
+}
+
+.case-filing-demo .ops-datalog-qa.is-ok {
+  background: rgba(61, 154, 106, 0.12);
+  border-color: #3d9a6a;
+}
+
+.case-filing-demo .ops-datalog-qa.is-error {
+  background: rgba(201, 76, 76, 0.12);
+  border-color: #c94c4c;
+}
+
+.case-filing-demo .ops-datalog-table-wrap {
+  border-color: #233257;
+}
+
+.case-filing-demo .ops-datalog-table th {
+  background: #0b1020;
+  color: #a8c1ff;
+  border-color: #233257;
+}
+
+.case-filing-demo .ops-datalog-table td {
+  border-color: #233257;
+  color: #e8ecff;
+}
+
+.case-filing-demo .ops-datalog-table tbody tr:hover {
+  background: rgba(54, 87, 167, 0.12);
+}
+
+.case-filing-demo .ops-datalog-count {
+  color: #a8b4d8;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.case-filing-demo .ops-datalog-section-head .demo-field input {
+  min-width: 200px;
+}
+
+@media (max-width: 900px) {
+  .demo-charts-grid,
+  .case-filing-demo .ops-datalog-stats,
+  .case-filing-demo .ops-datalog-stats--dark {
+    grid-template-columns: 1fr;
+  }
+}

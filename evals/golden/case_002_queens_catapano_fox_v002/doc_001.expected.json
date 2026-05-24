@@ -1,0 +1,60 @@
+{
+  "docIndex": 1,
+  "docKey": "doc-001",
+  "expectedDocumentType": "SUMMONS_AND_VERIFIED_COMPLAINT",
+  "expectedTitle": "doc_001_SUMMONS_AND_VERIFIED_COMPLAINT.pdf",
+  "expectedFilingDate": "2026-11-12",
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": null,
+  "expectedPageCount": null,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1463,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "issues": []
+  },
+  "expectedConfirmedFacts": [],
+  "expectedParties": [
+    {
+      "role": "plaintiff",
+      "name": "Jane Doe as Parent and Natural Guardian of A.D., an Infant",
+      "type": "individual",
+      "counsel": "Hudson River Trial Law PLLC by Alex Morgan, Esq."
+    },
+    {
+      "role": "defendant",
+      "name": "Jordan Smith, M.D.",
+      "type": "individual",
+      "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+    },
+    {
+      "role": "defendant",
+      "name": "Jordan Smith, M.D., P.C.",
+      "type": "corporation",
+      "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+    }
+  ],
+  "expectedTasks": [],
+  "expectedDeadlines": [],
+  "expectedHumanReviewItems": [],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

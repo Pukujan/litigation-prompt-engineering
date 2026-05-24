@@ -66,9 +66,17 @@ export function createGoldenVersionService({ stagingRoot, goldenRoot }) {
 
   function caseIdFromVersion(version, caseSlug) {
     if (!caseSlug) return version;
+    // Full repo case folder id (e.g. case_002_queens_catapano_fox_v002)
+    if (/^case_\d{3}_[a-z0-9_]+$/i.test(caseSlug)) {
+      return caseSlug;
+    }
     const legalMatch = version.match(/^(synthetic_case_\d+)/);
     if (legalMatch) {
       return version.replace(legalMatch[1], caseSlug);
+    }
+    const tcfMatch = version.match(/^(synthetic_queens_[a-z0-9_]+)/i);
+    if (tcfMatch && caseSlug.startsWith("case_")) {
+      return caseSlug;
     }
     return `${caseSlug}_${version}`;
   }

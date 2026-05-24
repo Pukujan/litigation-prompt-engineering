@@ -1,0 +1,53 @@
+{
+  "docIndex": 7,
+  "docKey": "doc-007",
+  "expectedDocumentType": "",
+  "expectedTitle": "doc_007_DEMAND_FOR_STATEMENTS_AND_PHOTOS.pdf",
+  "expectedFilingDate": null,
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": 7,
+  "expectedPageCount": 1,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1437,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "issues": []
+  },
+  "expectedConfirmedFacts": [],
+  "expectedParties": [],
+  "expectedTasks": [
+    {
+      "taskId": "RESPOND_TO_STATEMENTS_AND_PHOTOS_DEMAND",
+      "description": "Respond to Demand for Statements and Photographs",
+      "sourceAuthority": "cplr_3101_disclosure",
+      "sourceName": "CPLR 3101",
+      "sourceDocNo": 7,
+      "ruleSourceApplied": "cplr_3101_disclosure",
+      "status": "needs_service_date",
+      "dueDate": null,
+      "notes": "Demand requests production within 14 days after receipt, but service date is unknown; deadline cannot be fixed until service date is established."
+    }
+  ],
+  "expectedDeadlines": [],
+  "expectedHumanReviewItems": [],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

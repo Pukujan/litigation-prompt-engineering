@@ -15,3 +15,4 @@
 {"time":"2026-05-24T02:00:00Z","contract":"fileExchange","from":"v001","to":"v001","reason":"POST /api/file-exchange/clear and clear-file-exchange CLI for dated folder cleanup","author":"agent"}
 {"time":"2026-05-24T15:00:00Z","contract":"architecturePushDevLog","from":null,"to":"v001","reason":"Paired arch-push logs for create-modular-monolith/npm; formatHumanReadableUtc headers","author":"agent"}
 {"time":"2026-05-24T18:00:00Z","contract":"goldenDataset","from":null,"to":"v001","reason":"golden-authoring module, staging layout, VERSION_HISTORY, author/promote CLIs","author":"agent"}
+{"time":"2026-05-24T18:42:53.249Z","contract":"goldenDataset","from":null,"to":"synthetic_queens_tcf_001_rule_authority_v001","reason":"Promoted golden authoring case_002_queens_catapano_fox_v002/synthetic_queens_tcf_001_rule_authority_v001","author":"cli","authorModel":"deepseek/deepseek-v4-pro","masterPromptVersion":"v001"}

@@ -29,6 +29,40 @@ export function createPromoteGoldenService({ stagingStore, goldenVersion, repoRo
       errors.push(`Missing ${caseId}.golden-dataset.json`);
     }
 
+    try {
+      await access(join(dir, "pipeline_versions.expected.json"));
+    } catch {
+      errors.push("Missing pipeline_versions.expected.json");
+    }
+
+    try {
+      await access(join(dir, "golden_audit.json"));
+    } catch {
+      errors.push("Missing golden_audit.json (run author:golden with current exporter)");
+    }
+
+    let pipelinePins;
+    try {
+      pipelinePins = await stagingStore.readJson(join(dir, "pipeline_versions.expected.json"));
+    } catch {
+      errors.push("Unreadable pipeline_versions.expected.json");
+    }
+
+    let goldenAudit;
+    try {
+      goldenAudit = await stagingStore.readJson(join(dir, "golden_audit.json"));
+    } catch {
+      /* already reported missing */
+    }
+
+    if (pipelinePins) {
+      for (const key of ["goldenDatasetVersion", "masterPromptVersion", "authorModel"]) {
+        if (!pipelinePins[key]) {
+          errors.push(`pipeline_versions.expected.json missing ${key}`);
+        }
+      }
+    }
+
     if (errors.length) {
       const err = new Error(`Promote validation failed: ${errors.join("; ")}`);
       err.statusCode = 400;
@@ -36,23 +70,35 @@ export function createPromoteGoldenService({ stagingStore, goldenVersion, repoRo
       throw err;
     }
 
-    return { dir, authoringRun };
+    return { dir, authoringRun, pipelinePins, goldenAudit };
   }
 
   async function promote({ caseId, version, promotedBy = "script", reason = "" }) {
-    const { dir, authoringRun } = await validateStaging(caseId, version);
+    const { dir, authoringRun, pipelinePins, goldenAudit } = await validateStaging(caseId, version);
     const targetDir = stagingStore.committedDir(caseId);
 
     await cp(dir, targetDir, { recursive: true, force: true });
 
-    await goldenVersion.appendVersionHistory(join(targetDir, "VERSION_HISTORY.jsonl"), {
+    if (goldenAudit) {
+      goldenAudit.reviewStatus = "promoted";
+      goldenAudit.promotedAt = new Date().toISOString();
+      goldenAudit.promotedBy = promotedBy;
+      await stagingStore.writeJson(join(targetDir, "golden_audit.json"), goldenAudit);
+    }
+
+    await goldenVersion.appendVersionHistory(targetDir, {
       time: new Date().toISOString(),
       version,
       caseId,
       status: "promoted",
       promotedBy,
       reason: reason || `Promoted from staging ${version}`,
-      authoringRunId: authoringRun.runId
+      authoringRunId: authoringRun.runId,
+      authorModel: pipelinePins?.authorModel ?? authoringRun.authorModel,
+      masterPromptVersion:
+        pipelinePins?.masterPromptVersion ?? authoringRun.masterPromptVersion,
+      modelInventoryVersion: pipelinePins?.modelInventoryVersion ?? null,
+      promptInventoryVersion: pipelinePins?.promptInventoryVersion ?? null
     });
 
     const changelogPath = join(repoRoot, "docs/architecture/contracts/changelog.jsonl");
@@ -62,7 +108,9 @@ export function createPromoteGoldenService({ stagingStore, goldenVersion, repoRo
       from: null,
       to: version,
       reason: reason || `Promoted golden authoring ${caseId}/${version}`,
-      author: promotedBy
+      author: promotedBy,
+      authorModel: pipelinePins?.authorModel ?? null,
+      masterPromptVersion: pipelinePins?.masterPromptVersion ?? null
     };
     await appendFile(changelogPath, `${JSON.stringify(changelogEntry)}\n`);
 

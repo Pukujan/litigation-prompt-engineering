@@ -1,0 +1,63 @@
+{
+  "docIndex": 9,
+  "docKey": "doc-009",
+  "expectedDocumentType": "NOTICE_OF_MEDICAL_MALPRACTICE",
+  "expectedTitle": "doc_009_NOTICE_OF_MEDICAL_MALPRACTICE.pdf",
+  "expectedFilingDate": "2027-02-28",
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": 9,
+  "expectedPageCount": 2,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1846,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": 0.95,
+    "extractedBy": "ai",
+    "needsHumanReview": false
+  },
+  "expectedConfirmedFacts": [],
+  "expectedParties": [],
+  "expectedTasks": [
+    {
+      "taskType": "TRACK_MEDICAL_MALPRACTICE_NOTICE",
+      "status": "source_supported_auto_saved",
+      "sourceDocNo": 9,
+      "ruleSourceApplied": "uniform_rule_202_56_medmal",
+      "sourceAuthority": "22 NYCRR 202.56",
+      "description": "Notice of Medical Malpractice Action filed. Track for medical malpractice conference processing."
+    },
+    {
+      "taskType": "MONITOR_MEDMAL_RJI_AND_PRELIMINARY_CONFERENCE",
+      "status": "conditional",
+      "sourceDocNo": 9,
+      "ruleSourceApplied": "uniform_rule_202_56_medmal",
+      "description": "Monitor for filing of Request for Judicial Intervention (RJI) and scheduling of preliminary conference pursuant to medical malpractice rules."
+    }
+  ],
+  "expectedDeadlines": [],
+  "expectedHumanReviewItems": [
+    {
+      "item": "Notice states that required pleadings and bill of particulars materials have been filed or served. Verify if bill of particulars response has been served and update RESPOND_TO_BILL_OF_PARTICULARS_DEMAND task accordingly.",
+      "sourceDocNo": 9
+    }
+  ],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

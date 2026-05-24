@@ -1,0 +1,91 @@
+{
+  "docIndex": 18,
+  "docKey": "doc-018",
+  "expectedDocumentType": "ORDER_COMPLIANCE_CONFERENCE",
+  "expectedTitle": "doc_018_ORDER_COMPLIANCE_CONFERENCE.pdf",
+  "expectedFilingDate": "2027-12-02",
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": 18,
+  "expectedPageCount": 1,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1472,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": 0.99,
+    "notes": "All key dates and the supersession clause extracted directly from document text."
+  },
+  "expectedConfirmedFacts": [],
+  "expectedParties": [
+    {
+      "role": "plaintiff",
+      "name": "Jane Doe as Parent and Natural Guardian of A.D., an Infant"
+    },
+    {
+      "role": "defendant",
+      "name": "Jordan Smith, M.D."
+    },
+    {
+      "role": "defendant",
+      "name": "Jordan Smith, M.D., P.C."
+    }
+  ],
+  "expectedTasks": [
+    {
+      "taskName": "TRACK_UPDATED_COMPLIANCE_ORDER",
+      "status": "source_supported_auto_saved",
+      "sourceDocNo": 18,
+      "ruleSourceApplied": "doc_018_cc_order",
+      "dueDate": null,
+      "notes": "New compliance conference order issued with updated discovery/control and conference dates. Supersedes previous CC order (Doc. No. 15)."
+    }
+  ],
+  "expectedDeadlines": [
+    {
+      "deadlineType": "FURTHER_DISCOVERY_CONTROL",
+      "date": "2028-04-20",
+      "sourceDocNo": 18,
+      "ruleSourceApplied": "doc_018_cc_order",
+      "status": "source_supported_auto_saved",
+      "supersedes": [
+        "COMPLIANCE_CONFERENCE"
+      ]
+    },
+    {
+      "deadlineType": "FURTHER_COMPLIANCE_CONFERENCE",
+      "date": "2028-05-27",
+      "sourceDocNo": 18,
+      "ruleSourceApplied": "doc_018_cc_order",
+      "status": "source_supported_auto_saved",
+      "supersedes": [
+        "PRETRIAL_OR_FURTHER_CONFERENCE"
+      ]
+    }
+  ],
+  "expectedHumanReviewItems": [
+    "Verify that the new Compliance Conference Order (Doc. No. 18) is consistent with the case schedule and does not conflict with any remaining deposition deadlines or other discovery obligations.",
+    "Confirm that the supersession clause validly replaces the earlier CC order deadlines without affecting other orders (e.g., the so-ordered deposition stipulation)."
+  ],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "doc_013_pc_order",
+    "doc_015_cc_order",
+    "doc_017_so_ordered_stipulation",
+    "doc_018_cc_order",
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

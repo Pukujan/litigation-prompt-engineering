@@ -1,0 +1,2476 @@
+{
+  "meta": {
+    "datasetId": "synthetic_queens_tcf_001_rule_authority_v001",
+    "name": "Golden dataset synthetic_queens_tcf_001_rule_authority_v001",
+    "generatedAt": "2026-05-24T18:41:29.614Z",
+    "purpose": "Authoring pipeline expected outputs for evaluating Case Filing AI.",
+    "importantNote": "Synthetic eval fixture; not legal advice or court-certified record.",
+    "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+    "authoringRunId": "adca49f7-6564-43c5-a86f-8ed87384e0e8",
+    "authorModel": "deepseek/deepseek-v4-pro",
+    "masterPromptVersion": "v001",
+    "modelInventoryVersion": "2026-05-24T17:58:17.244Z",
+    "promptInventoryVersion": "2026-05-24T17:58:16.633Z",
+    "importStamp": "2026-05-24_17-42-31Z",
+    "auditArtifact": "golden_audit.json"
+  },
+  "caseIdentity": {
+    "caseId": "synthetic_queens_tcf_001",
+    "county": "Queens",
+    "court": "Supreme Court of the State of New York, County of Queens",
+    "indexNumber": "900001/2026",
+    "caseName": "Jane Doe as Parent and Natural Guardian of A.D., an Infant v. Jordan Smith, M.D., et al.",
+    "caseType": "medical_malpractice",
+    "judgeName": "Hon. Tracy Catapano-Fox",
+    "partName": "Medical, Dental and Podiatric Malpractice Part",
+    "synthetic": true,
+    "syntheticNotice": "Synthetic Queens med-mal package (Catapano-Fox part). No real party data."
+  },
+  "expectedProcessingRule": {
+    "processOrder": [
+      "NYSCEF document number ascending",
+      "filed date/time ascending",
+      "filename order",
+      "upload order"
+    ],
+    "coreRule": "Prior case snapshot may guide interpretation, but only the current document can confirm facts.",
+    "snapshotUpdateRule": "Run doc-level eval/guardrail check before promoting extracted items into rolling case snapshot."
+  },
+  "documentExpectedOutputs": [
+    {
+      "docIndex": 1,
+      "docKey": "doc-001",
+      "expectedDocumentType": "SUMMONS_AND_VERIFIED_COMPLAINT",
+      "expectedTitle": "doc_001_SUMMONS_AND_VERIFIED_COMPLAINT.pdf",
+      "expectedFilingDate": "2026-11-12",
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": null,
+      "expectedPageCount": null,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1463,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "confidence": "high",
+        "issues": []
+      },
+      "expectedConfirmedFacts": [],
+      "expectedParties": [
+        {
+          "role": "plaintiff",
+          "name": "Jane Doe as Parent and Natural Guardian of A.D., an Infant",
+          "type": "individual",
+          "counsel": "Hudson River Trial Law PLLC by Alex Morgan, Esq."
+        },
+        {
+          "role": "defendant",
+          "name": "Jordan Smith, M.D.",
+          "type": "individual",
+          "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+        },
+        {
+          "role": "defendant",
+          "name": "Jordan Smith, M.D., P.C.",
+          "type": "corporation",
+          "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+        }
+      ],
+      "expectedTasks": [],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 2,
+      "docKey": "doc-002",
+      "expectedDocumentType": "",
+      "expectedTitle": "doc_002_NOTICE_OF_COMMENCEMENT_PERSONAL_INJURIES.pdf",
+      "expectedFilingDate": "2026-11-12",
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": 2,
+      "expectedPageCount": null,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1438,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "confidence": "high",
+        "notes": "Synthetic document with clear metadata and content."
+      },
+      "expectedConfirmedFacts": [
+        "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+        "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+        "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+        "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+        "Nature of suit: medical malpractice - prenatal and obstetrical care.",
+        "Index Number: 900001/2026.",
+        "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox."
+      ],
+      "expectedParties": [
+        {
+          "name": "Jane Doe as Parent and Natural Guardian of A.D., an Infant",
+          "role": "plaintiff",
+          "counsel": "Hudson River Trial Law PLLC by Alex Morgan, Esq."
+        },
+        {
+          "name": "Jordan Smith, M.D.",
+          "role": "defendant",
+          "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+        },
+        {
+          "name": "Jordan Smith, M.D., P.C.",
+          "role": "defendant",
+          "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+        }
+      ],
+      "expectedTasks": [],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 3,
+      "docKey": "doc-003",
+      "expectedDocumentType": "",
+      "expectedTitle": "doc_003_ANSWER.pdf",
+      "expectedFilingDate": "2026-12-03",
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": 3,
+      "expectedPageCount": 1,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1326,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "confidence": "high",
+        "isSynthetic": true,
+        "notes": "Verified Answer extracted from structured synthetic NYSCEF filing."
+      },
+      "expectedConfirmedFacts": [],
+      "expectedParties": [
+        {
+          "name": "Jane Doe as Parent and Natural Guardian of A.D., an Infant",
+          "role": "plaintiff",
+          "attorney": "Alex Morgan, Esq.",
+          "firm": "Hudson River Trial Law PLLC"
+        },
+        {
+          "name": "Jordan Smith, M.D.",
+          "role": "defendant",
+          "attorney": "Taylor Reed, Esq.",
+          "firm": "Harbor Defense & Medical Liability LLP"
+        },
+        {
+          "name": "Jordan Smith, M.D., P.C.",
+          "role": "defendant",
+          "attorney": "Taylor Reed, Esq.",
+          "firm": "Harbor Defense & Medical Liability LLP"
+        }
+      ],
+      "expectedTasks": [
+        {
+          "taskType": "ANSWER_RECEIVED",
+          "status": "source_supported_auto_saved",
+          "dueDate": null,
+          "sourceAuthority": "Document Content",
+          "sourceName": null,
+          "sourceDocNo": 3,
+          "ruleSourceApplied": null,
+          "authorityRank": null,
+          "supersedes": null,
+          "sourceText": "ANSWER_RECEIVED | status=source_supported_auto_saved | dueDate=",
+          "sourcePage": null
+        }
+      ],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 4,
+      "docKey": "doc-004",
+      "expectedDocumentType": "DEMAND_FOR_BILL_OF_PARTICULARS",
+      "expectedTitle": "DEMAND_FOR_BILL_OF_PARTICULARS",
+      "expectedFilingDate": "2026-12-03",
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": 4,
+      "expectedPageCount": 1,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1493,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "extractionConfidence": 1,
+        "isSynthetic": true,
+        "needsHumanReview": false
+      },
+      "expectedConfirmedFacts": [],
+      "expectedParties": [],
+      "expectedTasks": [
+        {
+          "taskType": "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND",
+          "status": "source_supported_auto_saved",
+          "dueDate": "2027-01-02",
+          "assignedTo": "Plaintiff counsel",
+          "sourceAuthority": "CPLR 3042(a)",
+          "sourceDocNo": 4,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+          "relevantText": "Response period stated in demand: 30 days after service."
+        }
+      ],
+      "expectedDeadlines": [
+        {
+          "deadlineType": "BP_RESPONSE_DEADLINE",
+          "date": "2027-01-02",
+          "sourceDocNo": 4,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+          "sourceText": "Demand for Bill of Particulars served 2026-12-03, response due 30 days later."
+        }
+      ],
+      "expectedHumanReviewItems": [],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 5,
+      "docKey": "doc-005",
+      "expectedDocumentType": "",
+      "expectedTitle": "doc_005_NOTICE_TO_TAKE_DEPOSITION.pdf",
+      "expectedFilingDate": null,
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": 5,
+      "expectedPageCount": 1,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1527,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "completeness": "high",
+        "confidence": 0.95,
+        "notes": "Synthetic notice content clear; noticed date inferred from expected deadlines."
+      },
+      "expectedConfirmedFacts": [],
+      "expectedParties": [],
+      "expectedTasks": [
+        {
+          "taskType": "TRACK_PLAINTIFF_DEPOSITION_NOTICE",
+          "status": "conditional",
+          "dueDate": null,
+          "description": "Defendants have noticed plaintiff's deposition for April 30, 2027. This is conditional and subject to court order at PC/CC.",
+          "sourceDocNo": 5,
+          "ruleSourceApplied": "cplr_article_31_disclosure",
+          "sourceAuthority": "CPLR Article 31",
+          "authorityRank": null,
+          "supersedes": null,
+          "sourceText": "Defendants notice plaintiff deposition, with date/time/location stated in the notice. In workflow handling, the noticed date should be treated as a proposed deposition event unless later court order controls.",
+          "sourcePage": null
+        }
+      ],
+      "expectedDeadlines": [
+        {
+          "deadlineType": "PLAINTIFF_EBT_NOTICE_DATE",
+          "date": "2027-04-30",
+          "sourceDocNo": 5,
+          "ruleSourceApplied": "cplr_article_31_disclosure",
+          "sourceAuthority": "Notice to Take Deposition",
+          "status": "conditional",
+          "note": "Proposed deposition date; may be superseded by PC/CC order.",
+          "authorityRank": null,
+          "supersedes": null,
+          "sourceText": "Expected PLAINTIFF_EBT_NOTICE_DATE from synthetic document.",
+          "sourcePage": null
+        }
+      ],
+      "expectedHumanReviewItems": [],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 6,
+      "docKey": "doc-006",
+      "expectedDocumentType": "",
+      "expectedTitle": "doc_006_DEMAND_FOR_AUTHORIZATIONS.pdf",
+      "expectedFilingDate": null,
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": 6,
+      "expectedPageCount": 1,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1412,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "confidence": "high",
+        "notes": "Synthetic document with clear content and metadata."
+      },
+      "expectedConfirmedFacts": [],
+      "expectedParties": [],
+      "expectedTasks": [
+        {
+          "taskType": "RESPOND_TO_AUTHORIZATION_DEMANDS",
+          "status": "source_supported_auto_saved",
+          "dueDate": null,
+          "sourceAuthority": "CPLR 3120",
+          "sourceName": "Demand for Authorizations",
+          "sourceDocNo": 6,
+          "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+          "authorityRank": null,
+          "supersedes": null,
+          "sourceText": "Defendants demand HIPAA-compliant authorizations for medical, hospital, employment, school, collateral source, and related records. Demand is made pursuant to CPLR 3120.",
+          "sourcePage": null
+        }
+      ],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 7,
+      "docKey": "doc-007",
+      "expectedDocumentType": "",
+      "expectedTitle": "doc_007_DEMAND_FOR_STATEMENTS_AND_PHOTOS.pdf",
+      "expectedFilingDate": null,
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": 7,
+      "expectedPageCount": 1,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1437,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "confidence": "high",
+        "issues": []
+      },
+      "expectedConfirmedFacts": [],
+      "expectedParties": [],
+      "expectedTasks": [
+        {
+          "taskId": "RESPOND_TO_STATEMENTS_AND_PHOTOS_DEMAND",
+          "description": "Respond to Demand for Statements and Photographs",
+          "sourceAuthority": "cplr_3101_disclosure",
+          "sourceName": "CPLR 3101",
+          "sourceDocNo": 7,
+          "ruleSourceApplied": "cplr_3101_disclosure",
+          "status": "needs_service_date",
+          "dueDate": null,
+          "notes": "Demand requests production within 14 days after receipt, but service date is unknown; deadline cannot be fixed until service date is established."
+        }
+      ],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 8,
+      "docKey": "doc-008",
+      "expectedDocumentType": "Demand Pursuant to Medicare, Medicaid and SCHIP Extension Act",
+      "expectedTitle": "Demand Pursuant to Medicare, Medicaid and SCHIP Extension Act",
+      "expectedFilingDate": "2026-12-03",
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": null,
+      "expectedPageCount": null,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1468,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "confidence": "high",
+        "issues": []
+      },
+      "expectedConfirmedFacts": [],
+      "expectedParties": [],
+      "expectedTasks": [
+        {
+          "taskType": "RESPOND_TO_MEDICARE_MEDICAID_SCHIP_DEMAND",
+          "status": "needs_service_date",
+          "dueDate": null,
+          "sourceDocNo": 8,
+          "sourceAuthority": "CPLR 3120",
+          "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+          "supercedes": null,
+          "sourceText": "Demand requests response within 20 days.",
+          "sourcePage": 1
+        }
+      ],
+      "expectedDeadlines": [
+        {
+          "deadlineType": "MEDICARE_MEDICAID_SCHIP_DEMAND_RESPONSE",
+          "date": "2026-12-23",
+          "sourceDocNo": 8,
+          "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+          "sourceText": "Demand requests response within 20 days. Assuming service on filed date 2026-12-03.",
+          "sourcePage": 1,
+          "supersedes": null,
+          "status": "conditional"
+        }
+      ],
+      "expectedHumanReviewItems": [
+        {
+          "item": "Verify service date of this demand. The document states 'Demand requests response within 20 days' but does not specify when service occurred. For deadline calculation, assumed service date equals filed date of 2026-12-03, giving a response deadline of 2026-12-23. If service was later, adjust deadline accordingly."
+        }
+      ],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 9,
+      "docKey": "doc-009",
+      "expectedDocumentType": "NOTICE_OF_MEDICAL_MALPRACTICE",
+      "expectedTitle": "doc_009_NOTICE_OF_MEDICAL_MALPRACTICE.pdf",
+      "expectedFilingDate": "2027-02-28",
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": 9,
+      "expectedPageCount": 2,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1846,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "confidence": 0.95,
+        "extractedBy": "ai",
+        "needsHumanReview": false
+      },
+      "expectedConfirmedFacts": [],
+      "expectedParties": [],
+      "expectedTasks": [
+        {
+          "taskType": "TRACK_MEDICAL_MALPRACTICE_NOTICE",
+          "status": "source_supported_auto_saved",
+          "sourceDocNo": 9,
+          "ruleSourceApplied": "uniform_rule_202_56_medmal",
+          "sourceAuthority": "22 NYCRR 202.56",
+          "description": "Notice of Medical Malpractice Action filed. Track for medical malpractice conference processing."
+        },
+        {
+          "taskType": "MONITOR_MEDMAL_RJI_AND_PRELIMINARY_CONFERENCE",
+          "status": "conditional",
+          "sourceDocNo": 9,
+          "ruleSourceApplied": "uniform_rule_202_56_medmal",
+          "description": "Monitor for filing of Request for Judicial Intervention (RJI) and scheduling of preliminary conference pursuant to medical malpractice rules."
+        }
+      ],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [
+        {
+          "item": "Notice states that required pleadings and bill of particulars materials have been filed or served. Verify if bill of particulars response has been served and update RESPOND_TO_BILL_OF_PARTICULARS_DEMAND task accordingly.",
+          "sourceDocNo": 9
+        }
+      ],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 10,
+      "docKey": "doc-010",
+      "expectedDocumentType": "",
+      "expectedTitle": "doc_010_RJI_MEDICAL_DENTAL_PODIATRIC_MALPRACTICE.pdf",
+      "expectedFilingDate": null,
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": 10,
+      "expectedPageCount": 2,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1715,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "confidence": "high",
+        "notes": "Synthetic document with clear metadata and content. All facts extracted from provided text."
+      },
+      "expectedConfirmedFacts": [
+        "Request for Judicial Intervention (RJI) filed on 2027-02-28 for medical, dental or podiatric malpractice case.",
+        "RJI identifies case as tort / medical, dental or podiatric malpractice matter.",
+        "RJI places case into Queens Medical, Dental and Podiatric Malpractice Part workflow.",
+        "RJI triggers monitoring for preliminary conference scheduling or order issuance."
+      ],
+      "expectedParties": [],
+      "expectedTasks": [
+        {
+          "taskId": "AWAIT_MEDMAL_PRELIMINARY_CONFERENCE",
+          "description": "Monitor for preliminary conference scheduling or order issuance following RJI filing.",
+          "status": "conditional",
+          "sourceAuthority": "Part Rules",
+          "sourceName": "Medical, Dental and Podiatric Malpractice Conference and Part Rules - Justice Tracy Catapano-Fox",
+          "sourceDocNo": 10,
+          "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox",
+          "authorityRank": 70,
+          "sourceText": "Upon filing of an answer, issue is joined and the case proceeds to discovery tracking under the applicable part rules.",
+          "sourcePage": "N/A"
+        }
+      ],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 11,
+      "docKey": "doc-011",
+      "expectedDocumentType": "BILL_OF_PARTICULARS",
+      "expectedTitle": "doc_011_BILL_OF_PARTICULARS.pdf",
+      "expectedFilingDate": "2027-03-18",
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": 11,
+      "expectedPageCount": 2,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1698,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "confidence": "high",
+        "notes": "Synthetic document clearly states it is a Verified Bill of Particulars served by plaintiff in response to defendants' demand. All metadata extracted from document header."
+      },
+      "expectedConfirmedFacts": [],
+      "expectedParties": [
+        {
+          "name": "Jane Doe as Parent and Natural Guardian of A.D., an Infant",
+          "role": "Plaintiff",
+          "counsel": "Hudson River Trial Law PLLC by Alex Morgan, Esq."
+        },
+        {
+          "name": "Jordan Smith, M.D.",
+          "role": "Defendant",
+          "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+        },
+        {
+          "name": "Jordan Smith, M.D., P.C.",
+          "role": "Defendant",
+          "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+        }
+      ],
+      "expectedTasks": [
+        {
+          "taskId": "MARK_BILL_OF_PARTICULARS_SERVED",
+          "status": "source_supported_auto_saved",
+          "sourceAuthority": "CPLR 3041, 3042",
+          "sourceName": "Verified Bill of Particulars",
+          "sourceDocNo": 11,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+          "authorityRank": 70,
+          "sourceText": "Verified Bill of Particulars served by plaintiff in response to defendants' demand.",
+          "sourcePage": 1
+        },
+        {
+          "taskId": "REVIEW_BILL_OF_PARTICULARS_FOR_DISCOVERY_NEEDS",
+          "status": "conditional",
+          "sourceAuthority": "CPLR 3042, 3043; Part Rules",
+          "sourceName": "Verified Bill of Particulars",
+          "sourceDocNo": 11,
+          "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox",
+          "authorityRank": 70,
+          "sourceText": "The Bill of Particulars sets forth synthetic allegations of departure from accepted medical care and claimed injuries. The document may inform later deposition and authorization tasks.",
+          "sourcePage": 1
+        }
+      ],
+      "expectedDeadlines": [
+        {
+          "deadlineType": "BP_RESPONSE_DEADLINE",
+          "date": "2027-01-02",
+          "sourceDocNo": 4,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+          "status": "superseded",
+          "supersededBy": "Bill of Particulars served on 2027-03-18 (Doc. No. 11)",
+          "notes": "Original deadline was 2027-01-02. Service occurred on 2027-03-18, which is late. This deadline is now superseded by the actual service date, but lateness may be an issue."
+        }
+      ],
+      "expectedHumanReviewItems": [
+        "Verify that the Bill of Particulars was served within the time required by CPLR 3042 or any court order. The demand was served on 2026-12-03 with a 30-day response deadline of 2027-01-02. Service on 2027-03-18 is late. Determine if a stipulation or court order extended the time.",
+        "Review the content of the Bill of Particulars for completeness and compliance with CPLR 3043. The synthetic document does not provide the actual allegations or claimed injuries.",
+        "Confirm that the Bill of Particulars was verified as required by CPLR 3044."
+      ],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 12,
+      "docKey": "doc-012",
+      "expectedDocumentType": "PROPOSED_PRELIMINARY_CONFERENCE_ORDER",
+      "expectedTitle": "doc_012_PROPOSED_PRELIMINARY_CONFERENCE_ORDER.pdf",
+      "expectedFilingDate": "2027-03-20",
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": 12,
+      "expectedPageCount": 2,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 2114,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "confidence": "high",
+        "notes": "Synthetic document with clear content."
+      },
+      "expectedConfirmedFacts": [],
+      "expectedParties": [],
+      "expectedTasks": [
+        {
+          "taskId": "REVIEW_PROPOSED_PRELIMINARY_CONFERENCE_ORDER",
+          "taskType": "REVIEW_DOCUMENT",
+          "description": "Review proposed preliminary conference order for completeness and compliance with part rules.",
+          "status": "conditional",
+          "sourceDocNo": 12,
+          "ruleSourceApplied": "queens_medmal_pc_form",
+          "assignedTo": "Court"
+        },
+        {
+          "taskId": "TRACK_PROPOSED_PLAINTIFF_DEPOSITION_DATE",
+          "taskType": "TRACK_DEADLINE",
+          "description": "Track proposed plaintiff deposition date of 2027-06-19.",
+          "status": "conditional",
+          "sourceDocNo": 12,
+          "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox",
+          "dueDate": "2027-06-19"
+        },
+        {
+          "taskId": "TRACK_PROPOSED_AUTHORIZATIONS_AND_RECORDS_EXCHANGE",
+          "taskType": "TRACK_DISCOVERY",
+          "description": "Track proposed authorizations and records exchange provisions in proposed preliminary conference order.",
+          "status": "conditional",
+          "sourceDocNo": 12,
+          "ruleSourceApplied": "queens_medmal_pc_form"
+        }
+      ],
+      "expectedDeadlines": [
+        {
+          "deadlineType": "PROPOSED_PLAINTIFF_DEPOSITION",
+          "date": "2027-06-19",
+          "status": "conditional",
+          "sourceDocNo": 12,
+          "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox"
+        }
+      ],
+      "expectedHumanReviewItems": [
+        "Review proposed preliminary conference order for consistency with part rules and case status. Ensure all required provisions are included.",
+        "Confirm that the proposed plaintiff deposition date of 2027-06-19 is within 90 days of the anticipated preliminary conference order date.",
+        "Verify that the proposed order addresses all outstanding discovery demands and deadlines."
+      ],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 13,
+      "docKey": "doc-013",
+      "expectedDocumentType": "",
+      "expectedTitle": "doc_013_ORDER_PRELIMINARY_CONFERENCE.pdf",
+      "expectedFilingDate": null,
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": 13,
+      "expectedPageCount": 1,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1691,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "overallAccuracy": "high",
+        "notes": "All key deadlines and order details extracted accurately."
+      },
+      "expectedConfirmedFacts": [],
+      "expectedParties": [],
+      "expectedTasks": [
+        {
+          "taskName": "COMPLETE_PLAINTIFF_DEPOSITION",
+          "status": "source_supported_auto_saved",
+          "dueDate": "2027-07-29",
+          "sourceAuthority": "Preliminary Conference Order (Doc. No. 13)",
+          "sourceDocNo": 13,
+          "ruleSourceApplied": "doc_013_pc_order",
+          "authorityRank": 90,
+          "supersedes": [
+            "PROPOSED_PLAINTIFF_DEPOSITION (Doc. No. 12)",
+            "PLAINTIFF_EBT_NOTICE_DATE (Doc. No. 5)"
+          ]
+        },
+        {
+          "taskName": "COMPLETE_DEFENDANT_DEPOSITIONS",
+          "status": "source_supported_auto_saved",
+          "dueDate": "2027-09-29",
+          "sourceAuthority": "Preliminary Conference Order (Doc. No. 13)",
+          "sourceDocNo": 13,
+          "ruleSourceApplied": "doc_013_pc_order",
+          "authorityRank": 90
+        }
+      ],
+      "expectedDeadlines": [
+        {
+          "deadlineType": "PLAINTIFF_DEPOSITION",
+          "date": "2027-07-29",
+          "sourceAuthority": "Preliminary Conference Order (Doc. No. 13)",
+          "sourceDocNo": 13,
+          "ruleSourceApplied": "doc_013_pc_order",
+          "status": "source_supported_auto_saved"
+        },
+        {
+          "deadlineType": "DEFENDANT_DEPOSITIONS",
+          "date": "2027-09-29",
+          "sourceAuthority": "Preliminary Conference Order (Doc. No. 13)",
+          "sourceDocNo": 13,
+          "ruleSourceApplied": "doc_013_pc_order",
+          "status": "source_supported_auto_saved"
+        }
+      ],
+      "expectedHumanReviewItems": [
+        {
+          "description": "Verify that the deposition deadlines comply with applicable part rules and that no other deadlines (e.g., for authorizations) are required by the conference order.",
+          "source": "doc_013_pc_order"
+        }
+      ],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "doc_013_pc_order",
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 14,
+      "docKey": "doc-014",
+      "expectedDocumentType": "PROPOSED_COMPLIANCE_CONFERENCE_ORDER",
+      "expectedTitle": "Proposed Compliance Conference Order",
+      "expectedFilingDate": "2027-07-21",
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": null,
+      "expectedPageCount": null,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1446,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "confidence": "high",
+        "extractionMethod": "structured_fields_from_synthetic_document"
+      },
+      "expectedConfirmedFacts": [],
+      "expectedParties": [],
+      "expectedTasks": [
+        {
+          "taskName": "REVIEW_PROPOSED_CC_ORDER",
+          "status": "conditional",
+          "dueDate": null,
+          "sourceAuthority": "Case Filing",
+          "sourceName": "Proposed Compliance Conference Order",
+          "sourceDocNo": 14,
+          "ruleSourceApplied": "queens_medmal_cc_form",
+          "authorityRank": 60,
+          "sourceText": "Parties submit a proposed compliance conference order in the Queens Medical Malpractice Part. Proposed order tracks outstanding discovery and deposition dates. Because this is proposed, do not treat it as controlling unless so-ordered or later accepted.",
+          "sourcePage": null,
+          "supersedes": null
+        }
+      ],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [
+        "Review proposed compliance conference order for completeness and compliance with part rules and prior Preliminary Conference Order (Doc. No. 13). Once so-ordered, it will establish binding deadlines."
+      ],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "doc_013_pc_order",
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 15,
+      "docKey": "doc-015",
+      "expectedDocumentType": "ORDER_COMPLIANCE_CONFERENCE",
+      "expectedTitle": "doc_015_ORDER_COMPLIANCE_CONFERENCE.pdf",
+      "expectedFilingDate": "2027-08-14",
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": null,
+      "expectedPageCount": 1,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1508,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "confidence": "high",
+        "issues": []
+      },
+      "expectedConfirmedFacts": [],
+      "expectedParties": [],
+      "expectedTasks": [
+        {
+          "taskName": "TRACK_COMPLIANCE_CONFERENCE_ORDER",
+          "status": "source_supported_auto_saved",
+          "dueDate": null,
+          "sourceDocNo": 15,
+          "ruleSourceApplied": "doc_015_cc_order",
+          "authorityRank": 90,
+          "sourceText": "Compliance Conference Order is issued.",
+          "sourcePage": 1,
+          "notes": "Order issued; monitor compliance with its terms and upcoming dates."
+        }
+      ],
+      "expectedDeadlines": [
+        {
+          "deadlineType": "COMPLIANCE_CONFERENCE",
+          "date": "2027-12-15",
+          "sourceDocNo": 15,
+          "ruleSourceApplied": "doc_015_cc_order",
+          "status": "source_supported_auto_saved",
+          "notes": "Conference/control date set by Compliance Conference Order."
+        },
+        {
+          "deadlineType": "PRETRIAL_OR_FURTHER_CONFERENCE",
+          "date": "2028-02-11",
+          "sourceDocNo": 15,
+          "ruleSourceApplied": "doc_015_cc_order",
+          "status": "source_supported_auto_saved",
+          "notes": "Pretrial or further compliance date set by Compliance Conference Order."
+        }
+      ],
+      "expectedHumanReviewItems": [
+        "Review whether the Compliance Conference Order supersedes any prior discovery deadlines, particularly the deposition deadlines set in the Preliminary Conference Order (Doc. No. 13). The order states it may supersede earlier discovery dates where inconsistent, but no explicit inconsistency is apparent. Confirm with court rules or practice."
+      ],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "doc_013_pc_order",
+        "doc_015_cc_order",
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 16,
+      "docKey": "doc-016",
+      "expectedDocumentType": "STIPULATION_DISCOVERY_REQUEST_TO_SO_ORDER",
+      "expectedTitle": "doc_016_STIPULATION_DISCOVERY_REQUEST_TO_SO_ORDER.pdf",
+      "expectedFilingDate": "2027-09-15",
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": 16,
+      "expectedPageCount": 1,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1402,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "confidence": "high",
+        "completeness": "complete"
+      },
+      "expectedConfirmedFacts": [],
+      "expectedParties": [],
+      "expectedTasks": [
+        {
+          "taskName": "REVIEW_DISCOVERY_STIPULATION_FOR_SO_ORDER",
+          "status": "conditional",
+          "dueDate": null,
+          "sourceAuthority": "Case-specific proposed stipulation (Doc. No. 16)",
+          "ruleSourceApplied": "discovery_stipulation_rules",
+          "sourceDocNo": 16,
+          "sourceText": "Parties stipulate to extend plaintiff deposition to 2027-10-24 and defendants' depositions to 2027-11-24; not controlling until so-ordered.",
+          "notes": "Stipulation must be so-ordered by the court to become binding. Monitor for court action."
+        }
+      ],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [
+        "Verify if stipulation is timely or if plaintiff deposition deadline of 2027-07-29 has already passed without compliance; determine if court will so-order retroactive extension.",
+        "Review whether the proposed dates conflict with any other deadlines; the compliance conference is set for 2027-12-15, and proposed depositions are before that date, but confirm with court schedule."
+      ],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "doc_013_pc_order",
+        "doc_015_cc_order",
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 17,
+      "docKey": "doc-017",
+      "expectedDocumentType": "",
+      "expectedTitle": "doc_017_STIPULATION_SO_ORDERED.pdf",
+      "expectedFilingDate": "2027-09-22",
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": null,
+      "expectedPageCount": null,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1633,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "confidence": "high"
+      },
+      "expectedConfirmedFacts": [],
+      "expectedParties": [],
+      "expectedTasks": [
+        {
+          "taskName": "COMPLETE_PLAINTIFF_DEPOSITION",
+          "status": "source_supported_auto_saved",
+          "dueDate": "2027-10-24",
+          "sourceDocNo": 17,
+          "ruleSourceApplied": "doc_017_so_ordered_stipulation",
+          "authorityRank": 90,
+          "supersedes": "COMPLETE_PLAINTIFF_DEPOSITION with previous due date 2027-07-29",
+          "sourceText": "2. Plaintiff deposition extended to 2027-10-24."
+        },
+        {
+          "taskName": "COMPLETE_DEFENDANT_DEPOSITIONS",
+          "status": "source_supported_auto_saved",
+          "dueDate": "2027-11-24",
+          "sourceDocNo": 17,
+          "ruleSourceApplied": "doc_017_so_ordered_stipulation",
+          "authorityRank": 90,
+          "supersedes": "COMPLETE_DEFENDANT_DEPOSITIONS with previous due date 2027-09-29",
+          "sourceText": "3. Defendants' depositions extended to 2027-11-24."
+        }
+      ],
+      "expectedDeadlines": [
+        {
+          "deadlineType": "PLAINTIFF_DEPOSITION_SUPERSEDING",
+          "date": "2027-10-24",
+          "sourceDocNo": 17,
+          "ruleSourceApplied": "doc_017_so_ordered_stipulation",
+          "status": "source_supported_auto_saved",
+          "supersedes": "PLAINTIFF_DEPOSITION from Doc. No. 13"
+        },
+        {
+          "deadlineType": "DEFENDANT_DEPOSITIONS_SUPERSEDING",
+          "date": "2027-11-24",
+          "sourceDocNo": 17,
+          "ruleSourceApplied": "doc_017_so_ordered_stipulation",
+          "status": "source_supported_auto_saved",
+          "supersedes": "DEFENDANT_DEPOSITIONS from Doc. No. 13"
+        }
+      ],
+      "expectedHumanReviewItems": [
+        "Verify that the extension is timely given that the original plaintiff deposition deadline of 2027-07-29 had passed; the court so-ordered the stipulation, making it binding, but note potential untimeliness if challenged."
+      ],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "doc_013_pc_order",
+        "doc_015_cc_order",
+        "doc_017_so_ordered_stipulation",
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 18,
+      "docKey": "doc-018",
+      "expectedDocumentType": "ORDER_COMPLIANCE_CONFERENCE",
+      "expectedTitle": "doc_018_ORDER_COMPLIANCE_CONFERENCE.pdf",
+      "expectedFilingDate": "2027-12-02",
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": 18,
+      "expectedPageCount": 1,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1472,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "confidence": 0.99,
+        "notes": "All key dates and the supersession clause extracted directly from document text."
+      },
+      "expectedConfirmedFacts": [],
+      "expectedParties": [
+        {
+          "role": "plaintiff",
+          "name": "Jane Doe as Parent and Natural Guardian of A.D., an Infant"
+        },
+        {
+          "role": "defendant",
+          "name": "Jordan Smith, M.D."
+        },
+        {
+          "role": "defendant",
+          "name": "Jordan Smith, M.D., P.C."
+        }
+      ],
+      "expectedTasks": [
+        {
+          "taskName": "TRACK_UPDATED_COMPLIANCE_ORDER",
+          "status": "source_supported_auto_saved",
+          "sourceDocNo": 18,
+          "ruleSourceApplied": "doc_018_cc_order",
+          "dueDate": null,
+          "notes": "New compliance conference order issued with updated discovery/control and conference dates. Supersedes previous CC order (Doc. No. 15)."
+        }
+      ],
+      "expectedDeadlines": [
+        {
+          "deadlineType": "FURTHER_DISCOVERY_CONTROL",
+          "date": "2028-04-20",
+          "sourceDocNo": 18,
+          "ruleSourceApplied": "doc_018_cc_order",
+          "status": "source_supported_auto_saved",
+          "supersedes": [
+            "COMPLIANCE_CONFERENCE"
+          ]
+        },
+        {
+          "deadlineType": "FURTHER_COMPLIANCE_CONFERENCE",
+          "date": "2028-05-27",
+          "sourceDocNo": 18,
+          "ruleSourceApplied": "doc_018_cc_order",
+          "status": "source_supported_auto_saved",
+          "supersedes": [
+            "PRETRIAL_OR_FURTHER_CONFERENCE"
+          ]
+        }
+      ],
+      "expectedHumanReviewItems": [
+        "Verify that the new Compliance Conference Order (Doc. No. 18) is consistent with the case schedule and does not conflict with any remaining deposition deadlines or other discovery obligations.",
+        "Confirm that the supersession clause validly replaces the earlier CC order deadlines without affecting other orders (e.g., the so-ordered deposition stipulation)."
+      ],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "doc_013_pc_order",
+        "doc_015_cc_order",
+        "doc_017_so_ordered_stipulation",
+        "doc_018_cc_order",
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 19,
+      "docKey": "doc-019",
+      "expectedDocumentType": "",
+      "expectedTitle": "doc_019_ORDER_COMPLIANCE_CONFERENCE_DUPLICATE_OR_REFILED.pdf",
+      "expectedFilingDate": "2027-12-09",
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": 19,
+      "expectedPageCount": 1,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1646,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "confidence": "high",
+        "isSynthetic": true,
+        "notes": "Synthetic NYSCEF-style filing with explicit expected tasks and deadlines."
+      },
+      "expectedConfirmedFacts": [],
+      "expectedParties": [],
+      "expectedTasks": [
+        {
+          "taskType": "CONFIRM_DUPLICATE_OR_REFILED_CC_ORDER",
+          "description": "Flag for duplicate/refiling confirmation before creating duplicate tasks.",
+          "status": "needs_review",
+          "dueDate": null,
+          "sourceDocNo": 19,
+          "ruleSourceApplied": "doc_019_duplicate_or_refiled_cc_order",
+          "sourceAuthority": "case_order",
+          "authorityRank": 90,
+          "supersedes": null,
+          "sourceText": "Compliance Conference Order appears to repeat or refile the prior compliance order. Flag for duplicate/refiling confirmation before creating duplicate tasks.",
+          "sourcePage": null
+        }
+      ],
+      "expectedDeadlines": [
+        {
+          "deadlineType": "FURTHER_DISCOVERY_CONTROL",
+          "date": "2028-04-20",
+          "sourceDocNo": 19,
+          "ruleSourceApplied": "doc_019_duplicate_or_refiled_cc_order",
+          "status": "duplicate",
+          "supersedes": null,
+          "authorityRank": 90,
+          "sourceText": "Further discovery/control date remains 2028-04-20."
+        },
+        {
+          "deadlineType": "FURTHER_COMPLIANCE_CONFERENCE",
+          "date": "2028-05-27",
+          "sourceDocNo": 19,
+          "ruleSourceApplied": "doc_019_duplicate_or_refiled_cc_order",
+          "status": "duplicate",
+          "supersedes": null,
+          "authorityRank": 90,
+          "sourceText": "Further compliance/pretrial conference date remains 2028-05-27."
+        }
+      ],
+      "expectedHumanReviewItems": [
+        "Confirm whether this compliance conference order (Doc. No. 19) is a true duplicate or a refiling with any modifications before creating duplicate tasks."
+      ],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "doc_013_pc_order",
+        "doc_015_cc_order",
+        "doc_017_so_ordered_stipulation",
+        "doc_018_cc_order",
+        "doc_019_duplicate_or_refiled_cc_order",
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 20,
+      "docKey": "doc-020",
+      "expectedDocumentType": "PLAINTIFF_POST_EBT_DEMANDS",
+      "expectedTitle": "doc_020_PLAINTIFF_POST_EBT_DEMANDS.pdf",
+      "expectedFilingDate": "2028-03-19",
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": 20,
+      "expectedPageCount": 1,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1453,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "confidence": "high",
+        "notes": "Document clearly states post-EBT demands, response deadline, and rule sources."
+      },
+      "expectedConfirmedFacts": [],
+      "expectedParties": [],
+      "expectedTasks": [
+        {
+          "taskType": "RESPOND_TO_POST_EBT_DEMANDS",
+          "status": "source_supported_auto_saved",
+          "dueDate": "2028-04-08",
+          "sourceAuthority": "cplr_3120_discovery_and_inspection",
+          "sourceName": "CPLR 3120",
+          "sourceDocNo": 20,
+          "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+          "authorityRank": 50,
+          "sourceText": "Response requested within 20 days after service."
+        }
+      ],
+      "expectedDeadlines": [
+        {
+          "deadlineType": "POST_EBT_DEMAND_RESPONSE",
+          "date": "2028-04-08",
+          "sourceDocNo": 20,
+          "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+          "status": "source_supported_auto_saved",
+          "sourceText": "Response requested within 20 days after service."
+        }
+      ],
+      "expectedHumanReviewItems": [
+        "Verify service date of Post-EBT Demands and calculate response deadline. Confirm that defendant's deposition was completed and that the demands are proper under CPLR 3120 and 3101."
+      ],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "doc_013_pc_order",
+        "doc_015_cc_order",
+        "doc_017_so_ordered_stipulation",
+        "doc_018_cc_order",
+        "doc_019_duplicate_or_refiled_cc_order",
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    },
+    {
+      "docIndex": 21,
+      "docKey": "doc-021",
+      "expectedDocumentType": "ORDER_COMPLIANCE_CONFERENCE",
+      "expectedTitle": "doc_021_ORDER_COMPLIANCE_CONFERENCE.pdf",
+      "expectedFilingDate": "2028-04-10",
+      "expectedReceivedDate": null,
+      "expectedNyscefDocNo": 21,
+      "expectedPageCount": 1,
+      "expectedExtractionQuality": {
+        "method": "embedded_text",
+        "fileKind": "pdf",
+        "textLength": 1359,
+        "ocr_needed": false,
+        "ocr_used": false,
+        "ocr_model": null,
+        "ocr_pages": null,
+        "reviewStatus": "ai_extracted_unreviewed",
+        "note": null,
+        "confidence": "high",
+        "issues": []
+      },
+      "expectedConfirmedFacts": [],
+      "expectedParties": [],
+      "expectedTasks": [
+        {
+          "taskId": "REVIEW_LATER_CC_ORDER_FOR_SUPERSESSION",
+          "description": "Review Compliance Conference Order (Doc. No. 21) for any supersession of prior deadlines.",
+          "status": "needs_review",
+          "sourceAuthority": "doc_021_later_cc_order",
+          "sourceName": "Compliance Conference Order (Doc. No. 21)",
+          "sourceDocNo": 21,
+          "ruleSourceApplied": "doc_021_later_cc_order",
+          "authorityRank": 100,
+          "supersedes": null,
+          "sourceText": "Compliance Conference Order is issued after post-EBT demands. Order continues court supervision of discovery. Use this as a later case-specific order if it modifies prior dates.",
+          "sourcePage": 1
+        }
+      ],
+      "expectedDeadlines": [],
+      "expectedHumanReviewItems": [
+        "Review Compliance Conference Order (Doc. No. 21) for any supersession of prior deadlines. The order does not set new dates; confirm it is a routine supervision order."
+      ],
+      "mustNotCreate": [],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+      "expectedRuleSourcesApplied": [
+        "doc_021_later_cc_order",
+        "doc_013_pc_order",
+        "doc_015_cc_order",
+        "doc_017_so_ordered_stipulation",
+        "doc_018_cc_order",
+        "doc_019_duplicate_or_refiled_cc_order",
+        "queens_medmal_part_rules_catapano_fox",
+        "queens_medmal_cc_form",
+        "queens_medmal_pc_form"
+      ],
+      "expectedRuleAuthorityBehavior": {
+        "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+        "mustUseHighestApplicableAuthority": true,
+        "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+      }
+    }
+  ],
+  "snapshotExpectedOutputs": {
+    "after_doc_001": {
+      "snapshotId": "after_doc_001",
+      "caseId": "synthetic_queens_tcf_001",
+      "afterDocNo": 1,
+      "currentPhase": "commencement",
+      "currentMiniPhase": "service",
+      "confirmedFacts": [
+        "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+        "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+        "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+        "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+        "Nature of suit: medical malpractice - prenatal and obstetrical care.",
+        "Index Number: 900001/2026.",
+        "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox."
+      ],
+      "openTasks": [],
+      "completedTasks": [],
+      "deadlines": [],
+      "supersededDeadlines": [],
+      "conflicts": [],
+      "auditNotes": [
+        "Bootstrap case context from golden dataset for rule matching.",
+        "Extracted parties and case details from Summons and Verified Complaint. No specific deadlines set as service date unknown. Part rules applied but no immediate tasks triggered.",
+        "Processed 001-doc_001_SUMMONS_AND_VERIFIED_COMPLAINT.pdf as document 1"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic snapshot expected output for eval testing.",
+      "expectedRuleAuthorityState": {
+        "activeRuleSetVersion": null,
+        "authorityHierarchy": {},
+        "ruleSourcesAvailable": []
+      }
+    },
+    "after_doc_002": {
+      "snapshotId": "after_doc_002",
+      "caseId": "synthetic_queens_tcf_001",
+      "afterDocNo": 2,
+      "currentPhase": "commencement",
+      "currentMiniPhase": "notice_of_commencement",
+      "confirmedFacts": [
+        "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+        "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+        "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+        "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+        "Nature of suit: medical malpractice - prenatal and obstetrical care.",
+        "Index Number: 900001/2026.",
+        "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox.",
+        "Plaintiff filed Notice of Commencement of Action for Personal Injuries pursuant to CPLR 306-c on 2026-11-12.",
+        "Summons and complaint are referenced as initiating papers."
+      ],
+      "openTasks": [],
+      "completedTasks": [],
+      "deadlines": [],
+      "supersededDeadlines": [],
+      "conflicts": [],
+      "auditNotes": [
+        "Bootstrap case context from golden dataset for rule matching.",
+        "Extracted parties and case details from Summons and Verified Complaint. No specific deadlines set as service date unknown. Part rules applied but no immediate tasks triggered.",
+        "Processed 001-doc_001_SUMMONS_AND_VERIFIED_COMPLAINT.pdf as document 1",
+        "Document is a Notice of Commencement of Action for Personal Injuries under CPLR 306-c.",
+        "No new tasks or deadlines triggered by this filing.",
+        "All metadata and party information consistent with prior snapshot.",
+        "Processed 002-doc_002_NOTICE_OF_COMMENCEMENT_PERSONAL_INJURIES.pdf as document 2"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic snapshot expected output for eval testing.",
+      "expectedRuleAuthorityState": {
+        "activeRuleSetVersion": null,
+        "authorityHierarchy": {},
+        "ruleSourcesAvailable": []
+      }
+    },
+    "after_doc_004": {
+      "snapshotId": "after_doc_004",
+      "caseId": "synthetic_queens_tcf_001",
+      "afterDocNo": 4,
+      "currentPhase": "issue_joined",
+      "currentMiniPhase": "bp_demand_served",
+      "confirmedFacts": [
+        "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+        "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+        "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+        "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+        "Nature of suit: medical malpractice - prenatal and obstetrical care.",
+        "Index Number: 900001/2026.",
+        "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox.",
+        "Plaintiff filed Notice of Commencement of Action for Personal Injuries pursuant to CPLR 306-c on 2026-11-12.",
+        "Summons and complaint are referenced as initiating papers.",
+        "Defendants filed Verified Answer on 2026-12-03, denying liability and asserting affirmative defenses.",
+        "Issue joined as of 2026-12-03.",
+        "Defense counsel appears for both defendants.",
+        "Defendants served Demand for Bill of Particulars on 2026-12-03, demanding a verified bill of particulars within 30 days after service."
+      ],
+      "openTasks": [
+        "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND"
+      ],
+      "completedTasks": [
+        "ANSWER_RECEIVED"
+      ],
+      "deadlines": [
+        {
+          "deadlineType": "BP_RESPONSE_DEADLINE",
+          "date": "2027-01-02",
+          "sourceDocNo": 4,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars"
+        }
+      ],
+      "supersededDeadlines": [],
+      "conflicts": [],
+      "auditNotes": [
+        "Bootstrap case context from golden dataset for rule matching.",
+        "Extracted parties and case details from Summons and Verified Complaint. No specific deadlines set as service date unknown. Part rules applied but no immediate tasks triggered.",
+        "Processed 001-doc_001_SUMMONS_AND_VERIFIED_COMPLAINT.pdf as document 1",
+        "Document is a Notice of Commencement of Action for Personal Injuries under CPLR 306-c.",
+        "No new tasks or deadlines triggered by this filing.",
+        "All metadata and party information consistent with prior snapshot.",
+        "Processed 002-doc_002_NOTICE_OF_COMMENCEMENT_PERSONAL_INJURIES.pdf as document 2",
+        "Extracted ANSWER_RECEIVED task from document content.",
+        "Updated case phase to issue_joined and mini-phase to answer_filed.",
+        "Processed 003-doc_003_ANSWER.pdf as document 3",
+        "Detected Demand for Bill of Particulars (Doc 4). Computed response deadline as 2027-01-02 (30 days from 2026-12-03). Created task RESPOND_TO_BILL_OF_PARTICULARS_DEMAND with auto-saved status.",
+        "Processed 004-doc_004_DEMAND_FOR_BILL_OF_PARTICULARS.pdf as document 4"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic snapshot expected output for eval testing.",
+      "expectedRuleAuthorityState": {
+        "activeRuleSetVersion": null,
+        "authorityHierarchy": {},
+        "ruleSourcesAvailable": []
+      }
+    },
+    "after_doc_008": {
+      "snapshotId": "after_doc_008",
+      "caseId": "synthetic_queens_tcf_001",
+      "afterDocNo": 8,
+      "currentPhase": "discovery",
+      "currentMiniPhase": "authorization_demands_served",
+      "confirmedFacts": [
+        "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+        "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+        "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+        "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+        "Nature of suit: medical malpractice - prenatal and obstetrical care.",
+        "Index Number: 900001/2026.",
+        "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox.",
+        "Plaintiff filed Notice of Commencement of Action for Personal Injuries pursuant to CPLR 306-c on 2026-11-12.",
+        "Summons and complaint are referenced as initiating papers.",
+        "Defendants filed Verified Answer on 2026-12-03, denying liability and asserting affirmative defenses.",
+        "Issue joined as of 2026-12-03.",
+        "Defense counsel appears for both defendants.",
+        "Defendants served Demand for Bill of Particulars on 2026-12-03, demanding a verified bill of particulars within 30 days after service.",
+        "Defendants served a Notice to Take Deposition Upon Oral Examination for plaintiff, setting a proposed deposition date of April 30, 2027.",
+        "Defendants served Demand for Authorizations on 2026-12-03, demanding HIPAA-compliant authorizations for various records pursuant to CPLR 3120.",
+        "Defendants served Demand for Statements and Photographs on 2026-12-03, demanding production of statements, photographs, recordings, reports, and related materials within 14 days after receipt, pursuant to CPLR 3101.",
+        "Defendants served Demand Pursuant to Medicare, Medicaid and SCHIP Extension Act on 2026-12-03, demanding lien/benefit information within 20 days."
+      ],
+      "openTasks": [
+        "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND",
+        "RESPOND_TO_AUTHORIZATION_DEMANDS",
+        "RESPOND_TO_STATEMENTS_AND_PHOTOS_DEMAND",
+        "RESPOND_TO_MEDICARE_MEDICAID_SCHIP_DEMAND"
+      ],
+      "completedTasks": [
+        "ANSWER_RECEIVED"
+      ],
+      "deadlines": [
+        {
+          "deadlineType": "BP_RESPONSE_DEADLINE",
+          "date": "2027-01-02",
+          "sourceDocNo": 4,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars"
+        },
+        {
+          "deadlineType": "PLAINTIFF_EBT_NOTICE_DATE",
+          "date": "2027-04-30",
+          "sourceDocNo": 5,
+          "ruleSourceApplied": "cplr_article_31_disclosure",
+          "status": "conditional"
+        },
+        {
+          "deadlineType": "MEDICARE_MEDICAID_SCHIP_DEMAND_RESPONSE",
+          "date": "2026-12-23",
+          "sourceDocNo": 8,
+          "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+          "status": "conditional"
+        }
+      ],
+      "supersededDeadlines": [],
+      "conflicts": [],
+      "auditNotes": [
+        "Processed 001-doc_001_SUMMONS_AND_VERIFIED_COMPLAINT.pdf as document 1",
+        "Document is a Notice of Commencement of Action for Personal Injuries under CPLR 306-c.",
+        "No new tasks or deadlines triggered by this filing.",
+        "All metadata and party information consistent with prior snapshot.",
+        "Processed 002-doc_002_NOTICE_OF_COMMENCEMENT_PERSONAL_INJURIES.pdf as document 2",
+        "Extracted ANSWER_RECEIVED task from document content.",
+        "Updated case phase to issue_joined and mini-phase to answer_filed.",
+        "Processed 003-doc_003_ANSWER.pdf as document 3",
+        "Detected Demand for Bill of Particulars (Doc 4). Computed response deadline as 2027-01-02 (30 days from 2026-12-03). Created task RESPOND_TO_BILL_OF_PARTICULARS_DEMAND with auto-saved status.",
+        "Processed 004-doc_004_DEMAND_FOR_BILL_OF_PARTICULARS.pdf as document 4",
+        "Processed Notice to Take Deposition (Doc 5). Added conditional task TRACK_PLAINTIFF_DEPOSITION_NOTICE and conditional deadline PLAINTIFF_EBT_NOTICE_DATE (2027-04-30).",
+        "Processed 005-doc_005_NOTICE_TO_TAKE_DEPOSITION.pdf as document 5",
+        "Extracted demand for authorizations under CPLR 3120. Added task RESPOND_TO_AUTHORIZATION_DEMANDS with no explicit due date. Updated miniPhase to authorization_demands_served.",
+        "Processed 006-doc_006_DEMAND_FOR_AUTHORIZATIONS.pdf as document 6",
+        "Document 7: Demand for Statements and Photographs received from defendants. Added task RESPOND_TO_STATEMENTS_AND_PHOTOS_DEMAND with status needs_service_date and no fixed deadline pending service date.",
+        "Processed 007-doc_007_DEMAND_FOR_STATEMENTS_AND_PHOTOS.pdf as document 7",
+        "Demand Pursuant to Medicare, Medicaid and SCHIP Extension Act served by defendants. Triggered under CPLR 3120 demand for information.",
+        "Current phase moved to 'discovery' because issue was joined on 2026-12-03, and multiple discovery demands are now served.",
+        "Deadline calculated based on 20-day response period from assumed service date (2026-12-03). Document does not specify service date; filed date used as proxy.",
+        "Processed 008-doc_008_DEMAND_FOR_MEDICARE_MEDICAID_SCHIP.pdf as document 8"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic snapshot expected output for eval testing.",
+      "expectedRuleAuthorityState": {
+        "activeRuleSetVersion": null,
+        "authorityHierarchy": {},
+        "ruleSourcesAvailable": []
+      }
+    },
+    "after_doc_012": {
+      "snapshotId": "after_doc_012",
+      "caseId": "synthetic_queens_tcf_001",
+      "afterDocNo": 12,
+      "currentPhase": "discovery",
+      "currentMiniPhase": "bill_of_particulars_served",
+      "confirmedFacts": [
+        "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+        "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+        "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+        "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+        "Nature of suit: medical malpractice - prenatal, delivery, newborn, and pediatric care.",
+        "Index Number: 900001/2026.",
+        "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox.",
+        "Plaintiff filed Notice of Commencement of Action for Personal Injuries pursuant to CPLR 306-c on 2026-11-12.",
+        "Summons and complaint are referenced as initiating papers.",
+        "Defendants filed Verified Answer on 2026-12-03, denying liability and asserting affirmative defenses.",
+        "Issue joined as of 2026-12-03.",
+        "Defense counsel appears for both defendants.",
+        "Defendants served Demand for Bill of Particulars on 2026-12-03, demanding a verified bill of particulars within 30 days after service.",
+        "Defendants served a Notice to Take Deposition Upon Oral Examination for plaintiff, setting a proposed deposition date of April 30, 2027.",
+        "Defendants served Demand for Authorizations on 2026-12-03, demanding HIPAA-compliant authorizations for various records pursuant to CPLR 3120.",
+        "Defendants served Demand for Statements and Photographs on 2026-12-03, demanding production of statements, photographs, recordings, reports, and related materials within 14 days after receipt, pursuant to CPLR 3101.",
+        "Defendants served Demand Pursuant to Medicare, Medicaid and SCHIP Extension Act on 2026-12-03, demanding lien/benefit information within 20 days.",
+        "Plaintiff filed Notice of Medical Malpractice Action on 2027-02-28 (NYSCEF Doc. No. 9) pursuant to CPLR 3406(a) and 22 NYCRR 202.56(a).",
+        "Request for Judicial Intervention (RJI) filed on 2027-02-28 for medical, dental or podiatric malpractice case.",
+        "RJI identifies case as tort / medical, dental or podiatric malpractice matter.",
+        "RJI places case into Queens Medical, Dental and Podiatric Malpractice Part workflow.",
+        "RJI triggers monitoring for preliminary conference scheduling or order issuance.",
+        "Plaintiff served Verified Bill of Particulars on 2027-03-18 (NYSCEF Doc. No. 11) in response to defendants' demand (Doc. No. 4)."
+      ],
+      "openTasks": [
+        "RESPOND_TO_AUTHORIZATION_DEMANDS",
+        "RESPOND_TO_STATEMENTS_AND_PHOTOS_DEMAND",
+        "RESPOND_TO_MEDICARE_MEDICAID_SCHIP_DEMAND"
+      ],
+      "completedTasks": [
+        "ANSWER_RECEIVED",
+        "TRACK_MEDICAL_MALPRACTICE_NOTICE",
+        "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND"
+      ],
+      "deadlines": [
+        {
+          "deadlineType": "BP_RESPONSE_DEADLINE",
+          "date": "2027-01-02",
+          "sourceDocNo": 4,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+          "status": "superseded",
+          "supersededBy": "Bill of Particulars served on 2027-03-18 (Doc. No. 11)",
+          "notes": "Original deadline was 2027-01-02. Service occurred on 2027-03-18, which is late. This deadline is now superseded by the actual service date, but lateness may be an issue."
+        },
+        {
+          "deadlineType": "PLAINTIFF_EBT_NOTICE_DATE",
+          "date": "2027-04-30",
+          "sourceDocNo": 5,
+          "ruleSourceApplied": "cplr_article_31_disclosure",
+          "status": "conditional"
+        },
+        {
+          "deadlineType": "MEDICARE_MEDICAID_SCHIP_DEMAND_RESPONSE",
+          "date": "2026-12-23",
+          "sourceDocNo": 8,
+          "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+          "status": "conditional"
+        },
+        {
+          "deadlineType": "PROPOSED_PLAINTIFF_DEPOSITION",
+          "date": "2027-06-19",
+          "sourceDocNo": 12,
+          "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox",
+          "status": "conditional"
+        }
+      ],
+      "supersededDeadlines": [
+        {
+          "deadlineType": "BP_RESPONSE_DEADLINE",
+          "date": "2027-01-02",
+          "sourceDocNo": 4,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars"
+        }
+      ],
+      "conflicts": [],
+      "auditNotes": [
+        "Current phase moved to 'discovery' because issue was joined on 2026-12-03, and multiple discovery demands are now served.",
+        "Deadline calculated based on 20-day response period from assumed service date (2026-12-03). Document does not specify service date; filed date used as proxy.",
+        "Processed 008-doc_008_DEMAND_FOR_MEDICARE_MEDICAID_SCHIP.pdf as document 8",
+        "Processed Notice of Medical Malpractice Action (Doc 9). Added TRACK_MEDICAL_MALPRACTICE_NOTICE as completed task and MONITOR_MEDMAL_RJI_AND_PRELIMINARY_CONFERENCE as conditional task. Updated nature of suit to include delivery, newborn, and pediatric care. Added human review item regarding bill of particulars service representation.",
+        "Processed 009-doc_009_NOTICE_OF_MEDICAL_MALPRACTICE.pdf as document 9",
+        "RJI filing confirmed. Case now in Medical, Dental and Podiatric Malpractice Part workflow.",
+        "Conditional task AWAIT_MEDMAL_PRELIMINARY_CONFERENCE added to monitor for preliminary conference scheduling.",
+        "No new deadlines triggered by this document.",
+        "Prior conditional task MONITOR_MEDMAL_RJI_AND_PRELIMINARY_CONFERENCE replaced by AWAIT_MEDMAL_PRELIMINARY_CONFERENCE as RJI is now filed.",
+        "Processed 010-doc_010_RJI_MEDICAL_DENTAL_PODIATRIC_MALPRACTICE.pdf as document 10",
+        "Document 11 is a Verified Bill of Particulars served by plaintiff on 2027-03-18.",
+        "This responds to the open task RESPOND_TO_BILL_OF_PARTICULARS_DEMAND, which is now completed.",
+        "The service is late (deadline was 2027-01-02). Added human review item for lateness.",
+        "Added conditional task REVIEW_BILL_OF_PARTICULARS_FOR_DISCOVERY_NEEDS as expected.",
+        "Updated case snapshot with new confirmed fact and moved task to completed.",
+        "Processed 011-doc_011_BILL_OF_PARTICULARS.pdf as document 11",
+        "Processed Doc 12: Proposed Preliminary Conference Order. Added conditional tasks and deadlines. No confirmed facts updated.",
+        "Existing conditional task TRACK_PLAINTIFF_DEPOSITION_NOTICE (from Doc 5) may be superseded by new proposed deposition date, but kept for now.",
+        "Proposed order is conditional; all dates and provisions are subject to court approval.",
+        "Processed 012-doc_012_PROPOSED_PRELIMINARY_CONFERENCE_ORDER.pdf as document 12"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic snapshot expected output for eval testing.",
+      "expectedRuleAuthorityState": {
+        "activeRuleSetVersion": null,
+        "authorityHierarchy": {},
+        "ruleSourcesAvailable": []
+      }
+    },
+    "after_doc_014": {
+      "snapshotId": "after_doc_014",
+      "caseId": "synthetic_queens_tcf_001",
+      "afterDocNo": 14,
+      "currentPhase": "discovery",
+      "currentMiniPhase": "compliance_conference_proposed",
+      "confirmedFacts": [
+        "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+        "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+        "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+        "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+        "Nature of suit: medical malpractice - prenatal, delivery, newborn, and pediatric care.",
+        "Index Number: 900001/2026.",
+        "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox.",
+        "Plaintiff filed Notice of Commencement of Action for Personal Injuries pursuant to CPLR 306-c on 2026-11-12.",
+        "Summons and complaint are referenced as initiating papers.",
+        "Defendants filed Verified Answer on 2026-12-03, denying liability and asserting affirmative defenses.",
+        "Issue joined as of 2026-12-03.",
+        "Defense counsel appears for both defendants.",
+        "Defendants served Demand for Bill of Particulars on 2026-12-03, demanding a verified bill of particulars within 30 days after service.",
+        "Defendants served a Notice to Take Deposition Upon Oral Examination for plaintiff, setting a proposed deposition date of April 30, 2027.",
+        "Defendants served Demand for Authorizations on 2026-12-03, demanding HIPAA-compliant authorizations for various records pursuant to CPLR 3120.",
+        "Defendants served Demand for Statements and Photographs on 2026-12-03, demanding production of statements, photographs, recordings, reports, and related materials within 14 days after receipt, pursuant to CPLR 3101.",
+        "Defendants served Demand Pursuant to Medicare, Medicaid and SCHIP Extension Act on 2026-12-03, demanding lien/benefit information within 20 days.",
+        "Plaintiff filed Notice of Medical Malpractice Action on 2027-02-28 (NYSCEF Doc. No. 9) pursuant to CPLR 3406(a) and 22 NYCRR 202.56(a).",
+        "Request for Judicial Intervention (RJI) filed on 2027-02-28 for medical, dental or podiatric malpractice case.",
+        "RJI identifies case as tort / medical, dental or podiatric malpractice matter.",
+        "RJI places case into Queens Medical, Dental and Podiatric Malpractice Part workflow.",
+        "RJI triggers monitoring for preliminary conference scheduling or order issuance.",
+        "Plaintiff served Verified Bill of Particulars on 2027-03-18 (NYSCEF Doc. No. 11) in response to defendants' demand (Doc. No. 4).",
+        "Preliminary Conference Order issued on 2027-03-25 (NYSCEF Doc. No. 13).",
+        "Plaintiff deposition deadline set to 2027-07-29 by the Preliminary Conference Order.",
+        "Defendant deposition deadline set to 2027-09-29 by the Preliminary Conference Order.",
+        "The Preliminary Conference Order provides that later case-specific orders control over this order if inconsistent.",
+        "Proposed Compliance Conference Order filed on 2027-07-21 (NYSCEF Doc. No. 14)."
+      ],
+      "openTasks": [
+        "RESPOND_TO_AUTHORIZATION_DEMANDS",
+        "RESPOND_TO_STATEMENTS_AND_PHOTOS_DEMAND",
+        "RESPOND_TO_MEDICARE_MEDICAID_SCHIP_DEMAND",
+        "COMPLETE_PLAINTIFF_DEPOSITION",
+        "COMPLETE_DEFENDANT_DEPOSITIONS"
+      ],
+      "completedTasks": [
+        "ANSWER_RECEIVED",
+        "TRACK_MEDICAL_MALPRACTICE_NOTICE",
+        "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND",
+        "AWAIT_MEDMAL_PRELIMINARY_CONFERENCE",
+        "REVIEW_PROPOSED_PRELIMINARY_CONFERENCE_ORDER",
+        "TRACK_PROPOSED_PLAINTIFF_DEPOSITION_DATE",
+        "TRACK_PLAINTIFF_DEPOSITION_NOTICE"
+      ],
+      "deadlines": [
+        {
+          "deadlineType": "BP_RESPONSE_DEADLINE",
+          "date": "2027-01-02",
+          "sourceDocNo": 4,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+          "status": "superseded",
+          "supersededBy": "Bill of Particulars served on 2027-03-18 (Doc. No. 11)",
+          "notes": "Original deadline was 2027-01-02. Service occurred on 2027-03-18, which is late. This deadline is now superseded by the actual service date, but lateness may be an issue."
+        },
+        {
+          "deadlineType": "PLAINTIFF_EBT_NOTICE_DATE",
+          "date": "2027-04-30",
+          "sourceDocNo": 5,
+          "ruleSourceApplied": "cplr_article_31_disclosure",
+          "status": "superseded",
+          "supersededBy": "Preliminary Conference Order (Doc. No. 13) sets plaintiff deposition for 2027-07-29"
+        },
+        {
+          "deadlineType": "MEDICARE_MEDICAID_SCHIP_DEMAND_RESPONSE",
+          "date": "2026-12-23",
+          "sourceDocNo": 8,
+          "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+          "status": "conditional"
+        },
+        {
+          "deadlineType": "PROPOSED_PLAINTIFF_DEPOSITION",
+          "date": "2027-06-19",
+          "sourceDocNo": 12,
+          "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox",
+          "status": "superseded",
+          "supersededBy": "Preliminary Conference Order (Doc. No. 13) sets plaintiff deposition for 2027-07-29"
+        },
+        {
+          "deadlineType": "PLAINTIFF_DEPOSITION",
+          "date": "2027-07-29",
+          "sourceDocNo": 13,
+          "ruleSourceApplied": "doc_013_pc_order",
+          "status": "source_supported_auto_saved"
+        },
+        {
+          "deadlineType": "DEFENDANT_DEPOSITIONS",
+          "date": "2027-09-29",
+          "sourceDocNo": 13,
+          "ruleSourceApplied": "doc_013_pc_order",
+          "status": "source_supported_auto_saved"
+        }
+      ],
+      "supersededDeadlines": [
+        {
+          "deadlineType": "BP_RESPONSE_DEADLINE",
+          "date": "2027-01-02",
+          "sourceDocNo": 4,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars"
+        },
+        {
+          "deadlineType": "PLAINTIFF_EBT_NOTICE_DATE",
+          "date": "2027-04-30",
+          "sourceDocNo": 5,
+          "ruleSourceApplied": "cplr_article_31_disclosure"
+        },
+        {
+          "deadlineType": "PROPOSED_PLAINTIFF_DEPOSITION",
+          "date": "2027-06-19",
+          "sourceDocNo": 12,
+          "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox"
+        }
+      ],
+      "conflicts": [],
+      "auditNotes": [
+        "Prior conditional task MONITOR_MEDMAL_RJI_AND_PRELIMINARY_CONFERENCE replaced by AWAIT_MEDMAL_PRELIMINARY_CONFERENCE as RJI is now filed.",
+        "Processed 010-doc_010_RJI_MEDICAL_DENTAL_PODIATRIC_MALPRACTICE.pdf as document 10",
+        "Document 11 is a Verified Bill of Particulars served by plaintiff on 2027-03-18.",
+        "This responds to the open task RESPOND_TO_BILL_OF_PARTICULARS_DEMAND, which is now completed.",
+        "The service is late (deadline was 2027-01-02). Added human review item for lateness.",
+        "Added conditional task REVIEW_BILL_OF_PARTICULARS_FOR_DISCOVERY_NEEDS as expected.",
+        "Updated case snapshot with new confirmed fact and moved task to completed.",
+        "Processed 011-doc_011_BILL_OF_PARTICULARS.pdf as document 11",
+        "Processed Doc 12: Proposed Preliminary Conference Order. Added conditional tasks and deadlines. No confirmed facts updated.",
+        "Existing conditional task TRACK_PLAINTIFF_DEPOSITION_NOTICE (from Doc 5) may be superseded by new proposed deposition date, but kept for now.",
+        "Proposed order is conditional; all dates and provisions are subject to court approval.",
+        "Processed 012-doc_012_PROPOSED_PRELIMINARY_CONFERENCE_ORDER.pdf as document 12",
+        "Extracted Preliminary Conference Order deadlines from Doc. 13. Plaintiff deposition due 2027-07-29, Defendant depositions due 2027-09-29.",
+        "Superseded earlier proposed plaintiff deposition date from Doc. 12 and EBT notice from Doc. 5.",
+        "Moved AWAIT_MEDMAL_PRELIMINARY_CONFERENCE and related tasks to completed.",
+        "Processed 013-doc_013_ORDER_PRELIMINARY_CONFERENCE.pdf as document 13",
+        "Extracted from synthetic filing: Proposed Compliance Conference Order, Doc. No. 14, filed 2027-07-21.",
+        "Document is not a binding order; it is a proposal. Added REVIEW_PROPOSED_CC_ORDER as a conditional task.",
+        "No new deadlines generated from this document.",
+        "Processed 014-doc_014_PROPOSED_COMPLIANCE_CONFERENCE_ORDER.pdf as document 14"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic snapshot expected output for eval testing.",
+      "expectedRuleAuthorityState": {
+        "activeRuleSetVersion": null,
+        "authorityHierarchy": {},
+        "ruleSourcesAvailable": []
+      }
+    },
+    "after_doc_018": {
+      "snapshotId": "after_doc_018",
+      "caseId": "synthetic_queens_tcf_001",
+      "afterDocNo": 18,
+      "currentPhase": "discovery",
+      "currentMiniPhase": "compliance_conference_updated",
+      "confirmedFacts": [
+        "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+        "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+        "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+        "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+        "Nature of suit: medical malpractice - prenatal, delivery, newborn, and pediatric care.",
+        "Index Number: 900001/2026.",
+        "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox.",
+        "Plaintiff filed Notice of Commencement of Action for Personal Injuries pursuant to CPLR 306-c on 2026-11-12.",
+        "Summons and complaint are referenced as initiating papers.",
+        "Defendants filed Verified Answer on 2026-12-03, denying liability and asserting affirmative defenses.",
+        "Issue joined as of 2026-12-03.",
+        "Defense counsel appears for both defendants.",
+        "Defendants served Demand for Bill of Particulars on 2026-12-03, demanding a verified bill of particulars within 30 days after service.",
+        "Defendants served a Notice to Take Deposition Upon Oral Examination for plaintiff, setting a proposed deposition date of April 30, 2027.",
+        "Defendants served Demand for Authorizations on 2026-12-03, demanding HIPAA-compliant authorizations for various records pursuant to CPLR 3120.",
+        "Defendants served Demand for Statements and Photographs on 2026-12-03, demanding production of statements, photographs, recordings, reports, and related materials within 14 days after receipt, pursuant to CPLR 3101.",
+        "Defendants served Demand Pursuant to Medicare, Medicaid and SCHIP Extension Act on 2026-12-03, demanding lien/benefit information within 20 days.",
+        "Plaintiff filed Notice of Medical Malpractice Action on 2027-02-28 (NYSCEF Doc. No. 9) pursuant to CPLR 3406(a) and 22 NYCRR 202.56(a).",
+        "Request for Judicial Intervention (RJI) filed on 2027-02-28 for medical, dental or podiatric malpractice case.",
+        "RJI identifies case as tort / medical, dental or podiatric malpractice matter.",
+        "RJI places case into Queens Medical, Dental and Podiatric Malpractice Part workflow.",
+        "RJI triggers monitoring for preliminary conference scheduling or order issuance.",
+        "Plaintiff served Verified Bill of Particulars on 2027-03-18 (NYSCEF Doc. No. 11) in response to defendants' demand (Doc. No. 4).",
+        "Preliminary Conference Order issued on 2027-03-25 (NYSCEF Doc. No. 13).",
+        "Plaintiff deposition deadline set to 2027-07-29 by the Preliminary Conference Order.",
+        "Defendant deposition deadline set to 2027-09-29 by the Preliminary Conference Order.",
+        "The Preliminary Conference Order provides that later case-specific orders control over this order if inconsistent.",
+        "Proposed Compliance Conference Order filed on 2027-07-21 (NYSCEF Doc. No. 14).",
+        "Compliance Conference Order issued on 2027-08-14 (NYSCEF Doc. No. 15).",
+        "Compliance conference/control date set for 2027-12-15 by the Compliance Conference Order.",
+        "Pretrial or further compliance date set for 2028-02-11 by the Compliance Conference Order.",
+        "The Compliance Conference Order provides that it may supersede earlier discovery dates where inconsistent.",
+        "Parties filed a Discovery Stipulation Request to So-Order on 2027-09-15 (NYSCEF Doc. No. 16), proposing to extend plaintiff deposition to 2027-10-24 and defendants' depositions to 2027-11-24; not controlling until so-ordered.",
+        "Court so-ordered the parties' discovery stipulation on 2027-09-22 (NYSCEF Doc. No. 17).",
+        "Plaintiff deposition deadline extended to 2027-10-24 per so-ordered stipulation (Doc. No. 17).",
+        "Defendants' deposition deadlines extended to 2027-11-24 per so-ordered stipulation (Doc. No. 17).",
+        "This later case-specific order (Doc. No. 17) controls over inconsistent earlier Preliminary Conference Order deadlines.",
+        "Second Compliance Conference Order issued on 2027-12-02 (NYSCEF Doc. No. 18), setting further discovery/control date 2028-04-20 and further compliance/pretrial conference date 2028-05-27, and stating that it may supersede earlier CC order dates."
+      ],
+      "openTasks": [
+        "RESPOND_TO_AUTHORIZATION_DEMANDS",
+        "RESPOND_TO_STATEMENTS_AND_PHOTOS_DEMAND",
+        "RESPOND_TO_MEDICARE_MEDICAID_SCHIP_DEMAND",
+        "COMPLETE_PLAINTIFF_DEPOSITION",
+        "COMPLETE_DEFENDANT_DEPOSITIONS",
+        "TRACK_UPDATED_COMPLIANCE_ORDER"
+      ],
+      "completedTasks": [
+        "ANSWER_RECEIVED",
+        "TRACK_MEDICAL_MALPRACTICE_NOTICE",
+        "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND",
+        "AWAIT_MEDMAL_PRELIMINARY_CONFERENCE",
+        "REVIEW_PROPOSED_PRELIMINARY_CONFERENCE_ORDER",
+        "TRACK_PROPOSED_PLAINTIFF_DEPOSITION_DATE",
+        "TRACK_PLAINTIFF_DEPOSITION_NOTICE",
+        "REVIEW_PROPOSED_CC_ORDER",
+        "REVIEW_DISCOVERY_STIPULATION_FOR_SO_ORDER",
+        "TRACK_COMPLIANCE_CONFERENCE_ORDER"
+      ],
+      "deadlines": [
+        {
+          "deadlineType": "MEDICARE_MEDICAID_SCHIP_DEMAND_RESPONSE",
+          "date": "2026-12-23",
+          "sourceDocNo": 8,
+          "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+          "status": "conditional"
+        },
+        {
+          "deadlineType": "PLAINTIFF_DEPOSITION",
+          "date": "2027-07-29",
+          "sourceDocNo": 13,
+          "ruleSourceApplied": "doc_013_pc_order",
+          "status": "superseded",
+          "supersededBy": "So-Ordered Stipulation (Doc. No. 17)"
+        },
+        {
+          "deadlineType": "DEFENDANT_DEPOSITIONS",
+          "date": "2027-09-29",
+          "sourceDocNo": 13,
+          "ruleSourceApplied": "doc_013_pc_order",
+          "status": "superseded",
+          "supersededBy": "So-Ordered Stipulation (Doc. No. 17)"
+        },
+        {
+          "deadlineType": "PLAINTIFF_DEPOSITION_SUPERSEDING",
+          "date": "2027-10-24",
+          "sourceDocNo": 17,
+          "ruleSourceApplied": "doc_017_so_ordered_stipulation",
+          "status": "source_supported_auto_saved",
+          "supersedes": "PLAINTIFF_DEPOSITION from Doc. No. 13"
+        },
+        {
+          "deadlineType": "DEFENDANT_DEPOSITIONS_SUPERSEDING",
+          "date": "2027-11-24",
+          "sourceDocNo": 17,
+          "ruleSourceApplied": "doc_017_so_ordered_stipulation",
+          "status": "source_supported_auto_saved",
+          "supersedes": "DEFENDANT_DEPOSITIONS from Doc. No. 13"
+        },
+        {
+          "deadlineType": "FURTHER_DISCOVERY_CONTROL",
+          "date": "2028-04-20",
+          "sourceDocNo": 18,
+          "ruleSourceApplied": "doc_018_cc_order",
+          "status": "source_supported_auto_saved",
+          "supersedes": "COMPLIANCE_CONFERENCE from Doc. No. 15"
+        },
+        {
+          "deadlineType": "FURTHER_COMPLIANCE_CONFERENCE",
+          "date": "2028-05-27",
+          "sourceDocNo": 18,
+          "ruleSourceApplied": "doc_018_cc_order",
+          "status": "source_supported_auto_saved",
+          "supersedes": "PRETRIAL_OR_FURTHER_CONFERENCE from Doc. No. 15"
+        }
+      ],
+      "supersededDeadlines": [
+        {
+          "deadlineType": "BP_RESPONSE_DEADLINE",
+          "date": "2027-01-02",
+          "sourceDocNo": 4,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars"
+        },
+        {
+          "deadlineType": "PLAINTIFF_EBT_NOTICE_DATE",
+          "date": "2027-04-30",
+          "sourceDocNo": 5,
+          "ruleSourceApplied": "cplr_article_31_disclosure"
+        },
+        {
+          "deadlineType": "PROPOSED_PLAINTIFF_DEPOSITION",
+          "date": "2027-06-19",
+          "sourceDocNo": 12,
+          "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox"
+        },
+        {
+          "deadlineType": "PLAINTIFF_DEPOSITION",
+          "date": "2027-07-29",
+          "sourceDocNo": 13,
+          "ruleSourceApplied": "doc_013_pc_order"
+        },
+        {
+          "deadlineType": "DEFENDANT_DEPOSITIONS",
+          "date": "2027-09-29",
+          "sourceDocNo": 13,
+          "ruleSourceApplied": "doc_013_pc_order"
+        },
+        {
+          "deadlineType": "COMPLIANCE_CONFERENCE",
+          "date": "2027-12-15",
+          "sourceDocNo": 15,
+          "ruleSourceApplied": "doc_015_cc_order",
+          "status": "superseded",
+          "supersededBy": "Second Compliance Conference Order (Doc. No. 18)"
+        },
+        {
+          "deadlineType": "PRETRIAL_OR_FURTHER_CONFERENCE",
+          "date": "2028-02-11",
+          "sourceDocNo": 15,
+          "ruleSourceApplied": "doc_015_cc_order",
+          "status": "superseded",
+          "supersededBy": "Second Compliance Conference Order (Doc. No. 18)"
+        }
+      ],
+      "conflicts": [],
+      "auditNotes": [
+        "Processed 014-doc_014_PROPOSED_COMPLIANCE_CONFERENCE_ORDER.pdf as document 14",
+        "Compliance Conference Order (Doc. No. 15) issued, superseding the proposed order (Doc. No. 14).",
+        "Case mini-phase updated to 'compliance_conference_ordered'.",
+        "Added deadlines for compliance conference (2027-12-15) and pretrial/further compliance conference (2028-02-11).",
+        "Conditional task REVIEW_PROPOSED_CC_ORDER completed; new task TRACK_COMPLIANCE_CONFERENCE_ORDER added.",
+        "No explicit supersession of prior deposition deadlines detected; human review recommended.",
+        "Processed 015-doc_015_ORDER_COMPLIANCE_CONFERENCE.pdf as document 15",
+        "Extracted discovery stipulation from Doc 16 proposing new deposition dates. No binding deadlines created yet. Task REVIEW_DISCOVERY_STIPULATION_FOR_SO_ORDER added as conditional. Existing open tasks and deadlines remain unchanged. Human review items added regarding timeliness and retroactivity.",
+        "Processed 016-doc_016_STIPULATION_DISCOVERY_REQUEST_TO_SO_ORDER.pdf as document 16",
+        "So-Ordered Stipulation (Doc. No. 17) supersedes prior deposition deadlines from Preliminary Conference Order (Doc. No. 13).",
+        "New plaintiff deposition deadline: 2027-10-24; new defendants' deposition deadline: 2027-11-24.",
+        "Stipulation explicitly states it controls over inconsistent earlier PC deadlines.",
+        "Conditional task REVIEW_DISCOVERY_STIPULATION_FOR_SO_ORDER moved to completed.",
+        "Processed 017-doc_017_STIPULATION_SO_ORDERED.pdf as document 17",
+        "Processed Doc. No. 18: Compliance Conference Order filed 2027-12-02. Extracted FURTHER_DISCOVERY_CONTROL deadline 2028-04-20 and FURTHER_COMPLIANCE_CONFERENCE deadline 2028-05-27.",
+        "Superseded previous COMPLIANCE_CONFERENCE (2027-12-15) and PRETRIAL_OR_FURTHER_CONFERENCE (2028-02-11) from Doc. No. 15.",
+        "Updated openTasks: removed TRACK_COMPLIANCE_CONFERENCE_ORDER (completed) and added TRACK_UPDATED_COMPLIANCE_ORDER.",
+        "Added new deadlines with status source_supported_auto_saved, referencing rule source doc_018_cc_order.",
+        "Updated case snapshot with new facts, deadlines, and pending human review items.",
+        "Processed 018-doc_018_ORDER_COMPLIANCE_CONFERENCE.pdf as document 18"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic snapshot expected output for eval testing.",
+      "expectedRuleAuthorityState": {
+        "activeRuleSetVersion": null,
+        "authorityHierarchy": {},
+        "ruleSourcesAvailable": []
+      }
+    },
+    "after_doc_021": {
+      "snapshotId": "after_doc_021",
+      "caseId": "synthetic_queens_tcf_001",
+      "afterDocNo": 21,
+      "currentPhase": "discovery",
+      "currentMiniPhase": "post_ebt_demands_served",
+      "confirmedFacts": [
+        "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+        "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+        "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+        "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+        "Nature of suit: medical malpractice - prenatal, delivery, newborn, and pediatric care.",
+        "Index Number: 900001/2026.",
+        "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox.",
+        "Plaintiff filed Notice of Commencement of Action for Personal Injuries pursuant to CPLR 306-c on 2026-11-12.",
+        "Summons and complaint are referenced as initiating papers.",
+        "Defendants filed Verified Answer on 2026-12-03, denying liability and asserting affirmative defenses.",
+        "Issue joined as of 2026-12-03.",
+        "Defense counsel appears for both defendants.",
+        "Defendants served Demand for Bill of Particulars on 2026-12-03, demanding a verified bill of particulars within 30 days after service.",
+        "Defendants served a Notice to Take Deposition Upon Oral Examination for plaintiff, setting a proposed deposition date of April 30, 2027.",
+        "Defendants served Demand for Authorizations on 2026-12-03, demanding HIPAA-compliant authorizations for various records pursuant to CPLR 3120.",
+        "Defendants served Demand for Statements and Photographs on 2026-12-03, demanding production of statements, photographs, recordings, reports, and related materials within 14 days after receipt, pursuant to CPLR 3101.",
+        "Defendants served Demand Pursuant to Medicare, Medicaid and SCHIP Extension Act on 2026-12-03, demanding lien/benefit information within 20 days.",
+        "Plaintiff filed Notice of Medical Malpractice Action on 2027-02-28 (NYSCEF Doc. No. 9) pursuant to CPLR 3406(a) and 22 NYCRR 202.56(a).",
+        "Request for Judicial Intervention (RJI) filed on 2027-02-28 for medical, dental or podiatric malpractice case.",
+        "RJI identifies case as tort / medical, dental or podiatric malpractice matter.",
+        "RJI places case into Queens Medical, Dental and Podiatric Malpractice Part workflow.",
+        "RJI triggers monitoring for preliminary conference scheduling or order issuance.",
+        "Plaintiff served Verified Bill of Particulars on 2027-03-18 (NYSCEF Doc. No. 11) in response to defendants' demand (Doc. No. 4).",
+        "Preliminary Conference Order issued on 2027-03-25 (NYSCEF Doc. No. 13).",
+        "Plaintiff deposition deadline set to 2027-07-29 by the Preliminary Conference Order.",
+        "Defendant deposition deadline set to 2027-09-29 by the Preliminary Conference Order.",
+        "The Preliminary Conference Order provides that later case-specific orders control over this order if inconsistent.",
+        "Proposed Compliance Conference Order filed on 2027-07-21 (NYSCEF Doc. No. 14).",
+        "Compliance Conference Order issued on 2027-08-14 (NYSCEF Doc. No. 15).",
+        "Compliance conference/control date set for 2027-12-15 by the Compliance Conference Order.",
+        "Pretrial or further compliance date set for 2028-02-11 by the Compliance Conference Order.",
+        "The Compliance Conference Order provides that it may supersede earlier discovery dates where inconsistent.",
+        "Parties filed a Discovery Stipulation Request to So-Order on 2027-09-15 (NYSCEF Doc. No. 16), proposing to extend plaintiff deposition to 2027-10-24 and defendants' depositions to 2027-11-24; not controlling until so-ordered.",
+        "Court so-ordered the parties' discovery stipulation on 2027-09-22 (NYSCEF Doc. No. 17).",
+        "Plaintiff deposition deadline extended to 2027-10-24 per so-ordered stipulation (Doc. No. 17).",
+        "Defendants' deposition deadlines extended to 2027-11-24 per so-ordered stipulation (Doc. No. 17).",
+        "This later case-specific order (Doc. No. 17) controls over inconsistent earlier Preliminary Conference Order deadlines.",
+        "Second Compliance Conference Order issued on 2027-12-02 (NYSCEF Doc. No. 18), setting further discovery/control date 2028-04-20 and further compliance/pretrial conference date 2028-05-27, and stating that it may supersede earlier CC order dates.",
+        "Compliance Conference Order (Doc. No. 19) filed on 2027-12-09 appears to duplicate or refile the prior Compliance Conference Order (Doc. No. 18) and restates the same further discovery/control date of 2028-04-20 and further compliance/pretrial conference date of 2028-05-27.",
+        "Plaintiff served Post-EBT Demands on 2028-03-19 (NYSCEF Doc. No. 20), seeking records and materials referenced in defendant physician's deposition testimony, with response requested within 20 days after service.",
+        "Defendant physician's deposition has been completed (as indicated by Plaintiff's Post-EBT Demands).",
+        "Compliance Conference Order (Doc. No. 21) filed on 2028-04-10, continuing court supervision of discovery after post-EBT demands."
+      ],
+      "openTasks": [
+        "RESPOND_TO_AUTHORIZATION_DEMANDS",
+        "RESPOND_TO_STATEMENTS_AND_PHOTOS_DEMAND",
+        "RESPOND_TO_MEDICARE_MEDICAID_SCHIP_DEMAND",
+        "COMPLETE_PLAINTIFF_DEPOSITION",
+        "TRACK_UPDATED_COMPLIANCE_ORDER",
+        "CONFIRM_DUPLICATE_OR_REFILED_CC_ORDER",
+        "RESPOND_TO_POST_EBT_DEMANDS",
+        "REVIEW_LATER_CC_ORDER_FOR_SUPERSESSION"
+      ],
+      "completedTasks": [
+        "ANSWER_RECEIVED",
+        "TRACK_MEDICAL_MALPRACTICE_NOTICE",
+        "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND",
+        "AWAIT_MEDMAL_PRELIMINARY_CONFERENCE",
+        "REVIEW_PROPOSED_PRELIMINARY_CONFERENCE_ORDER",
+        "TRACK_PROPOSED_PLAINTIFF_DEPOSITION_DATE",
+        "TRACK_PLAINTIFF_DEPOSITION_NOTICE",
+        "REVIEW_PROPOSED_CC_ORDER",
+        "REVIEW_DISCOVERY_STIPULATION_FOR_SO_ORDER",
+        "TRACK_COMPLIANCE_CONFERENCE_ORDER",
+        "COMPLETE_DEFENDANT_DEPOSITIONS"
+      ],
+      "deadlines": [
+        {
+          "deadlineType": "MEDICARE_MEDICAID_SCHIP_DEMAND_RESPONSE",
+          "date": "2026-12-23",
+          "sourceDocNo": 8,
+          "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+          "status": "conditional"
+        },
+        {
+          "deadlineType": "PLAINTIFF_DEPOSITION",
+          "date": "2027-07-29",
+          "sourceDocNo": 13,
+          "ruleSourceApplied": "doc_013_pc_order",
+          "status": "superseded",
+          "supersededBy": "So-Ordered Stipulation (Doc. No. 17)"
+        },
+        {
+          "deadlineType": "DEFENDANT_DEPOSITIONS",
+          "date": "2027-09-29",
+          "sourceDocNo": 13,
+          "ruleSourceApplied": "doc_013_pc_order",
+          "status": "superseded",
+          "supersededBy": "So-Ordered Stipulation (Doc. No. 17)"
+        },
+        {
+          "deadlineType": "PLAINTIFF_DEPOSITION_SUPERSEDING",
+          "date": "2027-10-24",
+          "sourceDocNo": 17,
+          "ruleSourceApplied": "doc_017_so_ordered_stipulation",
+          "status": "source_supported_auto_saved",
+          "supersedes": "PLAINTIFF_DEPOSITION from Doc. No. 13"
+        },
+        {
+          "deadlineType": "DEFENDANT_DEPOSITIONS_SUPERSEDING",
+          "date": "2027-11-24",
+          "sourceDocNo": 17,
+          "ruleSourceApplied": "doc_017_so_ordered_stipulation",
+          "status": "source_supported_auto_saved",
+          "supersedes": "DEFENDANT_DEPOSITIONS from Doc. No. 13"
+        },
+        {
+          "deadlineType": "FURTHER_DISCOVERY_CONTROL",
+          "date": "2028-04-20",
+          "sourceDocNo": 18,
+          "ruleSourceApplied": "doc_018_cc_order",
+          "status": "source_supported_auto_saved",
+          "supersedes": "COMPLIANCE_CONFERENCE from Doc. No. 15"
+        },
+        {
+          "deadlineType": "FURTHER_COMPLIANCE_CONFERENCE",
+          "date": "2028-05-27",
+          "sourceDocNo": 18,
+          "ruleSourceApplied": "doc_018_cc_order",
+          "status": "source_supported_auto_saved",
+          "supersedes": "PRETRIAL_OR_FURTHER_CONFERENCE from Doc. No. 15"
+        },
+        {
+          "deadlineType": "FURTHER_DISCOVERY_CONTROL DUPLICATE",
+          "date": "2028-04-20",
+          "sourceDocNo": 19,
+          "ruleSourceApplied": "doc_019_duplicate_or_refiled_cc_order",
+          "status": "duplicate",
+          "supersedes": null
+        },
+        {
+          "deadlineType": "FURTHER_COMPLIANCE_CONFERENCE DUPLICATE",
+          "date": "2028-05-27",
+          "sourceDocNo": 19,
+          "ruleSourceApplied": "doc_019_duplicate_or_refiled_cc_order",
+          "status": "duplicate",
+          "supersedes": null
+        },
+        {
+          "deadlineType": "POST_EBT_DEMAND_RESPONSE",
+          "date": "2028-04-08",
+          "sourceDocNo": 20,
+          "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+          "status": "source_supported_auto_saved",
+          "sourceText": "Response requested within 20 days after service."
+        }
+      ],
+      "supersededDeadlines": [
+        {
+          "deadlineType": "BP_RESPONSE_DEADLINE",
+          "date": "2027-01-02",
+          "sourceDocNo": 4,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars"
+        },
+        {
+          "deadlineType": "PLAINTIFF_EBT_NOTICE_DATE",
+          "date": "2027-04-30",
+          "sourceDocNo": 5,
+          "ruleSourceApplied": "cplr_article_31_disclosure"
+        },
+        {
+          "deadlineType": "PROPOSED_PLAINTIFF_DEPOSITION",
+          "date": "2027-06-19",
+          "sourceDocNo": 12,
+          "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox"
+        },
+        {
+          "deadlineType": "PLAINTIFF_DEPOSITION",
+          "date": "2027-07-29",
+          "sourceDocNo": 13,
+          "ruleSourceApplied": "doc_013_pc_order"
+        },
+        {
+          "deadlineType": "DEFENDANT_DEPOSITIONS",
+          "date": "2027-09-29",
+          "sourceDocNo": 13,
+          "ruleSourceApplied": "doc_013_pc_order"
+        },
+        {
+          "deadlineType": "COMPLIANCE_CONFERENCE",
+          "date": "2027-12-15",
+          "sourceDocNo": 15,
+          "ruleSourceApplied": "doc_015_cc_order",
+          "status": "superseded",
+          "supersededBy": "Second Compliance Conference Order (Doc. No. 18)"
+        },
+        {
+          "deadlineType": "PRETRIAL_OR_FURTHER_CONFERENCE",
+          "date": "2028-02-11",
+          "sourceDocNo": 15,
+          "ruleSourceApplied": "doc_015_cc_order",
+          "status": "superseded",
+          "supersededBy": "Second Compliance Conference Order (Doc. No. 18)"
+        }
+      ],
+      "conflicts": [],
+      "auditNotes": [
+        "So-Ordered Stipulation (Doc. No. 17) supersedes prior deposition deadlines from Preliminary Conference Order (Doc. No. 13).",
+        "New plaintiff deposition deadline: 2027-10-24; new defendants' deposition deadline: 2027-11-24.",
+        "Stipulation explicitly states it controls over inconsistent earlier PC deadlines.",
+        "Conditional task REVIEW_DISCOVERY_STIPULATION_FOR_SO_ORDER moved to completed.",
+        "Processed 017-doc_017_STIPULATION_SO_ORDERED.pdf as document 17",
+        "Processed Doc. No. 18: Compliance Conference Order filed 2027-12-02. Extracted FURTHER_DISCOVERY_CONTROL deadline 2028-04-20 and FURTHER_COMPLIANCE_CONFERENCE deadline 2028-05-27.",
+        "Superseded previous COMPLIANCE_CONFERENCE (2027-12-15) and PRETRIAL_OR_FURTHER_CONFERENCE (2028-02-11) from Doc. No. 15.",
+        "Updated openTasks: removed TRACK_COMPLIANCE_CONFERENCE_ORDER (completed) and added TRACK_UPDATED_COMPLIANCE_ORDER.",
+        "Added new deadlines with status source_supported_auto_saved, referencing rule source doc_018_cc_order.",
+        "Updated case snapshot with new facts, deadlines, and pending human review items.",
+        "Processed 018-doc_018_ORDER_COMPLIANCE_CONFERENCE.pdf as document 18",
+        "Doc. No. 19 is a Compliance Conference Order that appears to duplicate or refile the prior CC order (Doc. No. 18). The order restates the same further discovery/control date and further compliance/pretrial conference date.",
+        "A CONFIRM_DUPLICATE_OR_REFILED_CC_ORDER task has been created with status needs_review to flag for human confirmation before any duplicate tasks/deadlines are acted upon.",
+        "New deadlines from Doc. 19 are marked as 'duplicate' and do not supersede the existing deadlines from Doc. 18.",
+        "Processed 019-doc_019_ORDER_COMPLIANCE_CONFERENCE_DUPLICATE_OR_REFILED.pdf as document 19",
+        "Inferred defendant deposition completion from Plaintiff's Post-EBT Demands statement 'after deposition of defendant physician'. Moved COMPLETE_DEFENDANT_DEPOSITIONS to completed tasks.",
+        "Calculated response deadline as 20 days from filing date 2028-03-19, resulting in 2028-04-08, consistent with expected deadline.",
+        "Applied CPLR 3120 and 3101 as primary rule sources for post-EBT discovery demands.",
+        "Processed 020-doc_020_PLAINTIFF_POST_EBT_DEMANDS.pdf as document 20",
+        "Processed 021-doc_021_ORDER_COMPLIANCE_CONFERENCE.pdf as document 21"
+      ],
+      "synthetic": true,
+      "syntheticDataNotice": "Synthetic snapshot expected output for eval testing.",
+      "expectedRuleAuthorityState": {
+        "activeRuleSetVersion": null,
+        "authorityHierarchy": {},
+        "ruleSourcesAvailable": []
+      }
+    }
+  },
+  "negativeGuardrailTests": [],
+  "evalComparisonConfig": {
+    "exactMatchFields": [
+      "expectedDocumentType",
+      "expectedFilingDate",
+      "expectedNyscefDocNo",
+      "caseIdentity.indexNumber",
+      "caseIdentity.county",
+      "caseIdentity.judgeName",
+      "caseIdentity.partName",
+      "expectedRuleSourcesApplied",
+      "expectedRuleAuthorityBehavior.mustIncludeSourceAuthorityOnFinalDeadlines"
+    ],
+    "semanticMatchFields": [
+      "expectedConfirmedFacts",
+      "expectedTasks.taskDescription",
+      "snapshotExpectedOutputs.*.confirmedFacts",
+      "snapshotExpectedOutputs.*.openTasks"
+    ],
+    "guardrailFields": [
+      "mustNotCreate",
+      "negativeGuardrailTests"
+    ],
+    "criticalFailureRules": [
+      "Creating a final answer/response deadline without verified service date and method.",
+      "Creating a deadline for defendant to respond to Certificate of Merit.",
+      "Leaving superseded NOI deadline active after a later controlling CC order changes it.",
+      "Treating visual/OCR uncertainty as confirmed fact without review status."
+    ],
+    "ruleAuthorityChecks": [
+      "deadline_has_sourceAuthority",
+      "deadline_has_sourceName_or_sourceDocNo",
+      "uses_highest_applicable_authority",
+      "case_order_controls_over_judge_part_rule",
+      "judge_part_rule_controls_over_county_general_rule",
+      "later_order_supersedes_earlier_order"
+    ]
+  }
+}

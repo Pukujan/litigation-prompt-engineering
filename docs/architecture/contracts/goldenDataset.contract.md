@@ -19,7 +19,8 @@ Versioned ground-truth fixtures for Case Filing AI evals. Authored via the **gol
 | `pipeline_versions.expected.json` | Version pins including `goldenDatasetVersion`, `authorModel` |
 | `eval_comparison_config.json` | Field-level eval rules |
 | `negative_guardrails.expected.json` | Cross-doc guardrail tests |
-| `authoring_run.json` | Audit: models, runId, batchStatus, import stamp |
+| `authoring_run.json` | Audit: models, runId, batchStatus, import stamp, inventory paths |
+| `golden_audit.json` | Human-review audit: author model, prompt pins, consolidated inventory versions |
 | `VERSION_HISTORY.jsonl` | Append-only version events (`staged`, `promoted`) |
 | `SYNTHETIC_DATA_NOTICE.md` | Required before promote |
 | `run/` | Ephemeral pipeline run (processing log, snapshot, outputs) |
@@ -48,13 +49,21 @@ Example: `synthetic_case_002_rule_authority_v001`
 
 | Variable | Purpose |
 |----------|---------|
-| `MODEL_GOLDEN_AUTHORING` | Stronger OpenRouter model for master prompt |
+| `MODEL_GOLDEN_AUTHORING` | Stronger OpenRouter model for master prompt (default: `deepseek/deepseek-v4-pro`) |
 | `MASTER_PROMPT_GOLDEN_VERSION` | Prompt template version (defaults to runtime profile) |
 | `GOLDEN_AUTHORING_STAGING_ROOT` | Override staging root |
 | `GOLDEN_AUTHORING_API_ENABLED` | Enable `/api/golden-authoring/*` |
 | `GOLDEN_AUTHORING_API_KEY` | Optional API key header |
 
 Parse/OCR use the same paths as runtime (`MODEL_VISION_OCR`, pdf-text) so evals compare fairly.
+
+Before authoring, refresh consolidated inventories so `golden_audit.json` pins match the repo:
+
+```bash
+npm run condense:all
+```
+
+Promote requires `golden_audit.json`, `pipeline_versions.expected.json` (with `authorModel`, `masterPromptVersion`, `goldenDatasetVersion`), and `authoring_run.json` with `batchStatus: completed`.
 
 ## Changelog
 

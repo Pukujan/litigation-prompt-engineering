@@ -9,7 +9,8 @@ export function createCaseFilingDemoRoutes({ demo }) {
     res.json({
       module: "case-filing-demo",
       status: "ok",
-      mode: "cached-fixture-demo"
+      mode: "multi-case-demo",
+      cases: ["case_001_rule_authority_v002", "case_002_queens_catapano_fox_v002"]
     });
   });
 
