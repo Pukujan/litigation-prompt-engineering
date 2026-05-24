@@ -1,0 +1,42 @@
+{
+  "docIndex": 3,
+  "docKey": "doc-003",
+  "expectedDocumentType": "EXHIBITS_SUPPORTING_SUMMONS_AND_COMPLAINT",
+  "expectedTitle": "Exhibit(s) - Supporting Documents to S&C",
+  "expectedFilingDate": "2027-09-15",
+  "expectedNyscefDocNo": 3,
+  "expectedPageCount": 19,
+  "expectedConfirmedFacts": [
+    "Supporting documents relate to the summons and complaint.",
+    "Prior notice/order/notice-of-claim context exists and should be linked as source context, not blindly marked completed."
+  ],
+  "expectedTasks": [],
+  "expectedDeadlines": [],
+  "expectedHumanReviewItems": [
+    {
+      "issue": "handwritten_or_unclear_service_date",
+      "reason": "Prior service/date material included in supporting exhibits may require visual confirmation.",
+      "blocking": false,
+      "status": "pending"
+    }
+  ],
+  "mustNotCreate": [
+    "new final deadline unless the exhibit supplies a controlling trigger",
+    "completed notice of claim task without tying it to a specific source page/order/service record"
+  ],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "ocr_needed": false,
+    "ocr_test_reason": null
+  },
+  "expectedRuleSourcesApplied": [
+    "cplr_general_civil_practice"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

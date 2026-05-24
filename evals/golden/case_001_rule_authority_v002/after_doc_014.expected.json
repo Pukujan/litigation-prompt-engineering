@@ -1,0 +1,102 @@
+{
+  "snapshotId": "snapshot_after_doc_014_expected",
+  "caseId": "synthetic_case_001_queens_905421_2027_santos_v_mchhc",
+  "afterDocNo": 14,
+  "currentPhase": "DISCOVERY_POST_COMPLIANCE_CONFERENCE",
+  "currentMiniPhase": "CC_ORDER_3216_NOI_RISK",
+  "confirmedFacts": [
+    "Plaintiff EBT marked done.",
+    "Defendant further responses due 2028-08-28.",
+    "Dana Brooks Allen, MD EBT scheduled 2028-10-13 at 10:00 AM.",
+    "Rachel Monroe, MD EBT scheduled 2028-12-25, time unclear.",
+    "NOI due 2029-04-19 under CC order / CPLR 3216 demand.",
+    "Pretrial conference scheduled 2029-08-23 at 9:30 AM in Courtroom 48."
+  ],
+  "openTasks": [
+    "Defendant further responses due 2028-08-28",
+    "Dana Brooks Allen, MD EBT 2028-10-13 10:00 AM",
+    "Rachel Monroe, MD EBT 2028-12-25 time unclear",
+    "Monitor reserved EBT rights for Harishankar, O’Hearn, and alternate neonatal witness",
+    "Respond to post-EBT demands within 20 days of receipt",
+    "NOI due 2029-04-19",
+    "Pretrial conference 2029-08-23 9:30 AM Courtroom 48"
+  ],
+  "completedTasks": [
+    "Plaintiff EBT marked done",
+    "Compliance Conference Order filed"
+  ],
+  "deadlines": [
+    {
+      "type": "DEFENDANT_FURTHER_RESPONSES",
+      "date": "2028-08-28"
+    },
+    {
+      "type": "CARLA_ROGERS_HENRY_MD_EBT",
+      "date": "2028-10-13T10:00:00"
+    },
+    {
+      "type": "LAUREN_FERRARA_MD_EBT",
+      "date": "2028-12-25",
+      "status": "time_unclear"
+    },
+    {
+      "type": "NOI",
+      "date": "2029-04-19"
+    },
+    {
+      "type": "PRETRIAL_CONFERENCE",
+      "date": "2029-08-23T09:30:00"
+    }
+  ],
+  "supersededDeadlines": [
+    {
+      "type": "NOI",
+      "oldDate": "2028-12-21",
+      "newDate": "2029-04-19",
+      "supersededBy": "Doc 13/14 Compliance Conference Order / CPLR 3216 demand"
+    }
+  ],
+  "unresolvedHumanReviewItemsExpected": [
+    "CC order OCR/visual review",
+    "Ferrara EBT time unclear",
+    "duplicate/refiling confirmation for Doc 14"
+  ],
+  "conflicts": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic snapshot expected output for eval testing.",
+  "expectedRuleAuthorityState": {
+    "activeRuleSetVersion": "queens_kerrigan_medmal_rules_v001",
+    "authorityHierarchy": {
+      "unknown": 0,
+      "cplr_or_statute": 1,
+      "uniform_rule": 2,
+      "county_or_court_rule": 3,
+      "judge_part_rule": 4,
+      "case_specific_order": 5,
+      "later_case_specific_order": 6
+    },
+    "ruleSourcesAvailable": [
+      "cplr_general_civil_practice",
+      "uniform_rule_202_56_medmal",
+      "queens_medmal_part_rules",
+      "queens_medmal_pc_form",
+      "queens_medmal_cc_form",
+      "queens_compliance_part_rules",
+      "queens_part_10_kerrigan_rules",
+      "doc_012_pc_order",
+      "doc_013_014_cc_order"
+    ],
+    "controllingSources": [
+      "doc_013_014_cc_order",
+      "queens_part_10_kerrigan_rules",
+      "queens_medmal_cc_form"
+    ],
+    "supersessionRequired": [
+      {
+        "old": "2026-08-13",
+        "new": "2026-12-10",
+        "source": "doc_013_014_cc_order"
+      }
+    ]
+  }
+}

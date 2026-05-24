@@ -1,0 +1,52 @@
+{
+  "docIndex": 5,
+  "docKey": "doc-005",
+  "expectedDocumentType": "AFFIRMATION_AFFIDAVIT_OF_SERVICE",
+  "expectedTitle": "AOS re S&C served on MCMCHHC",
+  "expectedFilingDate": "2027-09-16",
+  "expectedNyscefDocNo": 5,
+  "expectedPageCount": 4,
+  "expectedConfirmedFacts": [
+    "Affidavit/affirmation of service was filed regarding service of summons and complaint on MCMCHHC.",
+    "Service was made on MCMCHHC via MCHHCService@nychhc.org according to the affidavit/affirmation context."
+  ],
+  "expectedTasks": [
+    {
+      "taskType": "RESPONSE_DEADLINE_VERIFICATION",
+      "taskDescription": "Review AOS details and service method before confirming response deadline.",
+      "status": "source_supported_auto_saved",
+      "dueDate": null,
+      "dueDateStatus": "needs_review",
+      "confidence": "medium",
+      "sourceTrigger": "Doc 5 affidavit/affirmation of service"
+    }
+  ],
+  "expectedDeadlines": [],
+  "expectedHumanReviewItems": [
+    {
+      "issue": "handwritten_index_date_signature_visual_review",
+      "reason": "AOS includes signature/date/index fields that may require visual review.",
+      "blocking": false,
+      "status": "pending"
+    }
+  ],
+  "mustNotCreate": [
+    "confirmed answer deadline unless calculation rule and service method are explicitly supported",
+    "wrong service email such as nychhe.org"
+  ],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "ocr_needed": false,
+    "ocr_test_reason": null
+  },
+  "expectedRuleSourcesApplied": [
+    "cplr_general_civil_practice"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

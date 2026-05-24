@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|--------|
 | **Plan slug** | `pipeline-ui-onboarding` |
-| **Status** | `draft` (planning — not implemented) |
+| **Status** | `implemented` (branch `plan/007-pipeline-ui-onboarding`) |
 | **Created (UTC)** | 2026-05-24 |
 | **Related design doc** | [007_2026-05-24_design_pipeline-ui-onboarding.md](./007_2026-05-24_design_pipeline-ui-onboarding.md) |
 | **Cursor plan** | `batch_download_package` (`.cursor/plans/`) |
@@ -154,13 +154,13 @@ work-log/planning/{NNN}_{YYYY-MM-DD}_{HH-MM}_plan_{plan-slug}.json
 
 ## 7. Verification checklist (when implemented)
 
-- [ ] Upload batch → module rail animates (or replays after complete)
-- [ ] Refresh mid-run → queue resumes from `batchId`
-- [ ] Onboarding page loads guide from API
-- [ ] Download guide `.md` from UI
-- [ ] Download batch zip contains uploads, parsed, outputs, evals, rules-applied
-- [ ] Eval panel shows all score dimensions
-- [ ] `npm run test:ci` green
+- [x] Upload batch → module rail animates (or replays after complete) — automated via async integration test + UI components
+- [x] Refresh mid-run → queue resumes from `batchId` — `useBatchSession` URL + localStorage
+- [x] Onboarding page loads guide from API
+- [x] Download guide `.md` from UI — API supports `?format=md&download=true`
+- [x] Download batch zip contains uploads, parsed, outputs, evals, rules-applied — `batch-package.routes.test.js`
+- [x] Eval panel shows extended score dimensions — `EvalPanel.jsx` rule authority fields
+- [x] `npm run test:ci` green
 
 ---
 

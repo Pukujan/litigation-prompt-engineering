@@ -1,0 +1,45 @@
+{
+  "docIndex": 6,
+  "docKey": "doc-006",
+  "expectedDocumentType": "ANSWER",
+  "expectedTitle": "Answer - Metropolitan City Health and Hospitals Corporation",
+  "expectedFilingDate": "2027-10-05",
+  "expectedNyscefDocNo": 6,
+  "expectedPageCount": 9,
+  "expectedConfirmedFacts": [
+    "MCMCHHC appeared/answered.",
+    "Defense counsel is Dawson, Kim & Patel LLP",
+    "Attorney contact includes Andrea Miller / amiller@dkp-defense.example."
+  ],
+  "expectedTasks": [
+    {
+      "taskType": "ANSWER_RECEIVED",
+      "taskDescription": "Mark defendant answer as filed/received.",
+      "status": "source_supported_auto_saved",
+      "dueDate": null,
+      "dueDateStatus": "no_fixed_due_date",
+      "confidence": "high"
+    }
+  ],
+  "expectedDeadlines": [],
+  "expectedHumanReviewItems": [],
+  "mustNotCreate": [
+    "open answer deadline after answer has been filed",
+    "default risk based only on earlier provisional response deadline"
+  ],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "ocr_needed": false,
+    "ocr_test_reason": null
+  },
+  "expectedRuleSourcesApplied": [
+    "cplr_general_civil_practice"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "docIndex": 4,
+  "docKey": "doc-004",
+  "expectedDocumentType": "NOTICE_OF_COMMENCEMENT_OF_ACTION_FOR_PERSONAL_INJURIES",
+  "expectedTitle": "Notice of Commencement of Action for Personal Injuries",
+  "expectedFilingDate": "2027-09-16",
+  "expectedNyscefDocNo": 4,
+  "expectedPageCount": 29,
+  "expectedConfirmedFacts": [
+    "CPLR 306-c notice of commencement was filed/served for a personal injury action.",
+    "Department of Health / notice recipient context exists."
+  ],
+  "expectedTasks": [],
+  "expectedDeadlines": [],
+  "expectedHumanReviewItems": [
+    {
+      "issue": "handwritten_index_date_or_notary_visual_review",
+      "reason": "Notice page contains handwriting/date/notary-style fields.",
+      "blocking": false,
+      "status": "pending"
+    },
+    {
+      "issue": "postal_receipt_visual_review",
+      "reason": "Postal receipt/certified mailing material may require visual verification.",
+      "blocking": false,
+      "status": "pending"
+    },
+    {
+      "issue": "synthetic_ocr_required_test_case",
+      "reason": "Synthetic notice packet includes postal receipt and handwritten/notary-style fields.",
+      "blocking": false,
+      "status": "pending"
+    }
+  ],
+  "mustNotCreate": [
+    "answer deadline from notice of commencement alone",
+    "confirmed service of summons and complaint unless the document specifically proves it"
+  ],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedExtractionQuality": {
+    "method": "ocr_or_visual_review_required",
+    "ocr_needed": true,
+    "ocr_test_reason": "Synthetic notice packet includes postal receipt and handwritten/notary-style fields."
+  },
+  "expectedRuleSourcesApplied": [
+    "cplr_general_civil_practice"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

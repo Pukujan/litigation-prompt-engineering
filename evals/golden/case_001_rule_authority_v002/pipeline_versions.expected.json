@@ -1,0 +1,12 @@
+{
+  "parserVersion": "pdf-text-v001",
+  "ocrVersion": "qwen-vl-v001",
+  "masterPromptVersion": "v001_master-case-filing",
+  "ruleMatchPromptVersion": "court-rules/rule-context-1.0.0",
+  "taskDeadlinePromptVersion": "task-docketing/task-deadline-1.0.0",
+  "snapshotPromptVersion": "case-workflow/case-state-update-1.0.0",
+  "ruleSetVersion": "queens_kerrigan_medmal_rules_v001",
+  "goldenDatasetVersion": "synthetic_case_001_rule_authority_v002",
+  "modelInventoryVersion": "2026-05-24T01:21:45.863Z",
+  "promptInventoryVersion": "2026-05-24T01:21:44.831Z"
+}

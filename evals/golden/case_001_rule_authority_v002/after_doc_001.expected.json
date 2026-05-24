@@ -1,0 +1,53 @@
+{
+  "snapshotId": "snapshot_after_doc_001_expected",
+  "caseId": "synthetic_case_001_queens_905421_2027_santos_v_mchhc",
+  "afterDocNo": 1,
+  "currentPhase": "CASE_COMMENCED",
+  "currentMiniPhase": "SUMMONS_AND_COMPLAINT_FILED",
+  "confirmedFacts": [
+    "Main action commenced by summons and verified complaint.",
+    "Plaintiff is infant parent/guardian.",
+    "Defendant is MCMCHHC.",
+    "Case concerns alleged med-mal at Queens Metropolitan Hospital Center."
+  ],
+  "openTasks": [
+    {
+      "taskType": "VERIFY_SERVICE_FOR_RESPONSE_DEADLINE",
+      "status": "needs_source_trigger"
+    }
+  ],
+  "completedTasks": [
+    "Filed summons and complaint"
+  ],
+  "deadlines": [],
+  "supersededDeadlines": [],
+  "conflicts": [],
+  "auditNotes": [
+    "Do not mark summons served or answer deadline confirmed from filing date alone."
+  ],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic snapshot expected output for eval testing.",
+  "expectedRuleAuthorityState": {
+    "activeRuleSetVersion": "queens_kerrigan_medmal_rules_v001",
+    "authorityHierarchy": {
+      "unknown": 0,
+      "cplr_or_statute": 1,
+      "uniform_rule": 2,
+      "county_or_court_rule": 3,
+      "judge_part_rule": 4,
+      "case_specific_order": 5,
+      "later_case_specific_order": 6
+    },
+    "ruleSourcesAvailable": [
+      "cplr_general_civil_practice",
+      "uniform_rule_202_56_medmal",
+      "queens_medmal_part_rules",
+      "queens_medmal_pc_form",
+      "queens_medmal_cc_form",
+      "queens_compliance_part_rules",
+      "queens_part_10_kerrigan_rules",
+      "doc_012_pc_order",
+      "doc_013_014_cc_order"
+    ]
+  }
+}

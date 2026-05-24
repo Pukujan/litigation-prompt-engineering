@@ -1,0 +1,45 @@
+{
+  "docIndex": 11,
+  "docKey": "doc-011",
+  "expectedDocumentType": "RJI_MEDICAL_MALPRACTICE",
+  "expectedTitle": "RJI re Notice of Medical/Dental/Podiatric Malpractice",
+  "expectedFilingDate": "2027-11-03",
+  "expectedNyscefDocNo": 11,
+  "expectedPageCount": 2,
+  "expectedConfirmedFacts": [
+    "RJI / medical malpractice scheduling request was filed."
+  ],
+  "expectedTasks": [
+    {
+      "taskType": "AWAIT_PRELIMINARY_CONFERENCE_ORDER",
+      "taskDescription": "Await or monitor preliminary conference scheduling/order after RJI.",
+      "status": "conditional",
+      "dueDate": null,
+      "dueDateStatus": "no_fixed_due_date",
+      "confidence": "medium"
+    }
+  ],
+  "expectedDeadlines": [],
+  "expectedHumanReviewItems": [],
+  "mustNotCreate": [
+    "final PC order deadlines before actual PC order is processed"
+  ],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "ocr_needed": false,
+    "ocr_test_reason": null
+  },
+  "expectedRuleSourcesApplied": [
+    "cplr_general_civil_practice",
+    "uniform_rule_202_56_medmal",
+    "queens_medmal_part_rules",
+    "queens_part_10_kerrigan_rules"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

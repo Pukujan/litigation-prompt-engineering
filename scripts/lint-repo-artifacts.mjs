@@ -23,6 +23,8 @@ const requiredPaths = [
   "file-exchange/imports",
   "file-exchange/exports",
   "evals/golden/case_001/case_001.golden-dataset.json",
+  "evals/golden/case_001_rule_authority_v002/case_001_rule_authority_v002.golden-dataset.json",
+  "evals/golden/case_001_rule_authority_v002/rule_sources_catalog.json",
   "docs/case-filing-ai/STORAGE.md",
   "docs/API.md",
   "backend/src/modules/case-filing-ai/contracts/storageLayout.contract.js",

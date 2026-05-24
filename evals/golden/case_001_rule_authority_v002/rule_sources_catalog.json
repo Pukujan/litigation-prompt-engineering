@@ -1,0 +1,116 @@
+[
+  {
+    "ruleId": "cplr_general_civil_practice",
+    "sourceAuthority": "cplr_or_statute",
+    "authorityRank": 1,
+    "sourceName": "CPLR / New York civil practice defaults",
+    "controls": [
+      "default service/response framework",
+      "motion/statutory default context"
+    ],
+    "applicationRule": "Use only when no more specific valid order/rule controls and trigger facts are present.",
+    "mustNotUseFor": [
+      "final answer deadline without verified service date and service method"
+    ]
+  },
+  {
+    "ruleId": "uniform_rule_202_56_medmal",
+    "sourceAuthority": "uniform_rule",
+    "authorityRank": 2,
+    "sourceName": "Uniform Rule 202.56 Medical/Dental/Podiatric Malpractice Actions",
+    "controls": [
+      "general med-mal timing context",
+      "RJI/notice of med-mal framework"
+    ],
+    "applicationRule": "General med-mal context unless Queens/Judge/order source is more specific."
+  },
+  {
+    "ruleId": "queens_medmal_part_rules",
+    "sourceAuthority": "county_or_court_rule",
+    "authorityRank": 3,
+    "sourceName": "Queens Medical/Dental/Podiatric Malpractice Part Rules",
+    "controls": [
+      "Queens med-mal PC/CC procedure",
+      "Queens medical malpractice scheduling practice"
+    ],
+    "applicationRule": "Use for Queens med-mal workflow where judge/order is silent."
+  },
+  {
+    "ruleId": "queens_medmal_pc_form",
+    "sourceAuthority": "county_or_court_rule",
+    "authorityRank": 3,
+    "sourceName": "Queens Medical Malpractice Preliminary Conference Form",
+    "controls": [
+      "PC order form obligations",
+      "discovery schedule template fields",
+      "expert/NOI/SJ timing if expressed"
+    ],
+    "applicationRule": "Use when PC form terms are incorporated or when current PC order uses this form."
+  },
+  {
+    "ruleId": "queens_medmal_cc_form",
+    "sourceAuthority": "county_or_court_rule",
+    "authorityRank": 3,
+    "sourceName": "Queens Medical Malpractice Compliance Conference Form",
+    "controls": [
+      "CC order form obligations",
+      "NOI/COR handling",
+      "copy to chambers requirements"
+    ],
+    "applicationRule": "Use when CC form terms are incorporated or when current CC order uses this form."
+  },
+  {
+    "ruleId": "queens_compliance_part_rules",
+    "sourceAuthority": "county_or_court_rule",
+    "authorityRank": 3,
+    "sourceName": "Queens Compliance Part Rules",
+    "controls": [
+      "general Queens compliance conference handling"
+    ],
+    "applicationRule": "Use only if applicable; do not override HHC med-mal/judge/order-specific handling."
+  },
+  {
+    "ruleId": "queens_part_10_kerrigan_rules",
+    "sourceAuthority": "judge_part_rule",
+    "authorityRank": 4,
+    "sourceName": "Hon. Kevin J. Kerrigan / Queens Civil Term Part 10 Rules",
+    "controls": [
+      "Part 10 communications",
+      "Part 10 submissions",
+      "MedMal-HHC in-person and email workflow",
+      "conference handling when not contradicted by case order"
+    ],
+    "applicationRule": "Controls Part 10 workflow over general Queens rules unless a case-specific order controls."
+  },
+  {
+    "ruleId": "doc_012_pc_order",
+    "sourceAuthority": "case_specific_order",
+    "authorityRank": 5,
+    "sourceName": "Doc 12 Preliminary Conference Order",
+    "sourceDocNo": 12,
+    "controls": [
+      "PC order dates",
+      "EBT schedule from PC order",
+      "initial NOI deadline",
+      "CC date"
+    ],
+    "applicationRule": "Controls document-specific PC deadlines until superseded by later order."
+  },
+  {
+    "ruleId": "doc_013_014_cc_order",
+    "sourceAuthority": "later_case_specific_order",
+    "authorityRank": 6,
+    "sourceName": "Doc 13/14 Compliance Conference Order / CPLR 3216 Demand",
+    "sourceDocNo": [
+      13,
+      14
+    ],
+    "controls": [
+      "updated NOI deadline",
+      "CPLR 3216 risk",
+      "post-CC EBT/further response schedule",
+      "pretrial conference date"
+    ],
+    "applicationRule": "Supersedes earlier PC order terms where directly changed."
+  }
+]
