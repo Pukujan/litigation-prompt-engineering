@@ -20,6 +20,8 @@
     "condense-prompts": "node scripts/condense-prompts.mjs",
     "condense-file-structure": "node scripts/condense-file-structure.mjs",
     "condense:all": "node scripts/condense-all.mjs",
+    "plan:finalize": "node scripts/plan-finalize.mjs",
+    "plan:gate": "node scripts/plan-gate.mjs",
     "dev-log:pre-push": "node scripts/write-pre-push-dev-log.mjs",
     "dev-log:verify": "node scripts/verify-dev-log.mjs",
     "import:file-exchange": "node scripts/import-to-file-exchange.mjs"

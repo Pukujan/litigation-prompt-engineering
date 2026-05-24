@@ -17,6 +17,16 @@
     "file": "backend/src/shared/contracts/consolidatedExports.contract.js",
     "utility": "backend/src/shared/utils/consolidatedExport.js"
   },
+  "planningPhase": {
+    "version": "v001",
+    "doc": "docs/architecture/contracts/planningPhase.contract.md",
+    "file": "backend/src/shared/contracts/planningPhase.contract.js",
+    "finalize": "scripts/plan-finalize.mjs",
+    "gate": "scripts/plan-gate.mjs",
+    "artifacts": "scripts/lib/plan-artifacts.mjs",
+    "studyLogCommand": ".cursor/commands/planning-study-log.md",
+    "planningDir": "work-log/planning"
+  },
   "prePushDevLog": {
     "version": "v001",
     "doc": "docs/architecture/contracts/prePushDevLog.contract.md",

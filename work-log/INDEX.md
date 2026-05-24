@@ -48,5 +48,6 @@
 | 005 | 2026-05-23 | 17-00 | [human](./dev-logs/human/005_2026-05-23_17-00_dev-log_e2e-test.md) | [agent](./dev-logs/agent/005_2026-05-23_17-00_dev-log-agent_e2e-test.json) |
 | 005 | 2026-05-23 | **17-36** | **[architecture CI / npm / README](./dev-logs/human/005_2026-05-23_17-36_dev-log_architecture-ci-npm-readme.md)** | **[agent](./dev-logs/agent/005_2026-05-23_17-36_dev-log-agent_architecture-ci-npm-readme.json)** |
 | 007 | 2026-05-24 | 12-55 | [human](./dev-logs/human/007_2026-05-24_12-55_dev-log_pipeline-ui-onboarding.md) | [agent](./dev-logs/agent/007_2026-05-24_12-55_dev-log-agent_pipeline-ui-onboarding.json) |
+| 005 | 2026-05-24 | 14-53 | [human](./dev-logs/human/005_2026-05-24_14-53_dev-log_planning-starter-export.md) | [agent](./dev-logs/agent/005_2026-05-24_14-53_dev-log-agent_planning-starter-export.json) |
 
 Architecture narrative: [docs/DEVLOG_V2.md](../docs/DEVLOG_V2.md) · Platform gates: [docs/architecture/EVAL_AND_CI.md](../docs/architecture/EVAL_AND_CI.md).

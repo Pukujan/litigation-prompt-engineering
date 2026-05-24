@@ -16,6 +16,21 @@ Deliverables → `file-exchange/exports/{stamp}/`. Consolidated snapshots → `f
 
 See [file-exchange/README.md](file-exchange/README.md) and [docs/architecture/CONTRACTS_OVERVIEW.md](docs/architecture/CONTRACTS_OVERVIEW.md).
 
+## Planning before implementation
+
+Before building a tier-L feature:
+
+1. Append a **study log** under `work-log/study-docs/` (You raw + Cursor summary per turn) — see `.cursor/commands/planning-study-log.md`
+2. Add a **plan package** `*_plan_{slug}*.md` in the same folder
+3. Finalize and gate:
+
+```bash
+npm run plan:finalize -- --slug <plan-slug> [--plan-id <id>]
+npm run plan:gate -- --slug <plan-slug> [--plan-id <id>]
+```
+
+Manifest → `work-log/planning/{planId}.json`. See [planningPhase contract](docs/architecture/contracts/planningPhase.contract.md).
+
 ## Pre-push dev log
 
 Before each push:
@@ -38,4 +53,4 @@ npm run lint:api-docs
 
 ## Work log
 
-Handoffs and dev-logs under `work-log/` per [work-log/README.md](work-log/README.md).
+Study logs, plan packages, and planning manifests under `work-log/` per [work-log/README.md](work-log/README.md). Pre-push dev-logs record what shipped.
