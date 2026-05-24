@@ -9,6 +9,12 @@ import { attachRunMetadataToReport } from "./runMetadata.service.js";
 import { attachEvalProvenance } from "../utils/evalProvenance.js";
 import { runRuleAuthorityChecks } from "../utils/runRuleAuthorityChecks.js";
 import { runParsedDocumentChecks } from "../utils/runParsedDocumentChecks.js";
+import {
+  compareExtractionQuality,
+  compareRuleSourcesApplied,
+  compareRuleAuthorityBehavior,
+  comparePipelineVersions
+} from "../utils/compareGoldenRuleFields.js";
 
 function roundScore(value) {
   return Math.round(value * 100) / 100;
@@ -180,6 +186,10 @@ function compareDocumentExpected(actual, expected) {
     )
   );
 
+  const extractionQuality = compareExtractionQuality(actual, expected, fieldResults);
+  const ruleSources = compareRuleSourcesApplied(actual, expected, fieldResults);
+  const ruleAuthorityBehavior = compareRuleAuthorityBehavior(actual, expected, fieldResults);
+
   return {
     scores: {
       documentIdentity: roundScore(documentIdentity),
@@ -187,7 +197,10 @@ function compareDocumentExpected(actual, expected) {
       parties: roundScore(parties),
       tasks: roundScore(tasks),
       deadlines: roundScore(deadlines),
-      humanReview: roundScore(humanReview)
+      humanReview: roundScore(humanReview),
+      extractionQuality: roundScore(extractionQuality),
+      ruleSources: roundScore(ruleSources),
+      ruleAuthorityBehavior: roundScore(ruleAuthorityBehavior)
     },
     fieldResults
   };
@@ -322,10 +335,15 @@ function runMustNotCreateChecks(actual, expected, docIndex) {
   }
 
   if (docIndex === 8) {
-    const fixedDeposition =
-      /deposition.*\d{4}-\d{2}-\d{2}/i.test(blob) &&
-      /agreed|court directed|to be agreed|schedule/i.test(blob);
-    if (fixedDeposition) {
+    const depositionTasks = [...(actual.tasks ?? []), ...(actual.deadlines ?? [])].filter((t) =>
+      /deposition/i.test(String(t.taskDescription ?? t.taskType ?? ""))
+    );
+    const fixedDepositionTask = depositionTasks.some(
+      (t) =>
+        t.dueDateStatus === "fixed" ||
+        (t.dueDate && t.dueDateStatus !== "no_fixed_due_date")
+    );
+    if (fixedDepositionTask) {
       failures.push(
         "Created fixed deposition date when notice indicates date/time/location to be agreed or court-directed"
       );
@@ -466,8 +484,26 @@ export function createEvalRunnerService({ goldenDataset, storagePaths }) {
     }
 
     const { scores, fieldResults } = compareDocumentExpected(documentResult, expected);
-    report.scores = { ...scores, snapshot: 0, negativeGuardrails: 1 };
+    report.scores = { ...scores, snapshot: 0, negativeGuardrails: 1, pipelineVersions: 1 };
     report.fieldResults = fieldResults;
+
+    const expectedPipeline = await goldenDataset.loadPipelineVersionsExpected();
+    const actualPipeline =
+      documentResult.pipelineVersions ??
+      runMetadata?.pipelineVersions ??
+      documentResult.runMetadata?.pipelineVersions;
+    if (expectedPipeline && actualPipeline) {
+      const pipelineScore = comparePipelineVersions(
+        actualPipeline,
+        expectedPipeline,
+        report.fieldResults
+      );
+      report.scores.pipelineVersions = roundScore(pipelineScore);
+      if (pipelineScore < 1) {
+        report.criticalFailures = report.criticalFailures ?? [];
+        report.criticalFailures.push("pipelineVersions mismatch vs golden baseline");
+      }
+    }
 
     const mustNotFailures = runMustNotCreateChecks(documentResult, expected, docIndex);
     const guardrails = await goldenDataset.loadNegativeGuardrails();
@@ -501,11 +537,18 @@ export function createEvalRunnerService({ goldenDataset, storagePaths }) {
     report.scores.parsedGolden = parsedGoldenFailures.length === 0 ? 1 : 0;
 
     report.criticalFailures = [
+      ...(report.criticalFailures ?? []),
       ...mustNotFailures,
       ...guardrailFailures,
       ...ruleAuthorityFailures.map((f) => f.message),
       ...parsedGoldenFailures.map((f) => f.message)
     ];
+
+    if (scores.ruleSources < 1) {
+      report.criticalFailures.push(
+        `expectedRuleSourcesApplied missing: ${(expected.expectedRuleSourcesApplied ?? []).join(", ")}`
+      );
+    }
     if (guardrailFailures.length > 0 || mustNotFailures.length > 0) {
       report.scores.negativeGuardrails = 0;
     }

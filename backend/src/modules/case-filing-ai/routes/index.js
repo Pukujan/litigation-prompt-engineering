@@ -9,6 +9,7 @@ export function createModuleRouter({
   ruleText,
   evalBundle,
   caseData,
+  batchPackage,
   parsedDocumentCache
 }) {
   const router = Router();
@@ -20,6 +21,7 @@ export function createModuleRouter({
       ruleText,
       evalBundle,
       caseData,
+      batchPackage,
       parsedDocumentCache
     })
   );

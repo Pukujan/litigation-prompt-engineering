@@ -3,10 +3,17 @@ import {
   bundleBatchEvals,
   bundleCaseEvals,
   deleteCase,
+  downloadBatchPackage,
+  downloadCaseExport,
   exportCase,
   getBatchEvals,
   getCaseInventory
 } from "../api/caseFilingApi.js";
+
+const GOLDEN_CASES = [
+  { id: "case_001", label: "case_001" },
+  { id: "case_001_rule_authority_v002", label: "case_001_rule_authority_v002" }
+];
 
 function statusClass(status) {
   if (status === "pass") return "eval-status-pass";
@@ -25,6 +32,10 @@ function ScoreRow({ label, value }) {
 }
 
 function EvalReportCard({ report }) {
+  const mismatches = report.fieldResults?.filter((f) => !f.pass) ?? [];
+  const showMismatches =
+    mismatches.length > 0 && (report.status === "fail" || report.status === "partial");
+
   return (
     <article className={`eval-card ${statusClass(report.status)}`}>
       <header className="eval-card-header">
@@ -55,23 +66,38 @@ function EvalReportCard({ report }) {
           <ScoreRow label="Human review" value={report.scores?.humanReview} />
           <ScoreRow label="Snapshot" value={report.scores?.snapshot} />
           <ScoreRow label="Negative guardrails" value={report.scores?.negativeGuardrails} />
+          <ScoreRow label="Rule authority" value={report.scores?.ruleAuthority} />
+          <ScoreRow label="Rule sources" value={report.scores?.ruleSources} />
+          <ScoreRow label="Extraction quality" value={report.scores?.extractionQuality} />
+          <ScoreRow label="Pipeline versions" value={report.scores?.pipelineVersions} />
+          <ScoreRow label="Parsed golden" value={report.scores?.parsedGolden} />
         </ul>
       </div>
 
-      {report.fieldResults?.filter((f) => !f.pass).length > 0 && (
-        <details>
-          <summary>
-            Field mismatches ({report.fieldResults.filter((f) => !f.pass).length})
-          </summary>
+      {showMismatches && (
+        <div className="eval-mismatches-promoted">
+          <h5>Field mismatches ({mismatches.length})</h5>
           <ul className="eval-mismatches">
-            {report.fieldResults
-              .filter((f) => !f.pass)
-              .map((field) => (
-                <li key={field.field}>
-                  <strong>{field.field}</strong>
-                  {field.note && <span className="muted"> — {field.note}</span>}
-                </li>
-              ))}
+            {mismatches.map((field) => (
+              <li key={field.field}>
+                <strong>{field.field}</strong>
+                {field.note && <span className="muted"> — {field.note}</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {!showMismatches && mismatches.length > 0 && (
+        <details>
+          <summary>Field mismatches ({mismatches.length})</summary>
+          <ul className="eval-mismatches">
+            {mismatches.map((field) => (
+              <li key={field.field}>
+                <strong>{field.field}</strong>
+                {field.note && <span className="muted"> — {field.note}</span>}
+              </li>
+            ))}
           </ul>
         </details>
       )}
@@ -83,7 +109,7 @@ function EvalReportCard({ report }) {
   );
 }
 
-export function EvalPanel({ batchId }) {
+export function EvalPanel({ batchId, evalReports: evalReportsProp }) {
   const [evalData, setEvalData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -94,11 +120,27 @@ export function EvalPanel({ batchId }) {
   const [caseInventory, setCaseInventory] = useState(null);
   const [caseExportResult, setCaseExportResult] = useState(null);
   const [caseDataBusy, setCaseDataBusy] = useState(false);
+  const [goldenCaseId, setGoldenCaseId] = useState("case_001");
+  const [downloading, setDownloading] = useState(false);
 
   useEffect(() => {
+    if (evalReportsProp?.length) {
+      const summary = {
+        pass: evalReportsProp.filter((r) => r.status === "pass").length,
+        partial: evalReportsProp.filter((r) => r.status === "partial").length,
+        fail: evalReportsProp.filter((r) => r.status === "fail").length,
+        criticalFailureCount: evalReportsProp.reduce(
+          (n, r) => n + (r.criticalFailures?.length ?? 0),
+          0
+        )
+      };
+      setEvalData({ batchId, summary, reports: evalReportsProp });
+      return undefined;
+    }
+
     if (!batchId) {
       setEvalData(null);
-      return;
+      return undefined;
     }
 
     let cancelled = false;
@@ -119,7 +161,7 @@ export function EvalPanel({ batchId }) {
     return () => {
       cancelled = true;
     };
-  }, [batchId]);
+  }, [batchId, evalReportsProp]);
 
   if (!batchId) return null;
   if (loading) return <p className="muted">Loading eval reports…</p>;
@@ -152,11 +194,25 @@ export function EvalPanel({ batchId }) {
     }
   }
 
+  async function handleDownloadBatch() {
+    setDownloading(true);
+    try {
+      await downloadBatchPackage(batchId, {
+        includeGolden: true,
+        goldenCaseId
+      });
+    } catch (err) {
+      setBundleResult({ error: err.message || "Download failed" });
+    } finally {
+      setDownloading(false);
+    }
+  }
+
   async function handleLoadCaseInventory() {
     setCaseDataBusy(true);
     setCaseInventory(null);
     try {
-      const inventory = await getCaseInventory("case_001");
+      const inventory = await getCaseInventory(goldenCaseId);
       setCaseInventory(inventory);
     } catch (err) {
       setCaseInventory({ error: err.message || "Inventory failed" });
@@ -169,8 +225,9 @@ export function EvalPanel({ batchId }) {
     setCaseDataBusy(true);
     setCaseExportResult(null);
     try {
-      const manifest = await exportCase("case_001", {
-        exportName: "case_001-full-export",
+      const exportId = `${goldenCaseId}-full-export`;
+      const manifest = await exportCase(goldenCaseId, {
+        exportName: exportId,
         includeGolden: true
       });
       setCaseExportResult(manifest);
@@ -181,17 +238,34 @@ export function EvalPanel({ batchId }) {
     }
   }
 
+  async function handleDownloadCase() {
+    setDownloading(true);
+    try {
+      const exportId = `${goldenCaseId}-full-export`;
+      try {
+        await exportCase(goldenCaseId, { exportName: exportId, includeGolden: true });
+      } catch {
+        // may already exist
+      }
+      await downloadCaseExport(goldenCaseId, exportId);
+    } catch (err) {
+      setCaseExportResult({ error: err.message || "Download failed" });
+    } finally {
+      setDownloading(false);
+    }
+  }
+
   async function handleDeleteCase() {
     if (
       !window.confirm(
-        "Delete all matched batch folders for case_001? Golden fixtures are not removed. This cannot be undone."
+        `Delete all matched batch folders for ${goldenCaseId}? Golden fixtures are not removed.`
       )
     ) {
       return;
     }
     setCaseDataBusy(true);
     try {
-      const result = await deleteCase("case_001", { confirm: true });
+      const result = await deleteCase(goldenCaseId, { confirm: true });
       setCaseInventory(result);
       setCaseExportResult(null);
     } catch (err) {
@@ -205,8 +279,8 @@ export function EvalPanel({ batchId }) {
     setCaseBundling(true);
     setCaseBundleResult(null);
     try {
-      const manifest = await bundleCaseEvals("case_001", {
-        bundleName: "case_001-review"
+      const manifest = await bundleCaseEvals(goldenCaseId, {
+        bundleName: `${goldenCaseId}-review`
       });
       setCaseBundleResult(manifest);
     } catch (err) {
@@ -225,16 +299,28 @@ export function EvalPanel({ batchId }) {
         {evalData.summary.criticalFailureCount > 0 &&
           ` · ${evalData.summary.criticalFailureCount} critical`}
       </p>
+      <label className="golden-case-select">
+        Golden case{" "}
+        <select value={goldenCaseId} onChange={(e) => setGoldenCaseId(e.target.value)}>
+          {GOLDEN_CASES.map((c) => (
+            <option key={c.id} value={c.id}>
+              {c.label}
+            </option>
+          ))}
+        </select>
+      </label>
       <p className="eval-bundle-actions">
-        <button type="button" onClick={handleBundleEvals} disabled={bundling || caseBundling}>
-          {bundling ? "Bundling…" : "Copy this batch to eval-bundles/"}
+        <button type="button" onClick={handleDownloadBatch} disabled={downloading || bundling}>
+          {downloading ? "Downloading…" : "Download this batch (.zip)"}
         </button>
-        <button
-          type="button"
-          onClick={handleBundleCaseEvals}
-          disabled={bundling || caseBundling}
-        >
-          {caseBundling ? "Bundling…" : "Bundle full case (golden + all runs)"}
+        <button type="button" onClick={handleBundleEvals} disabled={bundling || caseBundling}>
+          {bundling ? "Bundling…" : "Copy evals to eval-bundles/"}
+        </button>
+        <button type="button" onClick={handleBundleCaseEvals} disabled={bundling || caseBundling}>
+          {caseBundling ? "Bundling…" : "Bundle full case evals"}
+        </button>
+        <button type="button" onClick={handleDownloadCase} disabled={downloading || caseDataBusy}>
+          Download full case (.zip)
         </button>
       </p>
       {bundleResult?.relativePath && (
@@ -246,47 +332,32 @@ export function EvalPanel({ batchId }) {
       {bundleResult?.error && <p className="error-text">{bundleResult.error}</p>}
       {caseBundleResult?.relativePath && (
         <p className="muted">
-          Case: golden + {caseBundleResult.totalReportFiles} reports ({caseBundleResult.batchIds?.length}{" "}
-          runs) → <code>{caseBundleResult.relativePath}/</code>
+          Case: golden + {caseBundleResult.totalReportFiles} reports (
+          {caseBundleResult.batchIds?.length} runs) →{" "}
+          <code>{caseBundleResult.relativePath}/</code>
         </p>
       )}
       {caseBundleResult?.error && <p className="error-text">{caseBundleResult.error}</p>}
       <details className="case-data-panel">
         <summary>Case data (full export / delete)</summary>
-        <p className="muted">
-          Export copies entire batch folders (uploads, outputs, evals, rules) to{" "}
-          <code>case-exports/</code>. Eval bundles above copy eval JSON only.
-        </p>
         <p className="eval-bundle-actions">
           <button type="button" onClick={handleLoadCaseInventory} disabled={caseDataBusy}>
-            {caseDataBusy && !caseInventory ? "Loading…" : "Show case inventory"}
+            Show case inventory
           </button>
           <button type="button" onClick={handleExportCase} disabled={caseDataBusy}>
-            Export full case
+            Export full case (server)
           </button>
           <button type="button" onClick={handleDeleteCase} disabled={caseDataBusy}>
             Delete matched batches
           </button>
         </p>
         {caseInventory?.matchedBatchIds && (
-          <p className="muted">
-            Matched: {caseInventory.matchedBatchIds.join(", ") || "none"}
-            {caseInventory.unclassifiedBatchIds?.length > 0 &&
-              ` · Other batches: ${caseInventory.unclassifiedBatchIds.join(", ")}`}
-          </p>
+          <p className="muted">Matched: {caseInventory.matchedBatchIds.join(", ") || "none"}</p>
         )}
         {caseInventory?.error && <p className="error-text">{caseInventory.error}</p>}
-        {caseInventory?.deleted != null && (
-          <p className="muted">
-            {caseInventory.deleted
-              ? `Deleted ${caseInventory.batchIds?.join(", ")}`
-              : `Dry run: would delete ${caseInventory.batchIds?.join(", ")}`}
-          </p>
-        )}
         {caseExportResult?.relativePath && (
           <p className="muted">
-            Exported {caseExportResult.totalFiles} files →{" "}
-            <code>{caseExportResult.relativePath}/</code>
+            Exported → <code>{caseExportResult.relativePath}/</code>
           </p>
         )}
         {caseExportResult?.error && <p className="error-text">{caseExportResult.error}</p>}

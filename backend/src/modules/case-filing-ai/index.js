@@ -15,6 +15,7 @@ import { createGoldenDatasetService } from "./services/goldenDataset.service.js"
 import { createEvalRunnerService } from "./services/evalRunner.service.js";
 import { createEvalBundleService } from "./services/evalBundle.service.js";
 import { createCaseDataService } from "./services/caseData.service.js";
+import { createBatchPackageService } from "./services/batchPackage.service.js";
 import { createStoragePaths } from "./utils/storagePaths.js";
 import { createParsedDocumentCacheService } from "./services/parsedDocumentCache.service.js";
 import { buildPipelineVersions } from "./contracts/pipelineVersions.js";
@@ -100,6 +101,19 @@ export function register(app, context) {
     batchRootDir: config.batchRootDir,
     masterPromptConfig: config.masterPrompt
   });
+  const batchPackage = createBatchPackageService({
+    store,
+    uploadBatch,
+    caseExportRootDir: config.caseExportRootDir,
+    repoRoot: config.repoRoot,
+    resolveGoldenDatasetDir(goldenCaseId) {
+      if (goldenCaseId === config.goldenCaseId) {
+        return config.goldenDatasetDir;
+      }
+      return join(config.repoRoot, "evals/golden", goldenCaseId);
+    },
+    defaultGoldenCaseId: config.goldenCaseId
+  });
 
   const router = createModuleRouter({
     config,
@@ -108,7 +122,8 @@ export function register(app, context) {
     uploadBatch,
     ruleText,
     evalBundle,
-    caseData
+    caseData,
+    batchPackage
   });
   app.use("/api/case-filing-ai", router);
   registerModuleEvents(context);

@@ -1,0 +1,167 @@
+{
+  "docIndex": 14,
+  "docKey": "doc-014",
+  "storedName": "014-fixture.pdf",
+  "originalName": "Compliance Conference Order + CPLR 3216 Demand",
+  "fileKind": "pdf",
+  "docketEntry": {
+    "filingType": "COMPLIANCE_CONFERENCE_ORDER_DUPLICATE_OR_REFILED_WITH_CPLR_3216_DEMAND",
+    "filingDate": "2028-08-18",
+    "nyscefDocNo": 14
+  },
+  "documentMetadata": {
+    "title": "Compliance Conference Order + CPLR 3216 Demand",
+    "pageCount": 6,
+    "extractionQuality": {
+      "method": "embedded_text",
+      "ocr_needed": false,
+      "ocr_test_reason": null
+    }
+  },
+  "extractionQuality": {
+    "method": "embedded_text",
+    "ocr_needed": false,
+    "ocr_test_reason": null
+  },
+  "parties": [],
+  "tasks": [
+    {
+      "taskType": "NOI_3216_RISK_MONITOR",
+      "taskDescription": "Monitor CPLR 3216 demand / NOI due date of 2029-04-19.",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2029-04-19",
+      "dueDateStatus": "fixed",
+      "confidence": "high",
+      "sourceAuthority": "later_case_specific_order",
+      "sourceName": "Doc 13/14 Compliance Conference Order / CPLR 3216 Demand",
+      "sourceDocNo": 14,
+      "ruleSourceApplied": "doc_013_014_cc_order",
+      "authorityRank": 6
+    }
+  ],
+  "deadlines": [
+    {
+      "type": "NOI",
+      "date": "2029-04-19",
+      "sourceAuthority": "later_case_specific_order",
+      "sourceName": "Doc 13/14 Compliance Conference Order / CPLR 3216 Demand",
+      "sourceDocNo": 14,
+      "ruleSourceApplied": "doc_013_014_cc_order",
+      "authorityRank": 6
+    },
+    {
+      "type": "PRETRIAL_CONFERENCE",
+      "date": "2029-08-23T09:30:00",
+      "sourceAuthority": "later_case_specific_order",
+      "sourceName": "Doc 13/14 Compliance Conference Order / CPLR 3216 Demand",
+      "sourceDocNo": 14,
+      "ruleSourceApplied": "doc_013_014_cc_order",
+      "authorityRank": 6
+    }
+  ],
+  "humanReviewItems": [
+    {
+      "issue": "duplicate_order_or_refiling_confirmation",
+      "reason": "Confirm whether Doc 14 is duplicate/refiling or contains changed terms.",
+      "blocking": false,
+      "status": "pending"
+    }
+  ],
+  "ruleSourcesApplied": [
+    "uniform_rule_202_56_medmal",
+    "queens_medmal_part_rules",
+    "queens_part_10_kerrigan_rules",
+    "queens_medmal_cc_form",
+    "doc_013_014_cc_order"
+  ],
+  "ruleSourcesChecked": [
+    "uniform_rule_202_56_medmal",
+    "queens_medmal_part_rules",
+    "queens_part_10_kerrigan_rules",
+    "queens_medmal_cc_form",
+    "doc_013_014_cc_order"
+  ],
+  "rankedRules": [
+    {
+      "ruleId": "uniform_rule_202_56_medmal",
+      "sourceAuthority": "uniform_rule",
+      "authorityRank": 2,
+      "sourceName": "Uniform Rule 202.56 Medical/Dental/Podiatric Malpractice Actions",
+      "controls": [
+        "general med-mal timing context",
+        "RJI/notice of med-mal framework"
+      ],
+      "applicationRule": "General med-mal context unless Queens/Judge/order source is more specific."
+    },
+    {
+      "ruleId": "queens_medmal_part_rules",
+      "sourceAuthority": "county_or_court_rule",
+      "authorityRank": 3,
+      "sourceName": "Queens Medical/Dental/Podiatric Malpractice Part Rules",
+      "controls": [
+        "Queens med-mal PC/CC procedure",
+        "Queens medical malpractice scheduling practice"
+      ],
+      "applicationRule": "Use for Queens med-mal workflow where judge/order is silent."
+    },
+    {
+      "ruleId": "queens_medmal_cc_form",
+      "sourceAuthority": "county_or_court_rule",
+      "authorityRank": 3,
+      "sourceName": "Queens Medical Malpractice Compliance Conference Form",
+      "controls": [
+        "CC order form obligations",
+        "NOI/COR handling",
+        "copy to chambers requirements"
+      ],
+      "applicationRule": "Use when CC form terms are incorporated or when current CC order uses this form."
+    },
+    {
+      "ruleId": "queens_part_10_kerrigan_rules",
+      "sourceAuthority": "judge_part_rule",
+      "authorityRank": 4,
+      "sourceName": "Hon. Kevin J. Kerrigan / Queens Civil Term Part 10 Rules",
+      "controls": [
+        "Part 10 communications",
+        "Part 10 submissions",
+        "MedMal-HHC in-person and email workflow",
+        "conference handling when not contradicted by case order"
+      ],
+      "applicationRule": "Controls Part 10 workflow over general Queens rules unless a case-specific order controls."
+    },
+    {
+      "ruleId": "doc_013_014_cc_order",
+      "sourceAuthority": "later_case_specific_order",
+      "authorityRank": 6,
+      "sourceName": "Doc 13/14 Compliance Conference Order / CPLR 3216 Demand",
+      "sourceDocNo": [
+        13,
+        14
+      ],
+      "controls": [
+        "updated NOI deadline",
+        "CPLR 3216 risk",
+        "post-CC EBT/further response schedule",
+        "pretrial conference date"
+      ],
+      "applicationRule": "Supersedes earlier PC order terms where directly changed."
+    }
+  ],
+  "pipelineVersions": {
+    "parser": "pdf-text-v001",
+    "ocr": "qwen-vl-v001",
+    "masterPrompt": "v001_master-case-filing",
+    "rulePrompt": "court-rules/rule-context-1.0.0",
+    "snapshotPrompt": "case-workflow/case-state-update-1.0.0",
+    "ruleSet": "queens_kerrigan_medmal_rules_v001",
+    "goldenDataset": "synthetic_case_001_rule_authority_v002"
+  },
+  "runMetadata": {
+    "pipelineVersions": {
+      "parser": "pdf-text-v001",
+      "ocr": "qwen-vl-v001",
+      "masterPrompt": "v001_master-case-filing",
+      "goldenDataset": "synthetic_case_001_rule_authority_v002"
+    }
+  }
+}

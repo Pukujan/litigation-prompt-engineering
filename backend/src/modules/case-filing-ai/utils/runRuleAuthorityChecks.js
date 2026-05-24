@@ -52,20 +52,23 @@ export function runRuleAuthorityChecks({
   }
 
   if (docIndex === 13) {
-    const haystack = JSON.stringify({ actualDoc, snapshot });
-    for (const pattern of NOI_PATTERNS) {
-      if (pattern.test(haystack)) {
-        const created = tasks.some((t) =>
-          NOI_PATTERNS.some((p) => p.test(String(t.taskDescription ?? t.taskType ?? "")))
-        );
-        if (created) {
-          failures.push({
-            code: "doc13_noi_guardrail",
-            message: "Document 13 must not create NOI-style tasks from general rules alone"
-          });
-        }
-        break;
-      }
+    const generalOnly = tasks.filter((t) => {
+      const isNoi = NOI_PATTERNS.some((p) =>
+        p.test(String(t.taskDescription ?? t.taskType ?? t.type ?? ""))
+      );
+      if (!isNoi) return false;
+      const auth = String(t.sourceAuthority ?? t.authority ?? "");
+      return (
+        !auth ||
+        /cplr|uniform|county|general/i.test(auth) &&
+          !/case_specific|later_case_specific|judge_part|earlier_case_specific/i.test(auth)
+      );
+    });
+    if (generalOnly.length) {
+      failures.push({
+        code: "doc13_noi_guardrail",
+        message: "Document 13 must not create NOI-style tasks from general rules alone"
+      });
     }
   }
 
