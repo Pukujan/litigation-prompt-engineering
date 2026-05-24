@@ -53,7 +53,22 @@ processing-log.jsonl
 case_001.golden-dataset.json
 doc_NNN.expected.json
 parsed/doc-NNN/              # optional parse golden (v2)
+VERSION_HISTORY.jsonl        # promoted version audit
 ```
+
+## Golden staging (`evals/golden-staging/`)
+
+Authoring pipeline output before human promote. Gitignored except `.gitkeep`.
+
+```text
+{caseId}/{version}/
+  doc_NNN.expected.json
+  authoring_run.json
+  VERSION_HISTORY.jsonl
+  run/                       # ephemeral pipeline run
+```
+
+See [contracts/goldenDataset.contract.md](./contracts/goldenDataset.contract.md).
 
 ## File exchange
 

@@ -16,6 +16,16 @@ Maintained manually when routes change. Enforced by `npm run lint:api-docs`. See
 
 | Method | Path | Module | Description |
 |--------|------|--------|-------------|
+| GET | `/api/case-filing-demo/health` | Case Filing Demo | Demo module health and cached fixture mode |
+| GET | `/api/case-filing-demo/cases` | Case Filing Demo | List available and coming-soon demo cases |
+| GET | `/api/case-filing-demo/cases/:caseId` | Case Filing Demo | Read one demo case with filing metadata and source availability |
+| GET | `/api/case-filing-demo/cases/:caseId/bundle` | Case Filing Demo | Read cached processed outputs, eval reports, audit replay, and manifest |
+| GET | `/api/case-filing-demo/cases/:caseId/documents/:docKey/source` | Case Filing Demo | Stream a curated source PDF when imported |
+| GET | `/api/golden-authoring/health` | Golden Authoring | Module health (requires API enabled) |
+| POST | `/api/golden-authoring/process-batch` | Golden Authoring | Author golden dataset to staging (stronger model) |
+| GET | `/api/golden-authoring/runs/:runId` | Golden Authoring | Authoring run metadata |
+| POST | `/api/golden-authoring/promote` | Golden Authoring | Promote staging to evals/golden (confirm required) |
+| GET | `/api/golden-authoring/cases/:caseId/versions` | Golden Authoring | List staged versions for a case |
 | GET | `/api/case-filing-ai/health` | Case Filing AI | Module health and config summary |
 | POST | `/api/case-filing-ai/extract-rule-text` | Case Filing AI | Extract text from uploaded part-rule file |
 | POST | `/api/case-filing-ai/process-batch` | Case Filing AI | Upload filings; returns **202** and processes batch in background |
@@ -60,6 +70,7 @@ Maintained manually when routes change. Enforced by `npm run lint:api-docs`. See
 
 | Module | Base path | API doc | Status |
 |--------|-----------|---------|--------|
+| Case Filing Demo | `/api/case-filing-demo` | [case-filing-demo/API.md](./case-filing-demo/API.md) | **Active** — contained legal demo over cached fixtures and source-document viewing |
 | Case Filing AI | `/api/case-filing-ai` | [case-filing-ai/API.md](./case-filing-ai/API.md) | **Active** — batch upload, master prompt, evals, bundles |
 | File exchange | `/api/file-exchange` | [file-exchange/API.md](./file-exchange/API.md) | **Active** — clear dated import/export folders |
 | Model condenser | `/api/model-condenser` | [model-condenser/API.md](./model-condenser/API.md) | **Active** — schema inventory export |

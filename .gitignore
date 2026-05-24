@@ -20,3 +20,6 @@ frontend/.env.local
 data/case-filing-ai/batches/
 eval-bundles/
 case-exports/
+evals/golden-staging/*/
+!evals/golden-staging/.gitkeep
+data/golden-authoring/

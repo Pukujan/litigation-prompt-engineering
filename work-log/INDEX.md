@@ -23,6 +23,9 @@
 | 008 | 2026-05-24 | — | planning manifest (artifacts) | [planning/008-external-artifact-root.json](./planning/008-external-artifact-root.json) |
 | 008 | 2026-05-24 | — | planning manifest (roadmap) | [planning/008-repo-roadmap-v002-and-artifacts.json](./planning/008-repo-roadmap-v002-and-artifacts.json) |
 | 008 | 2026-05-24 | — | checkpoint (runtime) | [checkpoints/008_2026-05-24_rule-authority-v002_runtime-checkpoint.md](./checkpoints/008_2026-05-24_rule-authority-v002_runtime-checkpoint.md) |
+| 009 | 2026-05-24 | 17-38 | study log | [study-docs/009_2026-05-24_17-38_study-log_case-filing-demo-golden-authoring.md](./study-docs/009_2026-05-24_17-38_study-log_case-filing-demo-golden-authoring.md) |
+| 009 | 2026-05-24 | 17-38 | plan package | [study-docs/009_2026-05-24_17-38_plan_case-filing-demo-golden-authoring-package.md](./study-docs/009_2026-05-24_17-38_plan_case-filing-demo-golden-authoring-package.md) |
+| 009 | 2026-05-24 | 17-38 | planning manifest | [planning/009-case-filing-demo-golden-authoring.json](./planning/009-case-filing-demo-golden-authoring.json) |
 
 **005 build order:** original (spec) → v3 (architecture) → v2 (pipeline).
 
@@ -49,6 +52,7 @@
 | 005 | 2026-05-23 | **17-36** | **[architecture CI / npm / README](./dev-logs/human/005_2026-05-23_17-36_dev-log_architecture-ci-npm-readme.md)** | **[agent](./dev-logs/agent/005_2026-05-23_17-36_dev-log-agent_architecture-ci-npm-readme.json)** |
 | 007 | 2026-05-24 | 12-55 | [human](./dev-logs/human/007_2026-05-24_12-55_dev-log_pipeline-ui-onboarding.md) | [agent](./dev-logs/agent/007_2026-05-24_12-55_dev-log-agent_pipeline-ui-onboarding.json) |
 | 005 | 2026-05-24 | 14-53 | [human](./dev-logs/human/005_2026-05-24_14-53_dev-log_planning-starter-export.md) | [agent](./dev-logs/agent/005_2026-05-24_14-53_dev-log-agent_planning-starter-export.json) |
+| 009 | 2026-05-24 | 17-39 | [human](./dev-logs/human/009_2026-05-24_17-39_dev-log_case-filing-demo-golden-authoring.md) | [agent](./dev-logs/agent/009_2026-05-24_17-39_dev-log-agent_case-filing-demo-golden-authoring.json) |
 
 Architecture narrative: [docs/DEVLOG_V2.md](../docs/DEVLOG_V2.md) · Platform gates: [docs/architecture/EVAL_AND_CI.md](../docs/architecture/EVAL_AND_CI.md).
 
