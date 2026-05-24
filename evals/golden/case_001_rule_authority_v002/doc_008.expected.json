@@ -1,0 +1,43 @@
+{
+  "docIndex": 8,
+  "docKey": "doc-008",
+  "expectedDocumentType": "NOTICE_TO_TAKE_DEPOSITION",
+  "expectedTitle": "Notice to Take Deposition - MCMCHHC",
+  "expectedFilingDate": "2027-10-05",
+  "expectedNyscefDocNo": 8,
+  "expectedPageCount": 1,
+  "expectedConfirmedFacts": [
+    "Defendant noticed plaintiff deposition/oral examination.",
+    "Date/time/location are to be agreed or court-directed, not fixed by this document."
+  ],
+  "expectedTasks": [
+    {
+      "taskType": "SCHEDULE_PLAINTIFF_DEPOSITION",
+      "taskDescription": "Coordinate plaintiff deposition date/time/location.",
+      "status": "conditional",
+      "dueDate": null,
+      "dueDateStatus": "no_fixed_due_date",
+      "confidence": "high"
+    }
+  ],
+  "expectedDeadlines": [],
+  "expectedHumanReviewItems": [],
+  "mustNotCreate": [
+    "fixed deposition date from Doc 8 if date/time/location are not actually set"
+  ],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "ocr_needed": false,
+    "ocr_test_reason": null
+  },
+  "expectedRuleSourcesApplied": [
+    "cplr_general_civil_practice"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

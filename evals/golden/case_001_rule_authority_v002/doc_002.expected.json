@@ -1,0 +1,43 @@
+{
+  "docIndex": 2,
+  "docKey": "doc-002",
+  "expectedDocumentType": "CERTIFICATE_OF_MERIT",
+  "expectedTitle": "Certificate of Merit",
+  "expectedFilingDate": "2027-09-15",
+  "expectedNyscefDocNo": 2,
+  "expectedPageCount": 1,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "ocr_needed": false,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "ocr_test_reason": null
+  },
+  "expectedConfirmedFacts": [
+    "Certificate of Merit was filed under CPLR 3012-a.",
+    "Plaintiff counsel certified consultation with a licensed physician regarding medical malpractice claims."
+  ],
+  "expectedTasks": [],
+  "expectedDeadlines": [],
+  "expectedHumanReviewItems": [
+    {
+      "issue": "signature_date_visual_review",
+      "reason": "Certificate of Merit may contain signature/date visual information.",
+      "blocking": false,
+      "status": "pending"
+    }
+  ],
+  "mustNotCreate": [
+    "deadline for defendant to respond to certificate of merit",
+    "final answer deadline unless service date and service method are verified"
+  ],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "cplr_general_civil_practice"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

@@ -32,6 +32,17 @@ Writes all three artifacts into **one dated folder** `{stamp}_consolidated/` and
 
 Individual runs (`npm run condense-prompts`, etc.) create their own `{stamp}_consolidated/` folder for that artifact (plus `manifest.json`).
 
+## Clear dated folders
+
+Remove old import stamps and export session/audit folders (keeps `.gitkeep`, `exports/templates/`, and latest `consolidated-*.json` by default):
+
+```bash
+npm run clear:file-exchange -- --dry-run    # preview
+npm run clear:file-exchange -- --confirm    # delete
+```
+
+Or `POST /api/file-exchange/clear` with `{ "confirm": true }` — see [docs/file-exchange/API.md](../docs/file-exchange/API.md).
+
 ## Workflow
 
 1. Triage loose files into `imports/{stamp}/` (`npm run import:file-exchange -- <path>`).

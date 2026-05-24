@@ -1,0 +1,51 @@
+{
+  "repositoryRoot": "/Users/teresaguajardo/Documents/coding/legal-prmpt-eng/",
+  "generatedAt": "2026-05-24T02:05:52.945635+00:00",
+  "modelInventoryGeneratedAt": "2026-05-24T01:21:45.863Z",
+  "promptInventoryGeneratedAt": "2026-05-24T01:21:44.831Z",
+  "existingModulesDetected": [],
+  "existingKeyFilesDetected": {
+    "parsedDocumentCache.service.js": false,
+    "pipelineVersions.js": false,
+    "ruleAuthority.contract.js": false,
+    "evalRunner.service.js": false,
+    "goldenDataset.service.js": false,
+    "v001_master-case-filing.prompt.md": false
+  },
+  "promptVersionsDetected": {
+    "v1": {
+      "key": "v1",
+      "id": "v1",
+      "masterCaseFiling": "master-case-filing.prompt.md",
+      "description": "Original master prompt."
+    },
+    "compact": {
+      "key": "compact",
+      "id": "compact",
+      "masterCaseFiling": "master-case-filing.compact.prompt.md",
+      "description": "Bounded snapshot + strict JSON output (recommended for 6+ documents)."
+    },
+    "v2": {
+      "key": "v2",
+      "id": "v2",
+      "masterCaseFiling": "master-case-filing.compact.prompt.md",
+      "description": "Alias for compact."
+    },
+    "v001": {
+      "key": "v001",
+      "id": "v001",
+      "masterCaseFiling": "v001_master-case-filing.prompt.md",
+      "description": "Ranked rule sources + documentFacts / ruleBasedTasks output shape."
+    }
+  },
+  "moduleManifestSummary": [
+    "backend/src/modules/_reference/prompts/manifest.json",
+    "backend/src/modules/case-filing-ai/prompts/manifest.json",
+    "backend/src/modules/case-workflow/prompts/manifest.json",
+    "backend/src/modules/court-rules/prompts/manifest.json",
+    "backend/src/modules/filing-pipeline/prompts/manifest.json",
+    "backend/src/modules/filing-text-vault/prompts/manifest.json",
+    "backend/src/modules/human-review/prompts/manifest.json",
+    "backend/src/modules/task-docketing/prompts/manifest.json"
+  ]
+}

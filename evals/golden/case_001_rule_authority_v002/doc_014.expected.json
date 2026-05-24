@@ -1,0 +1,80 @@
+{
+  "docIndex": 14,
+  "docKey": "doc-014",
+  "expectedDocumentType": "COMPLIANCE_CONFERENCE_ORDER_DUPLICATE_OR_REFILED_WITH_CPLR_3216_DEMAND",
+  "expectedTitle": "Compliance Conference Order + CPLR 3216 Demand",
+  "expectedFilingDate": "2028-08-18",
+  "expectedNyscefDocNo": 14,
+  "expectedPageCount": 6,
+  "expectedConfirmedFacts": [
+    "Doc 14 appears duplicative or refiling of CC order content with CPLR 3216 demand page.",
+    "CPLR 3216 demand / NOI risk remains controlling.",
+    "NOI due 2029-04-19 remains active unless superseded by later order."
+  ],
+  "expectedTasks": [
+    {
+      "taskType": "NOI_3216_RISK_MONITOR",
+      "taskDescription": "Monitor CPLR 3216 demand / NOI due date of 2029-04-19.",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2029-04-19",
+      "dueDateStatus": "fixed",
+      "confidence": "high",
+      "sourceAuthority": "later_case_specific_order",
+      "sourceName": "Doc 13/14 Compliance Conference Order / CPLR 3216 Demand",
+      "sourceDocNo": 14,
+      "ruleSourceApplied": "doc_013_014_cc_order",
+      "authorityRank": 6
+    }
+  ],
+  "expectedDeadlines": [
+    {
+      "type": "NOI",
+      "date": "2029-04-19",
+      "sourceAuthority": "later_case_specific_order",
+      "sourceName": "Doc 13/14 Compliance Conference Order / CPLR 3216 Demand",
+      "sourceDocNo": 14,
+      "ruleSourceApplied": "doc_013_014_cc_order",
+      "authorityRank": 6
+    },
+    {
+      "type": "PRETRIAL_CONFERENCE",
+      "date": "2029-08-23T09:30:00",
+      "sourceAuthority": "later_case_specific_order",
+      "sourceName": "Doc 13/14 Compliance Conference Order / CPLR 3216 Demand",
+      "sourceDocNo": 14,
+      "ruleSourceApplied": "doc_013_014_cc_order",
+      "authorityRank": 6
+    }
+  ],
+  "expectedHumanReviewItems": [
+    {
+      "issue": "duplicate_order_or_refiling_confirmation",
+      "reason": "Confirm whether Doc 14 is duplicate/refiling or contains changed terms.",
+      "blocking": false,
+      "status": "pending"
+    }
+  ],
+  "mustNotCreate": [
+    "duplicate all Doc 13 tasks as new independent obligations if Doc 14 is merely duplicative/refiled",
+    "ignore CPLR 3216 risk"
+  ],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "ocr_needed": false,
+    "ocr_test_reason": null
+  },
+  "expectedRuleSourcesApplied": [
+    "uniform_rule_202_56_medmal",
+    "queens_medmal_part_rules",
+    "queens_part_10_kerrigan_rules",
+    "queens_medmal_cc_form",
+    "doc_013_014_cc_order"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

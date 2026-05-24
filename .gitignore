@@ -1,7 +1,17 @@
 node_modules/
 dist/
 .DS_Store
+**/.DS_Store
 file-exchange/exports/architecture-starter/
+# Runtime file-exchange payloads (keep stubs: .gitkeep, exports/templates/)
+file-exchange/imports/*/
+!file-exchange/imports/.gitkeep
+file-exchange/exports/*/
+!file-exchange/exports/.gitkeep
+!file-exchange/exports/templates/
+!file-exchange/exports/templates/**
+file-exchange/exports/consolidated-*.json
+consolidated-files/
 .env
 .env.local
 backend/.env
