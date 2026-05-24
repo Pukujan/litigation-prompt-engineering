@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "schemaVersion": "1.0.0",
+    "entryId": "002",
+    "slug": "planning-gate-v225",
+    "generatedAt": "2026-05-24T15:04:48.802Z",
+    "humanReadableUtc": "Sunday, 24 May 2026 at 15:04 UTC",
+    "folderStamp": "2026-05-24_15-04-48Z",
+    "humanLogPath": "work-log/architecture-push-logs/human/002_2026-05-24_15-04_arch-push_planning-gate-v225.md",
+    "audience": "agent",
+    "logKind": "architecture-push",
+    "filledBy": "script"
+  },
+  "summary": "FILL: What was exported to create-modular-monolith, npm version published, and any blockers.",
+  "architecturePush": {
+    "productRepo": "legal-prmpt-eng",
+    "targetRepo": "https://github.com/Pukujan/create-modular-monolith",
+    "npmPackage": "@pukujan/create-modular-monolith",
+    "npmVersion": "2.2.5",
+    "exportScript": "scripts/export-architecture-starter.mjs",
+    "exportTarget": "/Users/teresaguajardo/Documents/coding/create-modular-monolith/template",
+    "publishCommand": "cd packages/create-modular-monolith && npm publish --access public"
+  },
+  "git": {
+    "branch": "main",
+    "sha": "d696d6e3eca03ca3c684bc3d7dc47191277658d9",
+    "shortSha": "d696d6e",
+    "changedFiles": [
+      {
+        "code": "M ",
+        "path": "onsolidated-files/consolidated-models.json"
+      },
+      {
+        "code": " M",
+        "path": "file-exchange/exports/consolidated-models.json"
+      },
+      {
+        "code": "??",
+        "path": "file-exchange/imports/synthetic_case_001_rule_authority_v002_golden_dataset.json"
+      }
+    ],
+    "diffStatAgainstHead": "consolidated-files/consolidated-models.json    | 765 ++++++++++++++++++++++++-\n file-exchange/exports/consolidated-models.json | 765 ++++++++++++++++++++++++-\n 2 files changed, 1520 insertions(+), 10 deletions(-)",
+    "recentCommits": [
+      "d696d6e feat(work-log): architecture push logs for create-modular-monolith sync",
+      "1cd9a6e chore(starter): export planning gate to architecture npm template",
+      "f9953c0 feat(planning): require study log before plan gate and finalize",
+      "d9bf1cb docs(work-log): add 008 study log and plan packages for planning audit",
+      "6ea2100 feat(artifacts): v002 checkpoint log, external artifact root resolver"
+    ]
+  },
+  "exportLint": {
+    "lintContracts": {
+      "ran": true,
+      "exitCode": 0,
+      "summary": "pass",
+      "tail": "\n> legal-prmpt-eng@2.0.0 lint:contracts\n> node scripts/lint-contracts.mjs\n\nContract lint OK (11 entries)\n"
+    },
+    "lintRepoArtifacts": {
+      "ran": true,
+      "exitCode": 0,
+      "summary": "pass",
+      "tail": "\n> legal-prmpt-eng@2.0.0 lint:repo-artifacts\n> node scripts/lint-repo-artifacts.mjs\n\nRepo artifact lint OK (24 paths)\n"
+    }
+  },
+  "starterChanges": {
+    "templatesDir": "file-exchange/exports/templates/",
+    "exportScriptPath": "scripts/export-architecture-starter.mjs",
+    "paths": []
+  },
+  "changes": {
+    "added": [
+      "file-exchange/imports/synthetic_case_001_rule_authority_v002_golden_dataset.json"
+    ],
+    "modified": [
+      "onsolidated-files/consolidated-models.json",
+      "file-exchange/exports/consolidated-models.json"
+    ],
+    "deleted": [],
+    "narrative": [
+      "FILL: platform-layer changes in this architecture push"
+    ]
+  },
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "FILL",
+      "rationale": "FILL",
+      "alternativesRejected": [
+        "FILL"
+      ]
+    }
+  ],
+  "followUps": [
+    "FILL: e.g. npm publish OTP, update create-modular-monolith README version pin"
+  ]
+}
