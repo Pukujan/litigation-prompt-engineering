@@ -1,6 +1,6 @@
 # Litigation Prompt Engineering
 
-**A reference platform for building, testing, and operating litigation document AI pipelines** — modular monolith architecture, versioned prompts, golden evals, and tooling built for **human + Cursor agent** workflows at scale.
+**A reference platform for building, testing, and operating litigation document AI pipelines** — Ultra efficient and powerful modular monolith architecture, versioned prompts, golden evals, and tooling built for **human + Cursor agent** workflows at scale.
 
 | | |
 |---|---|
