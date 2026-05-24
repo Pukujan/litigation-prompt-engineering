@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Collect all versioned prompt templates into models/consolidated-prompts.json
+ * Collect all versioned prompt templates into consolidated-files/consolidated-prompts.json
  * Usage: node scripts/condense-prompts.mjs
  */
 import { readFile, readdir, stat } from "fs/promises";
@@ -151,9 +151,9 @@ async function main() {
     prompts
   };
 
-  const { exportPath, datedExportDir, modelsPath } = await writeConsolidatedArtifact("prompts", doc);
+  const { exportPath, datedExportDir, mirrorPath } = await writeConsolidatedArtifact("prompts", doc);
   console.log(
-    `Consolidated ${inventory.length} prompts → ${exportPath} (${datedExportDir}/, mirror ${modelsPath})`
+    `Consolidated ${inventory.length} prompts → ${exportPath} (${datedExportDir}/, mirror ${mirrorPath})`
   );
 }
 

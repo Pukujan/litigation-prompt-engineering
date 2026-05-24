@@ -220,9 +220,9 @@ function writeStarterRootFiles(target) {
   cpSync(join(repoRoot, ".gitignore"), join(target, ".gitignore"));
   cpSync(join(templatesRoot, "LICENSE.starter"), join(target, "LICENSE"));
   cpSync(join(templatesRoot, "NOTICE.starter"), join(target, "NOTICE"));
-  mkdirSync(join(target, "models"), { recursive: true });
-  writeFileSync(join(target, "models/.gitkeep"), "");
-  console.log("  ✓ package.json, AGENTS.md, README, LICENSE, NOTICE, models/.gitkeep");
+  mkdirSync(join(target, "consolidated-files"), { recursive: true });
+  writeFileSync(join(target, "consolidated-files/.gitkeep"), "");
+  console.log("  ✓ package.json, AGENTS.md, README, LICENSE, NOTICE, consolidated-files/.gitkeep");
 }
 
 function patchStarterScripts(target) {

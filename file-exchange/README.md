@@ -24,9 +24,9 @@ npm run condense:all
 
 Writes all three artifacts into **one dated folder** `{stamp}_consolidated/` and refreshes latest copies:
 
-| Audit (dated folder) | Latest (`exports/` + `models/`) |
+| Audit (dated folder) | Latest (`exports/` + `consolidated-files/`) |
 |----------------------|----------------------------------|
-| `{stamp}_consolidated/consolidated-models.json` | `exports/consolidated-models.json`, `models/consolidated-models.json` |
+| `{stamp}_consolidated/consolidated-models.json` | `exports/consolidated-models.json`, `consolidated-files/consolidated-models.json` |
 | `{stamp}_consolidated/consolidated-prompts.json` | same pattern |
 | `{stamp}_consolidated/consolidated-file-structure.json` | same pattern |
 

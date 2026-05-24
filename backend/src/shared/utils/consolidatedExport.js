@@ -5,6 +5,9 @@ import { formatExchangeTimestamp, normalizeExchangeStamp } from "./formatExchang
 /** Session exports and consolidated snapshots root. */
 export const CONSOLIDATED_EXPORT_DIR = "file-exchange/exports";
 
+/** Latest mirror for all consolidated-*.json (prompts, models inventory, file tree). */
+export const CONSOLIDATED_FILES_DIR = "consolidated-files";
+
 /** Folder suffix for consolidated audit bundles (matches file-exchange stamp convention). */
 export const CONSOLIDATED_FOLDER_LABEL = "consolidated";
 

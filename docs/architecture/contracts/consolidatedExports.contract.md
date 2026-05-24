@@ -24,8 +24,8 @@ file-exchange/exports/{2026-05-23_15-59-43Z}_consolidated/
 ## Latest pointers (agents / API)
 
 ```text
-file-exchange/exports/consolidated-*.json   ← overwritten each run (latest)
-models/consolidated-*.json                  ← API mirror (latest)
+file-exchange/exports/consolidated-*.json   ← overwritten each run (latest handoff)
+consolidated-files/consolidated-*.json      ← same content, stable mirror path
 ```
 
 Every condense run writes **dated folder + latest copies**.

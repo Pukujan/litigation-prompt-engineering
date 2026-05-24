@@ -178,7 +178,7 @@ Golden `*.expected.json` files are **not** modified by the API. `runMetadata` ap
 
 ## Eval report bundles
 
-Copies eval JSON to `eval-bundles/` at repo root (see `EVAL_BUNDLE_ROOT_DIR`). Does **not** include `models/consolidated-models.json`.
+Copies eval JSON to `eval-bundles/` at repo root (see `EVAL_BUNDLE_ROOT_DIR`). Does **not** include `consolidated-files/consolidated-models.json`.
 
 ### `POST /batches/:batchId/evals/bundle`
 

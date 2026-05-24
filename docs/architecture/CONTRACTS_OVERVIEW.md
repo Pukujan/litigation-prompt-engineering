@@ -105,7 +105,7 @@ One JSON line per bump: `contract`, `from`, `to`, `reason`, `time`.
 |----|---------|-----------------|
 | **repoArtifactLayout** | v001 | All canonical roots (`data/`, `evals/`, `file-exchange/`, `work-log/`) |
 | **fileExchange** | v001 | `imports/{stamp}/`, `exports/{stamp}/`, human-readable UTC stamps |
-| **consolidatedExports** | v001 | `exports/consolidated-*.json` + `models/` mirror, `condense:all` |
+| **consolidatedExports** | v001 | `exports/consolidated-*.json` + `consolidated-files/` mirror, `condense:all` |
 | **prePushDevLog** | v001 | Paired `human/*.md` + `agent/*.json`, tree/API/test audits |
 | **apiDocumentationRegistry** | v001 | `docs/API.md`, active/stub/deprecated routes |
 | **caseFilingStorageLayout** | v001 | `batches/batch-NNN/` folder layout |

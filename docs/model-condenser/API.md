@@ -2,7 +2,7 @@
 
 **Base path:** `/api/model-condenser`
 
-Scans the repo and writes a **schema inventory** (`models/consolidated-models.json`). This is unrelated to case eval reports or `eval-bundles/`.
+Scans the repo and writes a **schema inventory** (`consolidated-files/consolidated-models.json`). This is unrelated to case eval reports or `eval-bundles/`.
 
 **Routes:** [`backend/src/modules/model-condenser/routes/modelCondenser.routes.js`](../../backend/src/modules/model-condenser/routes/modelCondenser.routes.js)
 
@@ -32,7 +32,7 @@ Scans the repo and writes a **schema inventory** (`models/consolidated-models.js
 
 ### `POST /condense`
 
-Regenerate `models/consolidated-models.json` from repo sources.
+Regenerate `consolidated-files/consolidated-models.json` from repo sources.
 
 **Body (JSON, optional):**
 
@@ -49,8 +49,8 @@ Regenerate `models/consolidated-models.json` from repo sources.
 ```json
 {
   "status": "written",
-  "outputPath": "/abs/path/models/consolidated-models.json",
-  "outputRelativePath": "models/consolidated-models.json",
+  "outputPath": "/abs/path/consolidated-files/consolidated-models.json",
+  "outputRelativePath": "consolidated-files/consolidated-models.json",
   "modelCount": 42,
   "exampleInstanceCount": 10,
   "generatedAt": "2026-05-23T..."
@@ -78,7 +78,7 @@ Regenerate `models/consolidated-models.json` from repo sources.
   "status": "ready | missing",
   "exists": true,
   "outputPath": "...",
-  "outputRelativePath": "models/consolidated-models.json",
+  "outputRelativePath": "consolidated-files/consolidated-models.json",
   "generatedAt": "...",
   "modelCount": 42
 }

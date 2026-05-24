@@ -13,7 +13,7 @@ Canonical paths for runtime data, golden fixtures, and human↔agent exchange.
 | `case-exports/` | `CASE_EXPORT_ROOT_DIR` | Yes (export API) |
 | `file-exchange/imports\|exports/` | — | Yes (human triage) |
 | `work-log/dev-logs/human\|agent/` | — | Yes (pre-push audit) |
-| `models/consolidated-*.json` | — | Yes (condenser mirror) |
+| `consolidated-files/consolidated-*.json` | — | Yes (latest mirror for all condense outputs) |
 | `work-log/` | — | Yes (docs only) |
 
 ## Batch folder (`batches/batch-NNN/`)
