@@ -5,10 +5,12 @@ Planning artifacts for this repo: **what to build** (handoffs) and **how we deci
 ```text
 work-log/
   README.md       ← you are here
-  INDEX.md        ← full index (handoffs + study-docs + dev-logs)
+  INDEX.md        ← full index (handoffs + study-docs + dev-logs + checkpoints)
   handoffs/       ← numbered specs, starter packs (002, 005, …)
-  study-docs/     ← study logs, planning notes, blog drafts
-  dev-logs/       ← pre-push audit: human/ + agent/ (paired per push)
+  study-docs/     ← study logs (You raw + Cursor summary) + plan packages — BEFORE build
+  planning/       ← plan:finalize JSON manifests (planningPhase contract)
+  checkpoints/    ← runtime proof only (e.g. batch-002 eval evidence), not conversation
+  dev-logs/       ← pre-push audit: human/ + agent/ (paired per push) — what shipped
 ```
 
 ## When to use which folder
@@ -16,7 +18,9 @@ work-log/
 | Folder | Put here |
 |--------|----------|
 | **handoffs/** | Implementation specs, second/third handoffs, starter pack snapshots |
-| **study-docs/** | Conversation study logs, design rationale, portfolio / recruiter logs |
+| **study-docs/** | **Plan + conversation** — study logs (`You` verbatim + `Cursor` summary) and plan packages; write **before** implementation ([planning-study-log](../.cursor/commands/planning-study-log.md)) |
+| **planning/** | `npm run plan:finalize` manifests linking design + plan MD ([planningPhase contract](../docs/architecture/contracts/planningPhase.contract.md)) |
+| **checkpoints/** | Post-run evidence (batch evals, pass/fail tables) — supplements study log, does not replace it |
 | **dev-logs/** | What shipped — **paired human MD + agent JSON** before each push |
 
 ## Filename convention (all three folders)

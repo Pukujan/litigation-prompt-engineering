@@ -15,7 +15,10 @@
 | 006 | 2026-05-23 | 11:21 | study log | [study-docs/006_2026-05-23_11-21_study-log_cursor-planning-phase.md](./study-docs/006_2026-05-23_11-21_study-log_cursor-planning-phase.md) |
 | 007 | 2026-05-24 | — | design (planning) | [study-docs/007_2026-05-24_design_pipeline-ui-onboarding.md](./study-docs/007_2026-05-24_design_pipeline-ui-onboarding.md) |
 | 007 | 2026-05-24 | — | plan package | [study-docs/007_2026-05-24_plan_pipeline-ui-onboarding-package.md](./study-docs/007_2026-05-24_plan_pipeline-ui-onboarding-package.md) |
-| 008 | 2026-05-24 | — | checkpoint | [checkpoints/008_2026-05-24_rule-authority-v002_runtime-checkpoint.md](./checkpoints/008_2026-05-24_rule-authority-v002_runtime-checkpoint.md) |
+| 008 | 2026-05-24 | — | study log | [study-docs/008_2026-05-24_study-log_external-artifact-and-v002-checkpoint.md](./study-docs/008_2026-05-24_study-log_external-artifact-and-v002-checkpoint.md) |
+| 008 | 2026-05-24 | — | plan package | [study-docs/008_2026-05-24_plan_external-artifact-root-package.md](./study-docs/008_2026-05-24_plan_external-artifact-root-package.md) |
+| 008 | 2026-05-24 | — | plan package (roadmap) | [study-docs/008_2026-05-24_plan_repo-roadmap-v002-and-artifacts-package.md](./study-docs/008_2026-05-24_plan_repo-roadmap-v002-and-artifacts-package.md) |
+| 008 | 2026-05-24 | — | checkpoint (runtime) | [checkpoints/008_2026-05-24_rule-authority-v002_runtime-checkpoint.md](./checkpoints/008_2026-05-24_rule-authority-v002_runtime-checkpoint.md) |
 
 **005 build order:** original (spec) → v3 (architecture) → v2 (pipeline).
 

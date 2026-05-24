@@ -5,7 +5,11 @@
 
 ## Purpose
 
-Audit trail **before** implementation: design MD, plan package, optional study log, JSON manifest under `work-log/planning/`.
+Audit trail **before** implementation:
+
+1. **Study log** — `work-log/study-docs/{NNN}_*_study-log_{slug}.md` (You raw + Cursor summary per turn; see `.cursor/commands/planning-study-log.md`)
+2. **Plan package** — `work-log/study-docs/{NNN}_*_plan_{slug}*.md` (+ optional `*_design_*.md`)
+3. **Manifest** — `work-log/planning/{planId}.json` via `npm run plan:finalize`
 
 ## Gate
 

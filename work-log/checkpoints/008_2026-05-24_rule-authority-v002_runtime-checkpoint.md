@@ -7,6 +7,7 @@
 | **Batch** | `batch-002` (14 documents, gitignored under `data/case-filing-ai/batches/batch-002/`) |
 | **Milestone** | [Rule Authority v002 Runtime Checkpoint](https://github.com/Pukujan/litigation-prompt-engineering/milestone/3) |
 | **Merged to main** | `83cabca` (Plan 007 + v002 stabilization) |
+| **Planning audit** | [008 study log](../study-docs/008_2026-05-24_study-log_external-artifact-and-v002-checkpoint.md) (raw conversation + summarized Cursor + build plans) |
 
 ---
 

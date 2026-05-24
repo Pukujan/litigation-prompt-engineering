@@ -331,7 +331,7 @@ legal-prmpt-eng/
 
 ### II.7 Follow-ups {#ii7-follow-ups}
 
-- [ ] External artifact root (`local-artifacts.json`) after merge
+- [x] External artifact root (`local-artifacts.json`) — see program **008** study log + `main` @ `6ea2100`
 - [ ] v001 + compact snapshot prompt merge
 - [ ] Optional durable job queue for async batch
 
