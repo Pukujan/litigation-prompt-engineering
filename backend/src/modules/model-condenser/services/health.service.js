@@ -3,6 +3,6 @@ export function getHealth(config) {
     status: "ok",
     module: config.name,
     label: config.label,
-    outputRelativePath: `models/${config.consolidatedFileName}`
+    outputRelativePath: `consolidated-files/${config.consolidatedFileName}`
   };
 }

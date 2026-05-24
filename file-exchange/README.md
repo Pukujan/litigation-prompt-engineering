@@ -9,11 +9,9 @@ file-exchange/
   imports/{2026-05-23_15-59-43Z}/                    ← inbound bundles
   exports/{2026-05-23_15-59-43Z_live-batch-run}/      ← session deliverables
   exports/{2026-05-23_15-59-43Z}_consolidated/        ← repo snapshots (audit trail)
-    consolidated-models.json
-    consolidated-prompts.json
-    consolidated-file-structure.json
-    manifest.json
-  exports/consolidated-*.json                        ← latest copies (regenerate with condense:all)
+  exports/consolidated-*.json                        ← latest copies (condense:all)
+  exports/templates/                                 ← npm export starter sources (maintainer)
+  exports/architecture-starter/                      ← generated export output (gitignored)
 ```
 
 **Stamp format:** `YYYY-MM-DD_HH-MM-SSZ` via `formatExchangeTimestamp()` in `backend/src/shared/utils/formatExchangeTimestamp.js`.
@@ -26,13 +24,24 @@ npm run condense:all
 
 Writes all three artifacts into **one dated folder** `{stamp}_consolidated/` and refreshes latest copies:
 
-| Audit (dated folder) | Latest (`exports/` + `models/`) |
+| Audit (dated folder) | Latest (`exports/` + `consolidated-files/`) |
 |----------------------|----------------------------------|
-| `{stamp}_consolidated/consolidated-models.json` | `exports/consolidated-models.json`, `models/consolidated-models.json` |
+| `{stamp}_consolidated/consolidated-models.json` | `exports/consolidated-models.json`, `consolidated-files/consolidated-models.json` |
 | `{stamp}_consolidated/consolidated-prompts.json` | same pattern |
 | `{stamp}_consolidated/consolidated-file-structure.json` | same pattern |
 
 Individual runs (`npm run condense-prompts`, etc.) create their own `{stamp}_consolidated/` folder for that artifact (plus `manifest.json`).
+
+## Clear dated folders
+
+Remove old import stamps and export session/audit folders (keeps `.gitkeep`, `exports/templates/`, and latest `consolidated-*.json` by default):
+
+```bash
+npm run clear:file-exchange -- --dry-run    # preview
+npm run clear:file-exchange -- --confirm    # delete
+```
+
+Or `POST /api/file-exchange/clear` with `{ "confirm": true }` — see [docs/file-exchange/API.md](../docs/file-exchange/API.md).
 
 ## Workflow
 

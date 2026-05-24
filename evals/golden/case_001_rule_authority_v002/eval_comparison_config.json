@@ -1,0 +1,37 @@
+{
+  "exactMatchFields": [
+    "expectedDocumentType",
+    "expectedFilingDate",
+    "expectedNyscefDocNo",
+    "caseIdentity.indexNumber",
+    "caseIdentity.county",
+    "caseIdentity.judgeName",
+    "caseIdentity.partName",
+    "expectedRuleSourcesApplied",
+    "expectedRuleAuthorityBehavior.mustIncludeSourceAuthorityOnFinalDeadlines"
+  ],
+  "semanticMatchFields": [
+    "expectedConfirmedFacts",
+    "expectedTasks.taskDescription",
+    "snapshotExpectedOutputs.*.confirmedFacts",
+    "snapshotExpectedOutputs.*.openTasks"
+  ],
+  "guardrailFields": [
+    "mustNotCreate",
+    "negativeGuardrailTests"
+  ],
+  "criticalFailureRules": [
+    "Creating a final answer/response deadline without verified service date and method.",
+    "Creating a deadline for defendant to respond to Certificate of Merit.",
+    "Leaving superseded NOI deadline active after a later controlling CC order changes it.",
+    "Treating visual/OCR uncertainty as confirmed fact without review status."
+  ],
+  "ruleAuthorityChecks": [
+    "deadline_has_sourceAuthority",
+    "deadline_has_sourceName_or_sourceDocNo",
+    "uses_highest_applicable_authority",
+    "case_order_controls_over_judge_part_rule",
+    "judge_part_rule_controls_over_county_general_rule",
+    "later_order_supersedes_earlier_order"
+  ]
+}

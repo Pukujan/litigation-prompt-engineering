@@ -45,11 +45,13 @@ export async function buildConsolidatedModels({ repoRoot }) {
 
 export async function condenseModels({
   repoRoot,
-  modelsDir,
+  consolidatedFilesDir,
+  modelsDir: modelsDirLegacy,
   consolidatedFileName = "consolidated-models.json",
   writeFile: shouldWrite = true,
   includePayload = false
 }) {
+  const modelsDir = consolidatedFilesDir ?? modelsDirLegacy;
   const consolidated = await buildConsolidatedModels({ repoRoot });
   const outputPath = join(modelsDir, consolidatedFileName);
 
@@ -77,7 +79,12 @@ export async function condenseModels({
   };
 }
 
-export async function readConsolidatedModels({ modelsDir, consolidatedFileName = "consolidated-models.json" }) {
+export async function readConsolidatedModels({
+  consolidatedFilesDir,
+  modelsDir: modelsDirLegacy,
+  consolidatedFileName = "consolidated-models.json"
+}) {
+  const modelsDir = consolidatedFilesDir ?? modelsDirLegacy;
   const outputPath = join(modelsDir, consolidatedFileName);
   const raw = await readFile(outputPath, "utf8");
   return JSON.parse(raw);

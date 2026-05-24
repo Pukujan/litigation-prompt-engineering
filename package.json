@@ -14,7 +14,10 @@
     "lint:repo-artifacts": "node scripts/lint-repo-artifacts.mjs",
     "ingest:golden-parsed": "node scripts/ingest-golden-parsed.mjs",
     "ingest:golden-expected": "node scripts/ingest-golden-expected.mjs",
+    "ingest:golden-v002": "node scripts/ingest-golden-rule-authority-v002.mjs",
+    "eval:golden": "node scripts/eval-golden.mjs",
     "import:file-exchange": "node scripts/import-to-file-exchange.mjs",
+    "clear:file-exchange": "node scripts/clear-file-exchange.mjs",
     "rerun:batch-evals": "node scripts/rerun-batch-evals.mjs",
     "lint:architecture": "npm --prefix backend run lint:architecture",
     "test": "npm --prefix backend test && npm --prefix frontend test",
@@ -25,6 +28,8 @@
     "condense-file-structure": "node scripts/condense-file-structure.mjs",
     "condense:all": "node scripts/condense-all.mjs",
     "dev-log:pre-push": "node scripts/write-pre-push-dev-log.mjs",
-    "dev-log:verify": "node scripts/verify-dev-log.mjs"
+    "dev-log:verify": "node scripts/verify-dev-log.mjs",
+    "plan:finalize": "node scripts/plan-finalize.mjs",
+    "plan:gate": "node scripts/plan-gate.mjs"
   }
 }

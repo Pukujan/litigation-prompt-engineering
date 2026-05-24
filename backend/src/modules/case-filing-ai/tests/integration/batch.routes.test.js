@@ -5,6 +5,8 @@ import { join } from "path";
 import { tmpdir } from "os";
 import { createTestApp } from "../../../../shared/testing/create-test-app.js";
 
+process.env.CASE_FILING_SYNC_BATCH = "true";
+
 const MOCK_PARSED_RULE = {
   partName: "Part 29",
   judgeName: null,

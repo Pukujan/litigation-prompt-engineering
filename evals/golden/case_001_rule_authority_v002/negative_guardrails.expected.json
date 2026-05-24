@@ -1,0 +1,75 @@
+[
+  {
+    "id": "no_answer_deadline_from_filing_date",
+    "description": "Do not create a final answer/appearance deadline from summons or complaint filing date alone.",
+    "expectedBehavior": "Create a needs_source_trigger task instead of final deadline."
+  },
+  {
+    "id": "no_certificate_of_merit_response_deadline",
+    "description": "Do not create a defendant response deadline to the Certificate of Merit.",
+    "failIfTextIncludes": [
+      "Deadline for defendant to respond to certificate of merit",
+      "response deadline to certificate of merit"
+    ],
+    "expectedBehavior": "Doc 2 only confirms Certificate of Merit filed under CPLR 3012-a."
+  },
+  {
+    "id": "no_completed_notice_of_claim_without_source",
+    "description": "Do not mark notice of claim completed unless supported by specific notice/order/service source.",
+    "expectedBehavior": "Treat as source-linked context unless current document supports completion."
+  },
+  {
+    "id": "no_fixed_deposition_date_without_actual_date",
+    "appliesToDocs": [
+      8
+    ],
+    "description": "Do not create fixed deposition date from notice saying date/time/location to be agreed or court-directed.",
+    "expectedBehavior": "Create scheduling task with no_fixed_due_date."
+  },
+  {
+    "id": "supersede_old_noi_after_cc_order",
+    "appliesAfterDoc": 13,
+    "description": "After Doc 13/14, old 2028-12-21 NOI must be superseded and 2029-04-19 active.",
+    "expectedBehavior": "Active NOI deadline is 2029-04-19; old NOI deadline is superseded."
+  },
+  {
+    "id": "no_duplicate_doc_014_tasks",
+    "appliesToDocs": [
+      14
+    ],
+    "description": "If Doc 14 is duplicate/refiling, do not duplicate all Doc 13 tasks as new obligations.",
+    "expectedBehavior": "Confirm/refine existing CC obligations and flag duplicate/refiling review if needed."
+  },
+  {
+    "id": "deadline_requires_source_authority",
+    "description": "Every final deadline must include sourceAuthority and sourceName or sourceDocNo.",
+    "critical": true,
+    "expectedBehavior": "Downgrade final deadlines without authority provenance to needs_source_trigger or rule_authority_missing."
+  },
+  {
+    "id": "case_specific_order_over_general_rule",
+    "description": "When a PC/CC order supplies a date, the model must not use CPLR/Uniform/Queens general rule as controlling source.",
+    "critical": true,
+    "appliesToDocs": [
+      12,
+      13,
+      14
+    ]
+  },
+  {
+    "id": "judge_part_rule_over_county_general_rule",
+    "description": "For Part 10 HHC med-mal workflow, Kerrigan/Part 10 rules outrank general Queens Compliance Part rules unless the case order controls.",
+    "critical": false,
+    "appliesToDocs": [
+      12,
+      13,
+      14
+    ]
+  },
+  {
+    "id": "later_cc_order_supersedes_pc_noi",
+    "description": "After Doc 13/14, Doc 12 NOI date must be superseded by the later CC/CPLR 3216 NOI date.",
+    "critical": true,
+    "appliesAfterDoc": 13
+  }
+]

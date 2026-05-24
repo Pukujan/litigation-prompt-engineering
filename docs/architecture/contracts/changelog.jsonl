@@ -10,3 +10,6 @@
 {"time":"2026-05-23T20:00:00Z","contract":"prePushDevLog","from":null,"to":"v001","reason":"Paired human MD + agent JSON pre-push logs; API/tree/test audits","author":"agent"}
 {"time":"2026-05-23T20:00:00Z","contract":"apiDocumentationRegistry","from":null,"to":"v001","reason":"docs/API.md registry contract for dev-log api inventory","author":"agent"}
 {"time":"2026-05-23T20:01:00Z","contract":"fileExchange","from":"v001","to":"v001","reason":"Human-readable stamps; consolidated exports at exports root; contract doc","author":"agent"}
+{"time":"2026-05-24T01:30:00Z","contract":"consolidatedExports","from":"v001","to":"v001","reason":"Rename models/ mirror to consolidated-files/; dated {stamp}_consolidated audit folders","author":"agent"}
+{"time":"2026-05-24T01:30:00Z","contract":"repoArtifactLayout","from":"v001","to":"v001","reason":"consolidated-files/ replaces models/ for latest consolidated JSON mirror","author":"agent"}
+{"time":"2026-05-24T02:00:00Z","contract":"fileExchange","from":"v001","to":"v001","reason":"POST /api/file-exchange/clear and clear-file-exchange CLI for dated folder cleanup","author":"agent"}

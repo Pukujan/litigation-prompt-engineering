@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-23T16:51:20.402Z",
+    "generatedAt": "2026-05-24T01:21:44.831Z",
     "repositoryRoot": "/Users/teresaguajardo/Documents/coding/legal-prmpt-eng",
     "condensedBy": "condense-prompts",
     "description": "Consolidated prompt templates for legal-prmpt-eng (active + starter reference).",
@@ -49,6 +49,60 @@
           ]
         }
       ]
+    },
+    "backend/src/modules/case-filing-ai/prompts/manifest.json": {
+      "module": "case-filing-ai",
+      "version": "1.0.0",
+      "prompts": [
+        {
+          "id": "master-case-filing-v1",
+          "version": "v1",
+          "file": "master-case-filing.prompt.md",
+          "variables": [
+            "documentText",
+            "fileMetadata",
+            "priorCaseSnapshot",
+            "partRuleText",
+            "rankedRules"
+          ],
+          "outputSchema": "../schemas/master-output.v1.schema.json"
+        },
+        {
+          "id": "master-case-filing-compact",
+          "version": "compact",
+          "file": "master-case-filing.compact.prompt.md",
+          "variables": [
+            "documentText",
+            "fileMetadata",
+            "priorCaseSnapshot",
+            "partRuleText",
+            "rankedRules"
+          ],
+          "outputSchema": "../schemas/master-output.v1.schema.json"
+        },
+        {
+          "id": "master-case-filing-v001",
+          "version": "v001",
+          "file": "v001_master-case-filing.prompt.md",
+          "variables": [
+            "documentText",
+            "fileMetadata",
+            "priorCaseSnapshot",
+            "partRuleText",
+            "rankedRules"
+          ],
+          "outputSchema": "../schemas/master-output.v001.schema.json"
+        },
+        {
+          "id": "rule-parse",
+          "version": "v1",
+          "file": "rule-parse.prompt.md",
+          "variables": [
+            "partRuleText"
+          ]
+        }
+      ],
+      "versionRegistry": "promptVersions.js"
     },
     "backend/src/modules/case-workflow/prompts/manifest.json": {
       "module": "case-workflow",

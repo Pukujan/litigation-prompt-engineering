@@ -18,8 +18,11 @@ Maintained manually when routes change. Enforced by `npm run lint:api-docs`. See
 |--------|------|--------|-------------|
 | GET | `/api/case-filing-ai/health` | Case Filing AI | Module health and config summary |
 | POST | `/api/case-filing-ai/extract-rule-text` | Case Filing AI | Extract text from uploaded part-rule file |
-| POST | `/api/case-filing-ai/process-batch` | Case Filing AI | Upload filings and run master prompt pipeline |
-| GET | `/api/case-filing-ai/batches/:batchId/status` | Case Filing AI | Batch processing status |
+| POST | `/api/case-filing-ai/process-batch` | Case Filing AI | Upload filings; returns **202** and processes batch in background |
+| GET | `/api/case-filing-ai/batches/:batchId/status` | Case Filing AI | Batch status with module rail and document queue |
+| GET | `/api/case-filing-ai/batches/:batchId/processing-log` | Case Filing AI | Parsed `processing-log.jsonl` entries |
+| POST | `/api/case-filing-ai/batches/:batchId/package` | Case Filing AI | Build downloadable batch package folder |
+| GET | `/api/case-filing-ai/batches/:batchId/package/download` | Case Filing AI | Download batch package as zip |
 | GET | `/api/case-filing-ai/batches/:batchId/results` | Case Filing AI | Aggregated batch results |
 | GET | `/api/case-filing-ai/batches/:batchId/parsed-documents` | Case Filing AI | List parsed-document cache keys |
 | GET | `/api/case-filing-ai/batches/:batchId/parsed-documents/:documentId` | Case Filing AI | Parsed cache detail for one document |
@@ -30,7 +33,16 @@ Maintained manually when routes change. Enforced by `npm run lint:api-docs`. See
 | POST | `/api/case-filing-ai/evals/cases/:goldenCaseId/bundle` | Case Filing AI | Copy golden fixtures plus case eval runs |
 | GET | `/api/case-filing-ai/cases/:goldenCaseId` | Case Filing AI | Inventory batches for a golden case |
 | POST | `/api/case-filing-ai/cases/:goldenCaseId/export` | Case Filing AI | Export full batch folders to case-exports |
+| GET | `/api/case-filing-ai/cases/:goldenCaseId/export/:exportId/download` | Case Filing AI | Download case export as zip |
 | DELETE | `/api/case-filing-ai/cases/:goldenCaseId` | Case Filing AI | Delete batch folders for a case (requires confirm) |
+| GET | `/api/platform/modules` | Platform | Runtime module registry (icons, labels) |
+| GET | `/api/platform/onboarding/pipeline-guide` | Platform | Pipeline onboarding (`?format=md` or `json`) |
+| GET | `/api/platform/planning` | Platform | List planning manifests |
+| GET | `/api/platform/planning/:planId` | Platform | Read planning manifest JSON |
+| GET | `/api/platform/planning/:planId/download` | Platform | Download planning package markdown |
+| POST | `/api/platform/planning/:planId/finalize` | Platform | Finalize planning manifest for a slug |
+| GET | `/api/file-exchange/health` | File exchange | Module health |
+| POST | `/api/file-exchange/clear` | File exchange | Clear dated import/export session folders |
 | GET | `/api/model-condenser/health` | Model condenser | Module health |
 | POST | `/api/model-condenser/condense` | Model condenser | Regenerate consolidated-models.json |
 | GET | `/api/model-condenser/consolidated` | Model condenser | Read consolidated schema inventory |
@@ -49,6 +61,7 @@ Maintained manually when routes change. Enforced by `npm run lint:api-docs`. See
 | Module | Base path | API doc | Status |
 |--------|-----------|---------|--------|
 | Case Filing AI | `/api/case-filing-ai` | [case-filing-ai/API.md](./case-filing-ai/API.md) | **Active** — batch upload, master prompt, evals, bundles |
+| File exchange | `/api/file-exchange` | [file-exchange/API.md](./file-exchange/API.md) | **Active** — clear dated import/export folders |
 | Model condenser | `/api/model-condenser` | [model-condenser/API.md](./model-condenser/API.md) | **Active** — schema inventory export |
 | Filing pipeline | `/api/filing-pipeline` | [filing-pipeline/API.md](./filing-pipeline/API.md) | **Active** — pipeline step catalog |
 | Case workflow | `/api/case-workflow` | [case-workflow/API.md](./case-workflow/API.md) | Health only (stub) |

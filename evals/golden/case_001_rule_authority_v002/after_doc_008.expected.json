@@ -1,0 +1,68 @@
+{
+  "snapshotId": "snapshot_after_doc_008_expected",
+  "caseId": "synthetic_case_001_queens_905421_2027_santos_v_mchhc",
+  "afterDocNo": 8,
+  "currentPhase": "ISSUE_JOINED_DISCOVERY_DEMANDS",
+  "currentMiniPhase": "ANSWER_BP_DEMAND_DEPOSITION_NOTICE",
+  "confirmedFacts": [
+    "AOS regarding service on MCMCHHC filed.",
+    "MCMCHHC answer filed.",
+    "Defense counsel Amabile & Erman appeared.",
+    "Demand for Bill of Particulars served/filed.",
+    "Notice to Take Deposition served/filed without fixed date/time."
+  ],
+  "openTasks": [
+    {
+      "taskType": "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND",
+      "status": "source_supported_auto_saved_or_needs_deadline_verification"
+    },
+    {
+      "taskType": "SCHEDULE_PLAINTIFF_DEPOSITION",
+      "status": "conditional"
+    }
+  ],
+  "completedTasks": [
+    "Filed summons and complaint",
+    "Filed Certificate of Merit",
+    "Filed AOS",
+    "Defendant answer filed"
+  ],
+  "deadlines": [
+    {
+      "type": "BP_RESPONSE_DEADLINE_CANDIDATE",
+      "status": "needs_calculation_verification"
+    }
+  ],
+  "supersededDeadlines": [
+    {
+      "type": "PROVISIONAL_RESPONSE_DEADLINE_FROM_DOC_001_OR_002",
+      "status": "unsupported_or_superseded_by_answer_filed"
+    }
+  ],
+  "conflicts": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic snapshot expected output for eval testing.",
+  "expectedRuleAuthorityState": {
+    "activeRuleSetVersion": "queens_kerrigan_medmal_rules_v001",
+    "authorityHierarchy": {
+      "unknown": 0,
+      "cplr_or_statute": 1,
+      "uniform_rule": 2,
+      "county_or_court_rule": 3,
+      "judge_part_rule": 4,
+      "case_specific_order": 5,
+      "later_case_specific_order": 6
+    },
+    "ruleSourcesAvailable": [
+      "cplr_general_civil_practice",
+      "uniform_rule_202_56_medmal",
+      "queens_medmal_part_rules",
+      "queens_medmal_pc_form",
+      "queens_medmal_cc_form",
+      "queens_compliance_part_rules",
+      "queens_part_10_kerrigan_rules",
+      "doc_012_pc_order",
+      "doc_013_014_cc_order"
+    ]
+  }
+}

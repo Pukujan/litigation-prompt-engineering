@@ -70,3 +70,18 @@ export async function apiDelete(path, body) {
   });
   return parseResponse(response);
 }
+
+export async function apiDownload(path, filename) {
+  const response = await fetch(`${BASE_URL}${path}`);
+  if (!response.ok) {
+    const body = await readResponseBody(response);
+    throw new Error(errorMessageFromBody(body, response.status));
+  }
+  const blob = await response.blob();
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  anchor.click();
+  URL.revokeObjectURL(url);
+}

@@ -1,4 +1,11 @@
-import { apiGet, apiPost, apiPostForm, apiPatch, apiDelete } from "../../../shared/api/client.js";
+import {
+  apiGet,
+  apiPost,
+  apiPostForm,
+  apiPatch,
+  apiDelete,
+  apiDownload
+} from "../../../shared/api/client.js";
 
 export function extractRuleText(file) {
   const formData = new FormData();
@@ -20,6 +27,36 @@ export function processBatch(files, partRuleText, partRuleFile = null) {
 
 export function getBatchStatus(batchId) {
   return apiGet(`/api/case-filing-ai/batches/${batchId}/status`);
+}
+
+export function getProcessingLog(batchId) {
+  return apiGet(`/api/case-filing-ai/batches/${batchId}/processing-log`);
+}
+
+export function getPlatformModules() {
+  return apiGet("/api/platform/modules");
+}
+
+export function buildBatchPackage(batchId, options = {}) {
+  return apiPost(`/api/case-filing-ai/batches/${batchId}/package`, options);
+}
+
+export function downloadBatchPackage(batchId, options = {}) {
+  const params = new URLSearchParams();
+  if (options.includeGolden) params.set("includeGolden", "true");
+  if (options.goldenCaseId) params.set("goldenCaseId", options.goldenCaseId);
+  const qs = params.toString();
+  return apiDownload(
+    `/api/case-filing-ai/batches/${batchId}/package/download${qs ? `?${qs}` : ""}`,
+    `${batchId}-package.zip`
+  );
+}
+
+export function downloadCaseExport(goldenCaseId, exportId) {
+  return apiDownload(
+    `/api/case-filing-ai/cases/${goldenCaseId}/export/${exportId}/download`,
+    `${exportId}.zip`
+  );
 }
 
 export function getBatchResults(batchId) {

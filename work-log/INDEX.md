@@ -13,6 +13,8 @@
 | 005 | 2026-05-23 | 11:14 | handoff v2 | [handoffs/005_2026-05-23_11-14_handoff-v2_planned-review-in-cursor.md](./handoffs/005_2026-05-23_11-14_handoff-v2_planned-review-in-cursor.md) |
 | 005 | 2026-05-23 | 11:20 | handoff v3 | [handoffs/005_2026-05-23_11-20_handoff-v3_filing-structure-architecture.md](./handoffs/005_2026-05-23_11-20_handoff-v3_filing-structure-architecture.md) |
 | 006 | 2026-05-23 | 11:21 | study log | [study-docs/006_2026-05-23_11-21_study-log_cursor-planning-phase.md](./study-docs/006_2026-05-23_11-21_study-log_cursor-planning-phase.md) |
+| 007 | 2026-05-24 | — | design (planning) | [study-docs/007_2026-05-24_design_pipeline-ui-onboarding.md](./study-docs/007_2026-05-24_design_pipeline-ui-onboarding.md) |
+| 007 | 2026-05-24 | — | plan package | [study-docs/007_2026-05-24_plan_pipeline-ui-onboarding-package.md](./study-docs/007_2026-05-24_plan_pipeline-ui-onboarding-package.md) |
 
 **005 build order:** original (spec) → v3 (architecture) → v2 (pipeline).
 
@@ -37,5 +39,6 @@
 | 005 | 2026-05-23 | 16-59 | [human](./dev-logs/human/005_2026-05-23_16-59_dev-log_two-part-human-dev-log.md) | [agent](./dev-logs/agent/005_2026-05-23_16-59_dev-log-agent_two-part-human-dev-log.json) |
 | 005 | 2026-05-23 | 17-00 | [human](./dev-logs/human/005_2026-05-23_17-00_dev-log_e2e-test.md) | [agent](./dev-logs/agent/005_2026-05-23_17-00_dev-log-agent_e2e-test.json) |
 | 005 | 2026-05-23 | **17-36** | **[architecture CI / npm / README](./dev-logs/human/005_2026-05-23_17-36_dev-log_architecture-ci-npm-readme.md)** | **[agent](./dev-logs/agent/005_2026-05-23_17-36_dev-log-agent_architecture-ci-npm-readme.json)** |
+| 007 | 2026-05-24 | 12-55 | [human](./dev-logs/human/007_2026-05-24_12-55_dev-log_pipeline-ui-onboarding.md) | [agent](./dev-logs/agent/007_2026-05-24_12-55_dev-log-agent_pipeline-ui-onboarding.json) |
 
 Architecture narrative: [docs/DEVLOG_V2.md](../docs/DEVLOG_V2.md) · Platform gates: [docs/architecture/EVAL_AND_CI.md](../docs/architecture/EVAL_AND_CI.md).

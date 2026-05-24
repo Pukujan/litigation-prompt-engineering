@@ -105,7 +105,7 @@ One JSON line per bump: `contract`, `from`, `to`, `reason`, `time`.
 |----|---------|-----------------|
 | **repoArtifactLayout** | v001 | All canonical roots (`data/`, `evals/`, `file-exchange/`, `work-log/`) |
 | **fileExchange** | v001 | `imports/{stamp}/`, `exports/{stamp}/`, human-readable UTC stamps |
-| **consolidatedExports** | v001 | `exports/consolidated-*.json` + `models/` mirror, `condense:all` |
+| **consolidatedExports** | v001 | `exports/consolidated-*.json` + `consolidated-files/` mirror, `condense:all` |
 | **prePushDevLog** | v001 | Paired `human/*.md` + `agent/*.json`, tree/API/test audits |
 | **apiDocumentationRegistry** | v001 | `docs/API.md`, active/stub/deprecated routes |
 | **caseFilingStorageLayout** | v001 | `batches/batch-NNN/` folder layout |
@@ -144,6 +144,7 @@ HTTP entrypoint: `POST /api/case-filing-ai/process-batch` ([API.md](../API.md)).
 | Inbound files | `npm run import:file-exchange` | fileExchange |
 | Before push | `npm run dev-log:pre-push` | prePushDevLog |
 | Snapshot handoff | `npm run condense:all` | consolidatedExports |
+| Clear dated exchange folders | `npm run clear:file-exchange` or `POST /api/file-exchange/clear` | fileExchange |
 | Golden refresh | `npm run ingest:golden-*` | fileExchange + pipelineVersions |
 
 ---
@@ -166,7 +167,7 @@ To refresh the **boilerplate CLI template** without domain modules:
 npm run export:architecture-starter -- --to packages/create-modular-monolith/template
 ```
 
-Output defaults to `export/architecture-starter/`. See `EXPORT_MANIFEST.json` and [PUBLISHING.md](../PUBLISHING.md).
+Templates: `file-exchange/exports/templates/`. Output defaults to `file-exchange/exports/architecture-starter/` (gitignored). See `EXPORT_MANIFEST.json` and [PUBLISHING.md](../PUBLISHING.md).
 
 ---
 

@@ -7,11 +7,14 @@
  *   npm run export:architecture-starter -- --to packages/create-modular-monolith/template
  */
 import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync, rmSync, readdirSync } from "fs";
-import { join, dirname, resolve, isAbsolute } from "path";
+import { join, dirname, resolve, isAbsolute, relative } from "path";
 import { fileURLToPath } from "url";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
-const templatesRoot = join(repoRoot, "export-templates");
+export const ARCHITECTURE_TEMPLATES_DIR = "file-exchange/exports/templates";
+export const ARCHITECTURE_EXPORT_OUTPUT_DIR = "file-exchange/exports/architecture-starter";
+
+const templatesRoot = join(repoRoot, ARCHITECTURE_TEMPLATES_DIR);
 
 const EXCLUDE_DIRS = new Set([
   "node_modules",
@@ -20,12 +23,17 @@ const EXCLUDE_DIRS = new Set([
   "build",
   "coverage",
   "packages",
-  "export",
   "data",
   "eval-bundles",
   "case-exports",
   "evals"
 ]);
+
+/** Generated or maintainer-only paths under file-exchange/exports (not part of product copy). */
+const EXPORT_SKIP_PREFIXES = [
+  ARCHITECTURE_EXPORT_OUTPUT_DIR,
+  ARCHITECTURE_TEMPLATES_DIR
+];
 
 const BACKEND_MODULES_KEEP = new Set(["_reference", "model-condenser"]);
 const FRONTEND_MODULES_KEEP = new Set(["_reference"]);
@@ -58,7 +66,7 @@ const DOCS_KEEP_FILES = new Set([
 ]);
 
 function parseArgs(argv) {
-  let target = join(repoRoot, "export/architecture-starter");
+  let target = join(repoRoot, ARCHITECTURE_EXPORT_OUTPUT_DIR);
   for (let i = 0; i < argv.length; i += 1) {
     if (argv[i] === "--to" && argv[i + 1]) {
       const raw = argv[++i];
@@ -70,7 +78,12 @@ function parseArgs(argv) {
 
 function shouldExcludePath(sourcePath) {
   const parts = sourcePath.split(/[/\\]/);
-  return parts.some((p) => EXCLUDE_DIRS.has(p));
+  if (parts.some((p) => EXCLUDE_DIRS.has(p))) return true;
+  const rel = relative(repoRoot, sourcePath).replace(/\\/g, "/");
+  if (!rel || rel.startsWith("..")) return false;
+  return EXPORT_SKIP_PREFIXES.some(
+    (prefix) => rel === prefix || rel.startsWith(`${prefix}/`)
+  );
 }
 
 function copyFiltered(src, dest, filterFn) {
@@ -207,9 +220,9 @@ function writeStarterRootFiles(target) {
   cpSync(join(repoRoot, ".gitignore"), join(target, ".gitignore"));
   cpSync(join(templatesRoot, "LICENSE.starter"), join(target, "LICENSE"));
   cpSync(join(templatesRoot, "NOTICE.starter"), join(target, "NOTICE"));
-  mkdirSync(join(target, "models"), { recursive: true });
-  writeFileSync(join(target, "models/.gitkeep"), "");
-  console.log("  ✓ package.json, AGENTS.md, README, LICENSE, NOTICE, models/.gitkeep");
+  mkdirSync(join(target, "consolidated-files"), { recursive: true });
+  writeFileSync(join(target, "consolidated-files/.gitkeep"), "");
+  console.log("  ✓ package.json, AGENTS.md, README, LICENSE, NOTICE, consolidated-files/.gitkeep");
 }
 
 function patchStarterScripts(target) {
@@ -257,6 +270,17 @@ function patchStarterScripts(target) {
     fx = fx.replace("case-filing APIs", "your module APIs");
     writeFileSync(fxReadme, fx);
   }
+
+  const condenserRoutesTest = join(
+    target,
+    "backend/src/modules/model-condenser/tests/integration/modelCondenser.routes.test.js"
+  );
+  if (existsSync(condenserRoutesTest)) {
+    let routesTest = readFileSync(condenserRoutesTest, "utf8");
+    routesTest = routesTest.replace("body.modelCount >= 16", "body.modelCount >= 1");
+    writeFileSync(condenserRoutesTest, routesTest);
+  }
+
   console.log("  ✓ starter patches (prompts, model-condenser, repo-tree, api-inventory)");
 }
 
@@ -287,7 +311,7 @@ function writeManifest(target) {
       scripts: "ingest-golden-*, rerun-batch-evals, run-module-evals"
     },
     nextSteps: [
-      "Review export/ARCHITECTURE_EXPORT_README.md",
+      "Review file-exchange/exports/architecture-starter/ARCHITECTURE_EXPORT_README.md",
       "npm install in backend/ and frontend/",
       "npm run lint:contracts && npm run lint:architecture",
       "node scripts/new-module.mjs my-feature --label \"My Feature\"",
@@ -330,6 +354,13 @@ Start at [docs/architecture/CONTRACTS_OVERVIEW.md](docs/architecture/CONTRACTS_O
 
 `;
   writeFileSync(join(target, "ARCHITECTURE_EXPORT_README.md"), md);
+}
+
+function patchContractsManifest(target) {
+  const starterManifest = join(templatesRoot, "manifest.starter.json");
+  const dest = join(target, "docs/architecture/contracts/manifest.json");
+  cpSync(starterManifest, dest);
+  console.log("  ✓ docs/architecture/contracts/manifest.json (platform-only)");
 }
 
 function patchLintRepoArtifacts(target) {
@@ -413,6 +444,7 @@ function main() {
   console.log("\nRoot:");
   writeStarterRootFiles(target);
   patchStarterScripts(target);
+  patchContractsManifest(target);
   patchLintRepoArtifacts(target);
   writeManifest(target);
   writeExportReadme(target);

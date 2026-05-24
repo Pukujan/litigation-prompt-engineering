@@ -32,7 +32,9 @@ Repo-wide rules for AI agents working in **legal-prmpt-eng**. Module-specific ru
    ```bash
    npm run condense:all
    ```
-   → `file-exchange/exports/{stamp}_consolidated/` (dated audit folder + `manifest.json`). Latest: `exports/consolidated-*.json` and `models/` mirror.
+   → `file-exchange/exports/{stamp}_consolidated/` (dated audit folder + `manifest.json`). Latest: `exports/consolidated-*.json` and `consolidated-files/` mirror.
+
+5. **Clear old exchange clutter** (optional) — `npm run clear:file-exchange -- --dry-run` then `--confirm`, or `POST /api/file-exchange/clear` with `{ "confirm": true }`. Keeps `exports/templates/` and latest `consolidated-*.json` by default.
 
 ### Do not
 

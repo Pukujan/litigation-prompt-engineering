@@ -1,0 +1,322 @@
+{
+  "docIndex": 12,
+  "docKey": "doc-012",
+  "storedName": "012-fixture.pdf",
+  "originalName": "Preliminary Conference Order",
+  "fileKind": "pdf",
+  "docketEntry": {
+    "filingType": "PRELIMINARY_CONFERENCE_ORDER",
+    "filingDate": "2027-11-23",
+    "nyscefDocNo": 12
+  },
+  "documentMetadata": {
+    "title": "Preliminary Conference Order",
+    "pageCount": 8,
+    "extractionQuality": {
+      "method": "ocr_or_visual_review_required",
+      "ocr_needed": true,
+      "reviewStatus": "ai_extracted_unreviewed_with_visual_review_items",
+      "ocr_test_reason": "Synthetic PC order includes scanned order pages, checkboxes, dates, and signature fields."
+    }
+  },
+  "extractionQuality": {
+    "method": "ocr_or_visual_review_required",
+    "ocr_needed": true,
+    "reviewStatus": "ai_extracted_unreviewed_with_visual_review_items",
+    "ocr_test_reason": "Synthetic PC order includes scanned order pages, checkboxes, dates, and signature fields."
+  },
+  "parties": [],
+  "tasks": [
+    {
+      "taskType": "PLAINTIFF_AUTHORIZATIONS",
+      "taskDescription": "Plaintiff authorizations due 30 days from PC order.",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2027-12-23",
+      "dueDateStatus": "calculated",
+      "confidence": "high",
+      "sourceTrigger": "Doc 12 PC order dated 2027-11-23",
+      "sourceAuthority": "case_specific_order",
+      "sourceName": "Doc 12 Preliminary Conference Order",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "doc_012_pc_order",
+      "authorityRank": 5
+    },
+    {
+      "taskType": "PLAINTIFF_RECORD_COPIES_IF_REQUESTED",
+      "taskDescription": "Plaintiff record copies due 14 days from PC order if requested/cost paid.",
+      "status": "conditional",
+      "dueDate": "2027-12-07",
+      "dueDateStatus": "calculated",
+      "confidence": "medium",
+      "sourceAuthority": "case_specific_order",
+      "sourceName": "Doc 12 Preliminary Conference Order",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "doc_012_pc_order",
+      "authorityRank": 5
+    },
+    {
+      "taskType": "DEFENDANT_RULES_REGULATIONS",
+      "taskDescription": "Defendant hospital rules/regulations due.",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2027-12-23",
+      "dueDateStatus": "fixed_or_calculated_from_order",
+      "confidence": "high",
+      "sourceAuthority": "case_specific_order",
+      "sourceName": "Doc 12 Preliminary Conference Order",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "doc_012_pc_order",
+      "authorityRank": 5
+    },
+    {
+      "taskType": "PLAINTIFF_EBT",
+      "taskDescription": "Plaintiff EBT on or before 2028-03-01.",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2028-03-01",
+      "dueDateStatus": "fixed",
+      "confidence": "high",
+      "sourceAuthority": "case_specific_order",
+      "sourceName": "Doc 12 Preliminary Conference Order",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "doc_012_pc_order",
+      "authorityRank": 5
+    },
+    {
+      "taskType": "MCHHC_WITNESS_EBT_1",
+      "taskDescription": "First MCHHC witness EBT on or before 2028-03-31.",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2028-03-31",
+      "dueDateStatus": "fixed",
+      "confidence": "high",
+      "sourceAuthority": "case_specific_order",
+      "sourceName": "Doc 12 Preliminary Conference Order",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "doc_012_pc_order",
+      "authorityRank": 5
+    },
+    {
+      "taskType": "MCHHC_WITNESS_EBT_2",
+      "taskDescription": "Second MCHHC witness EBT on or before 2028-05-01.",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2028-05-01",
+      "dueDateStatus": "fixed",
+      "confidence": "high",
+      "sourceAuthority": "case_specific_order",
+      "sourceName": "Doc 12 Preliminary Conference Order",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "doc_012_pc_order",
+      "authorityRank": 5
+    },
+    {
+      "taskType": "MCHHC_WITNESS_EBT_3",
+      "taskDescription": "Third MCHHC witness EBT on or before 2028-06-01.",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2028-06-01",
+      "dueDateStatus": "fixed",
+      "confidence": "high",
+      "sourceAuthority": "case_specific_order",
+      "sourceName": "Doc 12 Preliminary Conference Order",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "doc_012_pc_order",
+      "authorityRank": 5
+    },
+    {
+      "taskType": "COMPLIANCE_CONFERENCE_SUBMISSION",
+      "taskDescription": "Submit compliance conference stipulation/order for 2028-07-19 no later than 11:00 AM under Part 10 MCHHC med-mal rules.",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2028-07-19T11:00:00",
+      "dueDateStatus": "fixed",
+      "confidence": "high",
+      "sourceAuthority": "case_specific_order",
+      "sourceName": "Doc 12 Preliminary Conference Order",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "doc_012_pc_order",
+      "authorityRank": 5
+    },
+    {
+      "taskType": "NOTE_OF_ISSUE",
+      "taskDescription": "NOI due by 2028-12-21 per PC order.",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2028-12-21",
+      "dueDateStatus": "fixed",
+      "confidence": "high",
+      "sourceAuthority": "case_specific_order",
+      "sourceName": "Doc 12 Preliminary Conference Order",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "doc_012_pc_order",
+      "authorityRank": 5
+    }
+  ],
+  "deadlines": [
+    {
+      "type": "AUTHORIZATIONS",
+      "date": "2027-12-23",
+      "sourceAuthority": "case_specific_order",
+      "sourceName": "Doc 12 Preliminary Conference Order",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "doc_012_pc_order",
+      "authorityRank": 5
+    },
+    {
+      "type": "PLAINTIFF_EBT",
+      "date": "2028-03-01",
+      "sourceAuthority": "case_specific_order",
+      "sourceName": "Doc 12 Preliminary Conference Order",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "doc_012_pc_order",
+      "authorityRank": 5
+    },
+    {
+      "type": "MCHHC_EBT_1",
+      "date": "2028-03-31",
+      "sourceAuthority": "case_specific_order",
+      "sourceName": "Doc 12 Preliminary Conference Order",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "doc_012_pc_order",
+      "authorityRank": 5
+    },
+    {
+      "type": "MCHHC_EBT_2",
+      "date": "2028-05-01",
+      "sourceAuthority": "case_specific_order",
+      "sourceName": "Doc 12 Preliminary Conference Order",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "doc_012_pc_order",
+      "authorityRank": 5
+    },
+    {
+      "type": "MCHHC_EBT_3",
+      "date": "2028-06-01",
+      "sourceAuthority": "case_specific_order",
+      "sourceName": "Doc 12 Preliminary Conference Order",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "doc_012_pc_order",
+      "authorityRank": 5
+    },
+    {
+      "type": "COMPLIANCE_CONFERENCE",
+      "date": "2028-07-19",
+      "sourceAuthority": "case_specific_order",
+      "sourceName": "Doc 12 Preliminary Conference Order",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "doc_012_pc_order",
+      "authorityRank": 5
+    },
+    {
+      "type": "NOI",
+      "date": "2028-12-21",
+      "sourceAuthority": "case_specific_order",
+      "sourceName": "Doc 12 Preliminary Conference Order",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "doc_012_pc_order",
+      "authorityRank": 5
+    }
+  ],
+  "humanReviewItems": [
+    {
+      "issue": "pc_order_ocr_visual_review",
+      "reason": "PC order appears scanned/visual with checkboxes/dates/signatures requiring OCR and review.",
+      "blocking": true,
+      "status": "pending"
+    },
+    {
+      "issue": "synthetic_ocr_required_test_case",
+      "reason": "Synthetic PC order includes scanned order pages, checkboxes, dates, and signature fields.",
+      "blocking": true,
+      "status": "pending"
+    }
+  ],
+  "ruleSourcesApplied": [
+    "uniform_rule_202_56_medmal",
+    "queens_medmal_part_rules",
+    "queens_part_10_kerrigan_rules",
+    "queens_medmal_pc_form",
+    "doc_012_pc_order"
+  ],
+  "ruleSourcesChecked": [
+    "uniform_rule_202_56_medmal",
+    "queens_medmal_part_rules",
+    "queens_part_10_kerrigan_rules",
+    "queens_medmal_pc_form",
+    "doc_012_pc_order"
+  ],
+  "rankedRules": [
+    {
+      "ruleId": "uniform_rule_202_56_medmal",
+      "sourceAuthority": "uniform_rule",
+      "authorityRank": 2,
+      "sourceName": "Uniform Rule 202.56 Medical/Dental/Podiatric Malpractice Actions",
+      "controls": [
+        "general med-mal timing context",
+        "RJI/notice of med-mal framework"
+      ],
+      "applicationRule": "General med-mal context unless Queens/Judge/order source is more specific."
+    },
+    {
+      "ruleId": "queens_medmal_part_rules",
+      "sourceAuthority": "county_or_court_rule",
+      "authorityRank": 3,
+      "sourceName": "Queens Medical/Dental/Podiatric Malpractice Part Rules",
+      "controls": [
+        "Queens med-mal PC/CC procedure",
+        "Queens medical malpractice scheduling practice"
+      ],
+      "applicationRule": "Use for Queens med-mal workflow where judge/order is silent."
+    },
+    {
+      "ruleId": "queens_medmal_pc_form",
+      "sourceAuthority": "county_or_court_rule",
+      "authorityRank": 3,
+      "sourceName": "Queens Medical Malpractice Preliminary Conference Form",
+      "controls": [
+        "PC order form obligations",
+        "discovery schedule template fields",
+        "expert/NOI/SJ timing if expressed"
+      ],
+      "applicationRule": "Use when PC form terms are incorporated or when current PC order uses this form."
+    },
+    {
+      "ruleId": "queens_part_10_kerrigan_rules",
+      "sourceAuthority": "judge_part_rule",
+      "authorityRank": 4,
+      "sourceName": "Hon. Kevin J. Kerrigan / Queens Civil Term Part 10 Rules",
+      "controls": [
+        "Part 10 communications",
+        "Part 10 submissions",
+        "MedMal-HHC in-person and email workflow",
+        "conference handling when not contradicted by case order"
+      ],
+      "applicationRule": "Controls Part 10 workflow over general Queens rules unless a case-specific order controls."
+    },
+    {
+      "ruleId": "doc_012_pc_order",
+      "sourceAuthority": "case_specific_order",
+      "authorityRank": 5,
+      "sourceName": "Doc 12 Preliminary Conference Order",
+      "sourceDocNo": 12,
+      "controls": [
+        "PC order dates",
+        "EBT schedule from PC order",
+        "initial NOI deadline",
+        "CC date"
+      ],
+      "applicationRule": "Controls document-specific PC deadlines until superseded by later order."
+    }
+  ],
+  "pipelineVersions": {
+    "parser": "pdf-text-v001",
+    "ocr": "qwen-vl-v001",
+    "masterPrompt": "v001_master-case-filing",
+    "rulePrompt": "court-rules/rule-context-1.0.0",
+    "snapshotPrompt": "case-workflow/case-state-update-1.0.0",
+    "ruleSet": "queens_kerrigan_medmal_rules_v001",
+    "goldenDataset": "synthetic_case_001_rule_authority_v002"
+  },
+  "runMetadata": {
+    "pipelineVersions": {
+      "parser": "pdf-text-v001",
+      "ocr": "qwen-vl-v001",
+      "masterPrompt": "v001_master-case-filing",
+      "goldenDataset": "synthetic_case_001_rule_authority_v002"
+    }
+  }
+}

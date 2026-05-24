@@ -1,0 +1,182 @@
+{
+  "docIndex": 13,
+  "docKey": "doc-013",
+  "expectedDocumentType": "COMPLIANCE_CONFERENCE_ORDER",
+  "expectedTitle": "Compliance Conference Order",
+  "expectedFilingDate": "2028-07-19",
+  "expectedNyscefDocNo": 13,
+  "expectedPageCount": 6,
+  "expectedExtractionQuality": {
+    "method": "ocr_or_visual_review_required",
+    "ocr_needed": true,
+    "reviewStatus": "ai_extracted_unreviewed_with_visual_review_items",
+    "ocr_test_reason": "Synthetic CC order includes scanned/visual conference order fields and unclear time/date areas."
+  },
+  "expectedConfirmedFacts": [
+    "Compliance Conference Order was filed on 2028-07-19.",
+    "Plaintiff EBT is marked done.",
+    "Defendant further responses due 2028-08-28 for placenta pathology demand and policies/procedures.",
+    "Delivery room log issue to be revisited after defendant EBTs.",
+    "Dana Brooks Allen, MD EBT scheduled for 2028-10-13 at 10:00 AM.",
+    "Rachel Monroe, MD EBT scheduled for 2028-12-25, time unclear.",
+    "Plaintiff reserves rights to depose Priya Raman, MD, CNM Emily O’Brien, and alternate neonatal witness after Henry/Ferrara.",
+    "Post-EBT demand responses due within 20 days of receipt.",
+    "New NOI due date is 2029-04-19.",
+    "CPLR 3216 demand creates dismissal risk if NOI not filed by deadline.",
+    "Pretrial conference scheduled for 2029-08-23 at 9:30 AM in Courtroom 48."
+  ],
+  "expectedTasks": [
+    {
+      "taskType": "DEFENDANT_FURTHER_RESPONSES",
+      "taskDescription": "Defendant further responses due for placenta pathology demand and policies/procedures.",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2028-08-28",
+      "dueDateStatus": "fixed",
+      "confidence": "high",
+      "sourceAuthority": "later_case_specific_order",
+      "sourceName": "Doc 13/14 Compliance Conference Order / CPLR 3216 Demand",
+      "sourceDocNo": 13,
+      "ruleSourceApplied": "doc_013_014_cc_order",
+      "authorityRank": 6
+    },
+    {
+      "taskType": "CARLA_ROGERS_HENRY_MD_EBT",
+      "taskDescription": "Dana Brooks Allen, MD EBT scheduled.",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2028-10-13T10:00:00",
+      "dueDateStatus": "fixed",
+      "confidence": "high",
+      "sourceAuthority": "later_case_specific_order",
+      "sourceName": "Doc 13/14 Compliance Conference Order / CPLR 3216 Demand",
+      "sourceDocNo": 13,
+      "ruleSourceApplied": "doc_013_014_cc_order",
+      "authorityRank": 6
+    },
+    {
+      "taskType": "LAUREN_FERRARA_MD_EBT",
+      "taskDescription": "Rachel Monroe, MD EBT scheduled, time unclear.",
+      "status": "needs_review",
+      "dueDate": "2028-12-25",
+      "dueDateStatus": "fixed_date_time_unclear",
+      "confidence": "medium",
+      "sourceAuthority": "later_case_specific_order",
+      "sourceName": "Doc 13/14 Compliance Conference Order / CPLR 3216 Demand",
+      "sourceDocNo": 13,
+      "ruleSourceApplied": "doc_013_014_cc_order",
+      "authorityRank": 6
+    },
+    {
+      "taskType": "NOTE_OF_ISSUE",
+      "taskDescription": "NOI due by 2029-04-19 per CC order / CPLR 3216 demand.",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2029-04-19",
+      "dueDateStatus": "fixed",
+      "confidence": "high",
+      "sourceAuthority": "later_case_specific_order",
+      "sourceName": "Doc 13/14 Compliance Conference Order / CPLR 3216 Demand",
+      "sourceDocNo": 13,
+      "ruleSourceApplied": "doc_013_014_cc_order",
+      "authorityRank": 6
+    },
+    {
+      "taskType": "PRETRIAL_CONFERENCE",
+      "taskDescription": "Pretrial conference scheduled.",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2029-08-23T09:30:00",
+      "dueDateStatus": "fixed",
+      "confidence": "high",
+      "sourceAuthority": "later_case_specific_order",
+      "sourceName": "Doc 13/14 Compliance Conference Order / CPLR 3216 Demand",
+      "sourceDocNo": 13,
+      "ruleSourceApplied": "doc_013_014_cc_order",
+      "authorityRank": 6
+    }
+  ],
+  "expectedDeadlines": [
+    {
+      "type": "DEFENDANT_FURTHER_RESPONSES",
+      "date": "2028-08-28",
+      "sourceAuthority": "later_case_specific_order",
+      "sourceName": "Doc 13/14 Compliance Conference Order / CPLR 3216 Demand",
+      "sourceDocNo": 13,
+      "ruleSourceApplied": "doc_013_014_cc_order",
+      "authorityRank": 6
+    },
+    {
+      "type": "CARLA_ROGERS_HENRY_MD_EBT",
+      "date": "2028-10-13T10:00:00",
+      "sourceAuthority": "later_case_specific_order",
+      "sourceName": "Doc 13/14 Compliance Conference Order / CPLR 3216 Demand",
+      "sourceDocNo": 13,
+      "ruleSourceApplied": "doc_013_014_cc_order",
+      "authorityRank": 6
+    },
+    {
+      "type": "LAUREN_FERRARA_MD_EBT",
+      "date": "2028-12-25",
+      "status": "time_unclear",
+      "sourceAuthority": "later_case_specific_order",
+      "sourceName": "Doc 13/14 Compliance Conference Order / CPLR 3216 Demand",
+      "sourceDocNo": 13,
+      "ruleSourceApplied": "doc_013_014_cc_order",
+      "authorityRank": 6
+    },
+    {
+      "type": "NOI",
+      "date": "2029-04-19",
+      "supersedes": "2028-12-21",
+      "sourceAuthority": "later_case_specific_order",
+      "sourceName": "Doc 13/14 Compliance Conference Order / CPLR 3216 Demand",
+      "sourceDocNo": 13,
+      "ruleSourceApplied": "doc_013_014_cc_order",
+      "authorityRank": 6
+    },
+    {
+      "type": "PRETRIAL_CONFERENCE",
+      "date": "2029-08-23T09:30:00",
+      "sourceAuthority": "later_case_specific_order",
+      "sourceName": "Doc 13/14 Compliance Conference Order / CPLR 3216 Demand",
+      "sourceDocNo": 13,
+      "ruleSourceApplied": "doc_013_014_cc_order",
+      "authorityRank": 6
+    }
+  ],
+  "expectedHumanReviewItems": [
+    {
+      "issue": "cc_order_ocr_visual_review",
+      "reason": "CC order has OCR/checkbox/date/signature uncertainty.",
+      "blocking": true,
+      "status": "pending"
+    },
+    {
+      "issue": "lauren_ferrara_ebt_time_unclear",
+      "reason": "EBT date is visible but time is unclear.",
+      "blocking": false,
+      "status": "pending"
+    },
+    {
+      "issue": "synthetic_ocr_required_test_case",
+      "reason": "Synthetic CC order includes scanned/visual conference order fields and unclear time/date areas.",
+      "blocking": true,
+      "status": "pending"
+    }
+  ],
+  "mustNotCreate": [
+    "leave original 2028-12-21 NOI deadline as active without marking superseded",
+    "treat all reserved EBTs as fixed dates"
+  ],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "uniform_rule_202_56_medmal",
+    "queens_medmal_part_rules",
+    "queens_part_10_kerrigan_rules",
+    "queens_medmal_cc_form",
+    "doc_013_014_cc_order"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "docIndex": 5,
+  "docKey": "doc-005",
+  "storedName": "005-fixture.pdf",
+  "originalName": "AOS re S&C served on MCMCHHC",
+  "fileKind": "pdf",
+  "docketEntry": {
+    "filingType": "AFFIRMATION_AFFIDAVIT_OF_SERVICE",
+    "filingDate": "2027-09-16",
+    "nyscefDocNo": 5
+  },
+  "documentMetadata": {
+    "title": "AOS re S&C served on MCMCHHC",
+    "pageCount": 4,
+    "extractionQuality": {
+      "method": "embedded_text",
+      "ocr_needed": false,
+      "ocr_test_reason": null
+    }
+  },
+  "extractionQuality": {
+    "method": "embedded_text",
+    "ocr_needed": false,
+    "ocr_test_reason": null
+  },
+  "parties": [],
+  "tasks": [
+    {
+      "taskType": "RESPONSE_DEADLINE_VERIFICATION",
+      "taskDescription": "Review AOS details and service method before confirming response deadline.",
+      "status": "source_supported_auto_saved",
+      "dueDate": null,
+      "dueDateStatus": "needs_review",
+      "confidence": "medium",
+      "sourceTrigger": "Doc 5 affidavit/affirmation of service"
+    }
+  ],
+  "deadlines": [],
+  "humanReviewItems": [
+    {
+      "issue": "handwritten_index_date_signature_visual_review",
+      "reason": "AOS includes signature/date/index fields that may require visual review.",
+      "blocking": false,
+      "status": "pending"
+    }
+  ],
+  "ruleSourcesApplied": [
+    "cplr_general_civil_practice"
+  ],
+  "ruleSourcesChecked": [
+    "cplr_general_civil_practice"
+  ],
+  "rankedRules": [
+    {
+      "ruleId": "cplr_general_civil_practice",
+      "sourceAuthority": "cplr_or_statute",
+      "authorityRank": 1,
+      "sourceName": "CPLR / New York civil practice defaults",
+      "controls": [
+        "default service/response framework",
+        "motion/statutory default context"
+      ],
+      "applicationRule": "Use only when no more specific valid order/rule controls and trigger facts are present.",
+      "mustNotUseFor": [
+        "final answer deadline without verified service date and service method"
+      ]
+    }
+  ],
+  "pipelineVersions": {
+    "parser": "pdf-text-v001",
+    "ocr": "qwen-vl-v001",
+    "masterPrompt": "v001_master-case-filing",
+    "rulePrompt": "court-rules/rule-context-1.0.0",
+    "snapshotPrompt": "case-workflow/case-state-update-1.0.0",
+    "ruleSet": "queens_kerrigan_medmal_rules_v001",
+    "goldenDataset": "synthetic_case_001_rule_authority_v002"
+  },
+  "runMetadata": {
+    "pipelineVersions": {
+      "parser": "pdf-text-v001",
+      "ocr": "qwen-vl-v001",
+      "masterPrompt": "v001_master-case-filing",
+      "goldenDataset": "synthetic_case_001_rule_authority_v002"
+    }
+  }
+}

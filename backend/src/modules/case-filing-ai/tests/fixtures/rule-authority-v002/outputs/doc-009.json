@@ -1,0 +1,85 @@
+{
+  "docIndex": 9,
+  "docKey": "doc-009",
+  "storedName": "009-fixture.pdf",
+  "originalName": "Bill of Particulars",
+  "fileKind": "pdf",
+  "docketEntry": {
+    "filingType": "BILL_OF_PARTICULARS",
+    "filingDate": "2027-10-25",
+    "nyscefDocNo": 9
+  },
+  "documentMetadata": {
+    "title": "Bill of Particulars",
+    "pageCount": 28,
+    "extractionQuality": {
+      "method": "embedded_text",
+      "ocr_needed": false,
+      "ocr_test_reason": null
+    }
+  },
+  "extractionQuality": {
+    "method": "embedded_text",
+    "ocr_needed": false,
+    "ocr_test_reason": null
+  },
+  "parties": [],
+  "tasks": [
+    {
+      "taskType": "BP_SERVED",
+      "taskDescription": "Mark plaintiff bill of particulars as served/filed.",
+      "status": "source_supported_auto_saved",
+      "dueDate": null,
+      "dueDateStatus": "no_fixed_due_date",
+      "confidence": "high"
+    }
+  ],
+  "deadlines": [],
+  "humanReviewItems": [
+    {
+      "issue": "verification_signature_date_visual_review",
+      "reason": "BP verification/signature/date requires visual review.",
+      "blocking": false,
+      "status": "pending"
+    }
+  ],
+  "ruleSourcesApplied": [
+    "cplr_general_civil_practice"
+  ],
+  "ruleSourcesChecked": [
+    "cplr_general_civil_practice"
+  ],
+  "rankedRules": [
+    {
+      "ruleId": "cplr_general_civil_practice",
+      "sourceAuthority": "cplr_or_statute",
+      "authorityRank": 1,
+      "sourceName": "CPLR / New York civil practice defaults",
+      "controls": [
+        "default service/response framework",
+        "motion/statutory default context"
+      ],
+      "applicationRule": "Use only when no more specific valid order/rule controls and trigger facts are present.",
+      "mustNotUseFor": [
+        "final answer deadline without verified service date and service method"
+      ]
+    }
+  ],
+  "pipelineVersions": {
+    "parser": "pdf-text-v001",
+    "ocr": "qwen-vl-v001",
+    "masterPrompt": "v001_master-case-filing",
+    "rulePrompt": "court-rules/rule-context-1.0.0",
+    "snapshotPrompt": "case-workflow/case-state-update-1.0.0",
+    "ruleSet": "queens_kerrigan_medmal_rules_v001",
+    "goldenDataset": "synthetic_case_001_rule_authority_v002"
+  },
+  "runMetadata": {
+    "pipelineVersions": {
+      "parser": "pdf-text-v001",
+      "ocr": "qwen-vl-v001",
+      "masterPrompt": "v001_master-case-filing",
+      "goldenDataset": "synthetic_case_001_rule_authority_v002"
+    }
+  }
+}

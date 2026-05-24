@@ -1,0 +1,64 @@
+{
+  "docIndex": 1,
+  "docKey": "doc-001",
+  "expectedDocumentType": "SUMMONS_AND_VERIFIED_COMPLAINT",
+  "expectedTitle": "Summons and Verified Complaint",
+  "expectedFilingDate": "2027-09-14",
+  "expectedReceivedDate": "2027-09-15",
+  "expectedNyscefDocNo": 1,
+  "expectedPageCount": 7,
+  "expectedExtractionQuality": {
+    "method": "ocr_or_visual_review_required",
+    "ocr_needed": true,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "ocr_test_reason": "Synthetic complaint includes signature/verification/date region requiring visual OCR review."
+  },
+  "expectedConfirmedFacts": [
+    "Main action commenced by summons and verified complaint.",
+    "Plaintiff is Maria Santos as Parent and Natural Guardian of A.M.S., an infant.",
+    "Defendant is Metropolitan City Health and Hospitals Corporation.",
+    "Case alleges medical malpractice / birth injury related to Queens Metropolitan Hospital Center.",
+    "Claims include lack of informed consent."
+  ],
+  "expectedTasks": [
+    {
+      "taskType": "VERIFY_SERVICE_FOR_RESPONSE_DEADLINE",
+      "taskDescription": "Verify service date and service method before calculating any defendant answer/appearance deadline.",
+      "status": "needs_source_trigger",
+      "dueDate": null,
+      "dueDateStatus": "needs_review",
+      "confidence": "high",
+      "missingTrigger": "affidavit/proof of service showing service date and service method"
+    }
+  ],
+  "expectedDeadlines": [],
+  "expectedHumanReviewItems": [
+    {
+      "issue": "signature_or_verification_date_visual_review",
+      "reason": "Complaint verification/signature/date area may contain handwritten or visual-only information.",
+      "blocking": false,
+      "status": "pending"
+    },
+    {
+      "issue": "synthetic_ocr_required_test_case",
+      "reason": "Synthetic complaint includes signature/verification/date region requiring visual OCR review.",
+      "blocking": false,
+      "status": "pending"
+    }
+  ],
+  "mustNotCreate": [
+    "final answer deadline from summons filing date alone",
+    "completed service task unless affidavit/proof of service has been processed",
+    "completed notice of claim task unless supported by notice/order/service document"
+  ],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "cplr_general_civil_practice"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

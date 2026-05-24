@@ -1,0 +1,636 @@
+{
+  "meta": {
+    "schemaVersion": "1.0.0",
+    "entryId": "007",
+    "slug": "pipeline-ui-onboarding",
+    "generatedAt": "2026-05-24T12:55:28.221Z",
+    "humanLogPath": "work-log/dev-logs/human/007_2026-05-24_12-55_dev-log_pipeline-ui-onboarding.md",
+    "audience": "agent",
+    "filledBy": "agent",
+    "handoffRefs": [
+      "work-log/study-docs/007_2026-05-24_plan_pipeline-ui-onboarding-package.md"
+    ]
+  },
+  "summary": "Shipped plan 007 on branch plan/007-pipeline-ui-onboarding in four commits: planning docs, platform onboarding/planning APIs, async case-filing batch with pipeline UI and zip export, and rule-authority v002 golden plus file-exchange clear. process-batch returns 202 with background worker; frontend polls status via useBatchSession. test:ci green (83 backend tests). Deferred: external artifact root (local-artifacts.json), v001+compact prompt merge, DB storage adapter.",
+  "apis": {
+    "capturedAt": "2026-05-24T12:55:24.532Z",
+    "sourceDocs": [
+      "docs/API.md",
+      "backend/src/modules/*/routes/",
+      "pipelineVersions.js",
+      "promptVersions.js"
+    ],
+    "http": {
+      "active": [
+        {
+          "method": "GET",
+          "path": "/api/case-filing-ai/health",
+          "module": "Case Filing AI",
+          "description": "Module health and config summary"
+        },
+        {
+          "method": "POST",
+          "path": "/api/case-filing-ai/extract-rule-text",
+          "module": "Case Filing AI",
+          "description": "Extract text from uploaded part-rule file"
+        },
+        {
+          "method": "POST",
+          "path": "/api/case-filing-ai/process-batch",
+          "module": "Case Filing AI",
+          "description": "Upload filings; returns **202** and processes batch in background"
+        },
+        {
+          "method": "GET",
+          "path": "/api/case-filing-ai/batches/:batchId/status",
+          "module": "Case Filing AI",
+          "description": "Batch status with module rail and document queue"
+        },
+        {
+          "method": "GET",
+          "path": "/api/case-filing-ai/batches/:batchId/processing-log",
+          "module": "Case Filing AI",
+          "description": "Parsed `processing-log.jsonl` entries"
+        },
+        {
+          "method": "POST",
+          "path": "/api/case-filing-ai/batches/:batchId/package",
+          "module": "Case Filing AI",
+          "description": "Build downloadable batch package folder"
+        },
+        {
+          "method": "GET",
+          "path": "/api/case-filing-ai/batches/:batchId/package/download",
+          "module": "Case Filing AI",
+          "description": "Download batch package as zip"
+        },
+        {
+          "method": "GET",
+          "path": "/api/case-filing-ai/batches/:batchId/results",
+          "module": "Case Filing AI",
+          "description": "Aggregated batch results"
+        },
+        {
+          "method": "GET",
+          "path": "/api/case-filing-ai/batches/:batchId/parsed-documents",
+          "module": "Case Filing AI",
+          "description": "List parsed-document cache keys"
+        },
+        {
+          "method": "GET",
+          "path": "/api/case-filing-ai/batches/:batchId/parsed-documents/:documentId",
+          "module": "Case Filing AI",
+          "description": "Parsed cache detail for one document"
+        },
+        {
+          "method": "PATCH",
+          "path": "/api/case-filing-ai/batches/:batchId/parsed-documents/:documentId/review-status",
+          "module": "Case Filing AI",
+          "description": "Update parsed-document review status"
+        },
+        {
+          "method": "GET",
+          "path": "/api/case-filing-ai/batches/:batchId/evals",
+          "module": "Case Filing AI",
+          "description": "Golden eval reports for batch"
+        },
+        {
+          "method": "POST",
+          "path": "/api/case-filing-ai/batches/:batchId/evals/bundle",
+          "module": "Case Filing AI",
+          "description": "Copy one batch eval reports to eval-bundles"
+        },
+        {
+          "method": "POST",
+          "path": "/api/case-filing-ai/evals/bundle",
+          "module": "Case Filing AI",
+          "description": "Copy multiple batch eval reports to eval-bundles"
+        },
+        {
+          "method": "POST",
+          "path": "/api/case-filing-ai/evals/cases/:goldenCaseId/bundle",
+          "module": "Case Filing AI",
+          "description": "Copy golden fixtures plus case eval runs"
+        },
+        {
+          "method": "GET",
+          "path": "/api/case-filing-ai/cases/:goldenCaseId",
+          "module": "Case Filing AI",
+          "description": "Inventory batches for a golden case"
+        },
+        {
+          "method": "POST",
+          "path": "/api/case-filing-ai/cases/:goldenCaseId/export",
+          "module": "Case Filing AI",
+          "description": "Export full batch folders to case-exports"
+        },
+        {
+          "method": "GET",
+          "path": "/api/case-filing-ai/cases/:goldenCaseId/export/:exportId/download",
+          "module": "Case Filing AI",
+          "description": "Download case export as zip"
+        },
+        {
+          "method": "DELETE",
+          "path": "/api/case-filing-ai/cases/:goldenCaseId",
+          "module": "Case Filing AI",
+          "description": "Delete batch folders for a case (requires confirm)"
+        },
+        {
+          "method": "GET",
+          "path": "/api/platform/modules",
+          "module": "Platform",
+          "description": "Runtime module registry (icons, labels)"
+        },
+        {
+          "method": "GET",
+          "path": "/api/platform/onboarding/pipeline-guide",
+          "module": "Platform",
+          "description": "Pipeline onboarding (`?format=md` or `json`)"
+        },
+        {
+          "method": "GET",
+          "path": "/api/platform/planning",
+          "module": "Platform",
+          "description": "List planning manifests"
+        },
+        {
+          "method": "GET",
+          "path": "/api/platform/planning/:planId",
+          "module": "Platform",
+          "description": "Read planning manifest JSON"
+        },
+        {
+          "method": "GET",
+          "path": "/api/platform/planning/:planId/download",
+          "module": "Platform",
+          "description": "Download planning package markdown"
+        },
+        {
+          "method": "POST",
+          "path": "/api/platform/planning/:planId/finalize",
+          "module": "Platform",
+          "description": "Finalize planning manifest for a slug"
+        },
+        {
+          "method": "GET",
+          "path": "/api/file-exchange/health",
+          "module": "File exchange",
+          "description": "Module health"
+        },
+        {
+          "method": "POST",
+          "path": "/api/file-exchange/clear",
+          "module": "File exchange",
+          "description": "Clear dated import/export session folders"
+        },
+        {
+          "method": "GET",
+          "path": "/api/model-condenser/health",
+          "module": "Model condenser",
+          "description": "Module health"
+        },
+        {
+          "method": "POST",
+          "path": "/api/model-condenser/condense",
+          "module": "Model condenser",
+          "description": "Regenerate consolidated-models.json"
+        },
+        {
+          "method": "GET",
+          "path": "/api/model-condenser/consolidated",
+          "module": "Model condenser",
+          "description": "Read consolidated schema inventory"
+        },
+        {
+          "method": "GET",
+          "path": "/api/filing-pipeline/health",
+          "module": "Filing pipeline",
+          "description": "Module health"
+        },
+        {
+          "method": "GET",
+          "path": "/api/filing-pipeline/steps",
+          "module": "Filing pipeline",
+          "description": "List planned pipeline steps"
+        }
+      ],
+      "stub": [
+        {
+          "method": "GET",
+          "path": "/api/case-workflow/health",
+          "module": "Case workflow",
+          "description": "Module health (stub)"
+        },
+        {
+          "method": "GET",
+          "path": "/api/court-rules/health",
+          "module": "Court rules",
+          "description": "Module health (stub)"
+        },
+        {
+          "method": "GET",
+          "path": "/api/filing-text-vault/health",
+          "module": "Filing text vault",
+          "description": "Module health (stub)"
+        },
+        {
+          "method": "GET",
+          "path": "/api/human-review/health",
+          "module": "Human review",
+          "description": "Module health (stub)"
+        },
+        {
+          "method": "GET",
+          "path": "/api/task-docketing/health",
+          "module": "Task docketing",
+          "description": "Module health (stub)"
+        }
+      ],
+      "deprecated": []
+    },
+    "moduleStatus": [
+      {
+        "module": "Case Filing AI",
+        "basePath": "/api/case-filing-ai",
+        "status": "**Active** — batch upload, master prompt, evals, bundles"
+      },
+      {
+        "module": "File exchange",
+        "basePath": "/api/file-exchange",
+        "status": "**Active** — clear dated import/export folders"
+      },
+      {
+        "module": "Model condenser",
+        "basePath": "/api/model-condenser",
+        "status": "**Active** — schema inventory export"
+      },
+      {
+        "module": "Filing pipeline",
+        "basePath": "/api/filing-pipeline",
+        "status": "**Active** — pipeline step catalog"
+      },
+      {
+        "module": "Case workflow",
+        "basePath": "/api/case-workflow",
+        "status": "Health only (stub)"
+      },
+      {
+        "module": "Court rules",
+        "basePath": "/api/court-rules",
+        "status": "Health only (stub)"
+      },
+      {
+        "module": "Filing text vault",
+        "basePath": "/api/filing-text-vault",
+        "status": "Health only (stub)"
+      },
+      {
+        "module": "Human review",
+        "basePath": "/api/human-review",
+        "status": "Health only (stub)"
+      },
+      {
+        "module": "Task docketing",
+        "basePath": "/api/task-docketing",
+        "status": "Health only (stub)"
+      }
+    ],
+    "versioned": {
+      "pipeline": {
+        "app": "2.0.0",
+        "storageLayout": "v001",
+        "parsedArtifacts": "v001",
+        "parser": "pdf-embedded-v1",
+        "ocr": "openrouter-vision-v1",
+        "masterPrompt": "v1",
+        "rulePrompt": "v1",
+        "snapshotPrompt": "v1",
+        "ruleSet": "fixtures-v0",
+        "goldenDataset": "case_001-v2-full-expected"
+      },
+      "prompts": {
+        "defaultEnv": "v1",
+        "envVar": "MASTER_PROMPT_VERSION",
+        "allowed": [
+          "v1",
+          "compact",
+          "v2",
+          "v001"
+        ],
+        "specs": {
+          "v1": {
+            "id": "v1",
+            "label": "default",
+            "masterCaseFiling": "master-case-filing.prompt.md",
+            "description": "Original master prompt."
+          },
+          "compact": {
+            "id": "compact",
+            "label": "compact",
+            "masterCaseFiling": "master-case-filing.compact.prompt.md",
+            "description": "Bounded snapshot + strict JSON output (recommended for 6+ documents)."
+          },
+          "v2": {
+            "id": "v2",
+            "label": "compact",
+            "masterCaseFiling": "master-case-filing.compact.prompt.md",
+            "description": "Alias for compact."
+          },
+          "v001": {
+            "id": "v001",
+            "label": "v001",
+            "masterCaseFiling": "v001_master-case-filing.prompt.md",
+            "description": "Ranked rule sources + documentFacts / ruleBasedTasks output shape."
+          }
+        },
+        "notes": [
+          "v2 is an alias for compact (same template file)",
+          "v001 is opt-in: ranked rule sources + documentFacts / ruleBasedTasks shape"
+        ]
+      },
+      "storage": {
+        "batchLayout": "v001",
+        "parsedArtifacts": "v001"
+      },
+      "app": {
+        "packageJson": "2.0.0"
+      }
+    },
+    "deprecated": {
+      "http": [],
+      "cli": [
+        {
+          "command": "scripts/export-consolidated-models.mjs",
+          "replacement": "npm run condense-models (backend/) or POST /api/model-condenser/condense"
+        }
+      ],
+      "prompts": [],
+      "notes": []
+    },
+    "cli": [
+      {
+        "command": "npm run dev-log:pre-push",
+        "purpose": "Paired human + agent dev logs"
+      },
+      {
+        "command": "npm run condense:all",
+        "purpose": "consolidated-models/prompts/file-structure → file-exchange/exports/{stamp}_consolidated/"
+      },
+      {
+        "command": "npm run import:file-exchange",
+        "purpose": "Inbound bundle → file-exchange/imports/{stamp}/"
+      },
+      {
+        "command": "npm run ingest:golden-parsed",
+        "purpose": "Parsed cache → evals/golden/case_001/parsed/"
+      },
+      {
+        "command": "npm run ingest:golden-expected",
+        "purpose": "Ground truth → doc_NNN.expected.json"
+      },
+      {
+        "command": "npm run rerun:batch-evals",
+        "purpose": "Re-run evals for a batch id"
+      },
+      {
+        "command": "npm --prefix backend run condense-models",
+        "purpose": "Regenerate consolidated-models.json"
+      }
+    ]
+  },
+  "git": {
+    "branch": "plan/007-pipeline-ui-onboarding",
+    "sha": "a3689e0e5ba8dcc2342ee62b39c52c3954db3563",
+    "shortSha": "a3689e0",
+    "changedFiles": [
+      {
+        "code": "??",
+        "path": "file-exchange/imports/synthetic_case_001_rule_authority_v002_golden_dataset.json"
+      }
+    ],
+    "diffStatAgainstHead": "",
+    "diffCachedStat": "",
+    "recentCommits": [
+      "a3689e0 feat(evals): rule authority v002 golden and file-exchange maintenance",
+      "02b0c45 feat(case-filing-ai): async batch processing, pipeline UI, and zip export",
+      "58ffd15 feat(platform): onboarding guide, module registry, and planning APIs",
+      "1e7dd8b Add 007 pipeline UI onboarding planning package.",
+      "d2621c6 Improve architecture export for npm starter 2.2.4"
+    ]
+  },
+  "tests": {
+    "ran": true,
+    "exitCode": 0,
+    "summary": "tests=83 pass=83 fail=0 exit=0",
+    "passed": [
+      "✔ GET /api/_reference/health (40.487167ms)",
+      "✔ getHealth returns module metadata (1.505875ms)",
+      "✔ POST /api/case-filing-ai/process-batch async returns 202 and completes via polling (1234.575334ms)",
+      "✔ GET batch package download returns zip (694.135584ms)",
+      "✔ POST /api/case-filing-ai/process-batch stores batch and returns results (1213.756708ms)",
+      "✔ POST /api/case-filing-ai/process-batch infers part rules from filings when none supplied (68.56925ms)",
+      "✔ case data API inventory, export, and delete (721.251ms)",
+      "✔ POST /api/case-filing-ai/batches/:batchId/evals/bundle copies reports to repo root folder (641.269208ms)",
+      "✔ POST /api/case-filing-ai/evals/bundle supports multiple batchIds (53.647666ms)",
+      "✔ POST /api/case-filing-ai/evals/cases/:goldenCaseId/bundle copies golden and all runs (51.868833ms)",
+      "✔ case bundle discovery excludes batches tagged with a different golden caseId (67.291875ms)",
+      "✔ GET /api/case-filing-ai/batches/:batchId/evals returns saved reports (520.632791ms)",
+      "✔ GET /api/case-filing-ai/health (76.549458ms)",
+      "✔ POST /api/case-filing-ai/extract-rule-text extracts PDF rule text (413.89825ms)",
+      "✔ dedupeAndCapAuditNotes removes duplicates and keeps most recent (0.5275ms)",
+      "✔ isSupportedUpload accepts common filing formats (0.507958ms)",
+      "✔ isSupportedUpload rejects executables and empty files (0.074292ms)",
+      "✔ classifyUpload detects file kinds (0.111ms)",
+      "✔ storedFilenameFor preserves original extension (0.151ms)",
+      "✔ documentText extracts plain text files (1.823959ms)",
+      "✔ documentText marks images as ocr_needed (0.197583ms)",
+      "✔ documentText extracts docx via officeText service (30.705417ms)",
+      "✔ documentText marks unsupported office files as ocr_needed (0.496ms)",
+      "✔ evalRunner attaches runMetadata to document eval report (6.378083ms)",
+      "✔ evalRunner compares document output against doc_001 golden (10.901875ms)",
+      "✔ evalRunner runs snapshot checkpoint for doc 1 (2.577125ms)",
+      "✔ getHealth returns module metadata (1.28725ms)",
+      "✔ parseJsonResponse repairs trailing commas (0.881584ms)",
+      "✔ processDocument retries once on invalid JSON (2.379541ms)",
+      "✔ normalizeMasterOutput passes through legacy v1 shape (0.548459ms)",
+      "✔ normalizeMasterOutput maps v001 documentFacts and tasks (0.426709ms)",
+      "✔ visionOcrCompletion always uses MODEL_VISION_OCR (0.720792ms)",
+      "✔ chatCompletion uses MODEL_TEXT_REASONING, not vision OCR model (0.1585ms)",
+      "✔ officeText extracts plain text from docx (26.251209ms)",
+      "✔ extractPdfEmbeddedText reads text from a PDF with embedded text (1085.082209ms)",
+      "✔ ruleText extracts text from plain rule file upload (2.017542ms)",
+      "✔ ruleText extracts text from docx rule file upload (16.608417ms)",
+      "✔ buildRunMetadata includes prompt version and template (0.439042ms)",
+      "✔ attachRunMetadataToReport adds note and runMetadata field (0.27475ms)",
+      "✔ runParsedDocumentChecks compares runtime to golden extraction quality (15.939625ms)",
+      "✔ runParsedDocumentChecks returns empty when no golden parsed folder (1.1545ms)",
+      "✔ runRuleAuthorityChecks flags invalid supersession (0.519916ms)",
+      "✔ runRuleAuthorityChecks returns empty for clean tasks (0.09875ms)",
+      "✔ prepareSnapshotForPrompt omits auditNotes by default (0.552709ms)",
+      "✔ truncateDocumentText adds notice when over limit (0.156375ms)",
+      "✔ mergeStringArrays appends without duplicates (0.833708ms)",
+      "✔ mergeDeadlines upserts entries with the same type and date (0.171291ms)",
+      "✔ legacyMergeSnapshot dedupes audit notes (1.053417ms)",
+      "✔ structuredMergeSnapshot appends facts instead of replacing (0.521625ms)",
+      "✔ toDocKey and toEvalId (0.62ms)",
+      "✔ storagePaths builds batch paths (0.887833ms)",
+      "✔ processBatch continues after a document failure (60.147333ms)",
+      "✔ sortBatchFiles sorts by numeric prefix in filename (0.74675ms)",
+      "✔ validateMasterOutput accepts legacy v1 shape (0.660917ms)",
+      "✔ validateMasterOutput rejects v1 missing updatedCaseSnapshot (0.743833ms)",
+      "✔ validateMasterOutput accepts v001 shape (0.599542ms)",
+      "✔ validateMasterOutput rejects v001 missing documentFacts (0.157125ms)",
+      "✔ GET /api/case-workflow/health (34.251083ms)",
+      "✔ getHealth returns module metadata (1.515583ms)",
+      "✔ GET /api/court-rules/health (51.505958ms)",
+      "✔ getHealth returns module metadata (3.907584ms)",
+      "✔ authorityRank: case order beats county and part (2.816ms)",
+      "✔ rule pipeline loads fixtures and ranks part above county for Queens Part 10 (19.024917ms)",
+      "✔ POST /api/file-exchange/clear removes dated folders when confirmed (62.981334ms)",
+      "✔ GET /api/filing-pipeline/health (44.795375ms)",
+      "✔ GET /api/filing-pipeline/steps (41.119625ms)",
+      "✔ getHealth returns module metadata (2.484125ms)",
+      "✔ GET /api/filing-text-vault/health (36.55575ms)",
+      "✔ getHealth returns module metadata (2.425125ms)",
+      "✔ GET /api/human-review/health (50.635ms)",
+      "✔ getHealth returns module metadata (1.777458ms)",
+      "✔ POST /api/model-condenser/condense regenerates consolidated file (95.275959ms)",
+      "✔ condenseModels writes consolidated-models.json (22.030166ms)",
+      "✔ GET /api/platform/modules returns registry (41.478125ms)",
+      "✔ GET /api/platform/onboarding/pipeline-guide returns json (8.162708ms)",
+      "✔ GET /api/task-docketing/health (43.962709ms)",
+      "✔ getHealth returns module metadata (1.40525ms)",
+      "✔ writeConsolidatedExport writes dated folder and latest copy (14.719416ms)",
+      "✔ clearFileExchange dryRun previews removable paths (8.684959ms)",
+      "✔ clearFileExchange confirm removes dated folders (8.266083ms)"
+    ],
+    "failed": [
+      "✔ processBatch continues after a document failure (60.147333ms)",
+      "ℹ fail 0"
+    ],
+    "commands": [
+      "npm test"
+    ]
+  },
+  "repositoryTree": {
+    "capturedAt": "2026-05-24T12:55:28.221Z",
+    "excludeDirs": [
+      "node_modules",
+      ".git",
+      "dist",
+      "build",
+      ".DS_Store"
+    ],
+    "excludePrefixes": [
+      "data/case-filing-ai/batches",
+      "eval-bundles",
+      "case-exports"
+    ],
+    "treeIgnoreFlag": "tree -I \"node_modules|.git|dist|build\"",
+    "stats": {
+      "fileCount": 702,
+      "directoryCount": 364,
+      "pathCount": 702,
+      "byExtension": {
+        ".js": 260,
+        ".json": 164,
+        ".md": 146,
+        ".mjs": 44,
+        ".jsx": 41,
+        "(no extension)": 16,
+        ".pdf": 14,
+        ".mdc": 2,
+        ".example": 2,
+        ".sql": 2,
+        ".log": 2,
+        ".starter": 2,
+        ".yml": 1,
+        ".jsonl": 1,
+        ".zip": 1,
+        ".html": 1,
+        ".css": 1,
+        ".sample": 1,
+        ".ts": 1
+      }
+    },
+    "treeText": "legal-prmpt-eng/\n├── .gitignore\n├── AGENTS.md\n├── LICENSE\n├── NOTICE\n├── package.json\n├── README.md\n├── .cursor/\n│   ├── commands/\n│   │   ├── planning-study-log.md\n│   │   └── pre-push-dev-log.md\n│   └── rules/\n│       ├── api-documentation.mdc\n│       └── file-exchange-inbox.mdc\n├── .github/\n│   └── workflows/\n│       └── ci.yml\n├── backend/\n│   ├── .env\n│   ├── .env.example\n│   ├── package-lock.json\n│   ├── package.json\n│   ├── db/\n│   │   └── migrations/\n│   │       └── 001_case_filing_ai_schema.sql\n│   ├── scripts/\n│   │   ├── check-module-boundaries.mjs\n│   │   └── check-module-layers.mjs\n│   └── src/\n│       ├── core/\n│       │   ├── module-loader.js\n│       │   └── server.js\n│       ├── modules/\n│       │   ├── .gitkeep\n│       │   ├── _reference/\n│       │   │   ├── index.js\n│       │   │   ├── README.md\n│       │   │   ├── adapters/\n│       │   │   │   └── README.md\n│       │   │   ├── config/\n│       │   │   │   └── index.js\n│       │   │   ├── domain/\n│       │   │   │   └── README.md\n│       │   │   ├── evals/\n│       │   │   │   ├── README.md\n│       │   │   │   ├── datasets/\n│       │   │   │   │   └── example.cases.json\n│       │   │   │   └── runners/\n│       │   │   │       └── example.eval.mjs\n│       │   │   ├── events/\n│       │   │   │   └── index.js\n│       │   │   ├── prompts/\n│       │   │   │   ├── manifest.json\n│       │   │   │   └── templates/\n│       │   │   │       └── example.prompt.js\n│       │   │   ├── repositories/\n│       │   │   │   └── .gitkeep\n│       │   │   ├── routes/\n│       │   │   │   ├── health.routes.js\n│       │   │   │   └── index.js\n│       │   │   ├── schemas/\n│       │   │   │   └── health.schema.js\n│       │   │   ├── services/\n│       │   │   │   └── health.service.js\n│       │   │   ├── tests/\n│       │   │   │   ├── integration/\n│       │   │   │   │   └── health.routes.test.js\n│       │   │   │   └── unit/\n│       │   │   │       └── health.service.test.js\n│       │   │   └── utils/\n│       │   │       └── index.js\n│       │   ├── case-filing-ai/\n│       │   │   ├── index.js\n│       │   │   ├── README.md\n│       │   │   ├── adapters/\n│       │   │   │   ├── openrouter.client.js\n│       │   │   │   └── README.md\n│       │   │   ├── config/\n│       │   │   │   └── index.js\n│       │   │   ├── contracts/\n│       │   │   │   ├── parsedDocumentArtifacts.contract.js\n│       │   │   │   ├── pipelineVersions.js\n│       │   │   │   └── storageLayout.contract.js\n│       │   │   ├── domain/\n│       │   │   │   └── README.md\n│       │   │   ├── evals/\n│       │   │   │   ├── README.md\n│       │   │   │   ├── datasets/\n│       │   │   │   │   └── example.cases.json\n│       │   │   │   └── runners/\n│       │   │   │       ├── example.eval.mjs\n│       │   │   │       └── golden-regression.eval.mjs\n│       │   │   ├── events/\n│       │   │   │   └── index.js\n│       │   │   ├── prompts/\n│       │   │   │   ├── manifest.json\n│       │   │   │   ├── master-case-filing.compact.prompt.md\n│       │   │   │   ├── master-case-filing.prompt.md\n│       │   │   │   ├── promptVersions.js\n│       │   │   │   ├── rule-parse.prompt.md\n│       │   │   │   ├── v001_master-case-filing.prompt.md\n│       │   │   │   └── templates/\n│       │   │   ├── repositories/\n│       │   │   │   └── .gitkeep\n│       │   │   ├── routes/\n│       │   │   │   ├── caseFiling.routes.js\n│       │   │   │   ├── health.routes.js\n│       │   │   │   └── index.js\n│       │   │   ├── schemas/\n│       │   │   │   ├── health.schema.js\n│       │   │   │   ├── master-output.v001.schema.json\n│       │   │   │   ├── master-output.v1.schema.json\n│       │   │   │   └── parsed-document.schema.js\n│       │   │   ├── services/\n│       │   │   │   ├── batchPackage.service.js\n│       │   │   │   ├── caseData.service.js\n│       │   │   │   ├── caseSnapshot.service.js\n│       │   │   │   ├── documentText.service.js\n│       │   │   │   ├── evalBundle.service.js\n│       │   │   │   ├── evalRunner.service.js\n│       │   │   │   ├── goldenDataset.service.js\n│       │   │   │   ├── health.service.js\n│       │   │   │   ├── localJsonStore.service.js\n│       │   │   │   ├── masterPrompt.service.js\n│       │   │   │   ├── ocr.service.js\n│       │   │   │   ├── officeText.service.js\n│       │   │   │   ├── parsedDocumentCache.service.js\n│       │   │   │   ├── pdfText.service.js\n│       │   │   │   ├── ruleText.service.js\n│       │   │   │   ├── runMetadata.service.js\n│       │   │   │   └── uploadBatch.service.js\n│       │   │   ├── tests/\n│       │   │   │   ├── fixtures/\n│       │   │   │   │   ├── batch-002/\n│       │   │   │   │   │   ├── case-snapshot.json\n│       │   │   │   │   │   └── outputs/\n│       │   │   │   │   │       └── doc-001.json\n│       │   │   │   │   └── rule-authority-v002/\n│       │   │   │   │       ├── case-snapshot.json\n│       │   │   │   │       └── outputs/\n│       │   │   │   │           ├── doc-001.json\n│       │   │   │   │           ├── doc-002.json\n│       │   │   │   │           ├── doc-003.json\n│       │   │   │   │           ├── doc-004.json\n│       │   │   │   │           ├── doc-005.json\n│       │   │   │   │           ├── doc-006.json\n│       │   │   │   │           ├── doc-007.json\n│       │   │   │   │           ├── doc-008.json\n│       │   │   │   │           ├── doc-009.json\n│       │   │   │   │           ├── doc-010.json\n│       │   │   │   │           ├── doc-011.json\n│       │   │   │   │           ├── doc-012.json\n│       │   │   │   │           ├── doc-013.json\n│       │   │   │   │           └── doc-014.json\n│       │   │   │   ├── helpers/\n│       │   │   │   │   └── minimalDocx.js\n│       │   │   │   ├── integration/\n│       │   │   │   │   ├── batch-async.routes.test.js\n│       │   │   │   │   ├── batch-package.routes.test.js\n│       │   │   │   │   ├── batch.routes.test.js\n│       │   │   │   │   ├── case-data.routes.test.js\n│       │   │   │   │   ├── eval-bundle.routes.test.js\n│       │   │   │   │   ├── eval.routes.test.js\n│       │   │   │   │   ├── health.routes.test.js\n│       │   │   │   │   └── rule-text.routes.test.js\n│       │   │   │   └── unit/\n│       │   │   │       ├── auditNotes.test.js\n│       │   │   │       ├── document-upload.test.js\n│       │   │   │       ├── documentText.service.test.js\n│       │   │   │       ├── evalRunner.provenance.test.js\n│       │   │   │       ├── evalRunner.service.test.js\n│       │   │   │       ├── health.service.test.js\n│       │   │   │       ├── masterPrompt.service.test.js\n│       │   │   │       ├── normalizeMasterOutput.test.js\n│       │   │   │       ├── ocr.service.test.js\n│       │   │   │       ├── officeText.service.test.js\n│       │   │   │       ├── pdfText.service.test.js\n│       │   │   │       ├── ruleText.service.test.js\n│       │   │   │       ├── runMetadata.test.js\n│       │   │   │       ├── runParsedDocumentChecks.test.js\n│       │   │   │       ├── runRuleAuthorityChecks.test.js\n│       │   │   │       ├── snapshotContext.test.js\n│       │   │   │       ├── snapshotMerge.test.js\n│       │   │   │       ├── storagePaths.test.js\n│       │   │   │       ├── uploadBatch.continue.test.js\n│       │   │   │       ├── uploadBatch.service.test.js\n│       │   │   │       └── validateMasterOutput.test.js\n│       │   │   └── utils/\n│       │   │       ├── auditNotes.js\n│       │   │       ├── caseBatchDiscovery.js\n│       │   │       ├── compareGoldenRuleFields.js\n│       │   │       ├── document-upload.js\n│       │   │       ├── evalNormalize.js\n│       │   │       ├── evalProvenance.js\n│       │   │       ├── extractionErrors.js\n│       │   │       ├── index.js\n│       │   │       ├── normalizeMasterOutput.js\n│       │   │       ├── pipelineStatus.js\n│       │   │       ├── runParsedDocumentChecks.js\n│       │   │       ├── runRuleAuthorityChecks.js\n│       │   │       ├── snapshotContext.js\n│       │   │       ├── snapshotMerge.js\n│       │   │       ├── storagePaths.js\n│       │   │       └── validateMasterOutput.js\n│       │   ├── case-workflow/\n│       │   │   ├── index.js\n│       │   │   ├── README.md\n│       │   │   ├── adapters/\n│       │   │   │   └── README.md\n│       │   │   ├── config/\n│       │   │   │   └── index.js\n│       │   │   ├── domain/\n│       │   │   │   └── README.md\n│       │   │   ├── evals/\n│       │   │   │   ├── README.md\n│       │   │   │   ├── datasets/\n│       │   │   │   │   └── example.cases.json\n│       │   │   │   └── runners/\n│       │   │   │       └── example.eval.mjs\n│       │   │   ├── events/\n│       │   │   │   └── index.js\n│       │   │   ├── prompts/\n│       │   │   │   ├── manifest.json\n│       │   │   │   └── templates/\n│       │   │   │       └── case-state-update.prompt.js\n│       │   │   ├── repositories/\n│       │   │   │   └── .gitkeep\n│       │   │   ├── routes/\n│       │   │   │   ├── health.routes.js\n│       │   │   │   └── index.js\n│       │   │   ├── schemas/\n│       │   │   │   └── health.schema.js\n│       │   │   ├── services/\n│       │   │   │   └── health.service.js\n│       │   │   ├── tests/\n│       │   │   │   ├── integration/\n│       │   │   │   │   └── health.routes.test.js\n│       │   │   │   └── unit/\n│       │   │   │       └── health.service.test.js\n│       │   │   └── utils/\n│       │   │       └── index.js\n│       │   ├── court-rules/\n│       │   │   ├── index.js\n│       │   │   ├── README.md\n│       │   │   ├── adapters/\n│       │   │   │   └── README.md\n│       │   │   ├── config/\n│       │   │   │   └── index.js\n│       │   │   ├── contracts/\n│       │   │   │   └── ruleAuthority.contract.js\n│       │   │   ├── domain/\n│       │   │   │   └── README.md\n│       │   │   ├── evals/\n│       │   │   │   ├── README.md\n│       │   │   │   ├── datasets/\n│       │   │   │   │   └── example.cases.json\n│       │   │   │   └── runners/\n│       │   │   │       └── example.eval.mjs\n│       │   │   ├── events/\n│       │   │   │   └── index.js\n│       │   │   ├── prompts/\n│       │   │   │   ├── manifest.json\n│       │   │   │   └── templates/\n│       │   │   │       └── rule-context.prompt.js\n│       │   │   ├── repositories/\n│       │   │   │   └── .gitkeep\n│       │   │   ├── routes/\n│       │   │   │   ├── health.routes.js\n│       │   │   │   └── index.js\n│       │   │   ├── schemas/\n│       │   │   │   └── health.schema.js\n│       │   │   ├── services/\n│       │   │   │   ├── health.service.js\n│       │   │   │   ├── ruleAuthority.service.js\n│       │   │   │   ├── ruleMatch.service.js\n│       │   │   │   └── ruleStore.service.js\n│       │   │   ├── tests/\n│       │   │   │   ├── integration/\n│       │   │   │   │   └── health.routes.test.js\n│       │   │   │   └── unit/\n│       │   │   │       ├── health.service.test.js\n│       │   │   │       └── ruleAuthority.test.js\n│       │   │   └── utils/\n│       │   │       └── index.js\n│       │   ├── file-exchange/\n│       │   │   ├── index.js\n│       │   │   ├── README.md\n│       │   │   ├── config/\n│       │   │   │   └── index.js\n│       │   │   ├── events/\n│       │   │   │   └── index.js\n│       │   │   ├── routes/\n│       │   │   │   ├── fileExchange.routes.js\n│       │   │   │   ├── health.routes.js\n│       │   │   │   └── index.js\n│       │   │   ├── services/\n│       │   │   │   ├── fileExchange.facade.js\n│       │   │   │   └── health.service.js\n│       │   │   └── tests/\n│       │   │       └── integration/\n│       │   │           └── fileExchange.routes.test.js\n│       │   ├── filing-pipeline/\n│       │   │   ├── index.js\n│       │   │   ├── README.md\n│       │   │   ├── adapters/\n│       │   │   │   └── README.md\n│       │   │   ├── config/\n│       │   │   │   └── index.js\n│       │   │   ├── domain/\n│       │   │   │   ├── pipeline-steps.js\n│       │   │   │   └── README.md\n│       │   │   ├── evals/\n│       │   │   │   ├── README.md\n│       │   │   │   ├── datasets/\n│       │   │   │   │   └── example.cases.json\n│       │   │   │   └── runners/\n│       │   │   │       └── example.eval.mjs\n│       │   │   ├── events/\n│       │   │   │   └── index.js\n│       │   │   ├── prompts/\n│       │   │   │   ├── manifest.json\n│       │   │   │   └── templates/\n│       │   │   │       └── orchestrator.prompt.js\n│       │   │   ├── repositories/\n│       │   │   │   └── .gitkeep\n│       │   │   ├── routes/\n│       │   │   │   ├── health.routes.js\n│       │   │   │   ├── index.js\n│       │   │   │   └── pipeline.routes.js\n│       │   │   ├── schemas/\n│       │   │   │   └── health.schema.js\n│       │   │   ├── services/\n│       │   │   │   ├── health.service.js\n│       │   │   │   └── pipeline-steps.service.js\n│       │   │   ├── tests/\n│       │   │   │   ├── integration/\n│       │   │   │   │   ├── health.routes.test.js\n│       │   │   │   │   └── pipeline.routes.test.js\n│       │   │   │   └── unit/\n│       │   │   │       └── health.service.test.js\n│       │   │   └── utils/\n│       │   │       └── index.js\n│       │   ├── filing-text-vault/\n│       │   │   ├── index.js\n│       │   │   ├── README.md\n│       │   │   ├── adapters/\n│       │   │   │   └── README.md\n│       │   │   ├── config/\n│       │   │   │   └── index.js\n│       │   │   ├── domain/\n│       │   │   │   └── README.md\n│       │   │   ├── evals/\n│       │   │   │   ├── README.md\n│       │   │   │   ├── datasets/\n│       │   │   │   │   └── example.cases.json\n│       │   │   │   └── runners/\n│       │   │   │       └── example.eval.mjs\n│       │   │   ├── events/\n│       │   │   │   └── index.js\n│       │   │   ├── prompts/\n│       │   │   │   ├── manifest.json\n│       │   │   │   └── templates/\n│       │   │   │       └── filing-text-vault.prompt.js\n│       │   │   ├── repositories/\n│       │   │   │   └── .gitkeep\n│       │   │   ├── routes/\n│       │   │   │   ├── health.routes.js\n│       │   │   │   └── index.js\n│       │   │   ├── schemas/\n│       │   │   │   └── health.schema.js\n│       │   │   ├── services/\n│       │   │   │   └── health.service.js\n│       │   │   ├── tests/\n│       │   │   │   ├── integration/\n│       │   │   │   │   └── health.routes.test.js\n│       │   │   │   └── unit/\n│       │   │   │       └── health.service.test.js\n│       │   │   └── utils/\n│       │   │       └── index.js\n│       │   ├── human-review/\n│       │   │   ├── index.js\n│       │   │   ├── README.md\n│       │   │   ├── adapters/\n│       │   │   │   └── README.md\n│       │   │   ├── config/\n│       │   │   │   └── index.js\n│       │   │   ├── domain/\n│       │   │   │   └── README.md\n│       │   │   ├── evals/\n│       │   │   │   ├── README.md\n│       │   │   │   ├── datasets/\n│       │   │   │   │   └── example.cases.json\n│       │   │   │   └── runners/\n│       │   │   │       └── example.eval.mjs\n│       │   │   ├── events/\n│       │   │   │   └── index.js\n│       │   │   ├── prompts/\n│       │   │   │   ├── manifest.json\n│       │   │   │   └── templates/\n│       │   │   │       └── human-review.prompt.js\n│       │   │   ├── repositories/\n│       │   │   │   └── .gitkeep\n│       │   │   ├── routes/\n│       │   │   │   ├── health.routes.js\n│       │   │   │   └── index.js\n│       │   │   ├── schemas/\n│       │   │   │   └── health.schema.js\n│       │   │   ├── services/\n│       │   │   │   └── health.service.js\n│       │   │   ├── tests/\n│       │   │   │   ├── integration/\n│       │   │   │   │   └── health.routes.test.js\n│       │   │   │   └── unit/\n│       │   │   │       └── health.service.test.js\n│       │   │   └── utils/\n│       │   │       └── index.js\n│       │   ├── model-condenser/\n│       │   │   ├── index.js\n│       │   │   ├── README.md\n│       │   │   ├── config/\n│       │   │   │   └── index.js\n│       │   │   ├── events/\n│       │   │   │   └── index.js\n│       │   │   ├── routes/\n│       │   │   │   ├── health.routes.js\n│       │   │   │   ├── index.js\n│       │   │   │   └── modelCondenser.routes.js\n│       │   │   ├── services/\n│       │   │   │   ├── health.service.js\n│       │   │   │   ├── modelCondenser.facade.js\n│       │   │   │   └── modelCondenser.service.js\n│       │   │   ├── tests/\n│       │   │   │   ├── integration/\n│       │   │   │   │   └── modelCondenser.routes.test.js\n│       │   │   │   └── unit/\n│       │   │   │       └── modelCondenser.service.test.js\n│       │   │   └── utils/\n│       │   │       └── index.js\n│       │   ├── platform/\n│       │   │   ├── index.js\n│       │   │   ├── domain/\n│       │   │   │   └── modules.registry.js\n│       │   │   ├── routes/\n│       │   │   │   └── platform.routes.js\n│       │   │   ├── services/\n│       │   │   │   ├── onboarding.service.js\n│       │   │   │   ├── planning.service.js\n│       │   │   │   └── platform.service.js\n│       │   │   └── tests/\n│       │   │       └── integration/\n│       │   │           └── platform.routes.test.js\n│       │   └── task-docketing/\n│       │       ├── index.js\n│       │       ├── README.md\n│       │       ├── adapters/\n│       │       │   └── README.md\n│       │       ├── config/\n│       │       │   └── index.js\n│       │       ├── domain/\n│       │       │   └── README.md\n│       │       ├── evals/\n│       │       │   ├── README.md\n│       │       │   ├── datasets/\n│       │       │   │   └── example.cases.json\n│       │       │   └── runners/\n│       │       │       └── example.eval.mjs\n│       │       ├── events/\n│       │       │   └── index.js\n│       │       ├── prompts/\n│       │       │   ├── manifest.json\n│       │       │   └── templates/\n│       │       │       └── task-deadline.prompt.js\n│       │       ├── repositories/\n│       │       │   └── .gitkeep\n│       │       ├── routes/\n│       │       │   ├── health.routes.js\n│       │       │   └── index.js\n│       │       ├── schemas/\n│       │       │   └── health.schema.js\n│       │       ├── services/\n│       │       │   └── health.service.js\n│       │       ├── tests/\n│       │       │   ├── integration/\n│       │       │   │   └── health.routes.test.js\n│       │       │   └── unit/\n│       │       │       └── health.service.test.js\n│       │       └── utils/\n│       │           └── index.js\n│       └── shared/\n│           ├── ai/\n│           │   └── prompt-registry.js\n│           ├── contracts/\n│           │   ├── consolidatedExports.contract.js\n│           │   ├── planningPhase.contract.js\n│           │   └── prePushDevLog.contract.js\n│           ├── domain/\n│           │   └── case-filing/\n│           │       └── core-models.js\n│           ├── events/\n│           │   └── index.js\n│           ├── http/\n│           │   └── errors.js\n│           ├── testing/\n│           │   └── create-test-app.js\n│           └── utils/\n│               ├── consolidatedExport.js\n│               ├── consolidatedExport.test.js\n│               ├── fileExchangeCleanup.js\n│               ├── fileExchangeCleanup.test.js\n│               ├── formatExchangeTimestamp.js\n│               ├── formatExchangeTimestamp.test.js\n│               ├── traceId.js\n│               └── zipDirectory.js\n├── consolidated-files/\n│   ├── consolidated-file-structure.json\n│   ├── consolidated-models.json\n│   ├── consolidated-prompts.json\n│   └── README.md\n├── data/\n│   ├── case-filing-ai/\n│   │   └── examples/\n│   │       ├── case-snapshot.json\n│   │       └── case.json\n│   └── court-rules/\n│       └── fixtures/\n│           └── case_001/\n│               ├── cplr-3212-summary.json\n│               ├── queens-county-practice.json\n│               └── queens-part-10-general.json\n├── docs/\n│   ├── API.md\n│   ├── DEVLOG_V2.md\n│   ├── PUBLISHING.md\n│   ├── README.md\n│   ├── STARTER_PACK.md\n│   ├── architecture/\n│   │   ├── API_DOCUMENTATION_CONTRACT.md\n│   │   ├── ARCHITECTURE_GUARDRAILS.md\n│   │   ├── CONTRACTS_OVERVIEW.md\n│   │   ├── EVAL_AND_CI.md\n│   │   ├── MODULE_INTERNAL_CONTRACT.md\n│   │   ├── REPO_ARTIFACT_LAYOUT.md\n│   │   └── contracts/\n│   │       ├── apiDocumentationRegistry.contract.md\n│   │       ├── changelog.jsonl\n│   │       ├── consolidatedExports.contract.md\n│   │       ├── fileExchange.contract.md\n│   │       ├── manifest.json\n│   │       ├── planningPhase.contract.md\n│   │       └── prePushDevLog.contract.md\n│   ├── case-filing-ai/\n│   │   ├── API.md\n│   │   ├── guardrails.md\n│   │   ├── INTEGRATION.md\n│   │   ├── module-boundaries.md\n│   │   ├── one-document-pipeline.md\n│   │   ├── README.md\n│   │   ├── STORAGE.md\n│   │   └── suggested-work-tree.md\n│   ├── case-workflow/\n│   │   └── API.md\n│   ├── court-rules/\n│   │   └── API.md\n│   ├── design/\n│   │   └── README.md\n│   ├── file-exchange/\n│   │   └── API.md\n│   ├── filing-pipeline/\n│   │   └── API.md\n│   ├── filing-text-vault/\n│   │   └── API.md\n│   ├── human-review/\n│   │   └── API.md\n│   ├── model-condenser/\n│   │   └── API.md\n│   ├── onboarding/\n│   │   └── pipeline-guide.md\n│   ├── platform/\n│   │   └── API.md\n│   └── task-docketing/\n│       └── API.md\n├── evals/\n│   └── golden/\n│       ├── case_001/\n│       │   ├── after_doc_001.expected.json\n│       │   ├── case_001.golden-dataset.json\n│       │   ├── doc_001.expected.json\n│       │   ├── eval_comparison_config.json\n│       │   └── negative_guardrails.expected.json\n│       └── case_001_rule_authority_v002/\n│           ├── after_doc_001.expected.json\n│           ├── after_doc_002.expected.json\n│           ├── after_doc_004.expected.json\n│           ├── after_doc_008.expected.json\n│           ├── after_doc_012.expected.json\n│           ├── after_doc_014.expected.json\n│           ├── case_001_rule_authority_v002.golden-dataset.json\n│           ├── current_repo_context.json\n│           ├── doc_001.expected.json\n│           ├── doc_002.expected.json\n│           ├── doc_003.expected.json\n│           ├── doc_004.expected.json\n│           ├── doc_005.expected.json\n│           ├── doc_006.expected.json\n│           ├── doc_007.expected.json\n│           ├── doc_008.expected.json\n│           ├── doc_009.expected.json\n│           ├── doc_010.expected.json\n│           ├── doc_011.expected.json\n│           ├── doc_012.expected.json\n│           ├── doc_013.expected.json\n│           ├── doc_014.expected.json\n│           ├── eval_comparison_config.json\n│           ├── negative_guardrails.expected.json\n│           ├── pipeline_versions.expected.json\n│           ├── README.md\n│           ├── rule_sources_catalog.json\n│           └── SYNTHETIC_DATA_NOTICE.md\n├── file-exchange/\n│   ├── README.md\n│   ├── exports/\n│   │   ├── .gitkeep\n│   │   ├── consolidated-file-structure.json\n│   │   ├── consolidated-models.json\n│   │   ├── consolidated-prompts.json\n│   │   ├── 2026-05-23_15-59-43Z_live-batch-run/\n│   │   │   ├── curl.log\n│   │   │   └── response.json\n│   │   ├── 2026-05-23_16-11-33Z_live-batch-run-v2/\n│   │   │   ├── curl.log\n│   │   │   └── response.json\n│   │   ├── 2026-05-23_17-48-16Z_consolidated/\n│   │   │   ├── consolidated-models.json\n│   │   │   └── manifest.json\n│   │   ├── 2026-05-23_17-49-08Z_consolidated/\n│   │   ├── 2026-05-23_17-51-13Z_consolidated/\n│   │   │   ├── consolidated-models.json\n│   │   │   └── manifest.json\n│   │   ├── 2026-05-24_01-14-03Z_consolidated/\n│   │   │   ├── consolidated-prompts.json\n│   │   │   └── manifest.json\n│   │   ├── 2026-05-24_01-20-12Z_consolidated/\n│   │   │   ├── consolidated-models.json\n│   │   │   └── manifest.json\n│   │   ├── 2026-05-24_01-21-05Z_consolidated/\n│   │   │   ├── consolidated-file-structure.json\n│   │   │   ├── consolidated-models.json\n│   │   │   ├── consolidated-prompts.json\n│   │   │   └── manifest.json\n│   │   ├── 2026-05-24_01-21-44Z_consolidated/\n│   │   │   ├── consolidated-file-structure.json\n│   │   │   ├── consolidated-models.json\n│   │   │   ├── consolidated-prompts.json\n│   │   │   └── manifest.json\n│   │   ├── 2026-05-24_01-21-50Z_consolidated/\n│   │   │   ├── consolidated-models.json\n│   │   │   └── manifest.json\n│   │   ├── 2026-05-24_01-40-52Z_consolidated/\n│   │   │   ├── consolidated-models.json\n│   │   │   └── manifest.json\n│   │   ├── 2026-05-24_02-24-51Z_consolidated/\n│   │   │   ├── consolidated-models.json\n│   │   │   └── manifest.json\n│   │   ├── 2026-05-24_11-34-38Z_consolidated/\n│   │   │   ├── consolidated-models.json\n│   │   │   └── manifest.json\n│   │   ├── 2026-05-24_12-25-40Z_consolidated/\n│   │   │   ├── consolidated-models.json\n│   │   │   └── manifest.json\n│   │   ├── 2026-05-24_12-26-17Z_consolidated/\n│   │   │   ├── consolidated-models.json\n│   │   │   └── manifest.json\n│   │   ├── 2026-05-24_12-26-36Z_consolidated/\n│   │   │   ├── consolidated-models.json\n│   │   │   └── manifest.json\n│   │   ├── 2026-05-24_12-26-46Z_consolidated/\n│   │   │   ├── consolidated-models.json\n│   │   │   └── manifest.json\n│   │   ├── 2026-05-24_12-26-47Z_consolidated/\n│   │   │   ├── consolidated-models.json\n│   │   │   └── manifest.json\n│   │   ├── 2026-05-24_12-51-24Z_consolidated/\n│   │   │   ├── consolidated-models.json\n│   │   │   └── manifest.json\n│   │   ├── 2026-05-24_12-51-25Z_consolidated/\n│   │   │   ├── consolidated-models.json\n│   │   │   └── manifest.json\n│   │   ├── 2026-05-24_12-54-52Z_consolidated/\n│   │   │   ├── consolidated-models.json\n│   │   │   └── manifest.json\n│   │   └── templates/\n│   │       ├── AGENTS.starter.md\n│   │       ├── api-inventory.starter.mjs\n│   │       ├── condense-prompts.starter.mjs\n│   │       ├── LICENSE.starter\n│   │       ├── manifest.starter.json\n│   │       ├── modelCondenser.service.starter.js\n│   │       ├── modelCondenser.service.test.starter.js\n│   │       ├── NOTICE.starter\n│   │       ├── package.starter.json\n│   │       ├── README.md\n│   │       ├── README.starter.md\n│   │       └── docs/\n│   │           └── API.starter.md\n│   └── imports/\n│       ├── .gitkeep\n│       ├── synthetic_case_001_rule_authority_v002_golden_dataset.json\n│       ├── 2026-05-23_15-59-43Z/\n│       │   ├── synthetic_case_001_golden_dataset_ground_truth.json\n│       │   ├── synthetic_case_001_golden_dataset_ground_truth.zip\n│       │   └── synthetic_case_001_pdf_files/\n│       │       ├── doc_001_SUMMONS_AND_VERIFIED_COMPLAINT.pdf\n│       │       ├── doc_002_CERTIFICATE_OF_MERIT.pdf\n│       │       ├── doc_003_EXHIBITS_SUPPORTING_SUMMONS_AND_COMPLAINT.pdf\n│       │       ├── doc_004_NOTICE_OF_COMMENCEMENT_OF_ACTION_FOR_PERSONAL_INJURIES.pdf\n│       │       ├── doc_005_AFFIRMATION_AFFIDAVIT_OF_SERVICE.pdf\n│       │       ├── doc_006_ANSWER.pdf\n│       │       ├── doc_007_DEMAND_FOR_BILL_OF_PARTICULARS.pdf\n│       │       ├── doc_008_NOTICE_TO_TAKE_DEPOSITION.pdf\n│       │       ├── doc_009_BILL_OF_PARTICULARS.pdf\n│       │       ├── doc_010_NOTICE_OF_MEDICAL_MALPRACTICE_ACTION.pdf\n│       │       ├── doc_011_RJI_MEDICAL_MALPRACTICE.pdf\n│       │       ├── doc_012_PRELIMINARY_CONFERENCE_ORDER.pdf\n│       │       ├── doc_013_COMPLIANCE_CONFERENCE_ORDER.pdf\n│       │       ├── doc_014_COMPLIANCE_CONFERENCE_ORDER_DUPLICATE_OR_REFILED_WITH_CPLR_3.pdf\n│       │       ├── manifest.json\n│       │       └── SYNTHETIC_DATA_NOTICE.md\n│       └── evals/\n│           └── golden/\n│               └── synthetic_case_001_rule_authority_v002/\n│                   ├── after_doc_001.expected.json\n│                   ├── after_doc_002.expected.json\n│                   ├── after_doc_004.expected.json\n│                   ├── after_doc_008.expected.json\n│                   ├── after_doc_012.expected.json\n│                   ├── after_doc_014.expected.json\n│                   ├── case_001_rule_authority_v002.golden-dataset.json\n│                   ├── current_repo_context.json\n│                   ├── doc_001.expected.json\n│                   ├── doc_002.expected.json\n│                   ├── doc_003.expected.json\n│                   ├── doc_004.expected.json\n│                   ├── doc_005.expected.json\n│                   ├── doc_006.expected.json\n│                   ├── doc_007.expected.json\n│                   ├── doc_008.expected.json\n│                   ├── doc_009.expected.json\n│                   ├── doc_010.expected.json\n│                   ├── doc_011.expected.json\n│                   ├── doc_012.expected.json\n│                   ├── doc_013.expected.json\n│                   ├── doc_014.expected.json\n│                   ├── eval_comparison_config.json\n│                   ├── negative_guardrails.expected.json\n│                   ├── pipeline_versions.expected.json\n│                   ├── README.md\n│                   ├── rule_sources_catalog.json\n│                   └── SYNTHETIC_DATA_NOTICE.md\n├── frontend/\n│   ├── .env.example\n│   ├── index.html\n│   ├── package-lock.json\n│   ├── package.json\n│   ├── vite.config.js\n│   └── src/\n│       ├── index.css\n│       ├── main.jsx\n│       ├── core/\n│       │   ├── App.jsx\n│       │   └── moduleRegistry.jsx\n│       ├── modules/\n│       │   ├── .gitkeep\n│       │   ├── _reference/\n│       │   │   ├── index.jsx\n│       │   │   ├── README.md\n│       │   │   ├── components/\n│       │   │   │   └── ModuleHealthCard.jsx\n│       │   │   ├── hooks/\n│       │   │   │   └── use-module-health.js\n│       │   │   ├── pages/\n│       │   │   │   └── _referencePage.jsx\n│       │   │   ├── prompts/\n│       │   │   │   └── README.md\n│       │   │   ├── schemas/\n│       │   │   │   └── health.schema.js\n│       │   │   ├── services/\n│       │   │   │   └── health-api.js\n│       │   │   ├── tests/\n│       │   │   │   └── unit/\n│       │   │   │       └── health.schema.test.js\n│       │   │   └── utils/\n│       │   │       └── index.js\n│       │   ├── case-filing-ai/\n│       │   │   ├── index.jsx\n│       │   │   ├── README.md\n│       │   │   ├── api/\n│       │   │   │   └── caseFilingApi.js\n│       │   │   ├── components/\n│       │   │   │   ├── BatchRunSummary.jsx\n│       │   │   │   ├── DocumentQueuePanel.jsx\n│       │   │   │   ├── DocumentRunCard.jsx\n│       │   │   │   ├── EvalPanel.jsx\n│       │   │   │   ├── FilingUploadPicker.jsx\n│       │   │   │   ├── ModuleHealthCard.jsx\n│       │   │   │   ├── PdfFilingsDropZone.jsx\n│       │   │   │   ├── PipelineModuleRail.jsx\n│       │   │   │   ├── ProcessingStatus.jsx\n│       │   │   │   ├── ResultsPanel.jsx\n│       │   │   │   ├── RuleInputPanel.jsx\n│       │   │   │   └── UploadedFileList.jsx\n│       │   │   ├── hooks/\n│       │   │   │   ├── use-document-file-accumulator.js\n│       │   │   │   ├── use-module-health.js\n│       │   │   │   └── useBatchSession.js\n│       │   │   ├── pages/\n│       │   │   │   └── CaseFilingUpload.jsx\n│       │   │   ├── prompts/\n│       │   │   │   └── README.md\n│       │   │   ├── schemas/\n│       │   │   │   └── health.schema.js\n│       │   │   ├── services/\n│       │   │   │   └── health-api.js\n│       │   │   ├── tests/\n│       │   │   │   └── unit/\n│       │   │   │       ├── document-files.test.js\n│       │   │   │       └── health.schema.test.js\n│       │   │   ├── types/\n│       │   │   │   └── caseFiling.types.js\n│       │   │   └── utils/\n│       │   │       ├── document-files.js\n│       │   │       └── index.js\n│       │   ├── case-workflow/\n│       │   │   ├── index.jsx\n│       │   │   ├── README.md\n│       │   │   ├── components/\n│       │   │   │   └── ModuleHealthCard.jsx\n│       │   │   ├── hooks/\n│       │   │   │   └── use-module-health.js\n│       │   │   ├── pages/\n│       │   │   │   └── CaseWorkflowPage.jsx\n│       │   │   ├── prompts/\n│       │   │   │   └── README.md\n│       │   │   ├── schemas/\n│       │   │   │   └── health.schema.js\n│       │   │   ├── services/\n│       │   │   │   └── health-api.js\n│       │   │   ├── tests/\n│       │   │   │   └── unit/\n│       │   │   │       └── health.schema.test.js\n│       │   │   └── utils/\n│       │   │       └── index.js\n│       │   ├── court-rules/\n│       │   │   ├── index.jsx\n│       │   │   ├── README.md\n│       │   │   ├── components/\n│       │   │   │   └── ModuleHealthCard.jsx\n│       │   │   ├── hooks/\n│       │   │   │   └── use-module-health.js\n│       │   │   ├── pages/\n│       │   │   │   └── CourtRulesPage.jsx\n│       │   │   ├── prompts/\n│       │   │   │   └── README.md\n│       │   │   ├── schemas/\n│       │   │   │   └── health.schema.js\n│       │   │   ├── services/\n│       │   │   │   └── health-api.js\n│       │   │   ├── tests/\n│       │   │   │   └── unit/\n│       │   │   │       └── health.schema.test.js\n│       │   │   └── utils/\n│       │   │       └── index.js\n│       │   ├── filing-pipeline/\n│       │   │   ├── index.jsx\n│       │   │   ├── README.md\n│       │   │   ├── components/\n│       │   │   │   ├── ModuleHealthCard.jsx\n│       │   │   │   └── PipelineStepsCard.jsx\n│       │   │   ├── hooks/\n│       │   │   │   ├── use-module-health.js\n│       │   │   │   └── use-pipeline-steps.js\n│       │   │   ├── pages/\n│       │   │   │   └── FilingPipelinePage.jsx\n│       │   │   ├── prompts/\n│       │   │   │   └── README.md\n│       │   │   ├── schemas/\n│       │   │   │   └── health.schema.js\n│       │   │   ├── services/\n│       │   │   │   ├── health-api.js\n│       │   │   │   └── pipeline-api.js\n│       │   │   ├── tests/\n│       │   │   │   └── unit/\n│       │   │   │       └── health.schema.test.js\n│       │   │   └── utils/\n│       │   │       └── index.js\n│       │   ├── filing-text-vault/\n│       │   │   ├── index.jsx\n│       │   │   ├── README.md\n│       │   │   ├── components/\n│       │   │   │   └── ModuleHealthCard.jsx\n│       │   │   ├── hooks/\n│       │   │   │   └── use-module-health.js\n│       │   │   ├── pages/\n│       │   │   │   └── FilingTextVaultPage.jsx\n│       │   │   ├── prompts/\n│       │   │   │   └── README.md\n│       │   │   ├── schemas/\n│       │   │   │   └── health.schema.js\n│       │   │   ├── services/\n│       │   │   │   └── health-api.js\n│       │   │   ├── tests/\n│       │   │   │   └── unit/\n│       │   │   │       └── health.schema.test.js\n│       │   │   └── utils/\n│       │   │       └── index.js\n│       │   ├── human-review/\n│       │   │   ├── index.jsx\n│       │   │   ├── README.md\n│       │   │   ├── components/\n│       │   │   │   └── ModuleHealthCard.jsx\n│       │   │   ├── hooks/\n│       │   │   │   └── use-module-health.js\n│       │   │   ├── pages/\n│       │   │   │   └── HumanReviewPage.jsx\n│       │   │   ├── prompts/\n│       │   │   │   └── README.md\n│       │   │   ├── schemas/\n│       │   │   │   └── health.schema.js\n│       │   │   ├── services/\n│       │   │   │   └── health-api.js\n│       │   │   ├── tests/\n│       │   │   │   └── unit/\n│       │   │   │       └── health.schema.test.js\n│       │   │   └── utils/\n│       │   │       └── index.js\n│       │   ├── platform/\n│       │   │   ├── index.jsx\n│       │   │   └── pages/\n│       │   │       └── OnboardingPage.jsx\n│       │   └── task-docketing/\n│       │       ├── index.jsx\n│       │       ├── README.md\n│       │       ├── components/\n│       │       │   └── ModuleHealthCard.jsx\n│       │       ├── hooks/\n│       │       │   └── use-module-health.js\n│       │       ├── pages/\n│       │       │   └── TaskDocketingPage.jsx\n│       │       ├── prompts/\n│       │       │   └── README.md\n│       │       ├── schemas/\n│       │       │   └── health.schema.js\n│       │       ├── services/\n│       │       │   └── health-api.js\n│       │       ├── tests/\n│       │       │   └── unit/\n│       │       │       └── health.schema.test.js\n│       │       └── utils/\n│       │           └── index.js\n│       └── shared/\n│           └── api/\n│               └── client.js\n├── scripts/\n│   ├── check-api-docs.mjs\n│   ├── clear-file-exchange.mjs\n│   ├── condense-all.mjs\n│   ├── condense-file-structure.mjs\n│   ├── condense-models.mjs\n│   ├── condense-prompts.mjs\n│   ├── consolidated-output.mjs\n│   ├── eval-golden.mjs\n│   ├── export-architecture-starter.mjs\n│   ├── export-consolidated-models.mjs\n│   ├── import-to-file-exchange.mjs\n│   ├── ingest-golden-expected.mjs\n│   ├── ingest-golden-parsed.mjs\n│   ├── ingest-golden-rule-authority-v002.mjs\n│   ├── lint-contracts.mjs\n│   ├── lint-repo-artifacts.mjs\n│   ├── new-module.mjs\n│   ├── plan-finalize.mjs\n│   ├── plan-gate.mjs\n│   ├── rerun-batch-evals.mjs\n│   ├── resolve-import-stamp.mjs\n│   ├── run-module-evals.mjs\n│   ├── sync-cli-template.mjs\n│   ├── verify-dev-log.mjs\n│   ├── write-pre-push-dev-log.mjs\n│   ├── git-hooks/\n│   │   └── pre-push.sample\n│   └── lib/\n│       ├── api-inventory.mjs\n│       ├── dev-log-human-format.mjs\n│       ├── git-snapshot.mjs\n│       ├── module-scaffold.mjs\n│       ├── repo-tree.mjs\n│       └── run-tests.mjs\n└── work-log/\n    ├── INDEX.md\n    ├── README.md\n    ├── dev-logs/\n    │   ├── 005_2026-05-23_15-45_dev-log_preflight-and-v3-v2-foundation.md\n    │   ├── 005_2026-05-23_16-30_dev-log_v2-phases-3-7-complete.md\n    │   ├── 005_2026-05-23_17-05_dev-log_golden-parsed-and-handoff-closeout.md\n    │   ├── README.md\n    │   ├── agent/\n    │   │   ├── 005_2026-05-23_16-54_dev-log-agent_pre-push-dual-dev-log-system.json\n    │   │   ├── 005_2026-05-23_16-57_dev-log-agent_api-inventory-and-tree-ignores.json\n    │   │   ├── 005_2026-05-23_16-59_dev-log-agent_two-part-human-dev-log.json\n    │   │   ├── 005_2026-05-23_17-00_dev-log-agent_e2e-test.json\n    │   │   └── 005_2026-05-23_17-36_dev-log-agent_architecture-ci-npm-readme.json\n    │   ├── human/\n    │   │   ├── 005_2026-05-23_16-54_dev-log_pre-push-dual-dev-log-system.md\n    │   │   ├── 005_2026-05-23_16-57_dev-log_api-inventory-and-tree-ignores.md\n    │   │   ├── 005_2026-05-23_16-59_dev-log_two-part-human-dev-log.md\n    │   │   ├── 005_2026-05-23_17-00_dev-log_e2e-test.md\n    │   │   └── 005_2026-05-23_17-36_dev-log_architecture-ci-npm-readme.md\n    │   ├── schemas/\n    │   │   └── dev-log-agent.v1.schema.json\n    │   └── templates/\n    │       └── dev-log-human.template.md\n    ├── handoffs/\n    │   ├── 002_2026-05-23_00-42_handoff_second.md\n    │   ├── 005_2026-05-23_10-49_handoff-original_parsed-cache-rule-authority.md\n    │   ├── 005_2026-05-23_11-14_handoff-v2_planned-review-in-cursor.md\n    │   ├── 005_2026-05-23_11-20_handoff-v3_filing-structure-architecture.md\n    │   ├── INDEX.md\n    │   ├── README.md\n    │   └── 001_2026-05-23_starter_case-filing-ai-updated/\n    │       ├── README.md\n    │       ├── db/\n    │       │   └── migrations/\n    │       │       └── 001_case_filing_ai_schema.sql\n    │       ├── docs/\n    │       │   ├── module-boundaries.md\n    │       │   ├── one-document-pipeline.md\n    │       │   └── suggested-work-tree.md\n    │       ├── examples/\n    │       │   └── local-json/\n    │       │       ├── case-snapshot.json\n    │       │       └── case.json\n    │       ├── guardrails/\n    │       │   └── all-guardrails.md\n    │       ├── models/\n    │       │   └── typescript/\n    │       │       └── core-models.ts\n    │       └── prompts/\n    │           ├── case-state-update.prompt.md\n    │           ├── fact-extraction.prompt.md\n    │           ├── filing-text-vault.prompt.md\n    │           ├── human-review.prompt.md\n    │           ├── orchestrator.prompt.md\n    │           ├── rule-context.prompt.md\n    │           └── task-deadline.prompt.md\n    └── study-docs/\n        ├── 002_2026-05-23_study-log_follow-up-before-handoff.md\n        ├── 003_2026-05-23_study-log_case-filing-ai-planning.md\n        ├── 004_2026-05-23_study-log_golden-dataset-eval-runner.md\n        ├── 005_2026-05-23_10-50_study-log_parsed-cache-rule-authority.md\n        ├── 006_2026-05-23_11-21_study-log_cursor-planning-phase.md\n        ├── 007_2026-05-23_feature-blog_modular-monolith-architecture-package.md\n        ├── 007_2026-05-24_design_pipeline-ui-onboarding.md\n        ├── 007_2026-05-24_plan_pipeline-ui-onboarding-package.md\n        ├── README.md\n        └── 001_2026-05-23_00-07_blog_source-grounded-docketing/\n            ├── part-1_docketing-is-not-summarization.md\n            ├── part-2_prompt-engineering-as-design-method.md\n            └── part-3_final-source-grounded-agent-pattern.md",
+    "flatPathCount": 702
+  },
+  "changes": {
+    "byArea": {
+      "file-exchange": [
+        "file-exchange/imports/synthetic_case_001_rule_authority_v002_golden_dataset.json"
+      ]
+    },
+    "added": [
+      "file-exchange/imports/synthetic_case_001_rule_authority_v002_golden_dataset.json"
+    ],
+    "modified": [],
+    "deleted": [],
+    "narrative": [
+      "POST /process-batch returns 202 + batchId unless CASE_FILING_SYNC_BATCH=true (tests).",
+      "GET /batches/:id/status exposes moduleStates and document queue for live UI.",
+      "Platform module serves pipeline guide and module registry for PipelineModuleRail.",
+      "Batch package zip via POST/GET .../package routes.",
+      "file-exchange/clear API and npm run clear:file-exchange for dated import/export cleanup.",
+      "Gitignore hardened for runtime file-exchange payloads; golden v002 fixtures committed."
+    ]
+  },
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Async process-batch with polling instead of blocking 201 for default UX",
+      "rationale": "Live pipeline rail and document queue require incremental status while documents process.",
+      "alternativesRejected": [
+        "Keep synchronous 201 only",
+        "WebSockets for push updates"
+      ],
+      "tradeoff": "Clients must poll; simpler than WS for local dev."
+    },
+    {
+      "id": "D2",
+      "decision": "Platform routes use platform.service for module registry (layer lint)",
+      "rationale": "routes layer must not import domain per MODULE_INTERNAL_CONTRACT.",
+      "alternativesRejected": [
+        "Disable layer rule for platform routes"
+      ],
+      "tradeoff": "Thin service wrapper over static registry."
+    }
+  ],
+  "iterations": [
+    {
+      "attempt": 1,
+      "action": "Committed 007 WIP in three feature commits after fixing platform layer lint and gitignore",
+      "outcome": "pass",
+      "blockedBy": ""
+    },
+    {
+      "attempt": 2,
+      "action": "Added batch-async.routes.test.js and docs/platform/API.md for lint:api-docs",
+      "outcome": "pass",
+      "blockedBy": ""
+    }
+  ],
+  "tradeoffs": [
+    "Background batch uses setImmediate in-process; not durable across server restart.",
+    "Runtime file-exchange imports still on disk locally but gitignored."
+  ],
+  "improvements": [
+    "Pipeline UI with module rail, document queue, batch persistence in URL/localStorage.",
+    "Onboarding page and API for pipeline guide.",
+    "Rule authority v002 golden dataset and compareGoldenRuleFields eval support."
+  ],
+  "regressions": [
+    "None known; sync path preserved via CASE_FILING_SYNC_BATCH=true for integration tests."
+  ],
+  "risks": [
+    "Accidental commit of large PDFs if gitignore rules are bypassed with force-add.",
+    "Long batches without compact snapshot rules may hit token limits when using v001 prompt."
+  ],
+  "followUps": [
+    "External artifact root (local-artifacts.json) after PR merge.",
+    "Merge v001 master prompt with compact snapshot bounding.",
+    "Optional: durable job queue for async batch beyond setImmediate."
+  ]
+}

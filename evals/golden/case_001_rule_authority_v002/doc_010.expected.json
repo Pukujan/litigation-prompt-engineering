@@ -1,0 +1,43 @@
+{
+  "docIndex": 10,
+  "docKey": "doc-010",
+  "expectedDocumentType": "NOTICE_OF_MEDICAL_MALPRACTICE_ACTION",
+  "expectedTitle": "Notice of Medical Malpractice Action",
+  "expectedFilingDate": "2027-11-03",
+  "expectedNyscefDocNo": 10,
+  "expectedPageCount": 8,
+  "expectedConfirmedFacts": [
+    "Notice of Medical Malpractice Action was filed."
+  ],
+  "expectedTasks": [],
+  "expectedDeadlines": [],
+  "expectedHumanReviewItems": [
+    {
+      "issue": "affidavit_service_date_visual_review",
+      "reason": "Affidavit/service date area may require visual confirmation.",
+      "blocking": false,
+      "status": "pending"
+    }
+  ],
+  "mustNotCreate": [
+    "PC date unless the RJI/court scheduling document supplies it"
+  ],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "ocr_needed": false,
+    "ocr_test_reason": null
+  },
+  "expectedRuleSourcesApplied": [
+    "cplr_general_civil_practice",
+    "uniform_rule_202_56_medmal",
+    "queens_medmal_part_rules",
+    "queens_part_10_kerrigan_rules"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

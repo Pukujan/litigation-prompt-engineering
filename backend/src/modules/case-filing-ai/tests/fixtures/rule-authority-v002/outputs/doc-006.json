@@ -1,0 +1,78 @@
+{
+  "docIndex": 6,
+  "docKey": "doc-006",
+  "storedName": "006-fixture.pdf",
+  "originalName": "Answer - Metropolitan City Health and Hospitals Corporation",
+  "fileKind": "pdf",
+  "docketEntry": {
+    "filingType": "ANSWER",
+    "filingDate": "2027-10-05",
+    "nyscefDocNo": 6
+  },
+  "documentMetadata": {
+    "title": "Answer - Metropolitan City Health and Hospitals Corporation",
+    "pageCount": 9,
+    "extractionQuality": {
+      "method": "embedded_text",
+      "ocr_needed": false,
+      "ocr_test_reason": null
+    }
+  },
+  "extractionQuality": {
+    "method": "embedded_text",
+    "ocr_needed": false,
+    "ocr_test_reason": null
+  },
+  "parties": [],
+  "tasks": [
+    {
+      "taskType": "ANSWER_RECEIVED",
+      "taskDescription": "Mark defendant answer as filed/received.",
+      "status": "source_supported_auto_saved",
+      "dueDate": null,
+      "dueDateStatus": "no_fixed_due_date",
+      "confidence": "high"
+    }
+  ],
+  "deadlines": [],
+  "humanReviewItems": [],
+  "ruleSourcesApplied": [
+    "cplr_general_civil_practice"
+  ],
+  "ruleSourcesChecked": [
+    "cplr_general_civil_practice"
+  ],
+  "rankedRules": [
+    {
+      "ruleId": "cplr_general_civil_practice",
+      "sourceAuthority": "cplr_or_statute",
+      "authorityRank": 1,
+      "sourceName": "CPLR / New York civil practice defaults",
+      "controls": [
+        "default service/response framework",
+        "motion/statutory default context"
+      ],
+      "applicationRule": "Use only when no more specific valid order/rule controls and trigger facts are present.",
+      "mustNotUseFor": [
+        "final answer deadline without verified service date and service method"
+      ]
+    }
+  ],
+  "pipelineVersions": {
+    "parser": "pdf-text-v001",
+    "ocr": "qwen-vl-v001",
+    "masterPrompt": "v001_master-case-filing",
+    "rulePrompt": "court-rules/rule-context-1.0.0",
+    "snapshotPrompt": "case-workflow/case-state-update-1.0.0",
+    "ruleSet": "queens_kerrigan_medmal_rules_v001",
+    "goldenDataset": "synthetic_case_001_rule_authority_v002"
+  },
+  "runMetadata": {
+    "pipelineVersions": {
+      "parser": "pdf-text-v001",
+      "ocr": "qwen-vl-v001",
+      "masterPrompt": "v001_master-case-filing",
+      "goldenDataset": "synthetic_case_001_rule_authority_v002"
+    }
+  }
+}

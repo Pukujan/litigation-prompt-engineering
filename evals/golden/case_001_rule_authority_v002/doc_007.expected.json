@@ -1,0 +1,54 @@
+{
+  "docIndex": 7,
+  "docKey": "doc-007",
+  "expectedDocumentType": "DEMAND_FOR_BILL_OF_PARTICULARS",
+  "expectedTitle": "Demand for Bill of Particulars - MCMCHHC",
+  "expectedFilingDate": "2027-10-05",
+  "expectedNyscefDocNo": 7,
+  "expectedPageCount": 9,
+  "expectedConfirmedFacts": [
+    "Defendant served a demand for bill of particulars.",
+    "Demand indicates response expected within 20 days unless otherwise extended/stipulated."
+  ],
+  "expectedTasks": [
+    {
+      "taskType": "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND",
+      "taskDescription": "Prepare/serve plaintiff bill of particulars response to MCMCHHC demand.",
+      "status": "source_supported_auto_saved",
+      "dueDate": null,
+      "dueDateStatus": "calculated_or_needs_review",
+      "confidence": "medium",
+      "sourceTrigger": "Doc 7 demand language"
+    }
+  ],
+  "expectedDeadlines": [
+    {
+      "type": "BP_RESPONSE_DEADLINE_CANDIDATE",
+      "date": null,
+      "status": "needs_calculation_verification",
+      "sourceTrigger": "Doc 7 demand for bill of particulars",
+      "missingOrReviewReason": "Confirm service date/method and any stipulation/order before final deadline promotion.",
+      "sourceAuthority": "unknown",
+      "authorityRank": 0
+    }
+  ],
+  "expectedHumanReviewItems": [],
+  "mustNotCreate": [
+    "final BP deadline without confirming service trigger and calculation basis"
+  ],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "ocr_needed": false,
+    "ocr_test_reason": null
+  },
+  "expectedRuleSourcesApplied": [
+    "cplr_general_civil_practice"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

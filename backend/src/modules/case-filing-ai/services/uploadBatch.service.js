@@ -1,4 +1,4 @@
-import { readdir } from "fs/promises";
+import { readdir, readFile } from "fs/promises";
 import { join, extname } from "path";
 import { AppError } from "../../../shared/http/errors.js";
 import {
@@ -8,6 +8,7 @@ import {
 } from "../utils/document-upload.js";
 import { buildRunMetadata } from "./runMetadata.service.js";
 import { createTraceId, docTraceId } from "../../../shared/utils/traceId.js";
+import { buildPipelineStatusFromLog } from "../utils/pipelineStatus.js";
 
 function extractDocNumber(name) {
   const match = String(name).match(/(\d+)/);
@@ -59,6 +60,17 @@ export function createUploadBatchService({
   batchRootDir,
   masterPromptConfig = {}
 }) {
+  const backgroundErrors = new Map();
+
+  async function logModule(batchId, module, docIndex, phase, extra = {}) {
+    await store.appendProcessingLog(batchId, {
+      step: phase === "start" ? "module_started" : "module_completed",
+      module,
+      docIndex,
+      ...extra
+    });
+  }
+
   async function nextBatchId() {
     let entries = [];
     try {
@@ -215,38 +227,24 @@ export function createUploadBatchService({
     return mergedText;
   }
 
-  async function processBatch({ files, partRuleText, partRuleFile }) {
-    if (!files?.length) {
-      throw new AppError("At least one file is required", 400);
+  async function loadFilesFromUploads(batchId) {
+    const names = await store.listUploads(batchId);
+    const files = [];
+    for (const storedName of names) {
+      const buffer = await readFile(join(store.batchRootDir, batchId, "uploads", storedName));
+      files.push({
+        originalname: storedName.replace(/^\d+_/, ""),
+        buffer,
+        mimetype: "application/octet-stream",
+        size: buffer.length
+      });
     }
+    return sortBatchFiles(files);
+  }
 
-    const supportedFiles = files.filter(isSupportedUpload);
-    if (!supportedFiles.length) {
-      throw new AppError(
-        `No supported files in upload. Supported: ${SUPPORTED_UPLOAD_HINT}`,
-        415
-      );
-    }
-
-    const batchId = await nextBatchId();
-    await store.createBatch(batchId);
+  async function runBatchProcessing(batchId, sorted, { source, userProvidedRule, effectiveText }) {
     const batchTraceId = createTraceId(`batch_${batchId}`);
-
-    const { effectiveText, source, userProvidedRule } = await bootstrapRuleState(batchId, {
-      partRuleText,
-      partRuleFile
-    });
     let activePartRuleText = effectiveText;
-
-    await store.appendProcessingLog(batchId, {
-      step: "batch_started",
-      batchId,
-      batchTraceId,
-      fileCount: supportedFiles.length,
-      partRuleSource: source
-    });
-
-    const sorted = sortBatchFiles(supportedFiles);
     const documentOutputs = [];
     const failedDocuments = [];
     let currentSnapshot = await caseSnapshot.initSnapshot(batchId);
@@ -258,17 +256,21 @@ export function createUploadBatchService({
       const docKey = `doc-${String(docIndex).padStart(3, "0")}`;
       const traceId = docTraceId(batchTraceId, docIndex);
 
-      await store.saveUpload(batchId, storedName, file.buffer);
+      if (!(await store.listUploads(batchId)).includes(storedName)) {
+        await store.saveUpload(batchId, storedName, file.buffer);
+      }
       await store.appendProcessingLog(batchId, {
         step: "document_started",
         batchTraceId,
         traceId,
         docIndex,
+        docKey,
         storedName,
         originalName: file.originalname
       });
 
       try {
+        await logModule(batchId, "parse", docIndex, "start", { batchTraceId, traceId });
         const extractFn =
           parsedDocumentCache?.getOrExtract?.bind(parsedDocumentCache) ??
           (async (batchId, docKey, buffer, meta) => {
@@ -296,6 +298,7 @@ export function createUploadBatchService({
           originalname: file.originalname,
           mimetype: file.mimetype
         });
+        await logModule(batchId, "parse", docIndex, "complete", { batchTraceId, traceId });
 
         const fileMetadata = {
           docIndex,
@@ -311,6 +314,7 @@ export function createUploadBatchService({
         let rankedRules = [];
         let rankedRulesBlock = "";
         if (ruleMatch && ruleAuthority) {
+          await logModule(batchId, "court-rules", docIndex, "start", { batchTraceId, traceId });
           const matched = await ruleMatch.findApplicableRules({
             caseId: goldenCaseId,
             context: {
@@ -323,8 +327,10 @@ export function createUploadBatchService({
           });
           rankedRules = ruleAuthority.rankRules(matched);
           rankedRulesBlock = ruleAuthority.formatRankedRulesBlock(rankedRules);
+          await logModule(batchId, "court-rules", docIndex, "complete", { batchTraceId, traceId });
         }
 
+        await logModule(batchId, "master-prompt", docIndex, "start", { batchTraceId, traceId });
         const { model, usage, result, promptVersion } = await masterPrompt.processDocument({
           documentText: text,
           fileMetadata,
@@ -333,6 +339,7 @@ export function createUploadBatchService({
           hasUserPartRule: Boolean(activePartRuleText?.trim()),
           rankedRules: rankedRulesBlock
         });
+        await logModule(batchId, "master-prompt", docIndex, "complete", { batchTraceId, traceId });
 
         const runMetadata = buildRunMetadata({
           promptVersion: promptVersion ?? masterPrompt.promptVersion,
@@ -392,14 +399,17 @@ export function createUploadBatchService({
         };
 
         await store.saveDocumentOutput(batchId, docKey, documentResult);
+        await logModule(batchId, "snapshot", docIndex, "start", { batchTraceId, traceId });
         currentSnapshot = caseSnapshot.mergeSnapshot(currentSnapshot, result, {
           docIndex,
           storedName
         });
         await store.writeCaseSnapshot(batchId, currentSnapshot);
+        await logModule(batchId, "snapshot", docIndex, "complete", { batchTraceId, traceId });
         documentOutputs.push(documentResult);
 
         if (evalRunner) {
+          await logModule(batchId, "eval", docIndex, "start", { batchTraceId, traceId });
           const evalReports = await evalRunner.runAfterDocument({
             batchId,
             docIndex,
@@ -411,6 +421,7 @@ export function createUploadBatchService({
           for (const { evalId, report } of evalReports) {
             await store.saveEvalReport(batchId, evalId, report);
           }
+          await logModule(batchId, "eval", docIndex, "complete", { batchTraceId, traceId });
         }
 
         await store.appendProcessingLog(batchId, {
@@ -476,38 +487,131 @@ export function createUploadBatchService({
       batchStatus,
       failedDocuments,
       processedCount: successCount,
-      totalCount: sorted.length
+      totalCount: sorted.length,
+      processingSummary: {
+        partRule: aggregated.partRule ?? null,
+        courtRules: { fixtureCaseId: goldenCaseId }
+      }
     };
+  }
+
+  async function processBatch({ files, partRuleText, partRuleFile }) {
+    if (!files?.length) {
+      throw new AppError("At least one file is required", 400);
+    }
+
+    const supportedFiles = files.filter(isSupportedUpload);
+    if (!supportedFiles.length) {
+      throw new AppError(
+        `No supported files in upload. Supported: ${SUPPORTED_UPLOAD_HINT}`,
+        415
+      );
+    }
+
+    const batchId = await nextBatchId();
+    await store.createBatch(batchId);
+
+    const { effectiveText, source, userProvidedRule } = await bootstrapRuleState(batchId, {
+      partRuleText,
+      partRuleFile
+    });
+
+    await store.appendProcessingLog(batchId, {
+      step: "batch_started",
+      batchId,
+      batchTraceId: createTraceId(`batch_${batchId}`),
+      fileCount: supportedFiles.length,
+      partRuleSource: source
+    });
+
+    const sorted = sortBatchFiles(supportedFiles);
+    for (let i = 0; i < sorted.length; i += 1) {
+      const file = sorted[i];
+      const docIndex = i + 1;
+      const storedName = storedFilenameFor(docIndex, file.originalname);
+      await store.saveUpload(batchId, storedName, file.buffer);
+    }
+
+    return runBatchProcessing(batchId, sorted, { source, userProvidedRule, effectiveText });
+  }
+
+  function startProcessBatch({ files, partRuleText, partRuleFile }) {
+    return (async () => {
+      if (!files?.length) {
+        throw new AppError("At least one file is required", 400);
+      }
+
+      const supportedFiles = files.filter(isSupportedUpload);
+      if (!supportedFiles.length) {
+        throw new AppError(
+          `No supported files in upload. Supported: ${SUPPORTED_UPLOAD_HINT}`,
+          415
+        );
+      }
+
+      const batchId = await nextBatchId();
+      await store.createBatch(batchId);
+
+      const { effectiveText, source, userProvidedRule } = await bootstrapRuleState(batchId, {
+        partRuleText,
+        partRuleFile
+      });
+
+      const batchTraceId = createTraceId(`batch_${batchId}`);
+      await store.appendProcessingLog(batchId, {
+        step: "batch_started",
+        batchId,
+        batchTraceId,
+        fileCount: supportedFiles.length,
+        partRuleSource: source
+      });
+
+      const sorted = sortBatchFiles(supportedFiles);
+      for (let i = 0; i < sorted.length; i += 1) {
+        const file = sorted[i];
+        const docIndex = i + 1;
+        const storedName = storedFilenameFor(docIndex, file.originalname);
+        await store.saveUpload(batchId, storedName, file.buffer);
+      }
+
+      setImmediate(async () => {
+        try {
+          await runBatchProcessing(batchId, sorted, {
+            source,
+            userProvidedRule,
+            effectiveText
+          });
+        } catch (error) {
+          backgroundErrors.set(batchId, error);
+          await store.appendProcessingLog(batchId, {
+            step: "batch_failed",
+            error: error?.message ?? String(error)
+          });
+        }
+      });
+
+      return { batchId, status: "processing" };
+    })();
   }
 
   async function getBatchStatus(batchId) {
     await store.assertBatchExists(batchId);
     const log = await store.readProcessingLog(batchId);
     const uploads = await store.listUploads(batchId);
-    const outputs = await store.listDocumentOutputs(batchId);
-
-    const lastEntry = log[log.length - 1] ?? {};
-    const isComplete = lastEntry.step === "batch_completed";
-    const currentDocEntry = [...log].reverse().find((e) => e.step === "document_started");
-    const failedCount =
-      lastEntry.failedCount ?? log.filter((entry) => entry.step === "document_failed").length;
-    const successCount =
-      lastEntry.processedCount ??
-      log.filter((entry) => entry.step === "document_completed").length;
+    const pipeline = buildPipelineStatusFromLog(log, uploads);
+    const bgError = backgroundErrors.get(batchId);
 
     return {
       batchId,
-      status: isComplete
-        ? lastEntry.batchStatus ?? (failedCount ? "partial" : "completed")
-        : log.length
-          ? "processing"
-          : "pending",
-      currentStep: lastEntry.step ?? "pending",
-      currentDocument: currentDocEntry?.originalName ?? null,
-      processedCount: successCount,
-      failedCount,
-      totalCount: uploads.length
+      ...pipeline,
+      error: bgError?.message ?? null
     };
+  }
+
+  async function getProcessingLog(batchId) {
+    await store.assertBatchExists(batchId);
+    const log = await store.readProcessingLog(batchId);
+    return { batchId, entries: log };
   }
 
   async function getBatchResults(batchId) {
@@ -539,5 +643,13 @@ export function createUploadBatchService({
     return { batchId, summary, reports };
   }
 
-  return { processBatch, getBatchStatus, getBatchResults, getBatchEvals, sortBatchFiles };
+  return {
+    processBatch,
+    startProcessBatch,
+    getBatchStatus,
+    getBatchResults,
+    getBatchEvals,
+    getProcessingLog,
+    sortBatchFiles
+  };
 }

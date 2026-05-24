@@ -1,0 +1,94 @@
+{
+  "snapshotId": "snapshot_after_doc_012_expected",
+  "caseId": "synthetic_case_001_queens_905421_2027_santos_v_mchhc",
+  "afterDocNo": 12,
+  "currentPhase": "DISCOVERY_SCHEDULED_BY_PC_ORDER",
+  "currentMiniPhase": "PRELIMINARY_CONFERENCE_ORDER_FILED",
+  "confirmedFacts": [
+    "Judge/part confirmed as Hon. Kevin J. Kerrigan / Queens Medical Malpractice Part.",
+    "PC order filed 2027-11-23.",
+    "Compliance Conference scheduled 2028-07-19.",
+    "NOI due 2028-12-21 under PC order."
+  ],
+  "openTasks": [
+    "Plaintiff authorizations due 2027-12-23",
+    "Defendant hospital rules/regulations due 2027-12-23",
+    "Plaintiff EBT by 2028-03-01",
+    "MCHHC witness EBTs by 2028-03-31, 2028-05-01, and 2028-06-01",
+    "Compliance Conference submission due 2028-07-19 by 11:00 AM",
+    "NOI due 2028-12-21"
+  ],
+  "completedTasks": [
+    "Filed summons and complaint",
+    "Filed Certificate of Merit",
+    "Defendant answer filed",
+    "Bill of Particulars filed",
+    "RJI/medical malpractice notice filed",
+    "PC order filed"
+  ],
+  "deadlines": [
+    {
+      "type": "AUTHORIZATIONS",
+      "date": "2027-12-23"
+    },
+    {
+      "type": "PLAINTIFF_EBT",
+      "date": "2028-03-01"
+    },
+    {
+      "type": "MCHHC_EBT_1",
+      "date": "2028-03-31"
+    },
+    {
+      "type": "MCHHC_EBT_2",
+      "date": "2028-05-01"
+    },
+    {
+      "type": "MCHHC_EBT_3",
+      "date": "2028-06-01"
+    },
+    {
+      "type": "COMPLIANCE_CONFERENCE",
+      "date": "2028-07-19"
+    },
+    {
+      "type": "NOI",
+      "date": "2028-12-21"
+    }
+  ],
+  "supersededDeadlines": [],
+  "unresolvedHumanReviewItemsExpected": [
+    "PC order OCR/visual review"
+  ],
+  "conflicts": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic snapshot expected output for eval testing.",
+  "expectedRuleAuthorityState": {
+    "activeRuleSetVersion": "queens_kerrigan_medmal_rules_v001",
+    "authorityHierarchy": {
+      "unknown": 0,
+      "cplr_or_statute": 1,
+      "uniform_rule": 2,
+      "county_or_court_rule": 3,
+      "judge_part_rule": 4,
+      "case_specific_order": 5,
+      "later_case_specific_order": 6
+    },
+    "ruleSourcesAvailable": [
+      "cplr_general_civil_practice",
+      "uniform_rule_202_56_medmal",
+      "queens_medmal_part_rules",
+      "queens_medmal_pc_form",
+      "queens_medmal_cc_form",
+      "queens_compliance_part_rules",
+      "queens_part_10_kerrigan_rules",
+      "doc_012_pc_order",
+      "doc_013_014_cc_order"
+    ],
+    "controllingSources": [
+      "doc_012_pc_order",
+      "queens_part_10_kerrigan_rules",
+      "queens_medmal_pc_form"
+    ]
+  }
+}

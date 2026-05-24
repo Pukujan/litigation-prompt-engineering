@@ -469,21 +469,23 @@ models.evalDatasets = {
 }
 
 /**
- * Model condenser: writes models/consolidated-models.json and returns a summary.
- * @param {{ repoRoot: string, modelsDir: string, consolidatedFileName?: string, writeFile?: boolean, includePayload?: boolean }} options
+ * Model condenser: writes consolidated-files/consolidated-models.json and returns a summary.
+ * @param {{ repoRoot: string, consolidatedFilesDir?: string, modelsDir?: string, consolidatedFileName?: string, writeFile?: boolean, includePayload?: boolean }} options
  */
 export async function condenseModels({
   repoRoot,
-  modelsDir,
+  consolidatedFilesDir: consolidatedFilesDirArg,
+  modelsDir: modelsDirLegacy,
   consolidatedFileName = "consolidated-models.json",
   writeFile: shouldWrite = true,
   includePayload = false
 }) {
+  const consolidatedFilesDir = consolidatedFilesDirArg ?? modelsDirLegacy;
   const consolidated = await buildConsolidatedModels({ repoRoot });
-  const outputPath = join(modelsDir, consolidatedFileName);
+  const outputPath = join(consolidatedFilesDir, consolidatedFileName);
 
   if (shouldWrite) {
-    await mkdir(modelsDir, { recursive: true });
+    await mkdir(consolidatedFilesDir, { recursive: true });
     const jsonText = `${JSON.stringify(consolidated, null, 2)}\n`;
     await writeFile(outputPath, jsonText, "utf8");
     const { writeConsolidatedExport } = await import(
@@ -508,8 +510,13 @@ export async function condenseModels({
   };
 }
 
-export async function readConsolidatedModels({ modelsDir, consolidatedFileName = "consolidated-models.json" }) {
-  const outputPath = join(modelsDir, consolidatedFileName);
+export async function readConsolidatedModels({
+  consolidatedFilesDir,
+  modelsDir,
+  consolidatedFileName = "consolidated-models.json"
+}) {
+  const dir = consolidatedFilesDir ?? modelsDir;
+  const outputPath = join(dir, consolidatedFileName);
   const raw = await readFile(outputPath, "utf8");
   return JSON.parse(raw);
 }

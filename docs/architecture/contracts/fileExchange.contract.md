@@ -37,9 +37,18 @@ Enforced by `AGENTS.md` and `.cursor/rules/file-exchange-inbox.mdc` (`alwaysAppl
 | Script | Purpose |
 |--------|---------|
 | `scripts/import-to-file-exchange.mjs` | Copy bundle → `imports/{stamp}/` |
+| `scripts/clear-file-exchange.mjs` | Remove dated import/export session folders |
 | `scripts/resolve-import-stamp.mjs` | Resolve human or legacy stamp folder |
 | `scripts/ingest-golden-parsed.mjs` | Parsed cache → `evals/golden/` |
 | `scripts/ingest-golden-expected.mjs` | Ground truth → `doc_NNN.expected.json` |
+
+## HTTP maintenance
+
+| Method | Path | Purpose |
+|--------|------|---------|
+| POST | `/api/file-exchange/clear` | Same as `clear-file-exchange` CLI (`confirm` or `dryRun` required) |
+
+Preserves by default: `.gitkeep`, `exports/templates/`, latest `exports/consolidated-*.json`. See [docs/file-exchange/API.md](../../file-exchange/API.md).
 
 ## Related contracts
 
