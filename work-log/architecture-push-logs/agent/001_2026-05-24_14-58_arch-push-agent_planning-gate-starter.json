@@ -1,0 +1,182 @@
+{
+  "meta": {
+    "schemaVersion": "1.0.0",
+    "entryId": "001",
+    "slug": "planning-gate-starter",
+    "generatedAt": "2026-05-24T14:58:35.561Z",
+    "humanReadableUtc": "Sunday, 24 May 2026 at 14:58 UTC",
+    "folderStamp": "2026-05-24_14-58-35Z",
+    "humanLogPath": "work-log/architecture-push-logs/human/001_2026-05-24_14-58_arch-push_planning-gate-starter.md",
+    "audience": "agent",
+    "logKind": "architecture-push",
+    "filledBy": "script"
+  },
+  "summary": "Exported planning gate (plan:finalize, plan:gate, planningPhase contract) into architecture starter templates and boiler-plate/create-modular-monolith template on v2. Target npm 2.2.5; publish blocked on OTP. Product pre-push dev-log 005 planning-starter-export covers same session from product-repo angle.",
+  "architecturePush": {
+    "productRepo": "legal-prmpt-eng",
+    "targetRepo": "https://github.com/Pukujan/create-modular-monolith",
+    "npmPackage": "@pukujan/create-modular-monolith",
+    "npmVersion": "2.2.5",
+    "exportScript": "scripts/export-architecture-starter.mjs",
+    "exportTarget": null,
+    "publishCommand": "cd packages/create-modular-monolith && npm publish --access public"
+  },
+  "git": {
+    "branch": "main",
+    "sha": "1cd9a6e820049a0c09dba9ab5892a10893da57d8",
+    "shortSha": "1cd9a6e",
+    "changedFiles": [
+      {
+        "code": "M ",
+        "path": "GENTS.md"
+      },
+      {
+        "code": " M",
+        "path": "backend/src/shared/utils/formatExchangeTimestamp.js"
+      },
+      {
+        "code": " M",
+        "path": "backend/src/shared/utils/formatExchangeTimestamp.test.js"
+      },
+      {
+        "code": " M",
+        "path": "consolidated-files/consolidated-models.json"
+      },
+      {
+        "code": " M",
+        "path": "docs/architecture/contracts/changelog.jsonl"
+      },
+      {
+        "code": " M",
+        "path": "docs/architecture/contracts/manifest.json"
+      },
+      {
+        "code": " M",
+        "path": "file-exchange/exports/consolidated-models.json"
+      },
+      {
+        "code": " M",
+        "path": "package.json"
+      },
+      {
+        "code": " M",
+        "path": "work-log/INDEX.md"
+      },
+      {
+        "code": " M",
+        "path": "work-log/README.md"
+      },
+      {
+        "code": "??",
+        "path": ".cursor/commands/architecture-push-log.md"
+      },
+      {
+        "code": "??",
+        "path": "backend/src/shared/contracts/architecturePushDevLog.contract.js"
+      },
+      {
+        "code": "??",
+        "path": "docs/architecture/contracts/architecturePushDevLog.contract.md"
+      },
+      {
+        "code": "??",
+        "path": "file-exchange/imports/synthetic_case_001_rule_authority_v002_golden_dataset.json"
+      },
+      {
+        "code": "??",
+        "path": "scripts/lib/arch-push-human-format.mjs"
+      },
+      {
+        "code": "??",
+        "path": "scripts/lib/collect-starter-export-changes.mjs"
+      },
+      {
+        "code": "??",
+        "path": "scripts/verify-architecture-push-log.mjs"
+      },
+      {
+        "code": "??",
+        "path": "scripts/write-architecture-push-log.mjs"
+      },
+      {
+        "code": "??",
+        "path": "work-log/architecture-push-logs/"
+      }
+    ],
+    "diffStatAgainstHead": "AGENTS.md                                          |   6 +-\n .../src/shared/utils/formatExchangeTimestamp.js    |  19 +\n .../shared/utils/formatExchangeTimestamp.test.js   |   8 +\n consolidated-files/consolidated-models.json        | 765 ++++++++++++++++++++-\n docs/architecture/contracts/changelog.jsonl        |   1 +\n docs/architecture/contracts/manifest.json          |  11 +\n file-exchange/exports/consolidated-models.json     | 765 ++++++++++++++++++++-\n package.json                                       |   2 +\n work-log/INDEX.md                                  |   6 +\n work-log/README.md                                 |   6 +-\n 10 files changed, 1576 insertions(+), 13 deletions(-)",
+    "recentCommits": [
+      "1cd9a6e chore(starter): export planning gate to architecture npm template",
+      "f9953c0 feat(planning): require study log before plan gate and finalize",
+      "d9bf1cb docs(work-log): add 008 study log and plan packages for planning audit",
+      "6ea2100 feat(artifacts): v002 checkpoint log, external artifact root resolver",
+      "83cabca fix(case-filing-ai): rule authority v002 runtime stabilization"
+    ]
+  },
+  "exportLint": {
+    "lintContracts": {
+      "ran": false,
+      "exitCode": null,
+      "summary": "skipped"
+    },
+    "lintRepoArtifacts": {
+      "ran": false,
+      "exitCode": null,
+      "summary": "skipped"
+    }
+  },
+  "starterChanges": {
+    "templatesDir": "file-exchange/exports/templates/",
+    "exportScriptPath": "scripts/export-architecture-starter.mjs",
+    "paths": [
+      "backend/src/shared/contracts/architecturePushDevLog.contract.js",
+      "docs/architecture/contracts/architecturePushDevLog.contract.md",
+      "docs/architecture/contracts/manifest.json"
+    ]
+  },
+  "changes": {
+    "added": [
+      ".cursor/commands/architecture-push-log.md",
+      "backend/src/shared/contracts/architecturePushDevLog.contract.js",
+      "docs/architecture/contracts/architecturePushDevLog.contract.md",
+      "file-exchange/imports/synthetic_case_001_rule_authority_v002_golden_dataset.json",
+      "scripts/lib/arch-push-human-format.mjs",
+      "scripts/lib/collect-starter-export-changes.mjs",
+      "scripts/verify-architecture-push-log.mjs",
+      "scripts/write-architecture-push-log.mjs",
+      "work-log/architecture-push-logs/"
+    ],
+    "modified": [
+      "GENTS.md",
+      "backend/src/shared/utils/formatExchangeTimestamp.js",
+      "backend/src/shared/utils/formatExchangeTimestamp.test.js",
+      "consolidated-files/consolidated-models.json",
+      "docs/architecture/contracts/changelog.jsonl",
+      "docs/architecture/contracts/manifest.json",
+      "file-exchange/exports/consolidated-models.json",
+      "package.json",
+      "work-log/INDEX.md",
+      "work-log/README.md"
+    ],
+    "deleted": [],
+      "narrative": [
+      "Added arch-log:push paired logs (this contract) for create-modular-monolith-only pushes",
+      "Starter export: plan-finalize, plan-gate, plan-artifacts, work-log/planning/",
+      "AGENTS.starter.md planning section; manifest.starter planningPhase entry"
+    ]
+  },
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Separate architecture-push logs from product dev-log:pre-push",
+      "rationale": "npm export pushes change templates/contracts only; full API tree and domain tests are noise",
+      "alternativesRejected": [
+        "Reuse dev-log:pre-push with --arch flag only"
+      ]
+    }
+  ],
+  "followUps": [
+    "npm publish @pukujan/create-modular-monolith@2.2.5 with OTP",
+    "Sync https://github.com/Pukujan/create-modular-monolith main from v2 template",
+    "Pin README to @2.2.5 and document arch-log:push in create-modular-monolith maintainer docs"
+  ]
+}

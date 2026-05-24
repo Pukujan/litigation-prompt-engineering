@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   formatExchangeTimestamp,
   formatWorkLogTimestamp,
+  formatHumanReadableUtc,
   normalizeExchangeStamp
 } from "./formatExchangeTimestamp.js";
 
@@ -27,4 +28,11 @@ test("formatWorkLogTimestamp", () => {
   assert.equal(t.date, "2026-05-23");
   assert.equal(t.time, "15-45");
   assert.equal(t.folder, "2026-05-23_15-45-23Z");
+});
+
+test("formatHumanReadableUtc", () => {
+  const label = formatHumanReadableUtc(new Date("2026-05-24T14:53:00.000Z"));
+  assert.match(label, /May 2026/);
+  assert.match(label, /14:53/);
+  assert.match(label, /UTC/);
 });

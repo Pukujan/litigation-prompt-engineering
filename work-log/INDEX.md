@@ -51,3 +51,9 @@
 | 005 | 2026-05-24 | 14-53 | [human](./dev-logs/human/005_2026-05-24_14-53_dev-log_planning-starter-export.md) | [agent](./dev-logs/agent/005_2026-05-24_14-53_dev-log-agent_planning-starter-export.json) |
 
 Architecture narrative: [docs/DEVLOG_V2.md](../docs/DEVLOG_V2.md) · Platform gates: [docs/architecture/EVAL_AND_CI.md](../docs/architecture/EVAL_AND_CI.md).
+
+### Architecture push pairs (npm / create-modular-monolith)
+
+| Entry | Date | Time | Human | Agent audit |
+|-------|------|------|-------|-------------|
+| 001 | 2026-05-24 | 14-58 | [human](./architecture-push-logs/human/001_2026-05-24_14-58_arch-push_planning-gate-starter.md) | [agent](./architecture-push-logs/agent/001_2026-05-24_14-58_arch-push-agent_planning-gate-starter.json) |

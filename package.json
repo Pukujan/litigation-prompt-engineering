@@ -30,6 +30,8 @@
     "condense:all": "node scripts/condense-all.mjs",
     "dev-log:pre-push": "node scripts/write-pre-push-dev-log.mjs",
     "dev-log:verify": "node scripts/verify-dev-log.mjs",
+    "arch-log:push": "node scripts/write-architecture-push-log.mjs",
+    "arch-log:verify": "node scripts/verify-architecture-push-log.mjs",
     "plan:finalize": "node scripts/plan-finalize.mjs",
     "plan:gate": "node scripts/plan-gate.mjs"
   }

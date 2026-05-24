@@ -57,5 +57,16 @@
     "version": "v001",
     "doc": "docs/architecture/contracts/planningPhase.contract.md",
     "file": "backend/src/shared/contracts/planningPhase.contract.js"
+  },
+  "architecturePushDevLog": {
+    "version": "v001",
+    "doc": "docs/architecture/contracts/architecturePushDevLog.contract.md",
+    "file": "backend/src/shared/contracts/architecturePushDevLog.contract.js",
+    "schema": "work-log/architecture-push-logs/schemas/arch-push-agent.v1.schema.json",
+    "generator": "scripts/write-architecture-push-log.mjs",
+    "humanFormat": "scripts/lib/arch-push-human-format.mjs",
+    "verify": "scripts/verify-architecture-push-log.mjs",
+    "workLogReadme": "work-log/architecture-push-logs/README.md",
+    "targetRepo": "https://github.com/Pukujan/create-modular-monolith"
   }
 }

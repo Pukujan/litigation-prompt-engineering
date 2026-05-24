@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://legal-prmpt-eng.local/schemas/arch-push-agent.v1.json",
+  "title": "Architecture push agent audit log",
+  "description": "Machine-readable log for npm/create-modular-monolith export pushes. Pair with human log in work-log/architecture-push-logs/human/.",
+  "type": "object",
+  "required": [
+    "meta",
+    "summary",
+    "architecturePush",
+    "git",
+    "exportLint",
+    "starterChanges",
+    "changes",
+    "decisions",
+    "followUps"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "entryId",
+        "slug",
+        "generatedAt",
+        "humanLogPath",
+        "audience",
+        "logKind"
+      ],
+      "properties": {
+        "schemaVersion": { "const": "1.0.0" },
+        "entryId": { "type": "string", "pattern": "^[0-9]{3}$" },
+        "slug": { "type": "string" },
+        "generatedAt": { "type": "string", "format": "date-time" },
+        "humanReadableUtc": { "type": "string" },
+        "folderStamp": { "type": "string" },
+        "humanLogPath": { "type": "string" },
+        "audience": { "const": "agent" },
+        "logKind": { "const": "architecture-push" },
+        "filledBy": { "type": "string", "enum": ["script", "agent", "human"] }
+      }
+    },
+    "summary": { "type": "string" },
+    "architecturePush": {
+      "type": "object",
+      "required": ["productRepo", "targetRepo", "npmPackage", "exportScript"],
+      "properties": {
+        "productRepo": { "type": "string" },
+        "targetRepo": { "type": "string" },
+        "npmPackage": { "type": "string" },
+        "npmVersion": { "type": ["string", "null"] },
+        "exportScript": { "type": "string" },
+        "exportTarget": { "type": ["string", "null"] },
+        "publishCommand": { "type": "string" }
+      }
+    },
+    "git": {
+      "type": "object",
+      "properties": {
+        "branch": { "type": "string" },
+        "sha": { "type": "string" },
+        "shortSha": { "type": "string" },
+        "changedFiles": { "type": "array" },
+        "diffStatAgainstHead": { "type": "string" },
+        "recentCommits": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "exportLint": {
+      "type": "object",
+      "properties": {
+        "lintContracts": { "type": "object" },
+        "lintRepoArtifacts": { "type": "object" }
+      }
+    },
+    "starterChanges": {
+      "type": "object",
+      "properties": {
+        "templatesDir": { "type": "string" },
+        "exportScriptPath": { "type": "string" },
+        "paths": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "changes": {
+      "type": "object",
+      "properties": {
+        "added": { "type": "array" },
+        "modified": { "type": "array" },
+        "deleted": { "type": "array" },
+        "narrative": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "decisions": { "type": "array" },
+    "followUps": { "type": "array", "items": { "type": "string" } }
+  }
+}

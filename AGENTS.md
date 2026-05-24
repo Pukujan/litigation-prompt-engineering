@@ -55,10 +55,14 @@ Repo-wide rules for AI agents working in **legal-prmpt-eng**. Module-specific ru
 - **PII** — synthetic fixtures only in committed docs/logs; no real party names in git.
 - **Planning logs** — use `/planning-study-log` for planning-only sessions (see `.cursor/commands/planning-study-log.md`).
 - **Work log** — handoffs and dev-logs under `work-log/` per [work-log/README.md](work-log/README.md).
-- **Pre-push dev log** — before every push, run `npm run dev-log:pre-push -- --slug <topic>` and fill both:
+- **Pre-push dev log** — before every **product** push, run `npm run dev-log:pre-push -- --slug <topic>` and fill both:
   - `work-log/dev-logs/human/*_dev-log_*.md` (narrative)
   - `work-log/dev-logs/agent/*_dev-log-agent_*.json` (audit for agents — read this first when resuming)
   See `.cursor/commands/pre-push-dev-log.md`.
+- **Architecture push log** — before syncing to [create-modular-monolith](https://github.com/Pukujan/create-modular-monolith) / npm, run `npm run arch-log:push -- --slug <topic> [--npm-version x.y.z]` after `export:architecture-starter`:
+  - `work-log/architecture-push-logs/human/*_arch-push_*.md` (dated + long-form UTC header)
+  - `work-log/architecture-push-logs/agent/*_arch-push-agent_*.json`
+  See `.cursor/commands/architecture-push-log.md`.
 
 ## Case Filing AI quick reference
 

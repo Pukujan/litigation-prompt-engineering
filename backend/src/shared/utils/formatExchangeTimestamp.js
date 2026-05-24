@@ -45,3 +45,22 @@ export function formatWorkLogTimestamp(date = new Date()) {
     folder: formatExchangeTimestamp(d)
   };
 }
+
+/**
+ * Long-form UTC label for log headers (e.g. "Sunday, 24 May 2026, 14:53 UTC").
+ * @param {Date} [date]
+ * @returns {string}
+ */
+export function formatHumanReadableUtc(date = new Date()) {
+  const d = date instanceof Date ? date : new Date(date);
+  return new Intl.DateTimeFormat("en-GB", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "UTC",
+    timeZoneName: "short"
+  }).format(d);
+}
