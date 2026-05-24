@@ -1,0 +1,10 @@
+{
+  "artifactRoot": "/Users/you/litigation-artifacts",
+  "layout": {
+    "batches": "batches",
+    "fileExchange": "file-exchange",
+    "evalBundles": "eval-bundles",
+    "caseExports": "case-exports",
+    "docExports": "doc-exports"
+  }
+}

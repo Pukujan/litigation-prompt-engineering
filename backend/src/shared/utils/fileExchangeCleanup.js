@@ -1,5 +1,6 @@
 import { readdir, rm, stat } from "fs/promises";
 import { join } from "path";
+import { resolveArtifactPaths } from "../config/resolveArtifactPaths.js";
 import { AppError } from "../http/errors.js";
 
 export const FILE_EXCHANGE_DIR = "file-exchange";
@@ -119,7 +120,8 @@ export async function clearFileExchange({
     );
   }
 
-  const exchangeRoot = join(repoRoot, FILE_EXCHANGE_DIR);
+  const { fileExchange } = resolveArtifactPaths(repoRoot);
+  const exchangeRoot = fileExchange;
   try {
     const st = await stat(exchangeRoot);
     if (!st.isDirectory()) {

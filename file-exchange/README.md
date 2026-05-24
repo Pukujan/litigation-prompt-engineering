@@ -2,7 +2,11 @@
 
 Dated folders for human ↔ agent file handoff. **No sensitive filing text in git** — use synthetic fixtures only.
 
-## Layout
+## External artifact root
+
+Optional: copy [`local-artifacts.example.json`](../local-artifacts.example.json) → `local-artifacts.json` (gitignored) and set `artifactRoot` to move `file-exchange/` (and batches, eval bundles, etc.) outside the repo. Resolved paths come from `backend/src/shared/config/resolveArtifactPaths.js`. `npm run import:file-exchange` prints the **absolute** import destination.
+
+## Layout (in-repo default)
 
 ```text
 file-exchange/

@@ -12,7 +12,7 @@ Repo-wide rules for AI agents working in **legal-prmpt-eng**. Module-specific ru
    ```bash
    npm run import:file-exchange -- "/absolute/or/relative/path/to/bundle"
    ```
-   This creates `file-exchange/imports/{stamp}/` with a human-readable UTC stamp like `2026-05-23_15-59-43Z` (see `formatExchangeTimestamp` in `backend/src/shared/utils/formatExchangeTimestamp.js`).
+   This creates `{importsRoot}/{stamp}/` with a human-readable UTC stamp like `2026-05-23_15-59-43Z`. **Imports root** is resolved by `resolveArtifactPaths()` (`local-artifacts.json` or in-repo `file-exchange/imports/`). The script prints the **absolute path** — record that stamp and path in your reply.
 
 2. **Ingest golden** (when applicable) — only from that stamp:
    ```bash

@@ -1,25 +1,25 @@
 import { join } from "path";
 import { fileURLToPath } from "url";
+import { resolveArtifactPaths } from "../../../shared/config/resolveArtifactPaths.js";
 import { resolveCaseFilingProfile } from "../utils/resolveCaseFilingProfile.js";
 
 const repoRoot = join(fileURLToPath(new URL(".", import.meta.url)), "../../../../..");
 
 export function getModuleConfig() {
   const profile = resolveCaseFilingProfile({ repoRoot, env: process.env });
+  const artifacts = resolveArtifactPaths(repoRoot);
 
   return {
     name: "case-filing-ai",
     label: "Case Filing AI",
-    batchRootDir:
-      process.env.CASE_FILING_BATCH_DIR || join(repoRoot, "data/case-filing-ai/batches"),
+    batchRootDir: artifacts.batches,
     goldenDatasetDir: profile.goldenDatasetDir,
     goldenCaseId: profile.goldenCaseId,
     ruleFixturesCaseId: profile.ruleFixturesCaseId,
     ruleSetVersion: profile.ruleSetVersion,
-    evalBundleRootDir:
-      process.env.EVAL_BUNDLE_ROOT_DIR || join(repoRoot, "eval-bundles"),
-    caseExportRootDir:
-      process.env.CASE_EXPORT_ROOT_DIR || join(repoRoot, "case-exports"),
+    evalBundleRootDir: artifacts.evalBundles,
+    caseExportRootDir: artifacts.caseExports,
+    artifactPaths: artifacts,
     repoRoot,
     maxUploadBytes: Number(process.env.CASE_FILING_MAX_UPLOAD_MB || 25) * 1024 * 1024,
     openRouter: {

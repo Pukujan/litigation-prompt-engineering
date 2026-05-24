@@ -8,6 +8,7 @@ import {
   writeConsolidatedExport,
   getConsolidatedExportStamp
 } from "../backend/src/shared/utils/consolidatedExport.js";
+import { resolveArtifactPaths } from "../backend/src/shared/config/resolveArtifactPaths.js";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -48,8 +49,9 @@ export async function writeConsolidatedArtifact(kind, doc) {
     condensedBy
   });
 
-  const mirrorAbs = join(repoRoot, spec.mirrorPath);
-  await mkdir(join(repoRoot, CONSOLIDATED_FILES_DIR), { recursive: true });
+  const { consolidatedFiles, fileExchangeExports } = resolveArtifactPaths(repoRoot);
+  const mirrorAbs = join(consolidatedFiles, spec.filename);
+  await mkdir(consolidatedFiles, { recursive: true });
   await writeFile(mirrorAbs, json);
 
   return {
@@ -58,6 +60,6 @@ export async function writeConsolidatedArtifact(kind, doc) {
     stamp: written.stamp,
     folderName: written.folderName,
     mirrorPath: spec.mirrorPath,
-    latestExportPath: `${CONSOLIDATED_EXPORT_DIR}/${spec.filename}`
+    latestExportPath: `${fileExchangeExports}/${spec.filename}`
   };
 }

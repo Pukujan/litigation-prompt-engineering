@@ -7,6 +7,7 @@ import { cp, mkdir, access } from "fs/promises";
 import { join, basename, dirname } from "path";
 import { fileURLToPath } from "url";
 import { formatExchangeTimestamp } from "../backend/src/shared/utils/formatExchangeTimestamp.js";
+import { resolveArtifactPaths } from "../backend/src/shared/config/resolveArtifactPaths.js";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -18,7 +19,8 @@ async function main() {
   }
 
   const stamp = process.argv[3] || formatExchangeTimestamp();
-  const dest = join(repoRoot, "file-exchange/imports", stamp);
+  const { fileExchangeImports } = resolveArtifactPaths(repoRoot);
+  const dest = join(fileExchangeImports, stamp);
   const absSource = join(process.cwd(), source);
 
   try {
@@ -33,8 +35,8 @@ async function main() {
   const target = join(dest, folderName);
   await cp(absSource, target, { recursive: true });
 
-  console.log(`Imported → file-exchange/imports/${stamp}/${folderName}`);
-  console.log(`Use this stamp for ingest scripts or pass paths under imports/${stamp}/`);
+  console.log(`Imported → ${dest}/${folderName}`);
+  console.log(`Stamp: ${stamp} — use for ingest scripts or paths under this import folder.`);
 }
 
 main().catch((err) => {

@@ -2,7 +2,26 @@
 
 Canonical paths for runtime data, golden fixtures, and human↔agent exchange.
 
-## Roots
+## External artifact root (optional)
+
+Copy `local-artifacts.example.json` → `local-artifacts.json` (gitignored) and set `artifactRoot` to a folder **outside** the repo for heavy runtime data.
+
+**Resolver:** `backend/src/shared/config/resolveArtifactPaths.js`  
+**Precedence:** per-path `ENV` > `local-artifacts.json` > in-repo defaults below.
+
+| Layout key | Default under `artifactRoot` | Env override |
+|------------|------------------------------|--------------|
+| `batches` | `{root}/batches` | `CASE_FILING_BATCH_DIR` |
+| `fileExchange` | `{root}/file-exchange` | `FILE_EXCHANGE_ROOT` |
+| `evalBundles` | `{root}/eval-bundles` | `EVAL_BUNDLE_ROOT_DIR` |
+| `caseExports` | `{root}/case-exports` | `CASE_EXPORT_ROOT_DIR` |
+| `docExports` | `{root}/doc-exports` | — |
+
+**Stays in-repo:** `evals/golden/`, `data/court-rules/fixtures/`, `work-log/dev-logs/`, authored `docs/`, application code.
+
+In-repo `file-exchange/imports/` and `exports/` may remain as `.gitkeep` stubs when using an external root; agents should print **resolved absolute paths** from the import script output.
+
+## Roots (in-repo defaults)
 
 | Root | Env override | Writable at runtime |
 |------|----------------|---------------------|

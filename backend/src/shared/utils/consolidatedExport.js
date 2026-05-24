@@ -1,8 +1,9 @@
 import { mkdir, readFile, writeFile } from "fs/promises";
-import { join } from "path";
+import { join, relative } from "path";
+import { resolveArtifactPaths } from "../config/resolveArtifactPaths.js";
 import { formatExchangeTimestamp, normalizeExchangeStamp } from "./formatExchangeTimestamp.js";
 
-/** Session exports and consolidated snapshots root. */
+/** Session exports subpath label (under file-exchange). */
 export const CONSOLIDATED_EXPORT_DIR = "file-exchange/exports";
 
 /** Latest mirror for all consolidated-*.json (prompts, models inventory, file tree). */
@@ -73,7 +74,16 @@ export function beginConsolidatedExportSession(options = {}) {
  * @returns {string} absolute path to dated export folder
  */
 export function resolveConsolidatedExportDir(repoRoot, stamp, label = CONSOLIDATED_FOLDER_LABEL) {
-  return join(repoRoot, CONSOLIDATED_EXPORT_DIR, consolidatedExportFolderName(stamp, label));
+  const { fileExchangeExports } = resolveArtifactPaths(repoRoot);
+  return join(fileExchangeExports, consolidatedExportFolderName(stamp, label));
+}
+
+function relExportPath(repoRoot, absolutePath) {
+  try {
+    return relative(repoRoot, absolutePath).split("\\").join("/");
+  } catch {
+    return absolutePath;
+  }
 }
 
 /**
@@ -85,11 +95,13 @@ export function resolveConsolidatedExportDir(repoRoot, stamp, label = CONSOLIDAT
  * @returns {Promise<{ absolutePath: string, exportPath: string, datedExportDir: string, stamp: string, folderName: string }>}
  */
 export async function writeConsolidatedExport(repoRoot, filename, jsonText, options = {}) {
+  const paths = resolveArtifactPaths(repoRoot);
   const stamp = options.stamp ?? getConsolidatedExportStamp({ create: true });
   const label = options.label ?? CONSOLIDATED_FOLDER_LABEL;
   const folderName = consolidatedExportFolderName(stamp, label);
-  const datedDir = join(repoRoot, CONSOLIDATED_EXPORT_DIR, folderName);
-  const exportsRoot = join(repoRoot, CONSOLIDATED_EXPORT_DIR);
+  const datedDir = join(paths.fileExchangeExports, folderName);
+  const exportsRoot = paths.fileExchangeExports;
+  const consolidatedMirror = paths.consolidatedFiles;
 
   await mkdir(datedDir, { recursive: true });
   await mkdir(exportsRoot, { recursive: true });
@@ -99,6 +111,8 @@ export async function writeConsolidatedExport(repoRoot, filename, jsonText, opti
 
   if (options.writeLatest !== false) {
     await writeFile(join(exportsRoot, filename), jsonText, "utf8");
+    await mkdir(consolidatedMirror, { recursive: true });
+    await writeFile(join(consolidatedMirror, filename), jsonText, "utf8");
   }
 
   if (options.condensedBy) {
@@ -111,8 +125,8 @@ export async function writeConsolidatedExport(repoRoot, filename, jsonText, opti
 
   return {
     absolutePath,
-    exportPath: `${CONSOLIDATED_EXPORT_DIR}/${folderName}/${filename}`,
-    datedExportDir: `${CONSOLIDATED_EXPORT_DIR}/${folderName}`,
+    exportPath: relExportPath(repoRoot, join(datedDir, filename)),
+    datedExportDir: relExportPath(repoRoot, datedDir),
     stamp,
     folderName
   };
@@ -126,12 +140,8 @@ export async function writeConsolidatedExport(repoRoot, filename, jsonText, opti
 export async function appendConsolidatedManifest(repoRoot, stamp, entry) {
   const label = entry.label ?? CONSOLIDATED_FOLDER_LABEL;
   const folderName = consolidatedExportFolderName(stamp, label);
-  const manifestPath = join(
-    repoRoot,
-    CONSOLIDATED_EXPORT_DIR,
-    folderName,
-    CONSOLIDATED_MANIFEST_FILENAME
-  );
+  const { fileExchangeExports } = resolveArtifactPaths(repoRoot);
+  const manifestPath = join(fileExchangeExports, folderName, CONSOLIDATED_MANIFEST_FILENAME);
   const now = new Date().toISOString();
 
   let manifest = {
@@ -166,7 +176,7 @@ export async function appendConsolidatedManifest(repoRoot, stamp, entry) {
     manifest.artifacts.push(row);
   }
 
-  await mkdir(join(repoRoot, CONSOLIDATED_EXPORT_DIR, folderName), { recursive: true });
+  await mkdir(join(fileExchangeExports, folderName), { recursive: true });
   await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
   return manifestPath;
 }

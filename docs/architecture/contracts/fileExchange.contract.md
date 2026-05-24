@@ -6,12 +6,16 @@
 
 ## Layout
 
+Paths resolve via `resolveArtifactPaths(repoRoot)` (`local-artifacts.json` optional). In-repo defaults:
+
 ```text
 file-exchange/
   imports/{stamp}/     ← inbound bundles (mandatory before processing)
   exports/{stamp}/     ← session deliverables (batch runs, curl logs)
   exports/consolidated-*.json   ← see consolidatedExports contract
 ```
+
+When `artifactRoot` is set in `local-artifacts.json`, the entire `file-exchange/` tree may live under `{artifactRoot}/file-exchange/`.
 
 ## Stamp format (human-readable UTC)
 

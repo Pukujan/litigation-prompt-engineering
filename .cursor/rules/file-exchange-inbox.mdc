@@ -9,9 +9,9 @@ alwaysApply: true
 
 ## Before any processing
 
-1. Run **`npm run import:file-exchange -- "<source-path>"`** unless files are already under `file-exchange/imports/{UTC-stamp}/`.
+1. Run **`npm run import:file-exchange -- "<source-path>"`** unless files are already under the resolved imports root (`resolveArtifactPaths` → `local-artifacts.json` or in-repo `file-exchange/imports/`).
 2. Use **`formatExchangeTimestamp()`** from `backend/src/shared/utils/formatExchangeTimestamp.js` for the folder name — never ad-hoc slug folders.
-3. Record the stamp in your reply (e.g. `imports/2026-05-23_15-59-43Z/`) so exports can use a matching `exports/{stamp}/`.
+3. Record the stamp **and absolute import path** printed by the script (e.g. `imports/2026-05-23_15-59-43Z/`) so exports can use a matching `exports/{stamp}/`.
 
 ## Then
 

@@ -12,6 +12,7 @@ file-exchange/exports/*/
 !file-exchange/exports/templates/**
 file-exchange/exports/consolidated-*.json
 consolidated-files/
+local-artifacts.json
 .env
 .env.local
 backend/.env
