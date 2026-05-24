@@ -9,11 +9,9 @@ file-exchange/
   imports/{2026-05-23_15-59-43Z}/                    ← inbound bundles
   exports/{2026-05-23_15-59-43Z_live-batch-run}/      ← session deliverables
   exports/{2026-05-23_15-59-43Z}_consolidated/        ← repo snapshots (audit trail)
-    consolidated-models.json
-    consolidated-prompts.json
-    consolidated-file-structure.json
-    manifest.json
-  exports/consolidated-*.json                        ← latest copies (regenerate with condense:all)
+  exports/consolidated-*.json                        ← latest copies (condense:all)
+  exports/templates/                                 ← npm export starter sources (maintainer)
+  exports/architecture-starter/                      ← generated export output (gitignored)
 ```
 
 **Stamp format:** `YYYY-MM-DD_HH-MM-SSZ` via `formatExchangeTimestamp()` in `backend/src/shared/utils/formatExchangeTimestamp.js`.
