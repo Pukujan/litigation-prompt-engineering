@@ -270,6 +270,17 @@ function patchStarterScripts(target) {
     fx = fx.replace("case-filing APIs", "your module APIs");
     writeFileSync(fxReadme, fx);
   }
+
+  const condenserRoutesTest = join(
+    target,
+    "backend/src/modules/model-condenser/tests/integration/modelCondenser.routes.test.js"
+  );
+  if (existsSync(condenserRoutesTest)) {
+    let routesTest = readFileSync(condenserRoutesTest, "utf8");
+    routesTest = routesTest.replace("body.modelCount >= 16", "body.modelCount >= 1");
+    writeFileSync(condenserRoutesTest, routesTest);
+  }
+
   console.log("  ✓ starter patches (prompts, model-condenser, repo-tree, api-inventory)");
 }
 
@@ -343,6 +354,13 @@ Start at [docs/architecture/CONTRACTS_OVERVIEW.md](docs/architecture/CONTRACTS_O
 
 `;
   writeFileSync(join(target, "ARCHITECTURE_EXPORT_README.md"), md);
+}
+
+function patchContractsManifest(target) {
+  const starterManifest = join(templatesRoot, "manifest.starter.json");
+  const dest = join(target, "docs/architecture/contracts/manifest.json");
+  cpSync(starterManifest, dest);
+  console.log("  ✓ docs/architecture/contracts/manifest.json (platform-only)");
 }
 
 function patchLintRepoArtifacts(target) {
@@ -426,6 +444,7 @@ function main() {
   console.log("\nRoot:");
   writeStarterRootFiles(target);
   patchStarterScripts(target);
+  patchContractsManifest(target);
   patchLintRepoArtifacts(target);
   writeManifest(target);
   writeExportReadme(target);
