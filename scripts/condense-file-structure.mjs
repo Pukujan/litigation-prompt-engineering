@@ -37,13 +37,13 @@ async function main() {
     treeText
   };
 
-  const { exportPath, datedExportDir, modelsPath } = await writeConsolidatedArtifact(
+  const { exportPath, datedExportDir, mirrorPath } = await writeConsolidatedArtifact(
     "fileStructure",
     doc
   );
   const lineCount = treeText.split("\n").length;
   console.log(
-    `Consolidated tree (${lineCount} lines, ${stats.fileCount} files) → ${exportPath} (${datedExportDir}/, mirror ${modelsPath})`
+    `Consolidated tree (${lineCount} lines, ${stats.fileCount} files) → ${exportPath} (${datedExportDir}/, mirror ${mirrorPath})`
   );
 }
 

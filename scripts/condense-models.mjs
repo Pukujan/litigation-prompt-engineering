@@ -41,7 +41,7 @@ async function condenseLocal() {
   const config = getModuleConfig();
   return condenseModels({
     repoRoot: config.repoRoot,
-    modelsDir: config.modelsDir,
+    consolidatedFilesDir: config.consolidatedFilesDir,
     consolidatedFileName: config.consolidatedFileName,
     includePayload
   });
@@ -49,9 +49,13 @@ async function condenseLocal() {
 
 try {
   const result = useLocal ? await condenseLocal() : await condenseViaApi();
-  const { CONSOLIDATED_EXPORT_DIR, CONSOLIDATED_FILENAMES, writeConsolidatedExport } =
-    await import("../backend/src/shared/utils/consolidatedExport.js");
-  const modelsPath = join(repoRoot, "models", CONSOLIDATED_FILENAMES.models);
+  const {
+    CONSOLIDATED_EXPORT_DIR,
+    CONSOLIDATED_FILES_DIR,
+    CONSOLIDATED_FILENAMES,
+    writeConsolidatedExport
+  } = await import("../backend/src/shared/utils/consolidatedExport.js");
+  const modelsPath = join(repoRoot, CONSOLIDATED_FILES_DIR, CONSOLIDATED_FILENAMES.models);
   const json = await readFile(modelsPath, "utf8");
   const written = await writeConsolidatedExport(repoRoot, CONSOLIDATED_FILENAMES.models, json, {
     condensedBy: "model-condenser"
@@ -60,7 +64,7 @@ try {
   console.log(`Model condenser: ${result.modelCount} models`);
   console.log(`  → ${written.exportPath} (audit)`);
   console.log(`  → ${CONSOLIDATED_EXPORT_DIR}/${CONSOLIDATED_FILENAMES.models} (latest)`);
-  console.log(`  → models/${CONSOLIDATED_FILENAMES.models} (API mirror)`);
+  console.log(`  → consolidated-files/${CONSOLIDATED_FILENAMES.models} (mirror)`);
   console.log(`Generated at: ${result.generatedAt}`);
 } catch (error) {
   if (!useLocal) {

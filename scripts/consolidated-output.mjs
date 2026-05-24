@@ -3,6 +3,7 @@ import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import {
   CONSOLIDATED_EXPORT_DIR,
+  CONSOLIDATED_FILES_DIR,
   CONSOLIDATED_FILENAMES,
   writeConsolidatedExport,
   getConsolidatedExportStamp
@@ -12,29 +13,30 @@ const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
 
 export {
   CONSOLIDATED_EXPORT_DIR,
+  CONSOLIDATED_FILES_DIR,
   CONSOLIDATED_FILENAMES,
   getConsolidatedExportStamp,
   beginConsolidatedExportSession
 } from "../backend/src/shared/utils/consolidatedExport.js";
 
-/** Repo-relative paths: dated exports/ folder is primary audit trail; models/ is latest mirror. */
+/** Repo-relative paths: dated exports/ folder is primary audit trail; consolidated-files/ is latest mirror. */
 export const CONSOLIDATED_ARTIFACTS = {
   models: {
     filename: CONSOLIDATED_FILENAMES.models,
-    modelsPath: `models/${CONSOLIDATED_FILENAMES.models}`
+    mirrorPath: `${CONSOLIDATED_FILES_DIR}/${CONSOLIDATED_FILENAMES.models}`
   },
   prompts: {
     filename: CONSOLIDATED_FILENAMES.prompts,
-    modelsPath: `models/${CONSOLIDATED_FILENAMES.prompts}`
+    mirrorPath: `${CONSOLIDATED_FILES_DIR}/${CONSOLIDATED_FILENAMES.prompts}`
   },
   fileStructure: {
     filename: CONSOLIDATED_FILENAMES.fileStructure,
-    modelsPath: `models/${CONSOLIDATED_FILENAMES.fileStructure}`
+    mirrorPath: `${CONSOLIDATED_FILES_DIR}/${CONSOLIDATED_FILENAMES.fileStructure}`
   }
 };
 
 /**
- * Write JSON to dated file-exchange/exports/{stamp}_consolidated/ and models/ mirror.
+ * Write JSON to dated file-exchange/exports/{stamp}_consolidated/ and consolidated-files/ mirror.
  * @param {"models"|"prompts"|"fileStructure"} kind
  * @param {object} doc
  */
@@ -46,16 +48,16 @@ export async function writeConsolidatedArtifact(kind, doc) {
     condensedBy
   });
 
-  const modelsAbs = join(repoRoot, spec.modelsPath);
-  await mkdir(dirname(modelsAbs), { recursive: true });
-  await writeFile(modelsAbs, json);
+  const mirrorAbs = join(repoRoot, spec.mirrorPath);
+  await mkdir(join(repoRoot, CONSOLIDATED_FILES_DIR), { recursive: true });
+  await writeFile(mirrorAbs, json);
 
   return {
     exportPath: written.exportPath,
     datedExportDir: written.datedExportDir,
     stamp: written.stamp,
     folderName: written.folderName,
-    modelsPath: spec.modelsPath,
+    mirrorPath: spec.mirrorPath,
     latestExportPath: `${CONSOLIDATED_EXPORT_DIR}/${spec.filename}`
   };
 }

@@ -10,7 +10,7 @@ export function createModelCondenserFacade({ config }) {
   async function condense({ includePayload = false } = {}) {
     return condenseModels({
       repoRoot: config.repoRoot,
-      modelsDir: config.modelsDir,
+      consolidatedFilesDir: config.consolidatedFilesDir,
       consolidatedFileName: config.consolidatedFileName,
       includePayload
     });
@@ -18,13 +18,13 @@ export function createModelCondenserFacade({ config }) {
 
   async function readConsolidated() {
     return readConsolidatedModels({
-      modelsDir: config.modelsDir,
+      consolidatedFilesDir: config.consolidatedFilesDir,
       consolidatedFileName: config.consolidatedFileName
     });
   }
 
   async function getStatus() {
-    const outputPath = join(config.modelsDir, config.consolidatedFileName);
+    const outputPath = join(config.consolidatedFilesDir, config.consolidatedFileName);
     let exists = false;
     let generatedAt = null;
     let modelCount = null;
@@ -43,7 +43,7 @@ export function createModelCondenserFacade({ config }) {
       status: exists ? "ready" : "missing",
       exists,
       outputPath,
-      outputRelativePath: `models/${config.consolidatedFileName}`,
+      outputRelativePath: `consolidated-files/${config.consolidatedFileName}`,
       generatedAt,
       modelCount
     };
