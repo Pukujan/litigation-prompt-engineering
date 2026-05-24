@@ -8,8 +8,9 @@
 Audit trail **before** implementation:
 
 1. **Study log** — `work-log/study-docs/{NNN}_*_study-log_{slug}.md` (You raw + Cursor summary per turn; see `.cursor/commands/planning-study-log.md`)
-2. **Plan package** — `work-log/study-docs/{NNN}_*_plan_{slug}*.md` (+ optional `*_design_*.md`)
-3. **Manifest** — `work-log/planning/{planId}.json` via `npm run plan:finalize`
+2. **Design** (optional) — `work-log/study-docs/{NNN}_*_design_{slug}.md`
+3. **Plan package** — `work-log/study-docs/{NNN}_*_plan_{slug}*.md`
+4. **Manifest** — `work-log/planning/{planId}.json` via `npm run plan:finalize` (links all three paths)
 
 ## Gate
 

@@ -1,11 +1,7 @@
 import { readFile, readdir, writeFile, access, mkdir } from "fs/promises";
 import { join } from "path";
 import { AppError } from "../../../shared/http/errors.js";
-import {
-  PLANNING_DIR,
-  PLANNING_STATUSES,
-  requiredStudyDocPatterns
-} from "../../../shared/contracts/planningPhase.contract.js";
+import { PLANNING_DIR, PLANNING_STATUSES } from "../../../shared/contracts/planningPhase.contract.js";
 
 export function createPlanningService({ repoRoot }) {
   const studyDocsDir = join(repoRoot, "work-log/study-docs");
@@ -38,23 +34,26 @@ export function createPlanningService({ repoRoot }) {
 
   async function findStudyDocs(slug) {
     const entries = await readdir(studyDocsDir);
+    const studyLog = entries.find(
+      (f) => f.includes(slug) && f.includes("_study-log_") && f.endsWith(".md")
+    );
     const design = entries.find(
       (f) => f.includes(slug) && f.includes("_design_") && f.endsWith(".md")
     );
     const planPkg = entries.find(
       (f) => f.includes(slug) && f.includes("_plan_") && f.endsWith(".md")
     );
-    return { design, planPkg };
+    return { studyLog, design, planPkg };
   }
 
   async function finalizePlan({ planId, slug, status = "approved" }) {
     if (!PLANNING_STATUSES.includes(status)) {
       throw new AppError(`Invalid status: ${status}`, 400);
     }
-    const { design, planPkg } = await findStudyDocs(slug);
-    const missing = requiredStudyDocPatterns(slug).filter(
-      (key) => (key === "design" && !design) || (key === "plan" && !planPkg)
-    );
+    const { studyLog, design, planPkg } = await findStudyDocs(slug);
+    const missing = [];
+    if (!studyLog) missing.push("studyLog");
+    if (!planPkg) missing.push("plan");
     if (missing.length) {
       throw new AppError(
         `Missing planning artifacts for slug ${slug}: ${missing.join(", ")}`,
@@ -69,8 +68,9 @@ export function createPlanningService({ repoRoot }) {
       status,
       finalizedAt: new Date().toISOString(),
       artifacts: {
-        designMd: join("work-log/study-docs", design),
-        planPackageMd: join("work-log/study-docs", planPkg)
+        studyLogMd: join("work-log/study-docs", studyLog),
+        planPackageMd: join("work-log/study-docs", planPkg),
+        ...(design ? { designMd: join("work-log/study-docs", design) } : {})
       }
     };
     await writeFile(join(planningDir, `${planId}.json`), JSON.stringify(manifest, null, 2));
@@ -79,28 +79,33 @@ export function createPlanningService({ repoRoot }) {
 
   async function buildDownloadMarkdown(planId) {
     const manifest = await readManifest(planId);
-    const design = await readFile(join(repoRoot, manifest.artifacts.designMd), "utf8");
     const planPkg = await readFile(join(repoRoot, manifest.artifacts.planPackageMd), "utf8");
-    return `# Planning package: ${planId}
-
-| Field | Value |
-|-------|--------|
-| **Status** | ${manifest.status} |
-| **Slug** | ${manifest.slug} |
-| **Finalized** | ${manifest.finalizedAt} |
-
----
-
-## Design
-
-${design}
-
----
-
-## Plan package
-
-${planPkg}
-`;
+    let studyLog = "";
+    if (manifest.artifacts.studyLogMd) {
+      studyLog = await readFile(join(repoRoot, manifest.artifacts.studyLogMd), "utf8");
+    }
+    let design = "";
+    if (manifest.artifacts.designMd) {
+      design = await readFile(join(repoRoot, manifest.artifacts.designMd), "utf8");
+    }
+    const sections = [
+      `# Planning package: ${planId}`,
+      "",
+      "| Field | Value |",
+      "|-------|--------|",
+      `| **Status** | ${manifest.status} |`,
+      `| **Slug** | ${manifest.slug} |`,
+      `| **Finalized** | ${manifest.finalizedAt} |`,
+      ""
+    ];
+    if (studyLog) {
+      sections.push("---", "", "## Study log", "", studyLog, "");
+    }
+    if (design) {
+      sections.push("---", "", "## Design", "", design, "");
+    }
+    sections.push("---", "", "## Plan package", "", planPkg);
+    return sections.join("\n");
   }
 
   return {

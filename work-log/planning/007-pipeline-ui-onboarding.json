@@ -1,0 +1,14 @@
+{
+  "planId": "007-pipeline-ui-onboarding",
+  "slug": "pipeline-ui-onboarding",
+  "status": "approved",
+  "finalizedAt": "2026-05-24T14:00:00.000Z",
+  "note": "Retroactive finalize — study log added after implementation to close planningPhase audit gap",
+  "artifacts": {
+    "studyLogMd": "work-log/study-docs/007_2026-05-24_study-log_pipeline-ui-onboarding.md",
+    "designMd": "work-log/study-docs/007_2026-05-24_design_pipeline-ui-onboarding.md",
+    "planPackageMd": "work-log/study-docs/007_2026-05-24_plan_pipeline-ui-onboarding-package.md"
+  },
+  "cursorPlan": ".cursor/plans/batch_download_package_f78d23d3.plan.md",
+  "transcriptHint": "agent-transcripts/a3886672-3e7b-49be-b5b6-831ae7077aa9.jsonl"
+}

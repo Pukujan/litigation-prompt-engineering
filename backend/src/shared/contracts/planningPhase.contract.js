@@ -4,10 +4,7 @@ export const PLANNING_DIR = "work-log/planning";
 export const PLANNING_STATUSES = ["draft", "approved", "executing", "done"];
 
 export function requiredStudyDocPatterns(slug) {
-  const keys = [];
-  keys.push("design");
-  keys.push("plan");
-  return keys;
+  return ["studyLog", "design", "plan"];
 }
 
 export function planningManifestFilename(planId) {

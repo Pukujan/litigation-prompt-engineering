@@ -5,9 +5,12 @@
 | **Plan slug** | `pipeline-ui-onboarding` |
 | **Status** | `implemented` (branch `plan/007-pipeline-ui-onboarding`) |
 | **Created (UTC)** | 2026-05-24 |
+| **Study log** | [007_2026-05-24_study-log_pipeline-ui-onboarding.md](./007_2026-05-24_study-log_pipeline-ui-onboarding.md) (You raw + Cursor summary) |
 | **Related design doc** | [007_2026-05-24_design_pipeline-ui-onboarding.md](./007_2026-05-24_design_pipeline-ui-onboarding.md) |
+| **Planning manifest** | [../planning/007-pipeline-ui-onboarding.json](../planning/007-pipeline-ui-onboarding.json) |
 | **Cursor plan** | `batch_download_package` (`.cursor/plans/`) |
 | **Work log index** | [../INDEX.md](../INDEX.md) |
+| **Audit note** | Study log + manifest added retroactively after implementation (2026-05-24) |
 
 ---
 

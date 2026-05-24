@@ -19,7 +19,7 @@ work-log/
 |--------|----------|
 | **handoffs/** | Implementation specs, second/third handoffs, starter pack snapshots |
 | **study-docs/** | **Plan + conversation** — study logs (`You` verbatim + `Cursor` summary) and plan packages; write **before** implementation ([planning-study-log](../.cursor/commands/planning-study-log.md)) |
-| **planning/** | `npm run plan:finalize` manifests linking design + plan MD ([planningPhase contract](../docs/architecture/contracts/planningPhase.contract.md)) |
+| **planning/** | `npm run plan:finalize` manifests linking study log + design + plan MD ([planningPhase contract](../docs/architecture/contracts/planningPhase.contract.md)) |
 | **checkpoints/** | Post-run evidence (batch evals, pass/fail tables) — supplements study log, does not replace it |
 | **dev-logs/** | What shipped — **paired human MD + agent JSON** before each push |
 

@@ -4,7 +4,7 @@
   "status": "approved",
   "finalizedAt": "2026-05-24T14:36:26.400Z",
   "artifacts": {
-    "designMd": "work-log/study-docs (files matching *_design_repo-roadmap-v002-and-artifacts.md)",
-    "planPackageMd": "work-log/study-docs (files matching *_plan_repo-roadmap-v002-and-artifacts*.md)"
+    "studyLogMd": "work-log/study-docs/008_2026-05-24_study-log_external-artifact-and-v002-checkpoint.md",
+    "planPackageMd": "work-log/study-docs/008_2026-05-24_plan_repo-roadmap-v002-and-artifacts-package.md"
   }
 }

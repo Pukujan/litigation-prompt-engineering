@@ -13,11 +13,15 @@
 | 005 | 2026-05-23 | 11:14 | handoff v2 | [handoffs/005_2026-05-23_11-14_handoff-v2_planned-review-in-cursor.md](./handoffs/005_2026-05-23_11-14_handoff-v2_planned-review-in-cursor.md) |
 | 005 | 2026-05-23 | 11:20 | handoff v3 | [handoffs/005_2026-05-23_11-20_handoff-v3_filing-structure-architecture.md](./handoffs/005_2026-05-23_11-20_handoff-v3_filing-structure-architecture.md) |
 | 006 | 2026-05-23 | 11:21 | study log | [study-docs/006_2026-05-23_11-21_study-log_cursor-planning-phase.md](./study-docs/006_2026-05-23_11-21_study-log_cursor-planning-phase.md) |
+| 007 | 2026-05-24 | — | study log | [study-docs/007_2026-05-24_study-log_pipeline-ui-onboarding.md](./study-docs/007_2026-05-24_study-log_pipeline-ui-onboarding.md) |
 | 007 | 2026-05-24 | — | design (planning) | [study-docs/007_2026-05-24_design_pipeline-ui-onboarding.md](./study-docs/007_2026-05-24_design_pipeline-ui-onboarding.md) |
 | 007 | 2026-05-24 | — | plan package | [study-docs/007_2026-05-24_plan_pipeline-ui-onboarding-package.md](./study-docs/007_2026-05-24_plan_pipeline-ui-onboarding-package.md) |
+| 007 | 2026-05-24 | — | planning manifest | [planning/007-pipeline-ui-onboarding.json](./planning/007-pipeline-ui-onboarding.json) |
 | 008 | 2026-05-24 | — | study log | [study-docs/008_2026-05-24_study-log_external-artifact-and-v002-checkpoint.md](./study-docs/008_2026-05-24_study-log_external-artifact-and-v002-checkpoint.md) |
 | 008 | 2026-05-24 | — | plan package | [study-docs/008_2026-05-24_plan_external-artifact-root-package.md](./study-docs/008_2026-05-24_plan_external-artifact-root-package.md) |
 | 008 | 2026-05-24 | — | plan package (roadmap) | [study-docs/008_2026-05-24_plan_repo-roadmap-v002-and-artifacts-package.md](./study-docs/008_2026-05-24_plan_repo-roadmap-v002-and-artifacts-package.md) |
+| 008 | 2026-05-24 | — | planning manifest (artifacts) | [planning/008-external-artifact-root.json](./planning/008-external-artifact-root.json) |
+| 008 | 2026-05-24 | — | planning manifest (roadmap) | [planning/008-repo-roadmap-v002-and-artifacts.json](./planning/008-repo-roadmap-v002-and-artifacts.json) |
 | 008 | 2026-05-24 | — | checkpoint (runtime) | [checkpoints/008_2026-05-24_rule-authority-v002_runtime-checkpoint.md](./checkpoints/008_2026-05-24_rule-authority-v002_runtime-checkpoint.md) |
 
 **005 build order:** original (spec) → v3 (architecture) → v2 (pipeline).
