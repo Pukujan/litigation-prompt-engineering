@@ -13,6 +13,8 @@
 | 005 | 2026-05-23 | 11:14 | handoff v2 | [handoffs/005_2026-05-23_11-14_handoff-v2_planned-review-in-cursor.md](./handoffs/005_2026-05-23_11-14_handoff-v2_planned-review-in-cursor.md) |
 | 005 | 2026-05-23 | 11:20 | handoff v3 | [handoffs/005_2026-05-23_11-20_handoff-v3_filing-structure-architecture.md](./handoffs/005_2026-05-23_11-20_handoff-v3_filing-structure-architecture.md) |
 | 006 | 2026-05-23 | 11:21 | study log | [study-docs/006_2026-05-23_11-21_study-log_cursor-planning-phase.md](./study-docs/006_2026-05-23_11-21_study-log_cursor-planning-phase.md) |
+| 007 | 2026-05-24 | — | design (planning) | [study-docs/007_2026-05-24_design_pipeline-ui-onboarding.md](./study-docs/007_2026-05-24_design_pipeline-ui-onboarding.md) |
+| 007 | 2026-05-24 | — | plan package | [study-docs/007_2026-05-24_plan_pipeline-ui-onboarding-package.md](./study-docs/007_2026-05-24_plan_pipeline-ui-onboarding-package.md) |
 
 **005 build order:** original (spec) → v3 (architecture) → v2 (pipeline).
 
