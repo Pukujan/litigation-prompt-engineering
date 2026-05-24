@@ -52,5 +52,10 @@
   "ruleAuthority": {
     "version": "v001",
     "file": "backend/src/modules/court-rules/contracts/ruleAuthority.contract.js"
+  },
+  "planningPhase": {
+    "version": "v001",
+    "doc": "docs/architecture/contracts/planningPhase.contract.md",
+    "file": "backend/src/shared/contracts/planningPhase.contract.js"
   }
 }

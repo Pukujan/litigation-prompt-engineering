@@ -144,6 +144,7 @@ HTTP entrypoint: `POST /api/case-filing-ai/process-batch` ([API.md](../API.md)).
 | Inbound files | `npm run import:file-exchange` | fileExchange |
 | Before push | `npm run dev-log:pre-push` | prePushDevLog |
 | Snapshot handoff | `npm run condense:all` | consolidatedExports |
+| Clear dated exchange folders | `npm run clear:file-exchange` or `POST /api/file-exchange/clear` | fileExchange |
 | Golden refresh | `npm run ingest:golden-*` | fileExchange + pipelineVersions |
 
 ---
