@@ -1,7 +1,7 @@
 node_modules/
 dist/
 .DS_Store
-export/
+file-exchange/exports/architecture-starter/
 .env
 .env.local
 backend/.env

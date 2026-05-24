@@ -18,8 +18,11 @@ On branch **`v2`**:
 **Architecture-only** (no domain modules — recommended for boilerplate updates):
 
 ```bash
-npm run export:architecture-starter -- --to packages/create-modular-monolith/template
+# Review local output (gitignored): file-exchange/exports/architecture-starter/
+npm run export:architecture-starter -- --to /absolute/path/to/create-modular-monolith/template
 ```
+
+Starter patch sources live in `file-exchange/exports/templates/` (committed).
 
 **Full repo copy** (legacy — includes all modules):
 

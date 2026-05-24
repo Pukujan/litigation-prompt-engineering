@@ -166,7 +166,7 @@ To refresh the **boilerplate CLI template** without domain modules:
 npm run export:architecture-starter -- --to packages/create-modular-monolith/template
 ```
 
-Output defaults to `export/architecture-starter/`. See `EXPORT_MANIFEST.json` and [PUBLISHING.md](../PUBLISHING.md).
+Templates: `file-exchange/exports/templates/`. Output defaults to `file-exchange/exports/architecture-starter/` (gitignored). See `EXPORT_MANIFEST.json` and [PUBLISHING.md](../PUBLISHING.md).
 
 ---
 

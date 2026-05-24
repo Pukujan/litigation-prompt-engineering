@@ -7,11 +7,14 @@
  *   npm run export:architecture-starter -- --to packages/create-modular-monolith/template
  */
 import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync, rmSync, readdirSync } from "fs";
-import { join, dirname, resolve, isAbsolute } from "path";
+import { join, dirname, resolve, isAbsolute, relative } from "path";
 import { fileURLToPath } from "url";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
-const templatesRoot = join(repoRoot, "export-templates");
+export const ARCHITECTURE_TEMPLATES_DIR = "file-exchange/exports/templates";
+export const ARCHITECTURE_EXPORT_OUTPUT_DIR = "file-exchange/exports/architecture-starter";
+
+const templatesRoot = join(repoRoot, ARCHITECTURE_TEMPLATES_DIR);
 
 const EXCLUDE_DIRS = new Set([
   "node_modules",
@@ -20,12 +23,17 @@ const EXCLUDE_DIRS = new Set([
   "build",
   "coverage",
   "packages",
-  "export",
   "data",
   "eval-bundles",
   "case-exports",
   "evals"
 ]);
+
+/** Generated or maintainer-only paths under file-exchange/exports (not part of product copy). */
+const EXPORT_SKIP_PREFIXES = [
+  ARCHITECTURE_EXPORT_OUTPUT_DIR,
+  ARCHITECTURE_TEMPLATES_DIR
+];
 
 const BACKEND_MODULES_KEEP = new Set(["_reference", "model-condenser"]);
 const FRONTEND_MODULES_KEEP = new Set(["_reference"]);
@@ -58,7 +66,7 @@ const DOCS_KEEP_FILES = new Set([
 ]);
 
 function parseArgs(argv) {
-  let target = join(repoRoot, "export/architecture-starter");
+  let target = join(repoRoot, ARCHITECTURE_EXPORT_OUTPUT_DIR);
   for (let i = 0; i < argv.length; i += 1) {
     if (argv[i] === "--to" && argv[i + 1]) {
       const raw = argv[++i];
@@ -70,7 +78,12 @@ function parseArgs(argv) {
 
 function shouldExcludePath(sourcePath) {
   const parts = sourcePath.split(/[/\\]/);
-  return parts.some((p) => EXCLUDE_DIRS.has(p));
+  if (parts.some((p) => EXCLUDE_DIRS.has(p))) return true;
+  const rel = relative(repoRoot, sourcePath).replace(/\\/g, "/");
+  if (!rel || rel.startsWith("..")) return false;
+  return EXPORT_SKIP_PREFIXES.some(
+    (prefix) => rel === prefix || rel.startsWith(`${prefix}/`)
+  );
 }
 
 function copyFiltered(src, dest, filterFn) {
@@ -287,7 +300,7 @@ function writeManifest(target) {
       scripts: "ingest-golden-*, rerun-batch-evals, run-module-evals"
     },
     nextSteps: [
-      "Review export/ARCHITECTURE_EXPORT_README.md",
+      "Review file-exchange/exports/architecture-starter/ARCHITECTURE_EXPORT_README.md",
       "npm install in backend/ and frontend/",
       "npm run lint:contracts && npm run lint:architecture",
       "node scripts/new-module.mjs my-feature --label \"My Feature\"",
