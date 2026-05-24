@@ -1,0 +1,89 @@
+{
+  "docIndex": 7,
+  "docKey": "doc-007",
+  "storedName": "007-fixture.pdf",
+  "originalName": "Demand for Bill of Particulars - MCMCHHC",
+  "fileKind": "pdf",
+  "docketEntry": {
+    "filingType": "DEMAND_FOR_BILL_OF_PARTICULARS",
+    "filingDate": "2027-10-05",
+    "nyscefDocNo": 7
+  },
+  "documentMetadata": {
+    "title": "Demand for Bill of Particulars - MCMCHHC",
+    "pageCount": 9,
+    "extractionQuality": {
+      "method": "embedded_text",
+      "ocr_needed": false,
+      "ocr_test_reason": null
+    }
+  },
+  "extractionQuality": {
+    "method": "embedded_text",
+    "ocr_needed": false,
+    "ocr_test_reason": null
+  },
+  "parties": [],
+  "tasks": [
+    {
+      "taskType": "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND",
+      "taskDescription": "Prepare/serve plaintiff bill of particulars response to MCMCHHC demand.",
+      "status": "source_supported_auto_saved",
+      "dueDate": null,
+      "dueDateStatus": "calculated_or_needs_review",
+      "confidence": "medium",
+      "sourceTrigger": "Doc 7 demand language"
+    }
+  ],
+  "deadlines": [
+    {
+      "type": "BP_RESPONSE_DEADLINE_CANDIDATE",
+      "date": null,
+      "status": "needs_calculation_verification",
+      "sourceTrigger": "Doc 7 demand for bill of particulars",
+      "missingOrReviewReason": "Confirm service date/method and any stipulation/order before final deadline promotion.",
+      "sourceAuthority": "unknown",
+      "authorityRank": 0
+    }
+  ],
+  "humanReviewItems": [],
+  "ruleSourcesApplied": [
+    "cplr_general_civil_practice"
+  ],
+  "ruleSourcesChecked": [
+    "cplr_general_civil_practice"
+  ],
+  "rankedRules": [
+    {
+      "ruleId": "cplr_general_civil_practice",
+      "sourceAuthority": "cplr_or_statute",
+      "authorityRank": 1,
+      "sourceName": "CPLR / New York civil practice defaults",
+      "controls": [
+        "default service/response framework",
+        "motion/statutory default context"
+      ],
+      "applicationRule": "Use only when no more specific valid order/rule controls and trigger facts are present.",
+      "mustNotUseFor": [
+        "final answer deadline without verified service date and service method"
+      ]
+    }
+  ],
+  "pipelineVersions": {
+    "parser": "pdf-text-v001",
+    "ocr": "qwen-vl-v001",
+    "masterPrompt": "v001_master-case-filing",
+    "rulePrompt": "court-rules/rule-context-1.0.0",
+    "snapshotPrompt": "case-workflow/case-state-update-1.0.0",
+    "ruleSet": "queens_kerrigan_medmal_rules_v001",
+    "goldenDataset": "synthetic_case_001_rule_authority_v002"
+  },
+  "runMetadata": {
+    "pipelineVersions": {
+      "parser": "pdf-text-v001",
+      "ocr": "qwen-vl-v001",
+      "masterPrompt": "v001_master-case-filing",
+      "goldenDataset": "synthetic_case_001_rule_authority_v002"
+    }
+  }
+}

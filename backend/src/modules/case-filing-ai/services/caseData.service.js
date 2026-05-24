@@ -239,6 +239,14 @@ export function createCaseDataService({
     return manifest;
   }
 
+  function getExportDirectory(exportId) {
+    const key = sanitizeExportName(exportId);
+    if (!key) {
+      throw new AppError("exportId is required", 400);
+    }
+    return join(caseExportRootDir, key);
+  }
+
   async function deleteCase({ goldenCaseId, batchIds, confirm = false, dryRun = false }) {
     const caseKey = String(goldenCaseId || "").trim();
     if (!caseKey) {
@@ -292,6 +300,7 @@ export function createCaseDataService({
   return {
     getCaseInventory,
     exportCase,
+    getExportDirectory,
     deleteCase
   };
 }

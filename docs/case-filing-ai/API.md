@@ -16,8 +16,11 @@
 |--------|------|-------------|
 | GET | `/health` | Module health and config summary |
 | POST | `/extract-rule-text` | Extract text from uploaded part-rule file |
-| POST | `/process-batch` | Upload filings and run master prompt pipeline |
-| GET | `/batches/:batchId/status` | Batch processing status |
+| POST | `/process-batch` | Upload filings; **202** starts background processing |
+| GET | `/batches/:batchId/status` | Status with `moduleStates`, `documentQueue`, `activeModule` |
+| GET | `/batches/:batchId/processing-log` | Parsed processing log |
+| POST | `/batches/:batchId/package` | Build batch download package |
+| GET | `/batches/:batchId/package/download` | Download batch package zip |
 | GET | `/batches/:batchId/results` | Aggregated batch results |
 | GET | `/batches/:batchId/parsed-documents` | List parsed-document cache keys for batch |
 | GET | `/batches/:batchId/parsed-documents/:documentId` | Parsed cache detail (text layers, review status) |
@@ -70,7 +73,18 @@ Upload filings (+ optional part rule), process each document sequentially with t
 | `partRuleText` | string | no |
 | `partRuleFile` | file | no |
 
-**Response 201:**
+**Response 202:**
+
+```json
+{
+  "batchId": "batch-003",
+  "status": "processing"
+}
+```
+
+Poll `GET /batches/:batchId/status` until `status` is `completed`, `partial`, or `failed`, then `GET /batches/:batchId/results`.
+
+**Results body** (from `/results` when complete):
 
 ```json
 {
@@ -105,7 +119,19 @@ data/case-filing-ai/batches/{batchId}/
 
 ### `GET /batches/:batchId/status`
 
-**Response 200:** `{ batchId, status, currentStep, currentDocument, processedCount, failedCount, totalCount }`
+**Response 200:** `{ batchId, status, activeModule, moduleStates[], documentQueue[], processedCount, failedCount, totalCount, currentStep, currentDocument }`
+
+### `GET /batches/:batchId/processing-log`
+
+**Response 200:** `{ batchId, entries: [...] }`
+
+### `POST /batches/:batchId/package`
+
+Builds `{batchId}-package/` under `case-exports/` with `batch/`, `rules-applied/`, `evals/`, `manifest.json`. Optional body: `{ includeGolden, goldenCaseId }`.
+
+### `GET /batches/:batchId/package/download`
+
+Streams `application/zip`. Query: `includeGolden`, `goldenCaseId`. Builds package if missing.
 
 ### `GET /batches/:batchId/results`
 
@@ -300,6 +326,10 @@ curl -X POST http://localhost:3001/api/case-filing-ai/cases/case_001/export \
   -H "Content-Type: application/json" \
   -d '{"exportName":"case_001-full-backup","includeGolden":true}'
 ```
+
+### `GET /cases/:goldenCaseId/export/:exportId/download`
+
+Streams zip of the export folder (build export with `POST .../export` first if needed).
 
 ### `DELETE /cases/:goldenCaseId`
 

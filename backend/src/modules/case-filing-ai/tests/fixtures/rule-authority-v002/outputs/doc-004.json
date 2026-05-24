@@ -1,0 +1,88 @@
+{
+  "docIndex": 4,
+  "docKey": "doc-004",
+  "storedName": "004-fixture.pdf",
+  "originalName": "Notice of Commencement of Action for Personal Injuries",
+  "fileKind": "pdf",
+  "docketEntry": {
+    "filingType": "NOTICE_OF_COMMENCEMENT_OF_ACTION_FOR_PERSONAL_INJURIES",
+    "filingDate": "2027-09-16",
+    "nyscefDocNo": 4
+  },
+  "documentMetadata": {
+    "title": "Notice of Commencement of Action for Personal Injuries",
+    "pageCount": 29,
+    "extractionQuality": {
+      "method": "ocr_or_visual_review_required",
+      "ocr_needed": true,
+      "ocr_test_reason": "Synthetic notice packet includes postal receipt and handwritten/notary-style fields."
+    }
+  },
+  "extractionQuality": {
+    "method": "ocr_or_visual_review_required",
+    "ocr_needed": true,
+    "ocr_test_reason": "Synthetic notice packet includes postal receipt and handwritten/notary-style fields."
+  },
+  "parties": [],
+  "tasks": [],
+  "deadlines": [],
+  "humanReviewItems": [
+    {
+      "issue": "handwritten_index_date_or_notary_visual_review",
+      "reason": "Notice page contains handwriting/date/notary-style fields.",
+      "blocking": false,
+      "status": "pending"
+    },
+    {
+      "issue": "postal_receipt_visual_review",
+      "reason": "Postal receipt/certified mailing material may require visual verification.",
+      "blocking": false,
+      "status": "pending"
+    },
+    {
+      "issue": "synthetic_ocr_required_test_case",
+      "reason": "Synthetic notice packet includes postal receipt and handwritten/notary-style fields.",
+      "blocking": false,
+      "status": "pending"
+    }
+  ],
+  "ruleSourcesApplied": [
+    "cplr_general_civil_practice"
+  ],
+  "ruleSourcesChecked": [
+    "cplr_general_civil_practice"
+  ],
+  "rankedRules": [
+    {
+      "ruleId": "cplr_general_civil_practice",
+      "sourceAuthority": "cplr_or_statute",
+      "authorityRank": 1,
+      "sourceName": "CPLR / New York civil practice defaults",
+      "controls": [
+        "default service/response framework",
+        "motion/statutory default context"
+      ],
+      "applicationRule": "Use only when no more specific valid order/rule controls and trigger facts are present.",
+      "mustNotUseFor": [
+        "final answer deadline without verified service date and service method"
+      ]
+    }
+  ],
+  "pipelineVersions": {
+    "parser": "pdf-text-v001",
+    "ocr": "qwen-vl-v001",
+    "masterPrompt": "v001_master-case-filing",
+    "rulePrompt": "court-rules/rule-context-1.0.0",
+    "snapshotPrompt": "case-workflow/case-state-update-1.0.0",
+    "ruleSet": "queens_kerrigan_medmal_rules_v001",
+    "goldenDataset": "synthetic_case_001_rule_authority_v002"
+  },
+  "runMetadata": {
+    "pipelineVersions": {
+      "parser": "pdf-text-v001",
+      "ocr": "qwen-vl-v001",
+      "masterPrompt": "v001_master-case-filing",
+      "goldenDataset": "synthetic_case_001_rule_authority_v002"
+    }
+  }
+}

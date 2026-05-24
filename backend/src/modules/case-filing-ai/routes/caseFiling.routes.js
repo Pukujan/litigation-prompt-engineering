@@ -1,7 +1,11 @@
 import { Router } from "express";
 import multer from "multer";
+import { createReadStream } from "fs";
+import { access } from "fs/promises";
+import { join } from "path";
 import { AppError } from "../../../shared/http/errors.js";
 import { validateParsedReviewPatch } from "../schemas/parsed-document.schema.js";
+import { zipDirectory } from "../../../shared/utils/zipDirectory.js";
 
 export function createCaseFilingRoutes({
   config,
@@ -9,6 +13,7 @@ export function createCaseFilingRoutes({
   ruleText,
   evalBundle,
   caseData,
+  batchPackage,
   parsedDocumentCache
 }) {
   const upload = multer({
@@ -38,12 +43,30 @@ export function createCaseFilingRoutes({
       const partRuleText = req.body?.partRuleText ?? "";
       const filingFiles = req.files?.files ?? [];
       const partRuleFile = req.files?.partRuleFile?.[0] ?? null;
-      const result = await uploadBatch.processBatch({
+      if (process.env.CASE_FILING_SYNC_BATCH === "true") {
+        const result = await uploadBatch.processBatch({
+          files: filingFiles,
+          partRuleText,
+          partRuleFile
+        });
+        res.status(201).json(result);
+        return;
+      }
+      const started = await uploadBatch.startProcessBatch({
         files: filingFiles,
         partRuleText,
         partRuleFile
       });
-      res.status(201).json(result);
+      res.status(202).json(started);
+    } catch (error) {
+      next(error);
+    }
+  });
+
+  router.get("/batches/:batchId/processing-log", async (req, res, next) => {
+    try {
+      const log = await uploadBatch.getProcessingLog(req.params.batchId);
+      res.json(log);
     } catch (error) {
       next(error);
     }
@@ -126,6 +149,41 @@ export function createCaseFilingRoutes({
     }
   });
 
+  router.post("/batches/:batchId/package", async (req, res, next) => {
+    try {
+      const includeGolden = req.body?.includeGolden === true;
+      const goldenCaseId = req.body?.goldenCaseId;
+      const manifest = await batchPackage.buildBatchPackage(req.params.batchId, {
+        includeGolden,
+        goldenCaseId
+      });
+      res.status(201).json(manifest);
+    } catch (error) {
+      next(error);
+    }
+  });
+
+  router.get("/batches/:batchId/package/download", async (req, res, next) => {
+    try {
+      const { batchId } = req.params;
+      const includeGolden = req.query.includeGolden === "true";
+      const goldenCaseId = req.query.goldenCaseId;
+      try {
+        await batchPackage.getPackageManifest(batchId);
+      } catch {
+        await batchPackage.buildBatchPackage(batchId, { includeGolden, goldenCaseId });
+      }
+      const packageDir = batchPackage.getPackageDirectory(batchId);
+      const zipPath = join(packageDir, `${batchId}.zip`);
+      await zipDirectory(packageDir, zipPath, { prefix: `${batchId}-package` });
+      res.setHeader("Content-Type", "application/zip");
+      res.setHeader("Content-Disposition", `attachment; filename="${batchId}-package.zip"`);
+      createReadStream(zipPath).pipe(res);
+    } catch (error) {
+      next(error);
+    }
+  });
+
   router.post("/batches/:batchId/evals/bundle", async (req, res, next) => {
     try {
       const bundleName = req.body?.bundleName;
@@ -186,6 +244,27 @@ export function createCaseFilingRoutes({
         includeGolden: req.body?.includeGolden === true
       });
       res.status(201).json(manifest);
+    } catch (error) {
+      next(error);
+    }
+  });
+
+  router.get("/cases/:goldenCaseId/export/:exportId/download", async (req, res, next) => {
+    try {
+      const exportDir = caseData.getExportDirectory(req.params.exportId);
+      try {
+        await access(exportDir);
+      } catch {
+        throw new AppError(`Export not found: ${req.params.exportId}`, 404);
+      }
+      const zipPath = join(exportDir, `${req.params.exportId}.zip`);
+      await zipDirectory(exportDir, zipPath);
+      res.setHeader("Content-Type", "application/zip");
+      res.setHeader(
+        "Content-Disposition",
+        `attachment; filename="${req.params.exportId}.zip"`
+      );
+      createReadStream(zipPath).pipe(res);
     } catch (error) {
       next(error);
     }

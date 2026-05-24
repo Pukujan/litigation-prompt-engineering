@@ -2,9 +2,12 @@ import { readFile, readdir, access } from "fs/promises";
 import { join } from "path";
 import { toDocKey } from "../contracts/storageLayout.contract.js";
 
-const SNAPSHOT_CHECKPOINTS = new Set([1, 2, 4, 8, 12, 14]);
+const DEFAULT_SNAPSHOT_CHECKPOINTS = [1, 2, 4, 8, 12, 14];
 
 export function createGoldenDatasetService({ goldenDatasetDir, caseId = "case_001" }) {
+  const manifestFilename = `${caseId}.golden-dataset.json`;
+  let snapshotCheckpoints = [...DEFAULT_SNAPSHOT_CHECKPOINTS];
+
   function docEvalId(docIndex) {
     return `doc_${String(docIndex).padStart(3, "0")}`;
   }
@@ -20,8 +23,19 @@ export function createGoldenDatasetService({ goldenDatasetDir, caseId = "case_00
 
   async function loadManifest() {
     try {
-      return await readJsonFile("case_001.golden-dataset.json");
+      const manifest = await readJsonFile(manifestFilename);
+      if (Array.isArray(manifest.snapshotCheckpoints) && manifest.snapshotCheckpoints.length) {
+        snapshotCheckpoints = manifest.snapshotCheckpoints;
+      }
+      return manifest;
     } catch {
+      if (caseId === "case_001") {
+        try {
+          return await readJsonFile("case_001.golden-dataset.json");
+        } catch {
+          return null;
+        }
+      }
       return null;
     }
   }
@@ -31,7 +45,7 @@ export function createGoldenDatasetService({ goldenDatasetDir, caseId = "case_00
   }
 
   async function loadSnapshotExpected(docIndex) {
-    if (!SNAPSHOT_CHECKPOINTS.has(docIndex)) {
+    if (!snapshotCheckpoints.includes(docIndex)) {
       return null;
     }
     return readJsonFile(`${snapshotEvalId(docIndex)}.expected.json`);
@@ -49,13 +63,29 @@ export function createGoldenDatasetService({ goldenDatasetDir, caseId = "case_00
     }
   }
 
+  async function loadPipelineVersionsExpected() {
+    try {
+      return await readJsonFile("pipeline_versions.expected.json");
+    } catch {
+      return null;
+    }
+  }
+
+  async function loadRuleSourcesCatalog() {
+    try {
+      return await readJsonFile("rule_sources_catalog.json");
+    } catch {
+      return null;
+    }
+  }
+
   async function listAvailableFixtures() {
     const files = await readdir(goldenDatasetDir);
     return files.filter((name) => name.endsWith(".expected.json") || name.endsWith(".json"));
   }
 
   function hasSnapshotCheckpoint(docIndex) {
-    return SNAPSHOT_CHECKPOINTS.has(docIndex);
+    return snapshotCheckpoints.includes(docIndex);
   }
 
   function goldenParsedDir(docIndex) {
@@ -74,6 +104,7 @@ export function createGoldenDatasetService({ goldenDatasetDir, caseId = "case_00
   return {
     caseId,
     goldenDatasetDir,
+    manifestFilename,
     docEvalId,
     snapshotEvalId,
     loadManifest,
@@ -81,10 +112,14 @@ export function createGoldenDatasetService({ goldenDatasetDir, caseId = "case_00
     loadSnapshotExpected,
     loadNegativeGuardrails,
     loadComparisonConfig,
+    loadPipelineVersionsExpected,
+    loadRuleSourcesCatalog,
     listAvailableFixtures,
     hasSnapshotCheckpoint,
     goldenParsedDir,
     hasGoldenParsed,
-    snapshotCheckpoints: [...SNAPSHOT_CHECKPOINTS]
+    get snapshotCheckpoints() {
+      return snapshotCheckpoints;
+    }
   };
 }

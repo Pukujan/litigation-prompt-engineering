@@ -1,0 +1,94 @@
+{
+  "docIndex": 1,
+  "docKey": "doc-001",
+  "storedName": "001-fixture.pdf",
+  "originalName": "Summons and Verified Complaint",
+  "fileKind": "pdf",
+  "docketEntry": {
+    "filingType": "SUMMONS_AND_VERIFIED_COMPLAINT",
+    "filingDate": "2027-09-14",
+    "nyscefDocNo": 1
+  },
+  "documentMetadata": {
+    "title": "Summons and Verified Complaint",
+    "pageCount": 7,
+    "extractionQuality": {
+      "method": "ocr_or_visual_review_required",
+      "ocr_needed": true,
+      "reviewStatus": "ai_extracted_unreviewed",
+      "ocr_test_reason": "Synthetic complaint includes signature/verification/date region requiring visual OCR review."
+    }
+  },
+  "extractionQuality": {
+    "method": "ocr_or_visual_review_required",
+    "ocr_needed": true,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "ocr_test_reason": "Synthetic complaint includes signature/verification/date region requiring visual OCR review."
+  },
+  "parties": [],
+  "tasks": [
+    {
+      "taskType": "VERIFY_SERVICE_FOR_RESPONSE_DEADLINE",
+      "taskDescription": "Verify service date and service method before calculating any defendant answer/appearance deadline.",
+      "status": "needs_source_trigger",
+      "dueDate": null,
+      "dueDateStatus": "needs_review",
+      "confidence": "high",
+      "missingTrigger": "affidavit/proof of service showing service date and service method"
+    }
+  ],
+  "deadlines": [],
+  "humanReviewItems": [
+    {
+      "issue": "signature_or_verification_date_visual_review",
+      "reason": "Complaint verification/signature/date area may contain handwritten or visual-only information.",
+      "blocking": false,
+      "status": "pending"
+    },
+    {
+      "issue": "synthetic_ocr_required_test_case",
+      "reason": "Synthetic complaint includes signature/verification/date region requiring visual OCR review.",
+      "blocking": false,
+      "status": "pending"
+    }
+  ],
+  "ruleSourcesApplied": [
+    "cplr_general_civil_practice"
+  ],
+  "ruleSourcesChecked": [
+    "cplr_general_civil_practice"
+  ],
+  "rankedRules": [
+    {
+      "ruleId": "cplr_general_civil_practice",
+      "sourceAuthority": "cplr_or_statute",
+      "authorityRank": 1,
+      "sourceName": "CPLR / New York civil practice defaults",
+      "controls": [
+        "default service/response framework",
+        "motion/statutory default context"
+      ],
+      "applicationRule": "Use only when no more specific valid order/rule controls and trigger facts are present.",
+      "mustNotUseFor": [
+        "final answer deadline without verified service date and service method"
+      ]
+    }
+  ],
+  "pipelineVersions": {
+    "parser": "pdf-text-v001",
+    "ocr": "qwen-vl-v001",
+    "masterPrompt": "v001_master-case-filing",
+    "rulePrompt": "court-rules/rule-context-1.0.0",
+    "snapshotPrompt": "case-workflow/case-state-update-1.0.0",
+    "ruleSet": "queens_kerrigan_medmal_rules_v001",
+    "goldenDataset": "synthetic_case_001_rule_authority_v002"
+  },
+  "runMetadata": {
+    "pipelineVersions": {
+      "parser": "pdf-text-v001",
+      "ocr": "qwen-vl-v001",
+      "masterPrompt": "v001_master-case-filing",
+      "goldenDataset": "synthetic_case_001_rule_authority_v002"
+    }
+  }
+}
