@@ -57,3 +57,4 @@ Architecture narrative: [docs/DEVLOG_V2.md](../docs/DEVLOG_V2.md) · Platform ga
 | Entry | Date | Time | Human | Agent audit |
 |-------|------|------|-------|-------------|
 | 001 | 2026-05-24 | 14-58 | [human](./architecture-push-logs/human/001_2026-05-24_14-58_arch-push_planning-gate-starter.md) | [agent](./architecture-push-logs/agent/001_2026-05-24_14-58_arch-push-agent_planning-gate-starter.json) |
+| 002 | 2026-05-24 | 15-04 | [human](./architecture-push-logs/human/002_2026-05-24_15-04_arch-push_planning-gate-v225.md) | [agent](./architecture-push-logs/agent/002_2026-05-24_15-04_arch-push-agent_planning-gate-v225.json) |
