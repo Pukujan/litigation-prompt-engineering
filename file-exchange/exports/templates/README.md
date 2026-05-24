@@ -12,6 +12,7 @@ Used to patch the npm starter (`create-modular-monolith`) with platform-only pro
 | `condense-prompts.starter.mjs` | Generic prompt condenser |
 | `modelCondenser.service.starter.js` | Platform-only model inventory |
 | `api-inventory.starter.mjs` | API registry without domain imports |
+| `manifest.starter.json` | Platform-only `lint:contracts` manifest (no case-filing contracts) |
 
 **Generated export output** (gitignored): `file-exchange/exports/architecture-starter/`  
 **Publish target:** `create-modular-monolith/template/` via `--to /absolute/path`
