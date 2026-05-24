@@ -33,6 +33,12 @@ function scoreRule(rule, context) {
     score += 1;
   }
 
+  if (rule.minSourceDocNo != null && context.docIndex != null) {
+    if (Number(context.docIndex) < Number(rule.minSourceDocNo)) {
+      return 0;
+    }
+  }
+
   return score;
 }
 

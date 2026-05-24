@@ -9,6 +9,7 @@ import {
 import { buildRunMetadata } from "./runMetadata.service.js";
 import { createTraceId, docTraceId } from "../../../shared/utils/traceId.js";
 import { buildPipelineStatusFromLog } from "../utils/pipelineStatus.js";
+import { extractPartNumber } from "../../court-rules/utils/catalogToRuleFixtures.js";
 
 function extractDocNumber(name) {
   const match = String(name).match(/(\d+)/);
@@ -57,6 +58,8 @@ export function createUploadBatchService({
   ruleMatch,
   ruleAuthority,
   goldenCaseId = "case_001",
+  ruleFixturesCaseId = "case_001",
+  loadBootstrapSnapshot = null,
   batchRootDir,
   masterPromptConfig = {}
 }) {
@@ -248,6 +251,13 @@ export function createUploadBatchService({
     const documentOutputs = [];
     const failedDocuments = [];
     let currentSnapshot = await caseSnapshot.initSnapshot(batchId);
+    if (loadBootstrapSnapshot) {
+      const boot = await loadBootstrapSnapshot();
+      if (boot) {
+        currentSnapshot = { ...currentSnapshot, ...boot, case: boot.case ?? boot };
+        await store.writeCaseSnapshot(batchId, currentSnapshot);
+      }
+    }
 
     for (let i = 0; i < sorted.length; i += 1) {
       const file = sorted[i];
@@ -316,14 +326,19 @@ export function createUploadBatchService({
         if (ruleMatch && ruleAuthority) {
           await logModule(batchId, "court-rules", docIndex, "start", { batchTraceId, traceId });
           const matched = await ruleMatch.findApplicableRules({
-            caseId: goldenCaseId,
+            caseId: ruleFixturesCaseId,
             context: {
               county: caseFields.county,
-              part: caseFields.partName ?? caseFields.part,
+              part:
+                caseFields.part ??
+                extractPartNumber(caseFields.partName) ??
+                extractPartNumber(currentSnapshot?.partName),
               court: caseFields.court,
-              phase: caseFields.currentPhase,
-              documentType: fileMetadata.documentType
-            }
+              phase: currentSnapshot?.currentPhase ?? caseFields.currentPhase,
+              documentType: fileMetadata.documentType,
+              docIndex
+            },
+            limit: 12
           });
           rankedRules = ruleAuthority.rankRules(matched);
           rankedRulesBlock = ruleAuthority.formatRankedRulesBlock(rankedRules);
@@ -490,7 +505,7 @@ export function createUploadBatchService({
       totalCount: sorted.length,
       processingSummary: {
         partRule: aggregated.partRule ?? null,
-        courtRules: { fixtureCaseId: goldenCaseId }
+        courtRules: { fixtureCaseId: ruleFixturesCaseId, goldenCaseId }
       }
     };
   }

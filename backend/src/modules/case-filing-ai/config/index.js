@@ -1,17 +1,21 @@
 import { join } from "path";
 import { fileURLToPath } from "url";
+import { resolveCaseFilingProfile } from "../utils/resolveCaseFilingProfile.js";
 
 const repoRoot = join(fileURLToPath(new URL(".", import.meta.url)), "../../../../..");
 
 export function getModuleConfig() {
+  const profile = resolveCaseFilingProfile({ repoRoot, env: process.env });
+
   return {
     name: "case-filing-ai",
     label: "Case Filing AI",
     batchRootDir:
       process.env.CASE_FILING_BATCH_DIR || join(repoRoot, "data/case-filing-ai/batches"),
-    goldenDatasetDir:
-      process.env.GOLDEN_DATASET_DIR || join(repoRoot, "evals/golden/case_001"),
-    goldenCaseId: process.env.GOLDEN_CASE_ID || "case_001",
+    goldenDatasetDir: profile.goldenDatasetDir,
+    goldenCaseId: profile.goldenCaseId,
+    ruleFixturesCaseId: profile.ruleFixturesCaseId,
+    ruleSetVersion: profile.ruleSetVersion,
     evalBundleRootDir:
       process.env.EVAL_BUNDLE_ROOT_DIR || join(repoRoot, "eval-bundles"),
     caseExportRootDir:
@@ -28,7 +32,7 @@ export function getModuleConfig() {
       jsonObjectMode: process.env.OPENROUTER_JSON_OBJECT_MODE === "true"
     },
     masterPrompt: {
-      version: process.env.MASTER_PROMPT_VERSION || "v1",
+      version: profile.masterPromptVersion,
       jsonRetry: process.env.MASTER_PROMPT_JSON_RETRY !== "false",
       maxDocumentTextChars: Number(process.env.MASTER_PROMPT_MAX_DOC_CHARS || 120_000),
       omitAuditNotesInPrompt: process.env.MASTER_PROMPT_OMIT_AUDIT_NOTES !== "false",

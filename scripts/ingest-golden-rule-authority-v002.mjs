@@ -111,10 +111,25 @@ async function buildOfflineFixtures() {
   await writeFile(manifestPath, JSON.stringify(manifest, null, 2));
 }
 
+async function syncCourtRuleFixtures() {
+  const { spawn } = await import("node:child_process");
+  await new Promise((resolve, reject) => {
+    const child = spawn(
+      process.execPath,
+      ["scripts/sync-court-rules-fixtures.mjs", CASE_ID],
+      { cwd: repoRoot, stdio: "inherit" }
+    );
+    child.on("close", (code) => (code === 0 ? resolve() : reject(new Error(`sync exited ${code}`))));
+    child.on("error", reject);
+  });
+}
+
 async function main() {
   await copyGoldenBundle();
   await buildOfflineFixtures();
+  await syncCourtRuleFixtures();
   console.log(`Installed v002 golden dataset → ${TARGET_DIR}`);
+  console.log(`Court rule fixtures → data/court-rules/fixtures/${CASE_ID}/`);
   console.log("Offline fixtures → backend/src/modules/case-filing-ai/tests/fixtures/rule-authority-v002/");
 }
 

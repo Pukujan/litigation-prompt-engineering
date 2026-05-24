@@ -1,0 +1,13 @@
+{
+  "ruleId": "queens_compliance_part_rules",
+  "authority": "county",
+  "title": "Queens Compliance Part Rules",
+  "text": "Queens Compliance Part Rules\n- general Queens compliance conference handling\nApplication: Use only if applicable; do not override HHC med-mal/judge/order-specific handling.",
+  "county": "Queens",
+  "part": null,
+  "court": "Supreme",
+  "phase": null,
+  "documentTypes": [],
+  "tags": [],
+  "minSourceDocNo": null
+}

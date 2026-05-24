@@ -22,6 +22,7 @@ import { buildPipelineVersions } from "./contracts/pipelineVersions.js";
 import { createRuleStoreService } from "../court-rules/services/ruleStore.service.js";
 import { createRuleMatchService } from "../court-rules/services/ruleMatch.service.js";
 import { createRuleAuthorityService } from "../court-rules/services/ruleAuthority.service.js";
+import { loadBootstrapSnapshotForGoldenCase } from "./utils/goldenCaseBootstrap.js";
 
 export function register(app, context) {
   const config = getModuleConfig();
@@ -39,7 +40,10 @@ export function register(app, context) {
     storagePaths,
     documentText,
     getPipelineVersions: () =>
-      buildPipelineVersions({ masterPromptVersion: config.masterPrompt.version })
+      buildPipelineVersions({
+        masterPromptVersion: config.masterPrompt.version,
+        ruleSetVersion: config.ruleSetVersion
+      })
   });
   const ruleText = createRuleTextService({ documentText });
   const mergeMode = getSnapshotMergeMode(config.masterPrompt.version);
@@ -98,6 +102,9 @@ export function register(app, context) {
     ruleMatch,
     ruleAuthority,
     goldenCaseId: config.goldenCaseId,
+    ruleFixturesCaseId: config.ruleFixturesCaseId,
+    loadBootstrapSnapshot: () =>
+      loadBootstrapSnapshotForGoldenCase(config.goldenCaseId, config.goldenDatasetDir),
     batchRootDir: config.batchRootDir,
     masterPromptConfig: config.masterPrompt
   });

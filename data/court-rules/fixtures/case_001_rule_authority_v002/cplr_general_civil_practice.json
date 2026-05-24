@@ -1,0 +1,13 @@
+{
+  "ruleId": "cplr_general_civil_practice",
+  "authority": "cplr",
+  "title": "CPLR / New York civil practice defaults",
+  "text": "CPLR / New York civil practice defaults\n- default service/response framework\n- motion/statutory default context\nApplication: Use only when no more specific valid order/rule controls and trigger facts are present.\nMust not use for: final answer deadline without verified service date and service method",
+  "county": null,
+  "part": null,
+  "court": "Supreme",
+  "phase": null,
+  "documentTypes": [],
+  "tags": [],
+  "minSourceDocNo": null
+}

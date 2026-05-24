@@ -1,0 +1,13 @@
+{
+  "ruleId": "queens_medmal_part_rules",
+  "authority": "county",
+  "title": "Queens Medical/Dental/Podiatric Malpractice Part Rules",
+  "text": "Queens Medical/Dental/Podiatric Malpractice Part Rules\n- Queens med-mal PC/CC procedure\n- Queens medical malpractice scheduling practice\nApplication: Use for Queens med-mal workflow where judge/order is silent.",
+  "county": "Queens",
+  "part": null,
+  "court": "Supreme",
+  "phase": null,
+  "documentTypes": [],
+  "tags": [],
+  "minSourceDocNo": null
+}

@@ -13,6 +13,7 @@ import { join } from "path";
  * @property {string[]} [documentTypes]
  * @property {string} text
  * @property {string[]} [tags]
+ * @property {number | null} [minSourceDocNo]
  */
 
 export function createRuleStoreService({ fixturesRoot }) {
