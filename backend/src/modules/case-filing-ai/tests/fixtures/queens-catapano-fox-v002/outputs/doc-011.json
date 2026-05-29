@@ -1,0 +1,505 @@
+{
+  "docKey": "doc-011",
+  "docIndex": 11,
+  "storedName": "011-doc_011_BILL_OF_PARTICULARS.pdf",
+  "originalName": "doc_011_BILL_OF_PARTICULARS.pdf",
+  "fileKind": "pdf",
+  "status": "completed",
+  "batchTraceId": "golden_adca49f7_77d7c6889abf",
+  "traceId": "golden_adca49f7_77d7c6889abf_doc011",
+  "model": "deepseek/deepseek-v4-pro-20260423",
+  "usage": {
+    "prompt_tokens": 2540,
+    "completion_tokens": 3097,
+    "total_tokens": 5637,
+    "cost": 0.0113542,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0113542,
+      "upstream_inference_prompt_cost": 0.003302,
+      "upstream_inference_completions_cost": 0.0080522
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "runMetadata": {
+    "promptVersion": "v001",
+    "promptTemplate": "v001_master-case-filing.prompt.md",
+    "promptLabel": "v001",
+    "snapshotMergeMode": "legacy",
+    "openRouterModel": "deepseek/deepseek-v4-pro-20260423",
+    "masterPromptJsonRetry": true,
+    "omitAuditNotesInPrompt": true
+  },
+  "pipelineVersions": null,
+  "parsedDocumentCacheUsed": false,
+  "textSourceUsed": "embedded_text",
+  "reviewStatusAtEvalTime": null,
+  "ruleSourcesChecked": [
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "rankedRules": [
+    {
+      "ruleId": "queens_medmal_part_rules_catapano_fox",
+      "authority": "part",
+      "title": "Medical, Dental and Podiatric Malpractice Conference and Part Rules - Justice Tracy Catapano-Fox",
+      "text": "Medical, Dental and Podiatric Malpractice Conference and Part Rules - Justice Tracy Catapano-Fox",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    },
+    {
+      "ruleId": "queens_medmal_cc_form",
+      "authority": "county",
+      "title": "Queens Medical Malpractice Compliance Conference Order form",
+      "text": "Queens Medical Malpractice Compliance Conference Order form",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    },
+    {
+      "ruleId": "queens_medmal_pc_form",
+      "authority": "county",
+      "title": "Queens Medical Malpractice Preliminary Conference Order form",
+      "text": "Queens Medical Malpractice Preliminary Conference Order form",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    }
+  ],
+  "documentMetadata": {
+    "docIndex": 11,
+    "storedName": "011-doc_011_BILL_OF_PARTICULARS.pdf",
+    "originalName": "doc_011_BILL_OF_PARTICULARS.pdf",
+    "fileKind": "pdf",
+    "pageCount": 2,
+    "mimeType": "application/pdf",
+    "sizeBytes": 3729,
+    "filingDate": "2027-03-18",
+    "documentType": "BILL_OF_PARTICULARS",
+    "documentTitle": "Verified Bill of Particulars",
+    "judge": "Hon. Tracy Catapano-Fox",
+    "part": "Medical, Dental and Podiatric Malpractice Part (Courtroom 48)",
+    "court": "SUPREME COURT OF THE STATE OF NEW YORK, COUNTY OF QUEENS",
+    "indexNumber": "900001/2026",
+    "plaintiffCounsel": "Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+    "defenseCounsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+  },
+  "extractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1698,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "notes": "Synthetic document clearly states it is a Verified Bill of Particulars served by plaintiff in response to defendants' demand. All metadata extracted from document header."
+  },
+  "docketEntry": {
+    "docNo": 11,
+    "filingDate": "2027-03-18",
+    "documentType": "BILL_OF_PARTICULARS",
+    "title": "Verified Bill of Particulars",
+    "filedBy": "Plaintiff",
+    "servedOn": "Defendants",
+    "responseTo": "Defendants' Demand for Bill of Particulars (Doc. No. 4)"
+  },
+  "caseUpdates": {
+    "billOfParticularsServed": true,
+    "billOfParticularsServedDate": "2027-03-18",
+    "billOfParticularsRespondsToDemand": true,
+    "billOfParticularsDemandDocNo": 4
+  },
+  "parties": [
+    {
+      "name": "Jane Doe as Parent and Natural Guardian of A.D., an Infant",
+      "role": "Plaintiff",
+      "counsel": "Hudson River Trial Law PLLC by Alex Morgan, Esq."
+    },
+    {
+      "name": "Jordan Smith, M.D.",
+      "role": "Defendant",
+      "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+    },
+    {
+      "name": "Jordan Smith, M.D., P.C.",
+      "role": "Defendant",
+      "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+    }
+  ],
+  "witnesses": [],
+  "tasks": [
+    {
+      "taskId": "MARK_BILL_OF_PARTICULARS_SERVED",
+      "status": "source_supported_auto_saved",
+      "sourceAuthority": "CPLR 3041, 3042",
+      "sourceName": "Verified Bill of Particulars",
+      "sourceDocNo": 11,
+      "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+      "authorityRank": 70,
+      "sourceText": "Verified Bill of Particulars served by plaintiff in response to defendants' demand.",
+      "sourcePage": 1
+    },
+    {
+      "taskId": "REVIEW_BILL_OF_PARTICULARS_FOR_DISCOVERY_NEEDS",
+      "status": "conditional",
+      "sourceAuthority": "CPLR 3042, 3043; Part Rules",
+      "sourceName": "Verified Bill of Particulars",
+      "sourceDocNo": 11,
+      "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox",
+      "authorityRank": 70,
+      "sourceText": "The Bill of Particulars sets forth synthetic allegations of departure from accepted medical care and claimed injuries. The document may inform later deposition and authorization tasks.",
+      "sourcePage": 1
+    }
+  ],
+  "deadlines": [
+    {
+      "deadlineType": "BP_RESPONSE_DEADLINE",
+      "date": "2027-01-02",
+      "sourceDocNo": 4,
+      "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+      "status": "superseded",
+      "supersededBy": "Bill of Particulars served on 2027-03-18 (Doc. No. 11)",
+      "notes": "Original deadline was 2027-01-02. Service occurred on 2027-03-18, which is late. This deadline is now superseded by the actual service date, but lateness may be an issue."
+    }
+  ],
+  "humanReviewItems": [
+    "Verify that the Bill of Particulars was served within the time required by CPLR 3042 or any court order. The demand was served on 2026-12-03 with a 30-day response deadline of 2027-01-02. Service on 2027-03-18 is late. Determine if a stipulation or court order extended the time.",
+    "Review the content of the Bill of Particulars for completeness and compliance with CPLR 3043. The synthetic document does not provide the actual allegations or claimed injuries.",
+    "Confirm that the Bill of Particulars was verified as required by CPLR 3044."
+  ],
+  "auditNotes": [
+    "Document 11 is a Verified Bill of Particulars served by plaintiff on 2027-03-18.",
+    "This responds to the open task RESPOND_TO_BILL_OF_PARTICULARS_DEMAND, which is now completed.",
+    "The service is late (deadline was 2027-01-02). Added human review item for lateness.",
+    "Added conditional task REVIEW_BILL_OF_PARTICULARS_FOR_DISCOVERY_NEEDS as expected.",
+    "Updated case snapshot with new confirmed fact and moved task to completed."
+  ],
+  "rawMasterResult": {
+    "documentMetadata": {
+      "docIndex": 11,
+      "storedName": "011-doc_011_BILL_OF_PARTICULARS.pdf",
+      "originalName": "doc_011_BILL_OF_PARTICULARS.pdf",
+      "fileKind": "pdf",
+      "pageCount": 2,
+      "mimeType": "application/pdf",
+      "sizeBytes": 3729,
+      "filingDate": "2027-03-18",
+      "documentType": "BILL_OF_PARTICULARS",
+      "documentTitle": "Verified Bill of Particulars",
+      "judge": "Hon. Tracy Catapano-Fox",
+      "part": "Medical, Dental and Podiatric Malpractice Part (Courtroom 48)",
+      "court": "SUPREME COURT OF THE STATE OF NEW YORK, COUNTY OF QUEENS",
+      "indexNumber": "900001/2026",
+      "plaintiffCounsel": "Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+      "defenseCounsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+    },
+    "extractionQuality": {
+      "confidence": "high",
+      "notes": "Synthetic document clearly states it is a Verified Bill of Particulars served by plaintiff in response to defendants' demand. All metadata extracted from document header."
+    },
+    "docketEntry": {
+      "docNo": 11,
+      "filingDate": "2027-03-18",
+      "documentType": "BILL_OF_PARTICULARS",
+      "title": "Verified Bill of Particulars",
+      "filedBy": "Plaintiff",
+      "servedOn": "Defendants",
+      "responseTo": "Defendants' Demand for Bill of Particulars (Doc. No. 4)"
+    },
+    "caseUpdates": {
+      "billOfParticularsServed": true,
+      "billOfParticularsServedDate": "2027-03-18",
+      "billOfParticularsRespondsToDemand": true,
+      "billOfParticularsDemandDocNo": 4
+    },
+    "parties": [
+      {
+        "name": "Jane Doe as Parent and Natural Guardian of A.D., an Infant",
+        "role": "Plaintiff",
+        "counsel": "Hudson River Trial Law PLLC by Alex Morgan, Esq."
+      },
+      {
+        "name": "Jordan Smith, M.D.",
+        "role": "Defendant",
+        "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+      },
+      {
+        "name": "Jordan Smith, M.D., P.C.",
+        "role": "Defendant",
+        "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+      }
+    ],
+    "witnesses": [],
+    "tasks": [
+      {
+        "taskId": "MARK_BILL_OF_PARTICULARS_SERVED",
+        "status": "source_supported_auto_saved",
+        "sourceAuthority": "CPLR 3041, 3042",
+        "sourceName": "Verified Bill of Particulars",
+        "sourceDocNo": 11,
+        "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+        "authorityRank": 70,
+        "sourceText": "Verified Bill of Particulars served by plaintiff in response to defendants' demand.",
+        "sourcePage": 1
+      },
+      {
+        "taskId": "REVIEW_BILL_OF_PARTICULARS_FOR_DISCOVERY_NEEDS",
+        "status": "conditional",
+        "sourceAuthority": "CPLR 3042, 3043; Part Rules",
+        "sourceName": "Verified Bill of Particulars",
+        "sourceDocNo": 11,
+        "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox",
+        "authorityRank": 70,
+        "sourceText": "The Bill of Particulars sets forth synthetic allegations of departure from accepted medical care and claimed injuries. The document may inform later deposition and authorization tasks.",
+        "sourcePage": 1
+      }
+    ],
+    "deadlines": [
+      {
+        "deadlineType": "BP_RESPONSE_DEADLINE",
+        "date": "2027-01-02",
+        "sourceDocNo": 4,
+        "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+        "status": "superseded",
+        "supersededBy": "Bill of Particulars served on 2027-03-18 (Doc. No. 11)",
+        "notes": "Original deadline was 2027-01-02. Service occurred on 2027-03-18, which is late. This deadline is now superseded by the actual service date, but lateness may be an issue."
+      }
+    ],
+    "humanReviewItems": [
+      "Verify that the Bill of Particulars was served within the time required by CPLR 3042 or any court order. The demand was served on 2026-12-03 with a 30-day response deadline of 2027-01-02. Service on 2027-03-18 is late. Determine if a stipulation or court order extended the time.",
+      "Review the content of the Bill of Particulars for completeness and compliance with CPLR 3043. The synthetic document does not provide the actual allegations or claimed injuries.",
+      "Confirm that the Bill of Particulars was verified as required by CPLR 3044."
+    ],
+    "updatedCaseSnapshot": {
+      "snapshotId": "snapshot_after_doc_11",
+      "caseId": "synthetic_queens_tcf_001",
+      "afterDocNo": 11,
+      "currentPhase": "discovery",
+      "currentMiniPhase": "bill_of_particulars_served",
+      "county": "Queens",
+      "part": "Medical, Dental and Podiatric Malpractice Part",
+      "partName": "Medical, Dental and Podiatric Malpractice Part",
+      "court": "SUPREME COURT OF THE STATE OF NEW YORK, COUNTY OF QUEENS",
+      "judgeName": "Hon. Tracy Catapano-Fox",
+      "caseType": "medical_malpractice",
+      "case": {
+        "county": "Queens",
+        "part": "Medical, Dental and Podiatric Malpractice Part",
+        "partName": "Medical, Dental and Podiatric Malpractice Part",
+        "court": "Supreme Court of the State of New York, County of Queens",
+        "judgeName": "Hon. Tracy Catapano-Fox",
+        "caseType": "medical_malpractice"
+      },
+      "confirmedFacts": [
+        "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+        "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+        "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+        "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+        "Nature of suit: medical malpractice - prenatal, delivery, newborn, and pediatric care.",
+        "Index Number: 900001/2026.",
+        "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox.",
+        "Plaintiff filed Notice of Commencement of Action for Personal Injuries pursuant to CPLR 306-c on 2026-11-12.",
+        "Summons and complaint are referenced as initiating papers.",
+        "Defendants filed Verified Answer on 2026-12-03, denying liability and asserting affirmative defenses.",
+        "Issue joined as of 2026-12-03.",
+        "Defense counsel appears for both defendants.",
+        "Defendants served Demand for Bill of Particulars on 2026-12-03, demanding a verified bill of particulars within 30 days after service.",
+        "Defendants served a Notice to Take Deposition Upon Oral Examination for plaintiff, setting a proposed deposition date of April 30, 2027.",
+        "Defendants served Demand for Authorizations on 2026-12-03, demanding HIPAA-compliant authorizations for various records pursuant to CPLR 3120.",
+        "Defendants served Demand for Statements and Photographs on 2026-12-03, demanding production of statements, photographs, recordings, reports, and related materials within 14 days after receipt, pursuant to CPLR 3101.",
+        "Defendants served Demand Pursuant to Medicare, Medicaid and SCHIP Extension Act on 2026-12-03, demanding lien/benefit information within 20 days.",
+        "Plaintiff filed Notice of Medical Malpractice Action on 2027-02-28 (NYSCEF Doc. No. 9) pursuant to CPLR 3406(a) and 22 NYCRR 202.56(a).",
+        "Request for Judicial Intervention (RJI) filed on 2027-02-28 for medical, dental or podiatric malpractice case.",
+        "RJI identifies case as tort / medical, dental or podiatric malpractice matter.",
+        "RJI places case into Queens Medical, Dental and Podiatric Malpractice Part workflow.",
+        "RJI triggers monitoring for preliminary conference scheduling or order issuance.",
+        "Plaintiff served Verified Bill of Particulars on 2027-03-18 (NYSCEF Doc. No. 11) in response to defendants' demand (Doc. No. 4)."
+      ],
+      "carriedForwardContext": [],
+      "openTasks": [
+        "RESPOND_TO_AUTHORIZATION_DEMANDS",
+        "RESPOND_TO_STATEMENTS_AND_PHOTOS_DEMAND",
+        "RESPOND_TO_MEDICARE_MEDICAID_SCHIP_DEMAND"
+      ],
+      "completedTasks": [
+        "ANSWER_RECEIVED",
+        "TRACK_MEDICAL_MALPRACTICE_NOTICE",
+        "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND"
+      ],
+      "conditionalTasks": [
+        "TRACK_PLAINTIFF_DEPOSITION_NOTICE",
+        "AWAIT_MEDMAL_PRELIMINARY_CONFERENCE",
+        "REVIEW_BILL_OF_PARTICULARS_FOR_DISCOVERY_NEEDS"
+      ],
+      "deadlines": [
+        {
+          "deadlineType": "BP_RESPONSE_DEADLINE",
+          "date": "2027-01-02",
+          "sourceDocNo": 4,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+          "status": "superseded",
+          "supersededBy": "Bill of Particulars served on 2027-03-18 (Doc. No. 11)",
+          "notes": "Original deadline was 2027-01-02. Service occurred on 2027-03-18, which is late. This deadline is now superseded by the actual service date, but lateness may be an issue."
+        },
+        {
+          "deadlineType": "PLAINTIFF_EBT_NOTICE_DATE",
+          "date": "2027-04-30",
+          "sourceDocNo": 5,
+          "ruleSourceApplied": "cplr_article_31_disclosure",
+          "status": "conditional"
+        },
+        {
+          "deadlineType": "MEDICARE_MEDICAID_SCHIP_DEMAND_RESPONSE",
+          "date": "2026-12-23",
+          "sourceDocNo": 8,
+          "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+          "status": "conditional"
+        }
+      ],
+      "supersededDeadlines": [
+        {
+          "deadlineType": "BP_RESPONSE_DEADLINE",
+          "date": "2027-01-02",
+          "sourceDocNo": 4,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars"
+        }
+      ],
+      "unresolvedHumanReviewItems": [
+        "Verify service date of Demand Pursuant to Medicare, Medicaid and SCHIP Extension Act. Response deadline calculated based on assumed service date of 2026-12-03. Adjust if service occurred later.",
+        "Notice states that required pleadings and bill of particulars materials have been filed or served. Verify if bill of particulars response has been served and update RESPOND_TO_BILL_OF_PARTICULARS_DEMAND task accordingly.",
+        "Bill of Particulars served on 2027-03-18 is late relative to the 30-day demand deadline of 2027-01-02. Determine if a stipulation or court order extended the time.",
+        "Review the content of the Bill of Particulars for completeness and compliance with CPLR 3043. The synthetic document does not provide the actual allegations or claimed injuries.",
+        "Confirm that the Bill of Particulars was verified as required by CPLR 3044."
+      ],
+      "conflicts": []
+    },
+    "auditNotes": [
+      "Document 11 is a Verified Bill of Particulars served by plaintiff on 2027-03-18.",
+      "This responds to the open task RESPOND_TO_BILL_OF_PARTICULARS_DEMAND, which is now completed.",
+      "The service is late (deadline was 2027-01-02). Added human review item for lateness.",
+      "Added conditional task REVIEW_BILL_OF_PARTICULARS_FOR_DISCOVERY_NEEDS as expected.",
+      "Updated case snapshot with new confirmed fact and moved task to completed."
+    ],
+    "inferredPartRuleText": "",
+    "partRuleExtracts": [],
+    "ruleSourcesApplied": [
+      "cplr_3041_3042_bill_of_particulars",
+      "queens_medmal_part_rules_catapano_fox"
+    ],
+    "documentFacts": {
+      "documentMetadata": {
+        "docIndex": 11,
+        "storedName": "011-doc_011_BILL_OF_PARTICULARS.pdf",
+        "originalName": "doc_011_BILL_OF_PARTICULARS.pdf",
+        "fileKind": "pdf",
+        "pageCount": 2,
+        "mimeType": "application/pdf",
+        "sizeBytes": 3729,
+        "filingDate": "2027-03-18",
+        "documentType": "BILL_OF_PARTICULARS",
+        "documentTitle": "Verified Bill of Particulars",
+        "judge": "Hon. Tracy Catapano-Fox",
+        "part": "Medical, Dental and Podiatric Malpractice Part (Courtroom 48)",
+        "court": "SUPREME COURT OF THE STATE OF NEW YORK, COUNTY OF QUEENS",
+        "indexNumber": "900001/2026",
+        "plaintiffCounsel": "Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "defenseCounsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+      },
+      "extractionQuality": {
+        "confidence": "high",
+        "notes": "Synthetic document clearly states it is a Verified Bill of Particulars served by plaintiff in response to defendants' demand. All metadata extracted from document header."
+      },
+      "docketEntry": {
+        "docNo": 11,
+        "filingDate": "2027-03-18",
+        "documentType": "BILL_OF_PARTICULARS",
+        "title": "Verified Bill of Particulars",
+        "filedBy": "Plaintiff",
+        "servedOn": "Defendants",
+        "responseTo": "Defendants' Demand for Bill of Particulars (Doc. No. 4)"
+      },
+      "caseUpdates": {
+        "billOfParticularsServed": true,
+        "billOfParticularsServedDate": "2027-03-18",
+        "billOfParticularsRespondsToDemand": true,
+        "billOfParticularsDemandDocNo": 4
+      },
+      "parties": [
+        {
+          "name": "Jane Doe as Parent and Natural Guardian of A.D., an Infant",
+          "role": "Plaintiff",
+          "counsel": "Hudson River Trial Law PLLC by Alex Morgan, Esq."
+        },
+        {
+          "name": "Jordan Smith, M.D.",
+          "role": "Defendant",
+          "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+        },
+        {
+          "name": "Jordan Smith, M.D., P.C.",
+          "role": "Defendant",
+          "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+        }
+      ],
+      "witnesses": [],
+      "humanReviewItems": [
+        "Verify that the Bill of Particulars was served within the time required by CPLR 3042 or any court order. The demand was served on 2026-12-03 with a 30-day response deadline of 2027-01-02. Service on 2027-03-18 is late. Determine if a stipulation or court order extended the time.",
+        "Review the content of the Bill of Particulars for completeness and compliance with CPLR 3043. The synthetic document does not provide the actual allegations or claimed injuries.",
+        "Confirm that the Bill of Particulars was verified as required by CPLR 3044."
+      ]
+    },
+    "ruleBasedTasks": [
+      {
+        "taskId": "MARK_BILL_OF_PARTICULARS_SERVED",
+        "status": "source_supported_auto_saved",
+        "sourceAuthority": "CPLR 3041, 3042",
+        "sourceName": "Verified Bill of Particulars",
+        "sourceDocNo": 11,
+        "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+        "authorityRank": 70,
+        "sourceText": "Verified Bill of Particulars served by plaintiff in response to defendants' demand.",
+        "sourcePage": 1
+      },
+      {
+        "taskId": "REVIEW_BILL_OF_PARTICULARS_FOR_DISCOVERY_NEEDS",
+        "status": "conditional",
+        "sourceAuthority": "CPLR 3042, 3043; Part Rules",
+        "sourceName": "Verified Bill of Particulars",
+        "sourceDocNo": 11,
+        "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox",
+        "authorityRank": 70,
+        "sourceText": "The Bill of Particulars sets forth synthetic allegations of departure from accepted medical care and claimed injuries. The document may inform later deposition and authorization tasks.",
+        "sourcePage": 1
+      }
+    ],
+    "caseOrderTasks": []
+  }
+}

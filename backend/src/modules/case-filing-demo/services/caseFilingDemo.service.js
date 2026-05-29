@@ -1,42 +1,13 @@
 import { access, readFile, readdir, stat } from "fs/promises";
 import { join } from "path";
 import { AppError } from "../../../shared/http/errors.js";
+import {
+  COMING_SOON_CASES,
+  DEMO_CASES,
+  getDemoCase
+} from "../config/demoCaseRegistry.js";
 
-const DEMO_BATCH_ID = "demo-case-001-cached";
-const DEMO_GENERATED_AT = "2026-05-24T13:37:21.793Z";
-
-const COMING_SOON_CASES = [
-  {
-    id: "case_002",
-    label: "Case 002",
-    title: "Commercial Division Contract Dispute",
-    matterType: "commercial_litigation",
-    jurisdiction: "New York Supreme Court",
-    status: "coming_soon",
-    documentCount: 0,
-    description: "Planned synthetic case for contract motion practice and discovery deadlines."
-  },
-  {
-    id: "case_003",
-    label: "Case 003",
-    title: "Labor and Employment Action",
-    matterType: "employment_litigation",
-    jurisdiction: "New York Supreme Court",
-    status: "coming_soon",
-    documentCount: 0,
-    description: "Planned synthetic case for employment pleadings, notices, and compliance tasks."
-  },
-  {
-    id: "case_004",
-    label: "Case 004",
-    title: "Premises Liability Discovery Track",
-    matterType: "personal_injury",
-    jurisdiction: "New York Supreme Court",
-    status: "coming_soon",
-    documentCount: 0,
-    description: "Planned synthetic case for EBT scheduling, expert discovery, and NOI tracking."
-  }
-];
+const DEMO_GENERATED_AT = "2026-05-24T18:41:29.674Z";
 
 const AUDIT_STAGES = [
   ["upload_received", "Source filing registered in the demo corpus."],
@@ -51,13 +22,15 @@ function padDocNo(value) {
   return String(value).padStart(3, "0");
 }
 
-function normalizeCaseStatus(caseId) {
-  if (caseId === "case_001_rule_authority_v002") return "available";
-  return "coming_soon";
+function docKeyFromIndex(docIndex) {
+  return `doc-${padDocNo(docIndex)}`;
 }
 
 function buildDocumentFilename(doc) {
-  const type = doc.expectedDocumentType || doc.docKey || `doc_${padDocNo(doc.docIndex)}`;
+  if (doc.syntheticFileBase) {
+    return `${doc.syntheticFileBase}.pdf`;
+  }
+  const type = doc.expectedDocumentType || doc.documentType || doc.docKey || `doc_${padDocNo(doc.docIndex)}`;
   return `doc_${padDocNo(doc.docIndex)}_${type}.pdf`;
 }
 
@@ -74,7 +47,7 @@ function countByStatus(reports) {
   );
 }
 
-function publicDocument(doc, sourceAvailable) {
+function publicDocumentFromGolden(doc, sourceAvailable, caseId) {
   return {
     docIndex: doc.docIndex,
     docKey: doc.docKey,
@@ -94,7 +67,37 @@ function publicDocument(doc, sourceAvailable) {
       filename: buildDocumentFilename(doc),
       available: sourceAvailable,
       url: sourceAvailable
-        ? `/api/case-filing-demo/cases/case_001_rule_authority_v002/documents/${doc.docKey}/source`
+        ? `/api/case-filing-demo/cases/${caseId}/documents/${doc.docKey}/source`
+        : null,
+      status: sourceAvailable ? "viewable" : "pdf_not_imported_yet"
+    }
+  };
+}
+
+function publicDocumentFromImport(doc, sourceAvailable, caseId) {
+  const docIndex = doc.docNo ?? doc.docIndex;
+  const docKey = docKeyFromIndex(docIndex);
+  return {
+    docIndex,
+    docKey,
+    title: doc.title,
+    documentType: doc.documentType,
+    filingDate: doc.filedDate ?? null,
+    receivedDate: null,
+    nyscefDocNo: docIndex,
+    pageCount: null,
+    expectedExtractionQuality: null,
+    expectedConfirmedFacts: [],
+    expectedTasks: doc.expectedTasks ?? [],
+    expectedDeadlines: doc.expectedDeadlines ?? [],
+    expectedHumanReviewItems: [],
+    syntheticDataNotice:
+      "Synthetic import package — golden expected outputs not yet authored for this case.",
+    source: {
+      filename: buildDocumentFilename(doc),
+      available: sourceAvailable,
+      url: sourceAvailable
+        ? `/api/case-filing-demo/cases/${caseId}/documents/${docKey}/source`
         : null,
       status: sourceAvailable ? "viewable" : "pdf_not_imported_yet"
     }
@@ -119,15 +122,15 @@ function summarizeOutput(doc) {
   };
 }
 
-function buildAuditReplay(documents) {
+function buildAuditReplay(documents, batchId, generatedAt = DEMO_GENERATED_AT) {
   const entries = [];
   let offsetMs = 0;
   for (const doc of documents) {
     for (const [event, message] of AUDIT_STAGES) {
-      const timestamp = new Date(Date.parse(DEMO_GENERATED_AT) + offsetMs).toISOString();
+      const timestamp = new Date(Date.parse(generatedAt) + offsetMs).toISOString();
       entries.push({
         timestamp,
-        batchId: DEMO_BATCH_ID,
+        batchId,
         docKey: doc.docKey,
         docIndex: doc.docIndex,
         event,
@@ -170,21 +173,71 @@ async function walkFiles(root) {
   return files;
 }
 
-export function createCaseFilingDemoService({
-  repoRoot,
-  goldenCaseId,
-  goldenDatasetDir,
-  fixtureDir,
-  evalRunner
-}) {
+async function resolveImportPackageDir(repoRoot, caseConfig) {
   const importsRoot = join(repoRoot, "file-exchange/imports");
+  const candidates = [];
 
-  async function loadManifest() {
-    return readJson(join(goldenDatasetDir, `${goldenCaseId}.golden-dataset.json`));
+  if (caseConfig.importStamp) {
+    for (const name of caseConfig.importPackageNames ?? []) {
+      candidates.push(join(importsRoot, caseConfig.importStamp, name));
+    }
   }
 
-  async function loadFixtureOutputs() {
-    const outputsDir = join(fixtureDir, "outputs");
+  for (const name of caseConfig.importPackageNames ?? []) {
+    candidates.push(join(importsRoot, name));
+  }
+
+  try {
+    const stamps = await readdir(importsRoot, { withFileTypes: true });
+    for (const entry of stamps) {
+      if (!entry.isDirectory()) continue;
+      for (const name of caseConfig.importPackageNames ?? []) {
+        candidates.push(join(importsRoot, entry.name, name));
+      }
+    }
+  } catch {
+    /* optional */
+  }
+
+  for (const candidate of candidates) {
+    if (await exists(join(candidate, "manifest.json")) || (await exists(candidate))) {
+      return candidate;
+    }
+  }
+
+  return candidates[0] ?? null;
+}
+
+async function buildSourceIndexForPackage(importDir) {
+  const pdfs = (await walkFiles(importDir)).filter((file) => file.toLowerCase().endsWith(".pdf"));
+  const byDocKey = new Map();
+  for (const pdf of pdfs) {
+    const filename = pdf.split("/").pop();
+    const match = filename.match(/doc[_-](\d{3})/i);
+    const docNo = match?.[1];
+    if (docNo) {
+      byDocKey.set(docKeyFromIndex(Number(docNo)), { path: pdf, filename });
+    }
+  }
+  return byDocKey;
+}
+
+export function createCaseFilingDemoService({
+  repoRoot,
+  createEvalRunnerForCase,
+  cases = DEMO_CASES
+}) {
+  function fixtureDirFor(caseConfig) {
+    return join(repoRoot, ...caseConfig.fixtureDirParts);
+  }
+
+  async function loadCachedManifest(caseConfig) {
+    const goldenDatasetDir = join(repoRoot, "evals/golden", caseConfig.goldenCaseId);
+    return readJson(join(goldenDatasetDir, `${caseConfig.goldenCaseId}.golden-dataset.json`));
+  }
+
+  async function loadFixtureOutputs(caseConfig) {
+    const outputsDir = join(fixtureDirFor(caseConfig), "outputs");
     const files = (await readdir(outputsDir)).filter((file) => file.endsWith(".json")).sort();
     const outputs = [];
     for (const file of files) {
@@ -193,101 +246,195 @@ export function createCaseFilingDemoService({
     return outputs;
   }
 
-  async function loadCaseSnapshot() {
-    return readJson(join(fixtureDir, "case-snapshot.json"));
+  async function loadCaseSnapshot(caseConfig) {
+    return readJson(join(fixtureDirFor(caseConfig), "case-snapshot.json"));
   }
 
-  async function buildSourceIndex() {
-    const pdfs = (await walkFiles(importsRoot)).filter((file) => file.toLowerCase().endsWith(".pdf"));
-    const byDocKey = new Map();
-    for (const pdf of pdfs) {
-      const filename = pdf.split("/").pop();
-      const match = filename.match(/doc[_-](\d{3})|^(\d{3})-/i);
-      const docNo = match?.[1] ?? match?.[2];
-      if (docNo) byDocKey.set(`doc-${docNo}`, { path: pdf, filename });
+  async function assertKnownCase(caseId) {
+    if (getDemoCase(caseId)) return getDemoCase(caseId);
+    const comingSoon = COMING_SOON_CASES.find((entry) => entry.id === caseId);
+    if (comingSoon) {
+      throw new AppError(`${comingSoon.label} is coming soon. Synthetic files have not been added yet.`, 404);
     }
-    return byDocKey;
+    throw new AppError(`Unknown demo case: ${caseId}`, 404);
   }
 
-  async function sourceIndex() {
-    return buildSourceIndex();
-  }
-
-  async function assertAvailableCase(caseId) {
-    if (caseId !== goldenCaseId) {
-      const comingSoon = COMING_SOON_CASES.find((entry) => entry.id === caseId);
-      if (comingSoon) {
-        throw new AppError(`${comingSoon.label} is coming soon. Synthetic files have not been added yet.`, 404);
-      }
-      throw new AppError(`Unknown demo case: ${caseId}`, 404);
-    }
-  }
-
-  async function buildAvailableCaseSummary() {
-    const manifest = await loadManifest();
+  async function buildCachedCaseSummary(caseConfig) {
+    const manifest = await loadCachedManifest(caseConfig);
     const identity = manifest.caseIdentity ?? {};
-    const sourceMap = await sourceIndex();
+    const importDir = await resolveImportPackageDir(repoRoot, caseConfig);
+    const sourceMap = importDir ? await buildSourceIndexForPackage(importDir) : new Map();
     const docs = manifest.documentExpectedOutputs ?? [];
-    const sourceCount = docs.filter((doc) => sourceMap.has(doc.docKey)).length;
+
+    const descriptions = {
+      case_001_rule_authority_v002:
+        "Synthetic Queens med-mal (Kerrigan part), 14 filings, rule-authority golden v002, cached fixture replay.",
+      case_002_queens_catapano_fox_v002:
+        "Synthetic Queens med-mal (Catapano-Fox part), 21 filings, DeepSeek V4 golden authoring, cached fixture replay."
+    };
+
     return {
-      id: goldenCaseId,
-      label: "Case 001",
+      id: caseConfig.id,
+      label: caseConfig.label,
       title: identity.caseName,
       matterType: identity.caseType,
       jurisdiction: identity.court,
       county: identity.county,
-      status: normalizeCaseStatus(goldenCaseId),
+      status: "available",
       documentCount: docs.length,
-      sourceDocumentCount: sourceCount,
-      sourceDocumentsAvailable: sourceCount === docs.length,
-      cachedBundleAvailable: await exists(fixtureDir),
-      goldenCaseId,
-      generatedAt: manifest.meta?.generatedAt,
+      sourceDocumentCount: docs.filter((doc) => sourceMap.has(doc.docKey)).length,
+      sourceDocumentsAvailable: docs.every((doc) => sourceMap.has(doc.docKey)),
+      cachedBundleAvailable: await exists(fixtureDirFor(caseConfig)),
+      goldenCaseId: caseConfig.goldenCaseId,
+      importStamp: caseConfig.importStamp ?? null,
+      generatedAt: manifest.meta?.generatedAt ?? DEMO_GENERATED_AT,
       syntheticDataNotice: manifest.meta?.syntheticDataNotice ?? identity.syntheticNotice,
       description:
-        "Synthetic Queens medical malpractice filing sequence with 14 NYSCEF-style documents, rule-authority expectations, and cached output fixtures."
+        descriptions[caseConfig.id] ??
+        "Synthetic filing sequence with golden eval fixtures and cached orchestration replay."
+    };
+  }
+
+  async function buildImportCaseSummary(caseConfig) {
+    const importDir = await resolveImportPackageDir(repoRoot, caseConfig);
+    if (!importDir) {
+      throw new AppError(`Import package not found for ${caseConfig.id}`, 404);
+    }
+
+    const manifest = await readJson(join(importDir, caseConfig.manifestFile ?? "manifest.json"));
+    const caseBlock = manifest.case ?? {};
+    const docs = manifest.documents ?? [];
+    const sourceMap = await buildSourceIndexForPackage(importDir);
+
+    const caseName = [
+      caseBlock.plaintiff,
+      caseBlock.defendants?.length ? `v. ${caseBlock.defendants.join(", ")}` : null
+    ]
+      .filter(Boolean)
+      .join(" ");
+
+    return {
+      id: caseConfig.id,
+      label: caseConfig.label,
+      title: caseName || caseConfig.label,
+      matterType: caseBlock.caseType ?? "medical_malpractice",
+      jurisdiction: caseBlock.court,
+      county: "Queens",
+      status: "sources_available",
+      documentCount: docs.length,
+      sourceDocumentCount: docs.filter((doc) =>
+        sourceMap.has(docKeyFromIndex(doc.docNo))
+      ).length,
+      sourceDocumentsAvailable: docs.every((doc) =>
+        sourceMap.has(docKeyFromIndex(doc.docNo))
+      ),
+      cachedBundleAvailable: false,
+      goldenCaseId: null,
+      importStamp: caseConfig.importStamp ?? null,
+      importPackageId: manifest.packageId ?? caseConfig.importPackageNames?.[0],
+      generatedAt: manifest.generatedAt,
+      syntheticDataNotice:
+        "Synthetic Queens Catapano-Fox med-mal package (21 filings). PDFs and manifest imported; run npm run author:golden to create golden eval fixtures.",
+      description:
+        "21-document synthetic NYSCEF-style sequence for Justice Catapano-Fox Medical Malpractice Part. View PDFs now; interactive eval replay after golden authoring."
     };
   }
 
   async function listCases() {
+    const summaries = [];
+    for (const caseConfig of cases) {
+      if (caseConfig.mode === "cached") {
+        summaries.push(await buildCachedCaseSummary(caseConfig));
+      } else if (caseConfig.mode === "import") {
+        summaries.push(await buildImportCaseSummary(caseConfig));
+      }
+    }
+
     return {
-      available: [await buildAvailableCaseSummary()],
+      available: summaries.filter((entry) => entry.status !== "coming_soon"),
       comingSoon: COMING_SOON_CASES,
-      cases: [await buildAvailableCaseSummary(), ...COMING_SOON_CASES]
+      cases: [...summaries, ...COMING_SOON_CASES]
     };
   }
 
   async function getCaseDetail(caseId) {
-    await assertAvailableCase(caseId);
-    const manifest = await loadManifest();
-    const summary = await buildAvailableCaseSummary();
-    const sourceMap = await sourceIndex();
-    const documents = (manifest.documentExpectedOutputs ?? []).map((doc) =>
-      publicDocument(doc, sourceMap.has(doc.docKey))
+    const caseConfig = await assertKnownCase(caseId);
+
+    if (caseConfig.mode === "cached") {
+      const manifest = await loadCachedManifest(caseConfig);
+      const summary = await buildCachedCaseSummary(caseConfig);
+      const importDir = await resolveImportPackageDir(repoRoot, caseConfig);
+      const sourceMap = importDir ? await buildSourceIndexForPackage(importDir) : new Map();
+      const documents = (manifest.documentExpectedOutputs ?? []).map((doc) =>
+        publicDocumentFromGolden(doc, sourceMap.has(doc.docKey), caseId)
+      );
+
+      return {
+        ...summary,
+        caseIdentity: manifest.caseIdentity,
+        expectedProcessingRule: manifest.expectedProcessingRule,
+        documents,
+        demoDisclosure:
+          "Cached synthetic golden fixtures and fixture replay. Source PDFs stream from file-exchange imports when present."
+      };
+    }
+
+    const importDir = await resolveImportPackageDir(repoRoot, caseConfig);
+    const manifest = await readJson(join(importDir, caseConfig.manifestFile ?? "manifest.json"));
+    const summary = await buildImportCaseSummary(caseConfig);
+    const sourceMap = await buildSourceIndexForPackage(importDir);
+    const documents = (manifest.documents ?? []).map((doc) =>
+      publicDocumentFromImport(doc, sourceMap.has(docKeyFromIndex(doc.docNo)), caseId)
     );
 
     return {
       ...summary,
-      caseIdentity: manifest.caseIdentity,
-      expectedProcessingRule: manifest.expectedProcessingRule,
+      caseIdentity: {
+        caseId: caseConfig.legalCaseId,
+        indexNumber: manifest.case?.indexNumber,
+        court: manifest.case?.court,
+        caseType: manifest.case?.caseType,
+        judgeName: manifest.case?.judgeName,
+        partName: manifest.case?.partName,
+        synthetic: true
+      },
       documents,
       demoDisclosure:
-        "This demo uses committed synthetic golden fixtures and cached outputs. Source PDFs become viewable after the synthetic PDF bundle is imported into file-exchange/imports."
+        "Import-only demo mode: all PDFs are viewable. Golden expected outputs and interactive replay will appear after golden authoring and promote.",
+      nextSteps: [
+        `npm run author:golden -- --case ${caseConfig.id} --import-stamp ${caseConfig.importStamp} --legal-case-id ${caseConfig.legalCaseId}`,
+        `npm run promote:golden -- --case ${caseConfig.id} --version <goldenDatasetVersion> --confirm`
+      ]
     };
   }
 
   async function getCachedBundle(caseId) {
-    await assertAvailableCase(caseId);
+    const caseConfig = await assertKnownCase(caseId);
+
+    if (caseConfig.mode !== "cached") {
+      throw new AppError(
+        "Cached demo bundle is not available for this case yet. PDFs and manifest are imported; run golden authoring to enable eval replay.",
+        409
+      );
+    }
+
+    const evalRunner = createEvalRunnerForCase(caseConfig.goldenCaseId);
+    const demoBatchId = caseConfig.demoBatchId ?? `demo-${caseConfig.id}`;
+    const goldenDatasetDir = join(repoRoot, "evals/golden", caseConfig.goldenCaseId);
+    const snapshotCheckpoints =
+      caseConfig.snapshotCheckpoints ?? [1, 2, 4, 8, 12, 14];
+
     const [detail, outputs, snapshot] = await Promise.all([
       getCaseDetail(caseId),
-      loadFixtureOutputs(),
-      loadCaseSnapshot()
+      loadFixtureOutputs(caseConfig),
+      loadCaseSnapshot(caseConfig)
     ]);
+
     const reports = [];
     for (const output of outputs) {
       reports.push(
         await evalRunner.evalDocument({
-          batchId: DEMO_BATCH_ID,
+          batchId: demoBatchId,
           docIndex: output.docIndex,
           docKey: output.docKey,
           documentResult: output,
@@ -296,13 +443,14 @@ export function createCaseFilingDemoService({
         })
       );
     }
-    for (const docIndex of [1, 2, 4, 8, 12, 14]) {
+
+    for (const docIndex of snapshotCheckpoints) {
       const checkpoint = await readJson(
         join(goldenDatasetDir, `after_doc_${padDocNo(docIndex)}.expected.json`)
       );
       reports.push(
         await evalRunner.evalSnapshot({
-          batchId: DEMO_BATCH_ID,
+          batchId: demoBatchId,
           docIndex,
           snapshot: checkpoint,
           allDocumentOutputs: outputs
@@ -311,13 +459,13 @@ export function createCaseFilingDemoService({
     }
 
     return {
-      batchId: DEMO_BATCH_ID,
-      generatedAt: DEMO_GENERATED_AT,
+      batchId: demoBatchId,
+      generatedAt: detail.generatedAt ?? DEMO_GENERATED_AT,
       replay: true,
-      replayLabel: "Previously generated fixture replay",
+      replayLabel: "Golden authoring fixture replay (DeepSeek V4 ground truth)",
       case: detail,
       results: {
-        batchId: DEMO_BATCH_ID,
+        batchId: demoBatchId,
         batchStatus: "completed",
         processedCount: outputs.length,
         totalCount: outputs.length,
@@ -326,41 +474,51 @@ export function createCaseFilingDemoService({
         documents: outputs.map(summarizeOutput),
         tasks: snapshot.openTasks ?? [],
         deadlines: snapshot.deadlines ?? [],
-        humanReviewItems: snapshot.unresolvedHumanReviewItemsExpected ?? [],
-        partRule: { source: "demo rule-authority fixture", hasText: false }
+        humanReviewItems:
+          snapshot.unresolvedHumanReviewItemsExpected ??
+          snapshot.humanReviewItems ??
+          [],
+        partRule: { source: "demo fixture replay", hasText: false }
       },
       evals: {
-        batchId: DEMO_BATCH_ID,
+        batchId: demoBatchId,
         summary: countByStatus(reports),
         reports
       },
       audit: {
-        batchId: DEMO_BATCH_ID,
+        batchId: demoBatchId,
         generatedFrom: "committed fixture replay",
-        entries: buildAuditReplay(outputs)
+        entries: buildAuditReplay(outputs, demoBatchId, detail.generatedAt ?? DEMO_GENERATED_AT)
       },
       manifest: {
         lineage: {
-          goldenCaseId,
-          fixtureDir: ["backend/src", "modules", "case-filing-ai", "tests/fixtures/rule-authority-v002"].join("/"),
-          goldenDatasetDir: `evals/golden/${goldenCaseId}`,
-          sourcePdfStatus: detail.sourceDocumentsAvailable ? "available" : "not_imported"
+          goldenCaseId: caseConfig.goldenCaseId,
+          fixtureDir: caseConfig.fixtureDirParts.join("/"),
+          goldenDatasetDir: `evals/golden/${caseConfig.goldenCaseId}`,
+          sourcePdfStatus: detail.sourceDocumentsAvailable ? "available" : "not_imported",
+          authorModel: "deepseek/deepseek-v4-pro"
         },
         integrity: {
           note:
-            "Runtime batch-002 logs are not committed in this repo. This bundle recomputes evals from committed fixtures and replays deterministic audit events for presentation."
+            "Runtime batch logs are not committed. This bundle recomputes evals from committed golden + authoring fixtures and replays deterministic audit events."
         }
       }
     };
   }
 
   async function getDocumentSource(caseId, docKey) {
-    await assertAvailableCase(caseId);
+    await assertKnownCase(caseId);
     if (!/^doc-\d{3}$/.test(docKey)) {
       throw new AppError(`Invalid document id: ${docKey}`, 400);
     }
-    const source = (await sourceIndex()).get(docKey);
+
+    const caseConfig = getDemoCase(caseId);
+    const importDir = await resolveImportPackageDir(repoRoot, caseConfig);
+    if (!importDir) return null;
+
+    const source = (await buildSourceIndexForPackage(importDir)).get(docKey);
     if (!source) return null;
+
     const info = await stat(source.path);
     if (!info.isFile()) return null;
     return source;

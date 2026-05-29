@@ -1,0 +1,66 @@
+{
+  "docIndex": 2,
+  "docKey": "doc-002",
+  "expectedDocumentType": "",
+  "expectedTitle": "doc_002_NOTICE_OF_COMMENCEMENT_PERSONAL_INJURIES.pdf",
+  "expectedFilingDate": "2026-11-12",
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": 2,
+  "expectedPageCount": null,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1438,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "notes": "Synthetic document with clear metadata and content."
+  },
+  "expectedConfirmedFacts": [
+    "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+    "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+    "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+    "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+    "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+    "Nature of suit: medical malpractice - prenatal and obstetrical care.",
+    "Index Number: 900001/2026.",
+    "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox."
+  ],
+  "expectedParties": [
+    {
+      "name": "Jane Doe as Parent and Natural Guardian of A.D., an Infant",
+      "role": "plaintiff",
+      "counsel": "Hudson River Trial Law PLLC by Alex Morgan, Esq."
+    },
+    {
+      "name": "Jordan Smith, M.D.",
+      "role": "defendant",
+      "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+    },
+    {
+      "name": "Jordan Smith, M.D., P.C.",
+      "role": "defendant",
+      "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+    }
+  ],
+  "expectedTasks": [],
+  "expectedDeadlines": [],
+  "expectedHumanReviewItems": [],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

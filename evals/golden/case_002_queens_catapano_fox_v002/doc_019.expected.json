@@ -1,0 +1,84 @@
+{
+  "docIndex": 19,
+  "docKey": "doc-019",
+  "expectedDocumentType": "",
+  "expectedTitle": "doc_019_ORDER_COMPLIANCE_CONFERENCE_DUPLICATE_OR_REFILED.pdf",
+  "expectedFilingDate": "2027-12-09",
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": 19,
+  "expectedPageCount": 1,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1646,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "isSynthetic": true,
+    "notes": "Synthetic NYSCEF-style filing with explicit expected tasks and deadlines."
+  },
+  "expectedConfirmedFacts": [],
+  "expectedParties": [],
+  "expectedTasks": [
+    {
+      "taskType": "CONFIRM_DUPLICATE_OR_REFILED_CC_ORDER",
+      "description": "Flag for duplicate/refiling confirmation before creating duplicate tasks.",
+      "status": "needs_review",
+      "dueDate": null,
+      "sourceDocNo": 19,
+      "ruleSourceApplied": "doc_019_duplicate_or_refiled_cc_order",
+      "sourceAuthority": "case_order",
+      "authorityRank": 90,
+      "supersedes": null,
+      "sourceText": "Compliance Conference Order appears to repeat or refile the prior compliance order. Flag for duplicate/refiling confirmation before creating duplicate tasks.",
+      "sourcePage": null
+    }
+  ],
+  "expectedDeadlines": [
+    {
+      "deadlineType": "FURTHER_DISCOVERY_CONTROL",
+      "date": "2028-04-20",
+      "sourceDocNo": 19,
+      "ruleSourceApplied": "doc_019_duplicate_or_refiled_cc_order",
+      "status": "duplicate",
+      "supersedes": null,
+      "authorityRank": 90,
+      "sourceText": "Further discovery/control date remains 2028-04-20."
+    },
+    {
+      "deadlineType": "FURTHER_COMPLIANCE_CONFERENCE",
+      "date": "2028-05-27",
+      "sourceDocNo": 19,
+      "ruleSourceApplied": "doc_019_duplicate_or_refiled_cc_order",
+      "status": "duplicate",
+      "supersedes": null,
+      "authorityRank": 90,
+      "sourceText": "Further compliance/pretrial conference date remains 2028-05-27."
+    }
+  ],
+  "expectedHumanReviewItems": [
+    "Confirm whether this compliance conference order (Doc. No. 19) is a true duplicate or a refiling with any modifications before creating duplicate tasks."
+  ],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "doc_013_pc_order",
+    "doc_015_cc_order",
+    "doc_017_so_ordered_stipulation",
+    "doc_018_cc_order",
+    "doc_019_duplicate_or_refiled_cc_order",
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

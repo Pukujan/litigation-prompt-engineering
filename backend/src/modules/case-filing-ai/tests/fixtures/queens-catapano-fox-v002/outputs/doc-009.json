@@ -1,0 +1,363 @@
+{
+  "docKey": "doc-009",
+  "docIndex": 9,
+  "storedName": "009-doc_009_NOTICE_OF_MEDICAL_MALPRACTICE.pdf",
+  "originalName": "doc_009_NOTICE_OF_MEDICAL_MALPRACTICE.pdf",
+  "fileKind": "pdf",
+  "status": "completed",
+  "batchTraceId": "golden_adca49f7_77d7c6889abf",
+  "traceId": "golden_adca49f7_77d7c6889abf_doc009",
+  "model": "deepseek/deepseek-v4-pro-20260423",
+  "usage": {
+    "prompt_tokens": 2379,
+    "completion_tokens": 5802,
+    "total_tokens": 8181,
+    "cost": 0.02433042,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.02433042,
+      "upstream_inference_prompt_cost": 0.00413946,
+      "upstream_inference_completions_cost": 0.02019096
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 3915,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "runMetadata": {
+    "promptVersion": "v001",
+    "promptTemplate": "v001_master-case-filing.prompt.md",
+    "promptLabel": "v001",
+    "snapshotMergeMode": "legacy",
+    "openRouterModel": "deepseek/deepseek-v4-pro-20260423",
+    "masterPromptJsonRetry": true,
+    "omitAuditNotesInPrompt": true
+  },
+  "pipelineVersions": null,
+  "parsedDocumentCacheUsed": false,
+  "textSourceUsed": "embedded_text",
+  "reviewStatusAtEvalTime": null,
+  "ruleSourcesChecked": [
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "rankedRules": [
+    {
+      "ruleId": "queens_medmal_part_rules_catapano_fox",
+      "authority": "part",
+      "title": "Medical, Dental and Podiatric Malpractice Conference and Part Rules - Justice Tracy Catapano-Fox",
+      "text": "Medical, Dental and Podiatric Malpractice Conference and Part Rules - Justice Tracy Catapano-Fox",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    },
+    {
+      "ruleId": "queens_medmal_cc_form",
+      "authority": "county",
+      "title": "Queens Medical Malpractice Compliance Conference Order form",
+      "text": "Queens Medical Malpractice Compliance Conference Order form",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    },
+    {
+      "ruleId": "queens_medmal_pc_form",
+      "authority": "county",
+      "title": "Queens Medical Malpractice Preliminary Conference Order form",
+      "text": "Queens Medical Malpractice Preliminary Conference Order form",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    }
+  ],
+  "documentMetadata": {
+    "docIndex": 9,
+    "storedName": "009-doc_009_NOTICE_OF_MEDICAL_MALPRACTICE.pdf",
+    "originalName": "doc_009_NOTICE_OF_MEDICAL_MALPRACTICE.pdf",
+    "fileKind": "pdf",
+    "pageCount": 2,
+    "mimeType": "application/pdf",
+    "sizeBytes": 3895,
+    "filedDate": "2027-02-28",
+    "documentType": "NOTICE_OF_MEDICAL_MALPRACTICE",
+    "documentTitle": "Notice of Medical Malpractice Action"
+  },
+  "extractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1846,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": 0.95,
+    "extractedBy": "ai",
+    "needsHumanReview": false
+  },
+  "docketEntry": {
+    "docNo": 9,
+    "documentType": "NOTICE_OF_MEDICAL_MALPRACTICE",
+    "title": "Notice of Medical Malpractice Action",
+    "filedDate": "2027-02-28",
+    "textSummary": "Notice of Medical Malpractice Action filed pursuant to CPLR 3406(a) and 22 NYCRR 202.56(a). States action commenced 2026-11-12, issue joined 2026-12-03, claim for medical malpractice arising from prenatal, delivery, newborn, and pediatric care. Represents that required pleadings and bill of particulars materials have been filed or served."
+  },
+  "caseUpdates": {
+    "natureOfSuit": "medical malpractice - prenatal, delivery, newborn, and pediatric care"
+  },
+  "parties": [],
+  "witnesses": [],
+  "tasks": [
+    {
+      "taskType": "TRACK_MEDICAL_MALPRACTICE_NOTICE",
+      "status": "source_supported_auto_saved",
+      "sourceDocNo": 9,
+      "ruleSourceApplied": "uniform_rule_202_56_medmal",
+      "sourceAuthority": "22 NYCRR 202.56",
+      "description": "Notice of Medical Malpractice Action filed. Track for medical malpractice conference processing."
+    },
+    {
+      "taskType": "MONITOR_MEDMAL_RJI_AND_PRELIMINARY_CONFERENCE",
+      "status": "conditional",
+      "sourceDocNo": 9,
+      "ruleSourceApplied": "uniform_rule_202_56_medmal",
+      "description": "Monitor for filing of Request for Judicial Intervention (RJI) and scheduling of preliminary conference pursuant to medical malpractice rules."
+    }
+  ],
+  "deadlines": [],
+  "humanReviewItems": [
+    {
+      "item": "Notice states that required pleadings and bill of particulars materials have been filed or served. Verify if bill of particulars response has been served and update RESPOND_TO_BILL_OF_PARTICULARS_DEMAND task accordingly.",
+      "sourceDocNo": 9
+    }
+  ],
+  "auditNotes": [
+    "Processed Notice of Medical Malpractice Action (Doc 9). Added TRACK_MEDICAL_MALPRACTICE_NOTICE as completed task and MONITOR_MEDMAL_RJI_AND_PRELIMINARY_CONFERENCE as conditional task. Updated nature of suit to include delivery, newborn, and pediatric care. Added human review item regarding bill of particulars service representation."
+  ],
+  "rawMasterResult": {
+    "documentMetadata": {
+      "docIndex": 9,
+      "storedName": "009-doc_009_NOTICE_OF_MEDICAL_MALPRACTICE.pdf",
+      "originalName": "doc_009_NOTICE_OF_MEDICAL_MALPRACTICE.pdf",
+      "fileKind": "pdf",
+      "pageCount": 2,
+      "mimeType": "application/pdf",
+      "sizeBytes": 3895,
+      "filedDate": "2027-02-28",
+      "documentType": "NOTICE_OF_MEDICAL_MALPRACTICE",
+      "documentTitle": "Notice of Medical Malpractice Action"
+    },
+    "extractionQuality": {
+      "confidence": 0.95,
+      "extractedBy": "ai",
+      "needsHumanReview": false
+    },
+    "docketEntry": {
+      "docNo": 9,
+      "documentType": "NOTICE_OF_MEDICAL_MALPRACTICE",
+      "title": "Notice of Medical Malpractice Action",
+      "filedDate": "2027-02-28",
+      "textSummary": "Notice of Medical Malpractice Action filed pursuant to CPLR 3406(a) and 22 NYCRR 202.56(a). States action commenced 2026-11-12, issue joined 2026-12-03, claim for medical malpractice arising from prenatal, delivery, newborn, and pediatric care. Represents that required pleadings and bill of particulars materials have been filed or served."
+    },
+    "caseUpdates": {
+      "natureOfSuit": "medical malpractice - prenatal, delivery, newborn, and pediatric care"
+    },
+    "parties": [],
+    "witnesses": [],
+    "tasks": [
+      {
+        "taskType": "TRACK_MEDICAL_MALPRACTICE_NOTICE",
+        "status": "source_supported_auto_saved",
+        "sourceDocNo": 9,
+        "ruleSourceApplied": "uniform_rule_202_56_medmal",
+        "sourceAuthority": "22 NYCRR 202.56",
+        "description": "Notice of Medical Malpractice Action filed. Track for medical malpractice conference processing."
+      },
+      {
+        "taskType": "MONITOR_MEDMAL_RJI_AND_PRELIMINARY_CONFERENCE",
+        "status": "conditional",
+        "sourceDocNo": 9,
+        "ruleSourceApplied": "uniform_rule_202_56_medmal",
+        "description": "Monitor for filing of Request for Judicial Intervention (RJI) and scheduling of preliminary conference pursuant to medical malpractice rules."
+      }
+    ],
+    "deadlines": [],
+    "humanReviewItems": [
+      {
+        "item": "Notice states that required pleadings and bill of particulars materials have been filed or served. Verify if bill of particulars response has been served and update RESPOND_TO_BILL_OF_PARTICULARS_DEMAND task accordingly.",
+        "sourceDocNo": 9
+      }
+    ],
+    "updatedCaseSnapshot": {
+      "snapshotId": "snapshot_after_doc_9",
+      "caseId": "synthetic_queens_tcf_001",
+      "afterDocNo": 9,
+      "currentPhase": "discovery",
+      "currentMiniPhase": "authorization_demands_served",
+      "county": "Queens",
+      "part": "Medical, Dental and Podiatric Malpractice Part",
+      "partName": "Medical, Dental and Podiatric Malpractice Part",
+      "court": "SUPREME COURT OF THE STATE OF NEW YORK, COUNTY OF QUEENS",
+      "judgeName": "Hon. Tracy Catapano-Fox",
+      "caseType": "medical_malpractice",
+      "case": {
+        "county": "Queens",
+        "part": null,
+        "partName": "Medical, Dental and Podiatric Malpractice Part",
+        "court": "Supreme Court of the State of New York, County of Queens",
+        "judgeName": "Hon. Tracy Catapano-Fox",
+        "caseType": "medical_malpractice"
+      },
+      "confirmedFacts": [
+        "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+        "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+        "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+        "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+        "Nature of suit: medical malpractice - prenatal, delivery, newborn, and pediatric care.",
+        "Index Number: 900001/2026.",
+        "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox.",
+        "Plaintiff filed Notice of Commencement of Action for Personal Injuries pursuant to CPLR 306-c on 2026-11-12.",
+        "Summons and complaint are referenced as initiating papers.",
+        "Defendants filed Verified Answer on 2026-12-03, denying liability and asserting affirmative defenses.",
+        "Issue joined as of 2026-12-03.",
+        "Defense counsel appears for both defendants.",
+        "Defendants served Demand for Bill of Particulars on 2026-12-03, demanding a verified bill of particulars within 30 days after service.",
+        "Defendants served a Notice to Take Deposition Upon Oral Examination for plaintiff, setting a proposed deposition date of April 30, 2027.",
+        "Defendants served Demand for Authorizations on 2026-12-03, demanding HIPAA-compliant authorizations for various records pursuant to CPLR 3120.",
+        "Defendants served Demand for Statements and Photographs on 2026-12-03, demanding production of statements, photographs, recordings, reports, and related materials within 14 days after receipt, pursuant to CPLR 3101.",
+        "Defendants served Demand Pursuant to Medicare, Medicaid and SCHIP Extension Act on 2026-12-03, demanding lien/benefit information within 20 days.",
+        "Plaintiff filed Notice of Medical Malpractice Action on 2027-02-28 (NYSCEF Doc. No. 9) pursuant to CPLR 3406(a) and 22 NYCRR 202.56(a)."
+      ],
+      "carriedForwardContext": [],
+      "openTasks": [
+        "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND",
+        "RESPOND_TO_AUTHORIZATION_DEMANDS",
+        "RESPOND_TO_STATEMENTS_AND_PHOTOS_DEMAND",
+        "RESPOND_TO_MEDICARE_MEDICAID_SCHIP_DEMAND"
+      ],
+      "completedTasks": [
+        "ANSWER_RECEIVED",
+        "TRACK_MEDICAL_MALPRACTICE_NOTICE"
+      ],
+      "conditionalTasks": [
+        "TRACK_PLAINTIFF_DEPOSITION_NOTICE",
+        "MONITOR_MEDMAL_RJI_AND_PRELIMINARY_CONFERENCE"
+      ],
+      "deadlines": [
+        {
+          "deadlineType": "BP_RESPONSE_DEADLINE",
+          "date": "2027-01-02",
+          "sourceDocNo": 4,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars"
+        },
+        {
+          "deadlineType": "PLAINTIFF_EBT_NOTICE_DATE",
+          "date": "2027-04-30",
+          "sourceDocNo": 5,
+          "ruleSourceApplied": "cplr_article_31_disclosure",
+          "status": "conditional"
+        },
+        {
+          "deadlineType": "MEDICARE_MEDICAID_SCHIP_DEMAND_RESPONSE",
+          "date": "2026-12-23",
+          "sourceDocNo": 8,
+          "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+          "status": "conditional"
+        }
+      ],
+      "supersededDeadlines": [],
+      "unresolvedHumanReviewItems": [
+        "Verify service date of Demand Pursuant to Medicare, Medicaid and SCHIP Extension Act. Response deadline calculated based on assumed service date of 2026-12-03. Adjust if service occurred later.",
+        "Notice states that required pleadings and bill of particulars materials have been filed or served. Verify if bill of particulars response has been served and update RESPOND_TO_BILL_OF_PARTICULARS_DEMAND task accordingly."
+      ],
+      "conflicts": [],
+      "_promptContextNote": "auditNotes omitted from prompt input to save context. Full audit trail remains in case-snapshot.json on disk."
+    },
+    "auditNotes": [
+      "Processed Notice of Medical Malpractice Action (Doc 9). Added TRACK_MEDICAL_MALPRACTICE_NOTICE as completed task and MONITOR_MEDMAL_RJI_AND_PRELIMINARY_CONFERENCE as conditional task. Updated nature of suit to include delivery, newborn, and pediatric care. Added human review item regarding bill of particulars service representation."
+    ],
+    "inferredPartRuleText": "",
+    "partRuleExtracts": [],
+    "ruleSourcesApplied": [
+      "uniform_rule_202_56_medmal",
+      "queens_medmal_part_rules_catapano_fox"
+    ],
+    "documentFacts": {
+      "documentMetadata": {
+        "docIndex": 9,
+        "storedName": "009-doc_009_NOTICE_OF_MEDICAL_MALPRACTICE.pdf",
+        "originalName": "doc_009_NOTICE_OF_MEDICAL_MALPRACTICE.pdf",
+        "fileKind": "pdf",
+        "pageCount": 2,
+        "mimeType": "application/pdf",
+        "sizeBytes": 3895,
+        "filedDate": "2027-02-28",
+        "documentType": "NOTICE_OF_MEDICAL_MALPRACTICE",
+        "documentTitle": "Notice of Medical Malpractice Action"
+      },
+      "extractionQuality": {
+        "confidence": 0.95,
+        "extractedBy": "ai",
+        "needsHumanReview": false
+      },
+      "docketEntry": {
+        "docNo": 9,
+        "documentType": "NOTICE_OF_MEDICAL_MALPRACTICE",
+        "title": "Notice of Medical Malpractice Action",
+        "filedDate": "2027-02-28",
+        "textSummary": "Notice of Medical Malpractice Action filed pursuant to CPLR 3406(a) and 22 NYCRR 202.56(a). States action commenced 2026-11-12, issue joined 2026-12-03, claim for medical malpractice arising from prenatal, delivery, newborn, and pediatric care. Represents that required pleadings and bill of particulars materials have been filed or served."
+      },
+      "caseUpdates": {
+        "natureOfSuit": "medical malpractice - prenatal, delivery, newborn, and pediatric care"
+      },
+      "parties": [],
+      "witnesses": [],
+      "humanReviewItems": [
+        {
+          "item": "Notice states that required pleadings and bill of particulars materials have been filed or served. Verify if bill of particulars response has been served and update RESPOND_TO_BILL_OF_PARTICULARS_DEMAND task accordingly.",
+          "sourceDocNo": 9
+        }
+      ]
+    },
+    "ruleBasedTasks": [
+      {
+        "taskType": "TRACK_MEDICAL_MALPRACTICE_NOTICE",
+        "status": "source_supported_auto_saved",
+        "sourceDocNo": 9,
+        "ruleSourceApplied": "uniform_rule_202_56_medmal",
+        "sourceAuthority": "22 NYCRR 202.56",
+        "description": "Notice of Medical Malpractice Action filed. Track for medical malpractice conference processing."
+      },
+      {
+        "taskType": "MONITOR_MEDMAL_RJI_AND_PRELIMINARY_CONFERENCE",
+        "status": "conditional",
+        "sourceDocNo": 9,
+        "ruleSourceApplied": "uniform_rule_202_56_medmal",
+        "description": "Monitor for filing of Request for Judicial Intervention (RJI) and scheduling of preliminary conference pursuant to medical malpractice rules."
+      }
+    ],
+    "caseOrderTasks": []
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "caseId": "case_002_queens_catapano_fox_v002",
+  "goldenDatasetVersion": "synthetic_queens_tcf_001_rule_authority_v001",
+  "fixtureDir": "backend/src/modules/case-filing-ai/tests/fixtures/queens-catapano-fox-v002",
+  "documentCount": 21,
+  "snapshotCheckpoints": [
+    1,
+    2,
+    4,
+    8,
+    12,
+    14,
+    18,
+    21
+  ],
+  "ingestedAt": "2026-05-24T18:43:41.507Z"
+}

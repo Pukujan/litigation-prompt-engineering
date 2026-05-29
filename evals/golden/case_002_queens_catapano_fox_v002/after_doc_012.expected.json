@@ -1,0 +1,113 @@
+{
+  "snapshotId": "after_doc_012",
+  "caseId": "synthetic_queens_tcf_001",
+  "afterDocNo": 12,
+  "currentPhase": "discovery",
+  "currentMiniPhase": "bill_of_particulars_served",
+  "confirmedFacts": [
+    "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+    "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+    "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+    "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+    "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+    "Nature of suit: medical malpractice - prenatal, delivery, newborn, and pediatric care.",
+    "Index Number: 900001/2026.",
+    "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox.",
+    "Plaintiff filed Notice of Commencement of Action for Personal Injuries pursuant to CPLR 306-c on 2026-11-12.",
+    "Summons and complaint are referenced as initiating papers.",
+    "Defendants filed Verified Answer on 2026-12-03, denying liability and asserting affirmative defenses.",
+    "Issue joined as of 2026-12-03.",
+    "Defense counsel appears for both defendants.",
+    "Defendants served Demand for Bill of Particulars on 2026-12-03, demanding a verified bill of particulars within 30 days after service.",
+    "Defendants served a Notice to Take Deposition Upon Oral Examination for plaintiff, setting a proposed deposition date of April 30, 2027.",
+    "Defendants served Demand for Authorizations on 2026-12-03, demanding HIPAA-compliant authorizations for various records pursuant to CPLR 3120.",
+    "Defendants served Demand for Statements and Photographs on 2026-12-03, demanding production of statements, photographs, recordings, reports, and related materials within 14 days after receipt, pursuant to CPLR 3101.",
+    "Defendants served Demand Pursuant to Medicare, Medicaid and SCHIP Extension Act on 2026-12-03, demanding lien/benefit information within 20 days.",
+    "Plaintiff filed Notice of Medical Malpractice Action on 2027-02-28 (NYSCEF Doc. No. 9) pursuant to CPLR 3406(a) and 22 NYCRR 202.56(a).",
+    "Request for Judicial Intervention (RJI) filed on 2027-02-28 for medical, dental or podiatric malpractice case.",
+    "RJI identifies case as tort / medical, dental or podiatric malpractice matter.",
+    "RJI places case into Queens Medical, Dental and Podiatric Malpractice Part workflow.",
+    "RJI triggers monitoring for preliminary conference scheduling or order issuance.",
+    "Plaintiff served Verified Bill of Particulars on 2027-03-18 (NYSCEF Doc. No. 11) in response to defendants' demand (Doc. No. 4)."
+  ],
+  "openTasks": [
+    "RESPOND_TO_AUTHORIZATION_DEMANDS",
+    "RESPOND_TO_STATEMENTS_AND_PHOTOS_DEMAND",
+    "RESPOND_TO_MEDICARE_MEDICAID_SCHIP_DEMAND"
+  ],
+  "completedTasks": [
+    "ANSWER_RECEIVED",
+    "TRACK_MEDICAL_MALPRACTICE_NOTICE",
+    "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND"
+  ],
+  "deadlines": [
+    {
+      "deadlineType": "BP_RESPONSE_DEADLINE",
+      "date": "2027-01-02",
+      "sourceDocNo": 4,
+      "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+      "status": "superseded",
+      "supersededBy": "Bill of Particulars served on 2027-03-18 (Doc. No. 11)",
+      "notes": "Original deadline was 2027-01-02. Service occurred on 2027-03-18, which is late. This deadline is now superseded by the actual service date, but lateness may be an issue."
+    },
+    {
+      "deadlineType": "PLAINTIFF_EBT_NOTICE_DATE",
+      "date": "2027-04-30",
+      "sourceDocNo": 5,
+      "ruleSourceApplied": "cplr_article_31_disclosure",
+      "status": "conditional"
+    },
+    {
+      "deadlineType": "MEDICARE_MEDICAID_SCHIP_DEMAND_RESPONSE",
+      "date": "2026-12-23",
+      "sourceDocNo": 8,
+      "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+      "status": "conditional"
+    },
+    {
+      "deadlineType": "PROPOSED_PLAINTIFF_DEPOSITION",
+      "date": "2027-06-19",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox",
+      "status": "conditional"
+    }
+  ],
+  "supersededDeadlines": [
+    {
+      "deadlineType": "BP_RESPONSE_DEADLINE",
+      "date": "2027-01-02",
+      "sourceDocNo": 4,
+      "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars"
+    }
+  ],
+  "conflicts": [],
+  "auditNotes": [
+    "Current phase moved to 'discovery' because issue was joined on 2026-12-03, and multiple discovery demands are now served.",
+    "Deadline calculated based on 20-day response period from assumed service date (2026-12-03). Document does not specify service date; filed date used as proxy.",
+    "Processed 008-doc_008_DEMAND_FOR_MEDICARE_MEDICAID_SCHIP.pdf as document 8",
+    "Processed Notice of Medical Malpractice Action (Doc 9). Added TRACK_MEDICAL_MALPRACTICE_NOTICE as completed task and MONITOR_MEDMAL_RJI_AND_PRELIMINARY_CONFERENCE as conditional task. Updated nature of suit to include delivery, newborn, and pediatric care. Added human review item regarding bill of particulars service representation.",
+    "Processed 009-doc_009_NOTICE_OF_MEDICAL_MALPRACTICE.pdf as document 9",
+    "RJI filing confirmed. Case now in Medical, Dental and Podiatric Malpractice Part workflow.",
+    "Conditional task AWAIT_MEDMAL_PRELIMINARY_CONFERENCE added to monitor for preliminary conference scheduling.",
+    "No new deadlines triggered by this document.",
+    "Prior conditional task MONITOR_MEDMAL_RJI_AND_PRELIMINARY_CONFERENCE replaced by AWAIT_MEDMAL_PRELIMINARY_CONFERENCE as RJI is now filed.",
+    "Processed 010-doc_010_RJI_MEDICAL_DENTAL_PODIATRIC_MALPRACTICE.pdf as document 10",
+    "Document 11 is a Verified Bill of Particulars served by plaintiff on 2027-03-18.",
+    "This responds to the open task RESPOND_TO_BILL_OF_PARTICULARS_DEMAND, which is now completed.",
+    "The service is late (deadline was 2027-01-02). Added human review item for lateness.",
+    "Added conditional task REVIEW_BILL_OF_PARTICULARS_FOR_DISCOVERY_NEEDS as expected.",
+    "Updated case snapshot with new confirmed fact and moved task to completed.",
+    "Processed 011-doc_011_BILL_OF_PARTICULARS.pdf as document 11",
+    "Processed Doc 12: Proposed Preliminary Conference Order. Added conditional tasks and deadlines. No confirmed facts updated.",
+    "Existing conditional task TRACK_PLAINTIFF_DEPOSITION_NOTICE (from Doc 5) may be superseded by new proposed deposition date, but kept for now.",
+    "Proposed order is conditional; all dates and provisions are subject to court approval.",
+    "Processed 012-doc_012_PROPOSED_PRELIMINARY_CONFERENCE_ORDER.pdf as document 12"
+  ],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic snapshot expected output for eval testing.",
+  "expectedRuleAuthorityState": {
+    "activeRuleSetVersion": null,
+    "authorityHierarchy": {},
+    "ruleSourcesAvailable": []
+  }
+}

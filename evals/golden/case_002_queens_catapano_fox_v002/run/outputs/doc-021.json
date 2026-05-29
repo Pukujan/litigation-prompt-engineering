@@ -1,0 +1,583 @@
+{
+  "docKey": "doc-021",
+  "docIndex": 21,
+  "storedName": "021-doc_021_ORDER_COMPLIANCE_CONFERENCE.pdf",
+  "originalName": "doc_021_ORDER_COMPLIANCE_CONFERENCE.pdf",
+  "fileKind": "pdf",
+  "status": "completed",
+  "batchTraceId": "golden_adca49f7_77d7c6889abf",
+  "traceId": "golden_adca49f7_77d7c6889abf_doc021",
+  "model": "deepseek/deepseek-v4-pro-20260423",
+  "usage": {
+    "prompt_tokens": 5296,
+    "completion_tokens": 11962,
+    "total_tokens": 17258,
+    "cost": 0.0637544,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0637544,
+      "upstream_inference_prompt_cost": 0.0111216,
+      "upstream_inference_completions_cost": 0.0526328
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 7365,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "runMetadata": {
+    "promptVersion": "v001",
+    "promptTemplate": "v001_master-case-filing.prompt.md",
+    "promptLabel": "v001",
+    "snapshotMergeMode": "legacy",
+    "openRouterModel": "deepseek/deepseek-v4-pro-20260423",
+    "masterPromptJsonRetry": true,
+    "omitAuditNotesInPrompt": true
+  },
+  "pipelineVersions": null,
+  "parsedDocumentCacheUsed": false,
+  "textSourceUsed": "embedded_text",
+  "reviewStatusAtEvalTime": null,
+  "ruleSourcesChecked": [
+    "doc_021_later_cc_order",
+    "doc_013_pc_order",
+    "doc_015_cc_order",
+    "doc_017_so_ordered_stipulation",
+    "doc_018_cc_order",
+    "doc_019_duplicate_or_refiled_cc_order",
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "rankedRules": [
+    {
+      "ruleId": "doc_021_later_cc_order",
+      "authority": "later_case_order",
+      "title": "doc 021 later cc order",
+      "text": "doc 021 later cc order",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": 21
+    },
+    {
+      "ruleId": "doc_013_pc_order",
+      "authority": "case_order",
+      "title": "doc 013 pc order",
+      "text": "doc 013 pc order",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": 13
+    },
+    {
+      "ruleId": "doc_015_cc_order",
+      "authority": "case_order",
+      "title": "doc 015 cc order",
+      "text": "doc 015 cc order",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": 15
+    },
+    {
+      "ruleId": "doc_017_so_ordered_stipulation",
+      "authority": "case_order",
+      "title": "doc 017 so ordered stipulation",
+      "text": "doc 017 so ordered stipulation",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": 17
+    },
+    {
+      "ruleId": "doc_018_cc_order",
+      "authority": "case_order",
+      "title": "doc 018 cc order",
+      "text": "doc 018 cc order",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": 18
+    },
+    {
+      "ruleId": "doc_019_duplicate_or_refiled_cc_order",
+      "authority": "case_order",
+      "title": "doc 019 duplicate or refiled cc order",
+      "text": "doc 019 duplicate or refiled cc order",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": 19
+    },
+    {
+      "ruleId": "queens_medmal_part_rules_catapano_fox",
+      "authority": "part",
+      "title": "Medical, Dental and Podiatric Malpractice Conference and Part Rules - Justice Tracy Catapano-Fox",
+      "text": "Medical, Dental and Podiatric Malpractice Conference and Part Rules - Justice Tracy Catapano-Fox",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    },
+    {
+      "ruleId": "queens_medmal_cc_form",
+      "authority": "county",
+      "title": "Queens Medical Malpractice Compliance Conference Order form",
+      "text": "Queens Medical Malpractice Compliance Conference Order form",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    },
+    {
+      "ruleId": "queens_medmal_pc_form",
+      "authority": "county",
+      "title": "Queens Medical Malpractice Preliminary Conference Order form",
+      "text": "Queens Medical Malpractice Preliminary Conference Order form",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    }
+  ],
+  "documentMetadata": {
+    "docIndex": 21,
+    "storedName": "021-doc_021_ORDER_COMPLIANCE_CONFERENCE.pdf",
+    "originalName": "doc_021_ORDER_COMPLIANCE_CONFERENCE.pdf",
+    "fileKind": "pdf",
+    "pageCount": 1,
+    "mimeType": "application/pdf",
+    "sizeBytes": 3072,
+    "filedDate": "2028-04-10",
+    "documentType": "ORDER_COMPLIANCE_CONFERENCE",
+    "documentTitle": "Compliance Conference Order"
+  },
+  "extractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1359,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "issues": []
+  },
+  "docketEntry": {
+    "docNo": 21,
+    "docType": "ORDER_COMPLIANCE_CONFERENCE",
+    "title": "Compliance Conference Order",
+    "filedDate": "2028-04-10",
+    "judgePart": "Hon. Tracy Catapano-Fox - Medical, Dental and Podiatric Malpractice Part (Courtroom 48)"
+  },
+  "caseUpdates": {
+    "currentPhase": "discovery",
+    "currentMiniPhase": "post_ebt_demands_served"
+  },
+  "parties": [],
+  "witnesses": [],
+  "tasks": [
+    {
+      "taskId": "REVIEW_LATER_CC_ORDER_FOR_SUPERSESSION",
+      "description": "Review Compliance Conference Order (Doc. No. 21) for any supersession of prior deadlines.",
+      "status": "needs_review",
+      "sourceAuthority": "doc_021_later_cc_order",
+      "sourceName": "Compliance Conference Order (Doc. No. 21)",
+      "sourceDocNo": 21,
+      "ruleSourceApplied": "doc_021_later_cc_order",
+      "authorityRank": 100,
+      "supersedes": null,
+      "sourceText": "Compliance Conference Order is issued after post-EBT demands. Order continues court supervision of discovery. Use this as a later case-specific order if it modifies prior dates.",
+      "sourcePage": 1
+    }
+  ],
+  "deadlines": [],
+  "humanReviewItems": [
+    "Review Compliance Conference Order (Doc. No. 21) for any supersession of prior deadlines. The order does not set new dates; confirm it is a routine supervision order."
+  ],
+  "auditNotes": [],
+  "rawMasterResult": {
+    "documentMetadata": {
+      "docIndex": 21,
+      "storedName": "021-doc_021_ORDER_COMPLIANCE_CONFERENCE.pdf",
+      "originalName": "doc_021_ORDER_COMPLIANCE_CONFERENCE.pdf",
+      "fileKind": "pdf",
+      "pageCount": 1,
+      "mimeType": "application/pdf",
+      "sizeBytes": 3072,
+      "filedDate": "2028-04-10",
+      "documentType": "ORDER_COMPLIANCE_CONFERENCE",
+      "documentTitle": "Compliance Conference Order"
+    },
+    "extractionQuality": {
+      "confidence": "high",
+      "issues": []
+    },
+    "docketEntry": {
+      "docNo": 21,
+      "docType": "ORDER_COMPLIANCE_CONFERENCE",
+      "title": "Compliance Conference Order",
+      "filedDate": "2028-04-10",
+      "judgePart": "Hon. Tracy Catapano-Fox - Medical, Dental and Podiatric Malpractice Part (Courtroom 48)"
+    },
+    "caseUpdates": {
+      "currentPhase": "discovery",
+      "currentMiniPhase": "post_ebt_demands_served"
+    },
+    "parties": [],
+    "witnesses": [],
+    "tasks": [
+      {
+        "taskId": "REVIEW_LATER_CC_ORDER_FOR_SUPERSESSION",
+        "description": "Review Compliance Conference Order (Doc. No. 21) for any supersession of prior deadlines.",
+        "status": "needs_review",
+        "sourceAuthority": "doc_021_later_cc_order",
+        "sourceName": "Compliance Conference Order (Doc. No. 21)",
+        "sourceDocNo": 21,
+        "ruleSourceApplied": "doc_021_later_cc_order",
+        "authorityRank": 100,
+        "supersedes": null,
+        "sourceText": "Compliance Conference Order is issued after post-EBT demands. Order continues court supervision of discovery. Use this as a later case-specific order if it modifies prior dates.",
+        "sourcePage": 1
+      }
+    ],
+    "deadlines": [],
+    "humanReviewItems": [
+      "Review Compliance Conference Order (Doc. No. 21) for any supersession of prior deadlines. The order does not set new dates; confirm it is a routine supervision order."
+    ],
+    "updatedCaseSnapshot": {
+      "snapshotId": "snapshot_after_doc_21",
+      "caseId": "synthetic_queens_tcf_001",
+      "afterDocNo": 21,
+      "currentPhase": "discovery",
+      "currentMiniPhase": "post_ebt_demands_served",
+      "county": "Queens",
+      "part": "Medical, Dental and Podiatric Malpractice Part",
+      "partName": "Medical, Dental and Podiatric Malpractice Part",
+      "court": "SUPREME COURT OF THE STATE OF NEW YORK, COUNTY OF QUEENS",
+      "judgeName": "Hon. Tracy Catapano-Fox",
+      "caseType": "medical_malpractice",
+      "case": {
+        "county": "Queens",
+        "part": "Medical, Dental and Podiatric Malpractice Part",
+        "partName": "Medical, Dental and Podiatric Malpractice Part",
+        "court": "Supreme Court of the State of New York, County of Queens",
+        "judgeName": "Hon. Tracy Catapano-Fox",
+        "caseType": "medical_malpractice"
+      },
+      "confirmedFacts": [
+        "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+        "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+        "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+        "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+        "Nature of suit: medical malpractice - prenatal, delivery, newborn, and pediatric care.",
+        "Index Number: 900001/2026.",
+        "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox.",
+        "Plaintiff filed Notice of Commencement of Action for Personal Injuries pursuant to CPLR 306-c on 2026-11-12.",
+        "Summons and complaint are referenced as initiating papers.",
+        "Defendants filed Verified Answer on 2026-12-03, denying liability and asserting affirmative defenses.",
+        "Issue joined as of 2026-12-03.",
+        "Defense counsel appears for both defendants.",
+        "Defendants served Demand for Bill of Particulars on 2026-12-03, demanding a verified bill of particulars within 30 days after service.",
+        "Defendants served a Notice to Take Deposition Upon Oral Examination for plaintiff, setting a proposed deposition date of April 30, 2027.",
+        "Defendants served Demand for Authorizations on 2026-12-03, demanding HIPAA-compliant authorizations for various records pursuant to CPLR 3120.",
+        "Defendants served Demand for Statements and Photographs on 2026-12-03, demanding production of statements, photographs, recordings, reports, and related materials within 14 days after receipt, pursuant to CPLR 3101.",
+        "Defendants served Demand Pursuant to Medicare, Medicaid and SCHIP Extension Act on 2026-12-03, demanding lien/benefit information within 20 days.",
+        "Plaintiff filed Notice of Medical Malpractice Action on 2027-02-28 (NYSCEF Doc. No. 9) pursuant to CPLR 3406(a) and 22 NYCRR 202.56(a).",
+        "Request for Judicial Intervention (RJI) filed on 2027-02-28 for medical, dental or podiatric malpractice case.",
+        "RJI identifies case as tort / medical, dental or podiatric malpractice matter.",
+        "RJI places case into Queens Medical, Dental and Podiatric Malpractice Part workflow.",
+        "RJI triggers monitoring for preliminary conference scheduling or order issuance.",
+        "Plaintiff served Verified Bill of Particulars on 2027-03-18 (NYSCEF Doc. No. 11) in response to defendants' demand (Doc. No. 4).",
+        "Preliminary Conference Order issued on 2027-03-25 (NYSCEF Doc. No. 13).",
+        "Plaintiff deposition deadline set to 2027-07-29 by the Preliminary Conference Order.",
+        "Defendant deposition deadline set to 2027-09-29 by the Preliminary Conference Order.",
+        "The Preliminary Conference Order provides that later case-specific orders control over this order if inconsistent.",
+        "Proposed Compliance Conference Order filed on 2027-07-21 (NYSCEF Doc. No. 14).",
+        "Compliance Conference Order issued on 2027-08-14 (NYSCEF Doc. No. 15).",
+        "Compliance conference/control date set for 2027-12-15 by the Compliance Conference Order.",
+        "Pretrial or further compliance date set for 2028-02-11 by the Compliance Conference Order.",
+        "The Compliance Conference Order provides that it may supersede earlier discovery dates where inconsistent.",
+        "Parties filed a Discovery Stipulation Request to So-Order on 2027-09-15 (NYSCEF Doc. No. 16), proposing to extend plaintiff deposition to 2027-10-24 and defendants' depositions to 2027-11-24; not controlling until so-ordered.",
+        "Court so-ordered the parties' discovery stipulation on 2027-09-22 (NYSCEF Doc. No. 17).",
+        "Plaintiff deposition deadline extended to 2027-10-24 per so-ordered stipulation (Doc. No. 17).",
+        "Defendants' deposition deadlines extended to 2027-11-24 per so-ordered stipulation (Doc. No. 17).",
+        "This later case-specific order (Doc. No. 17) controls over inconsistent earlier Preliminary Conference Order deadlines.",
+        "Second Compliance Conference Order issued on 2027-12-02 (NYSCEF Doc. No. 18), setting further discovery/control date 2028-04-20 and further compliance/pretrial conference date 2028-05-27, and stating that it may supersede earlier CC order dates.",
+        "Compliance Conference Order (Doc. No. 19) filed on 2027-12-09 appears to duplicate or refile the prior Compliance Conference Order (Doc. No. 18) and restates the same further discovery/control date of 2028-04-20 and further compliance/pretrial conference date of 2028-05-27.",
+        "Plaintiff served Post-EBT Demands on 2028-03-19 (NYSCEF Doc. No. 20), seeking records and materials referenced in defendant physician's deposition testimony, with response requested within 20 days after service.",
+        "Defendant physician's deposition has been completed (as indicated by Plaintiff's Post-EBT Demands).",
+        "Compliance Conference Order (Doc. No. 21) filed on 2028-04-10, continuing court supervision of discovery after post-EBT demands."
+      ],
+      "carriedForwardContext": [],
+      "openTasks": [
+        "RESPOND_TO_AUTHORIZATION_DEMANDS",
+        "RESPOND_TO_STATEMENTS_AND_PHOTOS_DEMAND",
+        "RESPOND_TO_MEDICARE_MEDICAID_SCHIP_DEMAND",
+        "COMPLETE_PLAINTIFF_DEPOSITION",
+        "TRACK_UPDATED_COMPLIANCE_ORDER",
+        "CONFIRM_DUPLICATE_OR_REFILED_CC_ORDER",
+        "RESPOND_TO_POST_EBT_DEMANDS",
+        "REVIEW_LATER_CC_ORDER_FOR_SUPERSESSION"
+      ],
+      "completedTasks": [
+        "ANSWER_RECEIVED",
+        "TRACK_MEDICAL_MALPRACTICE_NOTICE",
+        "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND",
+        "AWAIT_MEDMAL_PRELIMINARY_CONFERENCE",
+        "REVIEW_PROPOSED_PRELIMINARY_CONFERENCE_ORDER",
+        "TRACK_PROPOSED_PLAINTIFF_DEPOSITION_DATE",
+        "TRACK_PLAINTIFF_DEPOSITION_NOTICE",
+        "REVIEW_PROPOSED_CC_ORDER",
+        "REVIEW_DISCOVERY_STIPULATION_FOR_SO_ORDER",
+        "TRACK_COMPLIANCE_CONFERENCE_ORDER",
+        "COMPLETE_DEFENDANT_DEPOSITIONS"
+      ],
+      "conditionalTasks": [],
+      "deadlines": [
+        {
+          "deadlineType": "MEDICARE_MEDICAID_SCHIP_DEMAND_RESPONSE",
+          "date": "2026-12-23",
+          "sourceDocNo": 8,
+          "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+          "status": "conditional"
+        },
+        {
+          "deadlineType": "PLAINTIFF_DEPOSITION",
+          "date": "2027-07-29",
+          "sourceDocNo": 13,
+          "ruleSourceApplied": "doc_013_pc_order",
+          "status": "superseded",
+          "supersededBy": "So-Ordered Stipulation (Doc. No. 17)"
+        },
+        {
+          "deadlineType": "DEFENDANT_DEPOSITIONS",
+          "date": "2027-09-29",
+          "sourceDocNo": 13,
+          "ruleSourceApplied": "doc_013_pc_order",
+          "status": "superseded",
+          "supersededBy": "So-Ordered Stipulation (Doc. No. 17)"
+        },
+        {
+          "deadlineType": "PLAINTIFF_DEPOSITION_SUPERSEDING",
+          "date": "2027-10-24",
+          "sourceDocNo": 17,
+          "ruleSourceApplied": "doc_017_so_ordered_stipulation",
+          "status": "source_supported_auto_saved",
+          "supersedes": "PLAINTIFF_DEPOSITION from Doc. No. 13"
+        },
+        {
+          "deadlineType": "DEFENDANT_DEPOSITIONS_SUPERSEDING",
+          "date": "2027-11-24",
+          "sourceDocNo": 17,
+          "ruleSourceApplied": "doc_017_so_ordered_stipulation",
+          "status": "source_supported_auto_saved",
+          "supersedes": "DEFENDANT_DEPOSITIONS from Doc. No. 13"
+        },
+        {
+          "deadlineType": "FURTHER_DISCOVERY_CONTROL",
+          "date": "2028-04-20",
+          "sourceDocNo": 18,
+          "ruleSourceApplied": "doc_018_cc_order",
+          "status": "source_supported_auto_saved",
+          "supersedes": "COMPLIANCE_CONFERENCE from Doc. No. 15"
+        },
+        {
+          "deadlineType": "FURTHER_COMPLIANCE_CONFERENCE",
+          "date": "2028-05-27",
+          "sourceDocNo": 18,
+          "ruleSourceApplied": "doc_018_cc_order",
+          "status": "source_supported_auto_saved",
+          "supersedes": "PRETRIAL_OR_FURTHER_CONFERENCE from Doc. No. 15"
+        },
+        {
+          "deadlineType": "FURTHER_DISCOVERY_CONTROL DUPLICATE",
+          "date": "2028-04-20",
+          "sourceDocNo": 19,
+          "ruleSourceApplied": "doc_019_duplicate_or_refiled_cc_order",
+          "status": "duplicate",
+          "supersedes": null
+        },
+        {
+          "deadlineType": "FURTHER_COMPLIANCE_CONFERENCE DUPLICATE",
+          "date": "2028-05-27",
+          "sourceDocNo": 19,
+          "ruleSourceApplied": "doc_019_duplicate_or_refiled_cc_order",
+          "status": "duplicate",
+          "supersedes": null
+        },
+        {
+          "deadlineType": "POST_EBT_DEMAND_RESPONSE",
+          "date": "2028-04-08",
+          "sourceDocNo": 20,
+          "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+          "status": "source_supported_auto_saved",
+          "sourceText": "Response requested within 20 days after service."
+        }
+      ],
+      "supersededDeadlines": [
+        {
+          "deadlineType": "BP_RESPONSE_DEADLINE",
+          "date": "2027-01-02",
+          "sourceDocNo": 4,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars"
+        },
+        {
+          "deadlineType": "PLAINTIFF_EBT_NOTICE_DATE",
+          "date": "2027-04-30",
+          "sourceDocNo": 5,
+          "ruleSourceApplied": "cplr_article_31_disclosure"
+        },
+        {
+          "deadlineType": "PROPOSED_PLAINTIFF_DEPOSITION",
+          "date": "2027-06-19",
+          "sourceDocNo": 12,
+          "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox"
+        },
+        {
+          "deadlineType": "PLAINTIFF_DEPOSITION",
+          "date": "2027-07-29",
+          "sourceDocNo": 13,
+          "ruleSourceApplied": "doc_013_pc_order"
+        },
+        {
+          "deadlineType": "DEFENDANT_DEPOSITIONS",
+          "date": "2027-09-29",
+          "sourceDocNo": 13,
+          "ruleSourceApplied": "doc_013_pc_order"
+        },
+        {
+          "deadlineType": "COMPLIANCE_CONFERENCE",
+          "date": "2027-12-15",
+          "sourceDocNo": 15,
+          "ruleSourceApplied": "doc_015_cc_order",
+          "status": "superseded",
+          "supersededBy": "Second Compliance Conference Order (Doc. No. 18)"
+        },
+        {
+          "deadlineType": "PRETRIAL_OR_FURTHER_CONFERENCE",
+          "date": "2028-02-11",
+          "sourceDocNo": 15,
+          "ruleSourceApplied": "doc_015_cc_order",
+          "status": "superseded",
+          "supersededBy": "Second Compliance Conference Order (Doc. No. 18)"
+        }
+      ],
+      "unresolvedHumanReviewItems": [
+        "Verify service date of Demand Pursuant to Medicare, Medicaid and SCHIP Extension Act. Response deadline calculated based on assumed service date of 2026-12-03. Adjust if service occurred later.",
+        "Notice states that required pleadings and bill of particulars materials have been filed or served. Verify if bill of particulars response has been served and update RESPOND_TO_BILL_OF_PARTICULARS_DEMAND task accordingly.",
+        "Bill of Particulars served on 2027-03-18 is late relative to the 30-day demand deadline of 2027-01-02. Determine if a stipulation or court order extended the time.",
+        "Review the content of the Bill of Particulars for completeness and compliance with CPLR 3043. The synthetic document does not provide the actual allegations or claimed injuries.",
+        "Confirm that the Bill of Particulars was verified as required by CPLR 3044.",
+        "Review proposed preliminary conference order for consistency with part rules and case status. Ensure all required provisions are included.",
+        "Confirm that the proposed plaintiff deposition date of 2027-06-19 is within 90 days of the anticipated preliminary conference order date.",
+        "Verify that the proposed order addresses all outstanding discovery demands and deadlines.",
+        "Verify that the deposition deadlines comply with applicable part rules and that no other deadlines (e.g., for authorizations) are required by the conference order.",
+        "Review proposed compliance conference order for completeness and compliance with part rules and prior Preliminary Conference Order (Doc. No. 13). Once so-ordered, it will establish binding deadlines.",
+        "Review whether the Compliance Conference Order supersedes any prior discovery deadlines, particularly the deposition deadlines set in the Preliminary Conference Order (Doc. No. 13). The order states it may supersede earlier discovery dates where inconsistent, but no explicit inconsistency is apparent. Confirm with court rules or practice.",
+        "Verify if stipulation (Doc. No. 16) is timely or if plaintiff deposition deadline of 2027-07-29 has already passed without compliance; determine if court will so-order retroactive extension.",
+        "Review whether the proposed dates in the stipulation conflict with any other deadlines; the compliance conference is set for 2027-12-15, and proposed depositions are before that date, but confirm with court schedule.",
+        "Verify that the so-ordered extension (after original plaintiff deposition deadline of 2027-07-29) is effective and does not require further court approval; court has so-ordered so it is binding, but note potential untimeliness.",
+        "Verify that the new Compliance Conference Order (Doc. No. 18) validly supersedes the earlier CC order (Doc. No. 15) and that the new deadlines do not conflict with any remaining discovery obligations or court-ordered stipulations.",
+        "Confirm whether Compliance Conference Order (Doc. No. 19) is a true duplicate or a refiling with any modifications before creating duplicate tasks or deadlines.",
+        "Verify service date of Post-EBT Demands and calculate response deadline. Confirm that defendant's deposition was completed and that the demands are proper under CPLR 3120 and 3101.",
+        "Review Compliance Conference Order (Doc. No. 21) for any supersession of prior deadlines. The order does not set new dates; confirm it is a routine supervision order."
+      ],
+      "conflicts": [],
+      "_promptContextNote": "auditNotes omitted from prompt input to save context. Full audit trail remains in case-snapshot.json on disk."
+    },
+    "auditNotes": [],
+    "inferredPartRuleText": "",
+    "partRuleExtracts": [],
+    "ruleSourcesApplied": [
+      "doc_021_later_cc_order"
+    ],
+    "documentFacts": {
+      "documentMetadata": {
+        "docIndex": 21,
+        "storedName": "021-doc_021_ORDER_COMPLIANCE_CONFERENCE.pdf",
+        "originalName": "doc_021_ORDER_COMPLIANCE_CONFERENCE.pdf",
+        "fileKind": "pdf",
+        "pageCount": 1,
+        "mimeType": "application/pdf",
+        "sizeBytes": 3072,
+        "filedDate": "2028-04-10",
+        "documentType": "ORDER_COMPLIANCE_CONFERENCE",
+        "documentTitle": "Compliance Conference Order"
+      },
+      "extractionQuality": {
+        "confidence": "high",
+        "issues": []
+      },
+      "docketEntry": {
+        "docNo": 21,
+        "docType": "ORDER_COMPLIANCE_CONFERENCE",
+        "title": "Compliance Conference Order",
+        "filedDate": "2028-04-10",
+        "judgePart": "Hon. Tracy Catapano-Fox - Medical, Dental and Podiatric Malpractice Part (Courtroom 48)"
+      },
+      "caseUpdates": {
+        "currentPhase": "discovery",
+        "currentMiniPhase": "post_ebt_demands_served"
+      },
+      "parties": [],
+      "witnesses": [],
+      "humanReviewItems": [
+        "Review Compliance Conference Order (Doc. No. 21) for any supersession of prior deadlines. The order does not set new dates; confirm it is a routine supervision order."
+      ]
+    },
+    "ruleBasedTasks": [],
+    "caseOrderTasks": [
+      {
+        "taskId": "REVIEW_LATER_CC_ORDER_FOR_SUPERSESSION",
+        "description": "Review Compliance Conference Order (Doc. No. 21) for any supersession of prior deadlines.",
+        "status": "needs_review",
+        "sourceAuthority": "doc_021_later_cc_order",
+        "sourceName": "Compliance Conference Order (Doc. No. 21)",
+        "sourceDocNo": 21,
+        "ruleSourceApplied": "doc_021_later_cc_order",
+        "authorityRank": 100,
+        "supersedes": null,
+        "sourceText": "Compliance Conference Order is issued after post-EBT demands. Order continues court supervision of discovery. Use this as a later case-specific order if it modifies prior dates.",
+        "sourcePage": 1
+      }
+    ]
+  }
+}

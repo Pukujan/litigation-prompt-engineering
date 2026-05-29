@@ -1,0 +1,58 @@
+{
+  "docIndex": 14,
+  "docKey": "doc-014",
+  "expectedDocumentType": "PROPOSED_COMPLIANCE_CONFERENCE_ORDER",
+  "expectedTitle": "Proposed Compliance Conference Order",
+  "expectedFilingDate": "2027-07-21",
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": null,
+  "expectedPageCount": null,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1446,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "extractionMethod": "structured_fields_from_synthetic_document"
+  },
+  "expectedConfirmedFacts": [],
+  "expectedParties": [],
+  "expectedTasks": [
+    {
+      "taskName": "REVIEW_PROPOSED_CC_ORDER",
+      "status": "conditional",
+      "dueDate": null,
+      "sourceAuthority": "Case Filing",
+      "sourceName": "Proposed Compliance Conference Order",
+      "sourceDocNo": 14,
+      "ruleSourceApplied": "queens_medmal_cc_form",
+      "authorityRank": 60,
+      "sourceText": "Parties submit a proposed compliance conference order in the Queens Medical Malpractice Part. Proposed order tracks outstanding discovery and deposition dates. Because this is proposed, do not treat it as controlling unless so-ordered or later accepted.",
+      "sourcePage": null,
+      "supersedes": null
+    }
+  ],
+  "expectedDeadlines": [],
+  "expectedHumanReviewItems": [
+    "Review proposed compliance conference order for completeness and compliance with part rules and prior Preliminary Conference Order (Doc. No. 13). Once so-ordered, it will establish binding deadlines."
+  ],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "doc_013_pc_order",
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

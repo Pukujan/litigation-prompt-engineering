@@ -1,13 +1,23 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { getDemoBundle, getDemoCase, listDemoCases } from "../api/caseFilingDemoApi.js";
+import {
+  absoluteDemoUrl,
+  getDemoBundle,
+  getDemoCase,
+  listDemoCases
+} from "../api/caseFilingDemoApi.js";
 import { InteractiveOrchestrationDemo } from "../components/InteractiveOrchestrationDemo.jsx";
 import { DemoInsightsTabs } from "../components/DemoInsightsTabs.jsx";
 
 function statusLabel(status) {
   if (status === "available") return "Available";
+  if (status === "sources_available") return "PDFs ready";
   if (status === "coming_soon") return "Coming soon";
   return status ?? "Unknown";
+}
+
+function isSelectableCase(entry) {
+  return entry.status === "available" || entry.status === "sources_available";
 }
 
 function CaseDropdown({ cases, selectedCaseId, onChange }) {
@@ -16,7 +26,7 @@ function CaseDropdown({ cases, selectedCaseId, onChange }) {
       <span>Demo case</span>
       <select value={selectedCaseId} onChange={(event) => onChange(event.target.value)}>
         {cases.map((entry) => (
-          <option key={entry.id} value={entry.id} disabled={entry.status !== "available"}>
+          <option key={entry.id} value={entry.id} disabled={!isSelectableCase(entry)}>
             {entry.label} - {entry.title} ({statusLabel(entry.status)})
           </option>
         ))}
@@ -49,7 +59,7 @@ export function CaseFilingDemoPage() {
           ? data.cases
           : [...(data.available ?? []), ...(data.comingSoon ?? [])];
         setCases(allCases);
-        const firstAvailable = allCases.find((entry) => entry.status === "available");
+        const firstAvailable = allCases.find((entry) => isSelectableCase(entry));
         setSelectedCaseId(firstAvailable?.id ?? allCases[0]?.id ?? "");
       })
       .catch((err) => {
@@ -75,6 +85,27 @@ export function CaseFilingDemoPage() {
     if (selected?.status === "coming_soon") {
       setCaseDetail(null);
       setBundleLoading(false);
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    if (selected?.status === "sources_available") {
+      getDemoCase(selectedCaseId)
+        .then((detail) => {
+          if (cancelled) return;
+          setCaseDetail(detail);
+          setBundle(null);
+        })
+        .catch((err) => {
+          if (!cancelled) {
+            setCaseDetail(null);
+            setError(err);
+          }
+        })
+        .finally(() => {
+          if (!cancelled) setBundleLoading(false);
+        });
       return () => {
         cancelled = true;
       };
@@ -144,6 +175,9 @@ export function CaseFilingDemoPage() {
           <div>
             <h3>{caseDetail.title}</h3>
             <p className="muted">{caseDetail.syntheticDataNotice}</p>
+            {caseDetail.demoDisclosure && (
+              <p className="muted">{caseDetail.demoDisclosure}</p>
+            )}
           </div>
           <dl className="document-run-meta">
             <div>
@@ -158,9 +192,45 @@ export function CaseFilingDemoPage() {
             </div>
             <div>
               <dt>Mode</dt>
-              <dd>{bundleLoading ? "Preparing demo bundle…" : "Interactive + insights tabs"}</dd>
+              <dd>
+                {selectedCase?.status === "sources_available"
+                  ? "Import preview (PDFs + manifest)"
+                  : bundleLoading
+                    ? "Preparing demo bundle…"
+                    : "Interactive + insights tabs"}
+              </dd>
             </div>
           </dl>
+          {selectedCase?.status === "sources_available" && caseDetail.documents?.length > 0 && (
+            <div className="demo-source-doc-list">
+              <h4>View source filings</h4>
+              <ul>
+                {caseDetail.documents.map((doc) => (
+                  <li key={doc.docKey}>
+                    {doc.source?.available ? (
+                      <a
+                        href={absoluteDemoUrl(doc.source.url)}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {String(doc.docIndex).padStart(2, "0")}. {doc.title}
+                      </a>
+                    ) : (
+                      <span>
+                        {String(doc.docIndex).padStart(2, "0")}. {doc.title} (PDF pending)
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+              {caseDetail.nextSteps?.length > 0 && (
+                <div className="demo-next-steps">
+                  <h4>Next: author golden</h4>
+                  <pre className="demo-cli-hint">{caseDetail.nextSteps.join("\n")}</pre>
+                </div>
+              )}
+            </div>
+          )}
         </section>
       )}
 

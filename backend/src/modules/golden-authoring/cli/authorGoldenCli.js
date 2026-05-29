@@ -17,30 +17,52 @@ import { createRuleMatchService } from "../../court-rules/services/ruleMatch.ser
 import { createRuleAuthorityService } from "../../court-rules/services/ruleAuthority.service.js";
 import { isSupportedUpload } from "../../case-filing-ai/utils/document-upload.js";
 
-async function loadPdfFiles(importDir, pdfGlob) {
+function matchesPdfGlob(fileName, pdfGlob) {
   const pattern = pdfGlob ?? "**/*.pdf";
-  const simpleSuffix = pattern.replace(/^\*\*\//, "").replace(/^\*/, "");
+  if (pattern === "**/*.pdf" || pattern === "*.pdf") {
+    return /\.pdf$/i.test(fileName);
+  }
+  const slash = pattern.lastIndexOf("/");
+  const filePart = slash >= 0 ? pattern.slice(slash + 1) : pattern;
+  const escaped = filePart.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, ".*");
+  return new RegExp(`^${escaped}$`, "i").test(fileName);
+}
+
+function pdfWalkRoot(importDir, pdfGlob) {
+  const pattern = pdfGlob ?? "**/*.pdf";
+  const slash = pattern.indexOf("/");
+  if (slash <= 0) return importDir;
+  const dirPart = pattern.slice(0, slash);
+  if (dirPart === "**") return importDir;
+  return join(importDir, dirPart);
+}
+
+async function loadPdfFiles(importDir, pdfGlob) {
+  const walkRoot = pdfWalkRoot(importDir, pdfGlob);
+  const recursive = !pdfGlob || pdfGlob.startsWith("**") || pdfGlob.includes("/**");
   const files = [];
+
   async function walk(dir) {
     const entries = await readdir(dir, { withFileTypes: true });
     for (const entry of entries) {
       const full = join(dir, entry.name);
       if (entry.isDirectory()) {
-        await walk(full);
-      } else if (entry.isFile() && isSupportedUpload({ originalname: entry.name })) {
-        if (!simpleSuffix || entry.name.endsWith(simpleSuffix.replace(/^\*/, ""))) {
-          const buffer = await readFile(full);
-          files.push({
-            originalname: entry.name,
-            buffer,
-            mimetype: extname(entry.name) === ".pdf" ? "application/pdf" : "application/octet-stream",
-            size: buffer.length
-          });
-        }
+        if (recursive) await walk(full);
+      } else if (entry.isFile() && matchesPdfGlob(entry.name, pdfGlob)) {
+        const buffer = await readFile(full);
+        const file = {
+          originalname: entry.name,
+          buffer,
+          mimetype: extname(entry.name) === ".pdf" ? "application/pdf" : "application/octet-stream",
+          size: buffer.length
+        };
+        if (!isSupportedUpload(file)) continue;
+        files.push(file);
       }
     }
   }
-  await walk(importDir);
+
+  await walk(walkRoot);
   return files;
 }
 
@@ -53,14 +75,45 @@ export async function runAuthorGoldenCli({
   partRuleText = ""
 }) {
   const config = getGoldenAuthoringConfig();
-  const manifestPath = join(importDir, "case_manifest.json");
-  const manifestRaw = await readFile(manifestPath, "utf8");
+  let manifestPath = join(importDir, "case_manifest.json");
+  let manifestRaw;
+  try {
+    manifestRaw = await readFile(manifestPath, "utf8");
+  } catch {
+    manifestPath = join(importDir, "manifest.json");
+    manifestRaw = await readFile(manifestPath, "utf8");
+  }
   const manifest = JSON.parse(manifestRaw);
 
-  const caseIdentity = manifest.caseIdentity;
+  const caseIdentity =
+    manifest.caseIdentity ??
+    (manifest.case
+      ? {
+          caseId: manifest.case.syntheticCaseId,
+          county: "Queens",
+          court: manifest.case.court,
+          indexNumber: manifest.case.indexNumber,
+          caseName: [
+            manifest.case.plaintiff,
+            manifest.case.defendants?.length
+              ? `v. ${manifest.case.defendants.join(", ")}`
+              : null
+          ]
+            .filter(Boolean)
+            .join(" "),
+          caseType: manifest.case.caseType,
+          judgeName: manifest.case.judgeName,
+          partName: manifest.case.partName,
+          synthetic: true
+        }
+      : null);
+
   if (!caseIdentity) {
-    throw new Error("case_manifest.json must include caseIdentity");
+    throw new Error("case_manifest.json or manifest.json must include case identity");
   }
+
+  const snapshotCheckpoints =
+    manifest.snapshotCheckpoints ?? [1, 2, 4, 8, 12, 14, 18, 21];
 
   const files = await loadPdfFiles(importDir, manifest.pdfGlob);
   if (!files.length) {
@@ -106,6 +159,9 @@ export async function runAuthorGoldenCli({
     fixturesRoot: join(config.repoRoot, "data/court-rules/fixtures")
   });
 
+  const ruleFixturesCaseId =
+    manifest.ruleFixturesCaseId ?? "case_002_queens_catapano_fox_v002";
+
   const authoringBatch = createAuthoringBatchService({
     stagingStore,
     goldenExporter,
@@ -116,7 +172,11 @@ export async function runAuthorGoldenCli({
     caseSnapshot,
     ruleMatch: createRuleMatchService({ ruleStore }),
     ruleAuthority: createRuleAuthorityService(),
-    config
+    config: {
+      ...config,
+      ruleFixturesCaseId,
+      ruleSetVersion: manifest.ruleSetVersion ?? config.ruleSetVersion
+    }
   });
 
   const result = await authoringBatch.processAuthoringBatch({
@@ -125,7 +185,11 @@ export async function runAuthorGoldenCli({
     legalCaseId,
     caseIdentity,
     files,
-    manifest,
+    manifest: {
+      ...manifest,
+      snapshotCheckpoints,
+      caseIdentity
+    },
     importStamp,
     partRuleText
   });

@@ -1,0 +1,55 @@
+{
+  "docIndex": 6,
+  "docKey": "doc-006",
+  "expectedDocumentType": "",
+  "expectedTitle": "doc_006_DEMAND_FOR_AUTHORIZATIONS.pdf",
+  "expectedFilingDate": null,
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": 6,
+  "expectedPageCount": 1,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1412,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "notes": "Synthetic document with clear content and metadata."
+  },
+  "expectedConfirmedFacts": [],
+  "expectedParties": [],
+  "expectedTasks": [
+    {
+      "taskType": "RESPOND_TO_AUTHORIZATION_DEMANDS",
+      "status": "source_supported_auto_saved",
+      "dueDate": null,
+      "sourceAuthority": "CPLR 3120",
+      "sourceName": "Demand for Authorizations",
+      "sourceDocNo": 6,
+      "ruleSourceApplied": "cplr_3120_discovery_and_inspection",
+      "authorityRank": null,
+      "supersedes": null,
+      "sourceText": "Defendants demand HIPAA-compliant authorizations for medical, hospital, employment, school, collateral source, and related records. Demand is made pursuant to CPLR 3120.",
+      "sourcePage": null
+    }
+  ],
+  "expectedDeadlines": [],
+  "expectedHumanReviewItems": [],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

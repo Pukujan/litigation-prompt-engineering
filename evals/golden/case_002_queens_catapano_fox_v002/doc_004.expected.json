@@ -1,0 +1,61 @@
+{
+  "docIndex": 4,
+  "docKey": "doc-004",
+  "expectedDocumentType": "DEMAND_FOR_BILL_OF_PARTICULARS",
+  "expectedTitle": "DEMAND_FOR_BILL_OF_PARTICULARS",
+  "expectedFilingDate": "2026-12-03",
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": 4,
+  "expectedPageCount": 1,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1493,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "extractionConfidence": 1,
+    "isSynthetic": true,
+    "needsHumanReview": false
+  },
+  "expectedConfirmedFacts": [],
+  "expectedParties": [],
+  "expectedTasks": [
+    {
+      "taskType": "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2027-01-02",
+      "assignedTo": "Plaintiff counsel",
+      "sourceAuthority": "CPLR 3042(a)",
+      "sourceDocNo": 4,
+      "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+      "relevantText": "Response period stated in demand: 30 days after service."
+    }
+  ],
+  "expectedDeadlines": [
+    {
+      "deadlineType": "BP_RESPONSE_DEADLINE",
+      "date": "2027-01-02",
+      "sourceDocNo": 4,
+      "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+      "sourceText": "Demand for Bill of Particulars served 2026-12-03, response due 30 days later."
+    }
+  ],
+  "expectedHumanReviewItems": [],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "docIndex": 12,
+  "docKey": "doc-012",
+  "expectedDocumentType": "PROPOSED_PRELIMINARY_CONFERENCE_ORDER",
+  "expectedTitle": "doc_012_PROPOSED_PRELIMINARY_CONFERENCE_ORDER.pdf",
+  "expectedFilingDate": "2027-03-20",
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": 12,
+  "expectedPageCount": 2,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 2114,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "notes": "Synthetic document with clear content."
+  },
+  "expectedConfirmedFacts": [],
+  "expectedParties": [],
+  "expectedTasks": [
+    {
+      "taskId": "REVIEW_PROPOSED_PRELIMINARY_CONFERENCE_ORDER",
+      "taskType": "REVIEW_DOCUMENT",
+      "description": "Review proposed preliminary conference order for completeness and compliance with part rules.",
+      "status": "conditional",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "queens_medmal_pc_form",
+      "assignedTo": "Court"
+    },
+    {
+      "taskId": "TRACK_PROPOSED_PLAINTIFF_DEPOSITION_DATE",
+      "taskType": "TRACK_DEADLINE",
+      "description": "Track proposed plaintiff deposition date of 2027-06-19.",
+      "status": "conditional",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox",
+      "dueDate": "2027-06-19"
+    },
+    {
+      "taskId": "TRACK_PROPOSED_AUTHORIZATIONS_AND_RECORDS_EXCHANGE",
+      "taskType": "TRACK_DISCOVERY",
+      "description": "Track proposed authorizations and records exchange provisions in proposed preliminary conference order.",
+      "status": "conditional",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "queens_medmal_pc_form"
+    }
+  ],
+  "expectedDeadlines": [
+    {
+      "deadlineType": "PROPOSED_PLAINTIFF_DEPOSITION",
+      "date": "2027-06-19",
+      "status": "conditional",
+      "sourceDocNo": 12,
+      "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox"
+    }
+  ],
+  "expectedHumanReviewItems": [
+    "Review proposed preliminary conference order for consistency with part rules and case status. Ensure all required provisions are included.",
+    "Confirm that the proposed plaintiff deposition date of 2027-06-19 is within 90 days of the anticipated preliminary conference order date.",
+    "Verify that the proposed order addresses all outstanding discovery demands and deadlines."
+  ],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

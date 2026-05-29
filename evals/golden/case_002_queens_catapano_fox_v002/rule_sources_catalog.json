@@ -1,0 +1,84 @@
+{
+  "ruleAuthorityProfileId": "queens_catapano_fox_medmal_rule_authority_v001",
+  "court": "Queens County Supreme Court, Civil Term",
+  "judge": "Hon. Tracy Catapano-Fox",
+  "part": "Medical, Dental and Podiatric Malpractice Part",
+  "hierarchy": [
+    {
+      "rank": 1,
+      "sourceType": "later_case_specific_order",
+      "rule": "Later case-specific order controls over earlier case-specific order."
+    },
+    {
+      "rank": 2,
+      "sourceType": "case_specific_order",
+      "rule": "Case-specific order controls over judge/part rule."
+    },
+    {
+      "rank": 3,
+      "sourceType": "judge_medmal_part_rule",
+      "rule": "Justice Tracy Catapano-Fox Medical, Dental and Podiatric Malpractice Part rules control over general Queens/court-wide practice where more specific and valid."
+    },
+    {
+      "rank": 4,
+      "sourceType": "queens_medmal_form_or_local_rule",
+      "rule": "Queens Medical Malpractice PC/CC forms and local instructions apply when not displaced by a specific order."
+    },
+    {
+      "rank": 5,
+      "sourceType": "uniform_civil_rule",
+      "rule": "22 NYCRR Part 202 applies as statewide civil practice baseline."
+    },
+    {
+      "rank": 6,
+      "sourceType": "nyscef_rule",
+      "rule": "NYSCEF rules apply to e-filing and e-service mechanics."
+    },
+    {
+      "rank": 7,
+      "sourceType": "cplr_or_statute",
+      "rule": "CPLR/statutes are legal baseline and cannot be contradicted by lower authority."
+    }
+  ],
+  "ruleSources": [
+    {
+      "ruleId": "queens_medmal_part_rules_catapano_fox",
+      "authority": "judge_medmal_part_rule",
+      "sourceName": "Medical, Dental and Podiatric Malpractice Conference and Part Rules - Justice Tracy Catapano-Fox",
+      "url": "https://www.nycourts.gov/LegacyPDFS/COURTS/11jd/supreme/civilterm/mm_part_rules.pdf"
+    },
+    {
+      "ruleId": "queens_medmal_pc_form",
+      "authority": "queens_medmal_form_or_local_rule",
+      "sourceName": "Queens Medical Malpractice Preliminary Conference Order form"
+    },
+    {
+      "ruleId": "queens_medmal_cc_form",
+      "authority": "queens_medmal_form_or_local_rule",
+      "sourceName": "Queens Medical Malpractice Compliance Conference Order form"
+    },
+    {
+      "ruleId": "nyscef_202_5b",
+      "authority": "nyscef_rule",
+      "sourceName": "22 NYCRR 202.5-b / Queens Supreme e-filing instructions"
+    },
+    {
+      "ruleId": "uniform_civil_rules_part_202",
+      "authority": "uniform_civil_rule",
+      "sourceName": "22 NYCRR Part 202 Uniform Civil Rules"
+    },
+    {
+      "ruleId": "cplr_general_civil_practice",
+      "authority": "cplr_or_statute",
+      "sourceName": "CPLR/statutory baseline"
+    }
+  ],
+  "caseSpecificRuleSourcePattern": {
+    "doc_013_pc_order": "activates at doc 13",
+    "doc_015_cc_order": "activates at doc 15",
+    "doc_017_so_ordered_stipulation": "activates at doc 17 and supersedes inconsistent earlier deposition dates",
+    "doc_018_cc_order": "activates at doc 18",
+    "doc_019_duplicate_or_refiled_cc_order": "activates at doc 19 but should be checked for duplicate/refiled status",
+    "doc_021_later_cc_order": "activates at doc 21"
+  }
+}

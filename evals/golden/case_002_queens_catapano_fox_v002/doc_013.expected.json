@@ -1,0 +1,87 @@
+{
+  "docIndex": 13,
+  "docKey": "doc-013",
+  "expectedDocumentType": "",
+  "expectedTitle": "doc_013_ORDER_PRELIMINARY_CONFERENCE.pdf",
+  "expectedFilingDate": null,
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": 13,
+  "expectedPageCount": 1,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1691,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "overallAccuracy": "high",
+    "notes": "All key deadlines and order details extracted accurately."
+  },
+  "expectedConfirmedFacts": [],
+  "expectedParties": [],
+  "expectedTasks": [
+    {
+      "taskName": "COMPLETE_PLAINTIFF_DEPOSITION",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2027-07-29",
+      "sourceAuthority": "Preliminary Conference Order (Doc. No. 13)",
+      "sourceDocNo": 13,
+      "ruleSourceApplied": "doc_013_pc_order",
+      "authorityRank": 90,
+      "supersedes": [
+        "PROPOSED_PLAINTIFF_DEPOSITION (Doc. No. 12)",
+        "PLAINTIFF_EBT_NOTICE_DATE (Doc. No. 5)"
+      ]
+    },
+    {
+      "taskName": "COMPLETE_DEFENDANT_DEPOSITIONS",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2027-09-29",
+      "sourceAuthority": "Preliminary Conference Order (Doc. No. 13)",
+      "sourceDocNo": 13,
+      "ruleSourceApplied": "doc_013_pc_order",
+      "authorityRank": 90
+    }
+  ],
+  "expectedDeadlines": [
+    {
+      "deadlineType": "PLAINTIFF_DEPOSITION",
+      "date": "2027-07-29",
+      "sourceAuthority": "Preliminary Conference Order (Doc. No. 13)",
+      "sourceDocNo": 13,
+      "ruleSourceApplied": "doc_013_pc_order",
+      "status": "source_supported_auto_saved"
+    },
+    {
+      "deadlineType": "DEFENDANT_DEPOSITIONS",
+      "date": "2027-09-29",
+      "sourceAuthority": "Preliminary Conference Order (Doc. No. 13)",
+      "sourceDocNo": 13,
+      "ruleSourceApplied": "doc_013_pc_order",
+      "status": "source_supported_auto_saved"
+    }
+  ],
+  "expectedHumanReviewItems": [
+    {
+      "description": "Verify that the deposition deadlines comply with applicable part rules and that no other deadlines (e.g., for authorizations) are required by the conference order.",
+      "source": "doc_013_pc_order"
+    }
+  ],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "doc_013_pc_order",
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

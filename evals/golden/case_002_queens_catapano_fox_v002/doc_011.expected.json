@@ -1,0 +1,94 @@
+{
+  "docIndex": 11,
+  "docKey": "doc-011",
+  "expectedDocumentType": "BILL_OF_PARTICULARS",
+  "expectedTitle": "doc_011_BILL_OF_PARTICULARS.pdf",
+  "expectedFilingDate": "2027-03-18",
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": 11,
+  "expectedPageCount": 2,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1698,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "notes": "Synthetic document clearly states it is a Verified Bill of Particulars served by plaintiff in response to defendants' demand. All metadata extracted from document header."
+  },
+  "expectedConfirmedFacts": [],
+  "expectedParties": [
+    {
+      "name": "Jane Doe as Parent and Natural Guardian of A.D., an Infant",
+      "role": "Plaintiff",
+      "counsel": "Hudson River Trial Law PLLC by Alex Morgan, Esq."
+    },
+    {
+      "name": "Jordan Smith, M.D.",
+      "role": "Defendant",
+      "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+    },
+    {
+      "name": "Jordan Smith, M.D., P.C.",
+      "role": "Defendant",
+      "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+    }
+  ],
+  "expectedTasks": [
+    {
+      "taskId": "MARK_BILL_OF_PARTICULARS_SERVED",
+      "status": "source_supported_auto_saved",
+      "sourceAuthority": "CPLR 3041, 3042",
+      "sourceName": "Verified Bill of Particulars",
+      "sourceDocNo": 11,
+      "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+      "authorityRank": 70,
+      "sourceText": "Verified Bill of Particulars served by plaintiff in response to defendants' demand.",
+      "sourcePage": 1
+    },
+    {
+      "taskId": "REVIEW_BILL_OF_PARTICULARS_FOR_DISCOVERY_NEEDS",
+      "status": "conditional",
+      "sourceAuthority": "CPLR 3042, 3043; Part Rules",
+      "sourceName": "Verified Bill of Particulars",
+      "sourceDocNo": 11,
+      "ruleSourceApplied": "queens_medmal_part_rules_catapano_fox",
+      "authorityRank": 70,
+      "sourceText": "The Bill of Particulars sets forth synthetic allegations of departure from accepted medical care and claimed injuries. The document may inform later deposition and authorization tasks.",
+      "sourcePage": 1
+    }
+  ],
+  "expectedDeadlines": [
+    {
+      "deadlineType": "BP_RESPONSE_DEADLINE",
+      "date": "2027-01-02",
+      "sourceDocNo": 4,
+      "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+      "status": "superseded",
+      "supersededBy": "Bill of Particulars served on 2027-03-18 (Doc. No. 11)",
+      "notes": "Original deadline was 2027-01-02. Service occurred on 2027-03-18, which is late. This deadline is now superseded by the actual service date, but lateness may be an issue."
+    }
+  ],
+  "expectedHumanReviewItems": [
+    "Verify that the Bill of Particulars was served within the time required by CPLR 3042 or any court order. The demand was served on 2026-12-03 with a 30-day response deadline of 2027-01-02. Service on 2027-03-18 is late. Determine if a stipulation or court order extended the time.",
+    "Review the content of the Bill of Particulars for completeness and compliance with CPLR 3043. The synthetic document does not provide the actual allegations or claimed injuries.",
+    "Confirm that the Bill of Particulars was verified as required by CPLR 3044."
+  ],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

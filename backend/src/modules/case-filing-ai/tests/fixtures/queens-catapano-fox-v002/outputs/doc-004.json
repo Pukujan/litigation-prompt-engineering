@@ -1,0 +1,321 @@
+{
+  "docKey": "doc-004",
+  "docIndex": 4,
+  "storedName": "004-doc_004_DEMAND_FOR_BILL_OF_PARTICULARS.pdf",
+  "originalName": "doc_004_DEMAND_FOR_BILL_OF_PARTICULARS.pdf",
+  "fileKind": "pdf",
+  "status": "completed",
+  "batchTraceId": "golden_adca49f7_77d7c6889abf",
+  "traceId": "golden_adca49f7_77d7c6889abf_doc004",
+  "model": "deepseek/deepseek-v4-pro-20260423",
+  "usage": {
+    "prompt_tokens": 1777,
+    "completion_tokens": 4174,
+    "total_tokens": 5951,
+    "cost": 0.014094,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.014094,
+      "upstream_inference_prompt_cost": 0.002473584,
+      "upstream_inference_completions_cost": 0.011620416
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2810,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "runMetadata": {
+    "promptVersion": "v001",
+    "promptTemplate": "v001_master-case-filing.prompt.md",
+    "promptLabel": "v001",
+    "snapshotMergeMode": "legacy",
+    "openRouterModel": "deepseek/deepseek-v4-pro-20260423",
+    "masterPromptJsonRetry": true,
+    "omitAuditNotesInPrompt": true
+  },
+  "pipelineVersions": null,
+  "parsedDocumentCacheUsed": false,
+  "textSourceUsed": "embedded_text",
+  "reviewStatusAtEvalTime": null,
+  "ruleSourcesChecked": [
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "rankedRules": [
+    {
+      "ruleId": "queens_medmal_part_rules_catapano_fox",
+      "authority": "part",
+      "title": "Medical, Dental and Podiatric Malpractice Conference and Part Rules - Justice Tracy Catapano-Fox",
+      "text": "Medical, Dental and Podiatric Malpractice Conference and Part Rules - Justice Tracy Catapano-Fox",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    },
+    {
+      "ruleId": "queens_medmal_cc_form",
+      "authority": "county",
+      "title": "Queens Medical Malpractice Compliance Conference Order form",
+      "text": "Queens Medical Malpractice Compliance Conference Order form",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    },
+    {
+      "ruleId": "queens_medmal_pc_form",
+      "authority": "county",
+      "title": "Queens Medical Malpractice Preliminary Conference Order form",
+      "text": "Queens Medical Malpractice Preliminary Conference Order form",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    }
+  ],
+  "documentMetadata": {
+    "docIndex": 4,
+    "storedName": "004-doc_004_DEMAND_FOR_BILL_OF_PARTICULARS.pdf",
+    "originalName": "doc_004_DEMAND_FOR_BILL_OF_PARTICULARS.pdf",
+    "fileKind": "pdf",
+    "pageCount": 1,
+    "mimeType": "application/pdf",
+    "sizeBytes": 3136
+  },
+  "extractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1493,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "extractionConfidence": 1,
+    "isSynthetic": true,
+    "needsHumanReview": false
+  },
+  "docketEntry": {
+    "docIndex": 4,
+    "filingType": "DEMAND_FOR_BILL_OF_PARTICULARS",
+    "filingDate": "2026-12-03",
+    "title": "Demand for Bill of Particulars",
+    "judge": "Hon. Tracy Catapano-Fox",
+    "part": "Medical, Dental and Podiatric Malpractice Part (Courtroom 48)"
+  },
+  "caseUpdates": {
+    "phaseChange": null,
+    "newFacts": [
+      "Defendants served Demand for Bill of Particulars dated 2026-12-03, demanding a verified bill of particulars within 30 days after service."
+    ]
+  },
+  "parties": [],
+  "witnesses": [],
+  "tasks": [
+    {
+      "taskType": "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2027-01-02",
+      "assignedTo": "Plaintiff counsel",
+      "sourceAuthority": "CPLR 3042(a)",
+      "sourceDocNo": 4,
+      "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+      "relevantText": "Response period stated in demand: 30 days after service."
+    }
+  ],
+  "deadlines": [
+    {
+      "deadlineType": "BP_RESPONSE_DEADLINE",
+      "date": "2027-01-02",
+      "sourceDocNo": 4,
+      "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+      "sourceText": "Demand for Bill of Particulars served 2026-12-03, response due 30 days later."
+    }
+  ],
+  "humanReviewItems": [],
+  "auditNotes": [
+    "Detected Demand for Bill of Particulars (Doc 4). Computed response deadline as 2027-01-02 (30 days from 2026-12-03). Created task RESPOND_TO_BILL_OF_PARTICULARS_DEMAND with auto-saved status."
+  ],
+  "rawMasterResult": {
+    "documentMetadata": {
+      "docIndex": 4,
+      "storedName": "004-doc_004_DEMAND_FOR_BILL_OF_PARTICULARS.pdf",
+      "originalName": "doc_004_DEMAND_FOR_BILL_OF_PARTICULARS.pdf",
+      "fileKind": "pdf",
+      "pageCount": 1,
+      "mimeType": "application/pdf",
+      "sizeBytes": 3136
+    },
+    "extractionQuality": {
+      "extractionConfidence": 1,
+      "isSynthetic": true,
+      "needsHumanReview": false
+    },
+    "docketEntry": {
+      "docIndex": 4,
+      "filingType": "DEMAND_FOR_BILL_OF_PARTICULARS",
+      "filingDate": "2026-12-03",
+      "title": "Demand for Bill of Particulars",
+      "judge": "Hon. Tracy Catapano-Fox",
+      "part": "Medical, Dental and Podiatric Malpractice Part (Courtroom 48)"
+    },
+    "caseUpdates": {
+      "phaseChange": null,
+      "newFacts": [
+        "Defendants served Demand for Bill of Particulars dated 2026-12-03, demanding a verified bill of particulars within 30 days after service."
+      ]
+    },
+    "parties": [],
+    "witnesses": [],
+    "tasks": [
+      {
+        "taskType": "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND",
+        "status": "source_supported_auto_saved",
+        "dueDate": "2027-01-02",
+        "assignedTo": "Plaintiff counsel",
+        "sourceAuthority": "CPLR 3042(a)",
+        "sourceDocNo": 4,
+        "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+        "relevantText": "Response period stated in demand: 30 days after service."
+      }
+    ],
+    "deadlines": [
+      {
+        "deadlineType": "BP_RESPONSE_DEADLINE",
+        "date": "2027-01-02",
+        "sourceDocNo": 4,
+        "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+        "sourceText": "Demand for Bill of Particulars served 2026-12-03, response due 30 days later."
+      }
+    ],
+    "humanReviewItems": [],
+    "updatedCaseSnapshot": {
+      "snapshotId": "snapshot_after_doc_4",
+      "caseId": "synthetic_queens_tcf_001",
+      "afterDocNo": 4,
+      "currentPhase": "issue_joined",
+      "currentMiniPhase": "bp_demand_served",
+      "county": "Queens",
+      "part": null,
+      "partName": "Medical, Dental and Podiatric Malpractice Part",
+      "court": "Supreme Court of the State of New York, County of Queens",
+      "judgeName": "Hon. Tracy Catapano-Fox",
+      "caseType": "medical_malpractice",
+      "case": {
+        "county": "Queens",
+        "part": null,
+        "partName": "Medical, Dental and Podiatric Malpractice Part",
+        "court": "Supreme Court of the State of New York, County of Queens",
+        "judgeName": "Hon. Tracy Catapano-Fox",
+        "caseType": "medical_malpractice"
+      },
+      "confirmedFacts": [
+        "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+        "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+        "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+        "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+        "Nature of suit: medical malpractice - prenatal and obstetrical care.",
+        "Index Number: 900001/2026.",
+        "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox.",
+        "Plaintiff filed Notice of Commencement of Action for Personal Injuries pursuant to CPLR 306-c on 2026-11-12.",
+        "Summons and complaint are referenced as initiating papers.",
+        "Defendants filed Verified Answer on 2026-12-03, denying liability and asserting affirmative defenses.",
+        "Issue joined as of 2026-12-03.",
+        "Defense counsel appears for both defendants.",
+        "Defendants served Demand for Bill of Particulars on 2026-12-03, demanding a verified bill of particulars within 30 days after service."
+      ],
+      "carriedForwardContext": [],
+      "openTasks": [
+        "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND"
+      ],
+      "completedTasks": [
+        "ANSWER_RECEIVED"
+      ],
+      "conditionalTasks": [],
+      "deadlines": [
+        {
+          "deadlineType": "BP_RESPONSE_DEADLINE",
+          "date": "2027-01-02",
+          "sourceDocNo": 4,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars"
+        }
+      ],
+      "supersededDeadlines": [],
+      "unresolvedHumanReviewItems": [],
+      "conflicts": []
+    },
+    "auditNotes": [
+      "Detected Demand for Bill of Particulars (Doc 4). Computed response deadline as 2027-01-02 (30 days from 2026-12-03). Created task RESPOND_TO_BILL_OF_PARTICULARS_DEMAND with auto-saved status."
+    ],
+    "inferredPartRuleText": "",
+    "partRuleExtracts": [],
+    "ruleSourcesApplied": [
+      "cplr_3041_3042_bill_of_particulars"
+    ],
+    "documentFacts": {
+      "documentMetadata": {
+        "docIndex": 4,
+        "storedName": "004-doc_004_DEMAND_FOR_BILL_OF_PARTICULARS.pdf",
+        "originalName": "doc_004_DEMAND_FOR_BILL_OF_PARTICULARS.pdf",
+        "fileKind": "pdf",
+        "pageCount": 1,
+        "mimeType": "application/pdf",
+        "sizeBytes": 3136
+      },
+      "extractionQuality": {
+        "extractionConfidence": 1,
+        "isSynthetic": true,
+        "needsHumanReview": false
+      },
+      "docketEntry": {
+        "docIndex": 4,
+        "filingType": "DEMAND_FOR_BILL_OF_PARTICULARS",
+        "filingDate": "2026-12-03",
+        "title": "Demand for Bill of Particulars",
+        "judge": "Hon. Tracy Catapano-Fox",
+        "part": "Medical, Dental and Podiatric Malpractice Part (Courtroom 48)"
+      },
+      "caseUpdates": {
+        "phaseChange": null,
+        "newFacts": [
+          "Defendants served Demand for Bill of Particulars dated 2026-12-03, demanding a verified bill of particulars within 30 days after service."
+        ]
+      },
+      "parties": [],
+      "witnesses": [],
+      "humanReviewItems": []
+    },
+    "ruleBasedTasks": [
+      {
+        "taskType": "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND",
+        "status": "source_supported_auto_saved",
+        "dueDate": "2027-01-02",
+        "assignedTo": "Plaintiff counsel",
+        "sourceAuthority": "CPLR 3042(a)",
+        "sourceDocNo": 4,
+        "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars",
+        "relevantText": "Response period stated in demand: 30 days after service."
+      }
+    ],
+    "caseOrderTasks": []
+  }
+}

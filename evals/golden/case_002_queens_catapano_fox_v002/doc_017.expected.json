@@ -1,0 +1,83 @@
+{
+  "docIndex": 17,
+  "docKey": "doc-017",
+  "expectedDocumentType": "",
+  "expectedTitle": "doc_017_STIPULATION_SO_ORDERED.pdf",
+  "expectedFilingDate": "2027-09-22",
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": null,
+  "expectedPageCount": null,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1633,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high"
+  },
+  "expectedConfirmedFacts": [],
+  "expectedParties": [],
+  "expectedTasks": [
+    {
+      "taskName": "COMPLETE_PLAINTIFF_DEPOSITION",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2027-10-24",
+      "sourceDocNo": 17,
+      "ruleSourceApplied": "doc_017_so_ordered_stipulation",
+      "authorityRank": 90,
+      "supersedes": "COMPLETE_PLAINTIFF_DEPOSITION with previous due date 2027-07-29",
+      "sourceText": "2. Plaintiff deposition extended to 2027-10-24."
+    },
+    {
+      "taskName": "COMPLETE_DEFENDANT_DEPOSITIONS",
+      "status": "source_supported_auto_saved",
+      "dueDate": "2027-11-24",
+      "sourceDocNo": 17,
+      "ruleSourceApplied": "doc_017_so_ordered_stipulation",
+      "authorityRank": 90,
+      "supersedes": "COMPLETE_DEFENDANT_DEPOSITIONS with previous due date 2027-09-29",
+      "sourceText": "3. Defendants' depositions extended to 2027-11-24."
+    }
+  ],
+  "expectedDeadlines": [
+    {
+      "deadlineType": "PLAINTIFF_DEPOSITION_SUPERSEDING",
+      "date": "2027-10-24",
+      "sourceDocNo": 17,
+      "ruleSourceApplied": "doc_017_so_ordered_stipulation",
+      "status": "source_supported_auto_saved",
+      "supersedes": "PLAINTIFF_DEPOSITION from Doc. No. 13"
+    },
+    {
+      "deadlineType": "DEFENDANT_DEPOSITIONS_SUPERSEDING",
+      "date": "2027-11-24",
+      "sourceDocNo": 17,
+      "ruleSourceApplied": "doc_017_so_ordered_stipulation",
+      "status": "source_supported_auto_saved",
+      "supersedes": "DEFENDANT_DEPOSITIONS from Doc. No. 13"
+    }
+  ],
+  "expectedHumanReviewItems": [
+    "Verify that the extension is timely given that the original plaintiff deposition deadline of 2027-07-29 had passed; the court so-ordered the stipulation, making it binding, but note potential untimeliness if challenged."
+  ],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "doc_013_pc_order",
+    "doc_015_cc_order",
+    "doc_017_so_ordered_stipulation",
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

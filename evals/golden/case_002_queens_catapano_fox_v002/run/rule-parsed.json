@@ -1,0 +1,29 @@
+{
+  "partName": null,
+  "judgeName": null,
+  "county": null,
+  "court": null,
+  "rules": [
+    "Upon filing of an answer, issue is joined and the case proceeds to discovery tracking under the applicable part rules."
+  ],
+  "schedulingNotes": [],
+  "deadlinePolicies": [],
+  "sourceSummary": "Answer filing triggers issue joining and discovery tracking.",
+  "confidence": "high",
+  "source": "inferred_from_filings",
+  "savedAt": "2026-05-24T18:04:13.462Z",
+  "extraction": null,
+  "inferredFromDocs": [
+    {
+      "docKey": "doc-003",
+      "originalName": "doc_003_ANSWER.pdf",
+      "inferredPartRuleText": "Upon filing of an answer, issue is joined and the case proceeds to discovery tracking under the applicable part rules.",
+      "partRuleExtracts": [
+        {
+          "ruleId": "queens_medmal_part_rules_catapano_fox",
+          "extractedText": "Answer filing triggers issue joining and discovery tracking."
+        }
+      ]
+    }
+  ]
+}

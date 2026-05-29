@@ -63,6 +63,8 @@ Authoring pipeline output before human promote. Gitignored except `.gitkeep`.
 ```text
 {caseId}/{version}/
   doc_NNN.expected.json
+  pipeline_versions.expected.json
+  golden_audit.json
   authoring_run.json
   VERSION_HISTORY.jsonl
   run/                       # ephemeral pipeline run

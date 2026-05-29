@@ -8,27 +8,16 @@ import { createCaseFilingDemoService } from "./services/caseFilingDemo.service.j
 const repoRoot = join(fileURLToPath(new URL(".", import.meta.url)), "../../../..");
 
 export function register(app) {
-  const goldenCaseId = "case_001_rule_authority_v002";
-  const goldenDatasetDir = join(repoRoot, "evals/golden", goldenCaseId);
-  const fixtureDir = join(
-    repoRoot,
-    "backend/src",
-    "modules",
-    "case-filing-ai",
-    "tests/fixtures/rule-authority-v002"
-  );
-  const goldenDataset = createGoldenDatasetService({
-    goldenDatasetDir,
-    caseId: goldenCaseId
-  });
-  const evalRunner = createEvalRunnerService({ goldenDataset });
-  const demo = createCaseFilingDemoService({
-    repoRoot,
-    goldenCaseId,
-    goldenDatasetDir,
-    fixtureDir,
-    evalRunner
-  });
+  const createEvalRunnerForCase = (goldenCaseId) => {
+    const goldenDatasetDir = join(repoRoot, "evals/golden", goldenCaseId);
+    const goldenDataset = createGoldenDatasetService({
+      goldenDatasetDir,
+      caseId: goldenCaseId
+    });
+    return createEvalRunnerService({ goldenDataset });
+  };
+
+  const demo = createCaseFilingDemoService({ repoRoot, createEvalRunnerForCase });
 
   app.use("/api/case-filing-demo", createCaseFilingDemoRoutes({ demo }));
 }

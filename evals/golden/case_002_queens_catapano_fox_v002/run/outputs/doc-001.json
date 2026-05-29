@@ -1,0 +1,316 @@
+{
+  "docKey": "doc-001",
+  "docIndex": 1,
+  "storedName": "001-doc_001_SUMMONS_AND_VERIFIED_COMPLAINT.pdf",
+  "originalName": "doc_001_SUMMONS_AND_VERIFIED_COMPLAINT.pdf",
+  "fileKind": "pdf",
+  "status": "completed",
+  "batchTraceId": "golden_adca49f7_77d7c6889abf",
+  "traceId": "golden_adca49f7_77d7c6889abf_doc001",
+  "model": "deepseek/deepseek-v4-pro-20260423",
+  "usage": {
+    "prompt_tokens": 1409,
+    "completion_tokens": 3452,
+    "total_tokens": 4861,
+    "cost": 0.01446462,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.01446462,
+      "upstream_inference_prompt_cost": 0.00245166,
+      "upstream_inference_completions_cost": 0.01201296
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2536,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "runMetadata": {
+    "promptVersion": "v001",
+    "promptTemplate": "v001_master-case-filing.prompt.md",
+    "promptLabel": "v001",
+    "snapshotMergeMode": "legacy",
+    "openRouterModel": "deepseek/deepseek-v4-pro-20260423",
+    "masterPromptJsonRetry": true,
+    "omitAuditNotesInPrompt": true
+  },
+  "pipelineVersions": null,
+  "parsedDocumentCacheUsed": false,
+  "textSourceUsed": "embedded_text",
+  "reviewStatusAtEvalTime": null,
+  "ruleSourcesChecked": [
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "rankedRules": [
+    {
+      "ruleId": "queens_medmal_part_rules_catapano_fox",
+      "authority": "part",
+      "title": "Medical, Dental and Podiatric Malpractice Conference and Part Rules - Justice Tracy Catapano-Fox",
+      "text": "Medical, Dental and Podiatric Malpractice Conference and Part Rules - Justice Tracy Catapano-Fox",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    },
+    {
+      "ruleId": "queens_medmal_cc_form",
+      "authority": "county",
+      "title": "Queens Medical Malpractice Compliance Conference Order form",
+      "text": "Queens Medical Malpractice Compliance Conference Order form",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    },
+    {
+      "ruleId": "queens_medmal_pc_form",
+      "authority": "county",
+      "title": "Queens Medical Malpractice Preliminary Conference Order form",
+      "text": "Queens Medical Malpractice Preliminary Conference Order form",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    }
+  ],
+  "documentMetadata": {
+    "documentType": "SUMMONS_AND_VERIFIED_COMPLAINT",
+    "documentTitle": "Summons and Verified Complaint",
+    "filedDate": "2026-11-12",
+    "indexNumber": "900001/2026",
+    "judge": "Hon. Tracy Catapano-Fox",
+    "part": "Medical, Dental and Podiatric Malpractice Part (Courtroom 48)",
+    "court": "Supreme Court of the State of New York, County of Queens",
+    "county": "Queens",
+    "appearances": {
+      "plaintiff": "Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+      "defense": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+    }
+  },
+  "extractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1463,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "issues": []
+  },
+  "docketEntry": {
+    "docNo": 1,
+    "entryType": "initiating_paper",
+    "description": "Summons and Verified Complaint commencing a medical malpractice action for prenatal and obstetrical care."
+  },
+  "caseUpdates": {
+    "caseType": "medical_malpractice",
+    "natureOfSuit": "Medical malpractice - prenatal and obstetrical care",
+    "commencementDate": "2026-11-12",
+    "status": "active"
+  },
+  "parties": [
+    {
+      "role": "plaintiff",
+      "name": "Jane Doe as Parent and Natural Guardian of A.D., an Infant",
+      "type": "individual",
+      "counsel": "Hudson River Trial Law PLLC by Alex Morgan, Esq."
+    },
+    {
+      "role": "defendant",
+      "name": "Jordan Smith, M.D.",
+      "type": "individual",
+      "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+    },
+    {
+      "role": "defendant",
+      "name": "Jordan Smith, M.D., P.C.",
+      "type": "corporation",
+      "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+    }
+  ],
+  "witnesses": [],
+  "tasks": [],
+  "deadlines": [],
+  "humanReviewItems": [],
+  "auditNotes": [
+    "Extracted parties and case details from Summons and Verified Complaint. No specific deadlines set as service date unknown. Part rules applied but no immediate tasks triggered."
+  ],
+  "rawMasterResult": {
+    "documentMetadata": {
+      "documentType": "SUMMONS_AND_VERIFIED_COMPLAINT",
+      "documentTitle": "Summons and Verified Complaint",
+      "filedDate": "2026-11-12",
+      "indexNumber": "900001/2026",
+      "judge": "Hon. Tracy Catapano-Fox",
+      "part": "Medical, Dental and Podiatric Malpractice Part (Courtroom 48)",
+      "court": "Supreme Court of the State of New York, County of Queens",
+      "county": "Queens",
+      "appearances": {
+        "plaintiff": "Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "defense": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+      }
+    },
+    "extractionQuality": {
+      "confidence": "high",
+      "issues": []
+    },
+    "docketEntry": {
+      "docNo": 1,
+      "entryType": "initiating_paper",
+      "description": "Summons and Verified Complaint commencing a medical malpractice action for prenatal and obstetrical care."
+    },
+    "caseUpdates": {
+      "caseType": "medical_malpractice",
+      "natureOfSuit": "Medical malpractice - prenatal and obstetrical care",
+      "commencementDate": "2026-11-12",
+      "status": "active"
+    },
+    "parties": [
+      {
+        "role": "plaintiff",
+        "name": "Jane Doe as Parent and Natural Guardian of A.D., an Infant",
+        "type": "individual",
+        "counsel": "Hudson River Trial Law PLLC by Alex Morgan, Esq."
+      },
+      {
+        "role": "defendant",
+        "name": "Jordan Smith, M.D.",
+        "type": "individual",
+        "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+      },
+      {
+        "role": "defendant",
+        "name": "Jordan Smith, M.D., P.C.",
+        "type": "corporation",
+        "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+      }
+    ],
+    "witnesses": [],
+    "tasks": [],
+    "deadlines": [],
+    "humanReviewItems": [],
+    "updatedCaseSnapshot": {
+      "snapshotId": "snapshot_after_doc_1",
+      "caseId": "synthetic_queens_tcf_001",
+      "afterDocNo": 1,
+      "currentPhase": "commencement",
+      "currentMiniPhase": "service",
+      "county": "Queens",
+      "part": null,
+      "partName": "Medical, Dental and Podiatric Malpractice Part",
+      "court": "Supreme Court of the State of New York, County of Queens",
+      "judgeName": "Hon. Tracy Catapano-Fox",
+      "caseType": "medical_malpractice",
+      "case": {
+        "county": "Queens",
+        "part": null,
+        "partName": "Medical, Dental and Podiatric Malpractice Part",
+        "court": "Supreme Court of the State of New York, County of Queens",
+        "judgeName": "Hon. Tracy Catapano-Fox",
+        "caseType": "medical_malpractice"
+      },
+      "confirmedFacts": [
+        "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+        "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+        "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+        "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+        "Nature of suit: medical malpractice - prenatal and obstetrical care.",
+        "Index Number: 900001/2026.",
+        "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox."
+      ],
+      "carriedForwardContext": [],
+      "openTasks": [],
+      "completedTasks": [],
+      "conditionalTasks": [],
+      "deadlines": [],
+      "supersededDeadlines": [],
+      "unresolvedHumanReviewItems": [],
+      "conflicts": [],
+      "_promptContextNote": "auditNotes omitted from prompt input to save context. Full audit trail remains in case-snapshot.json on disk."
+    },
+    "auditNotes": [
+      "Extracted parties and case details from Summons and Verified Complaint. No specific deadlines set as service date unknown. Part rules applied but no immediate tasks triggered."
+    ],
+    "inferredPartRuleText": "",
+    "partRuleExtracts": [],
+    "ruleSourcesApplied": [
+      "queens_medmal_part_rules_catapano_fox"
+    ],
+    "documentFacts": {
+      "documentMetadata": {
+        "documentType": "SUMMONS_AND_VERIFIED_COMPLAINT",
+        "documentTitle": "Summons and Verified Complaint",
+        "filedDate": "2026-11-12",
+        "indexNumber": "900001/2026",
+        "judge": "Hon. Tracy Catapano-Fox",
+        "part": "Medical, Dental and Podiatric Malpractice Part (Courtroom 48)",
+        "court": "Supreme Court of the State of New York, County of Queens",
+        "county": "Queens",
+        "appearances": {
+          "plaintiff": "Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+          "defense": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+        }
+      },
+      "extractionQuality": {
+        "confidence": "high",
+        "issues": []
+      },
+      "docketEntry": {
+        "docNo": 1,
+        "entryType": "initiating_paper",
+        "description": "Summons and Verified Complaint commencing a medical malpractice action for prenatal and obstetrical care."
+      },
+      "caseUpdates": {
+        "caseType": "medical_malpractice",
+        "natureOfSuit": "Medical malpractice - prenatal and obstetrical care",
+        "commencementDate": "2026-11-12",
+        "status": "active"
+      },
+      "parties": [
+        {
+          "role": "plaintiff",
+          "name": "Jane Doe as Parent and Natural Guardian of A.D., an Infant",
+          "type": "individual",
+          "counsel": "Hudson River Trial Law PLLC by Alex Morgan, Esq."
+        },
+        {
+          "role": "defendant",
+          "name": "Jordan Smith, M.D.",
+          "type": "individual",
+          "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+        },
+        {
+          "role": "defendant",
+          "name": "Jordan Smith, M.D., P.C.",
+          "type": "corporation",
+          "counsel": "Harbor Defense & Medical Liability LLP by Taylor Reed, Esq."
+        }
+      ],
+      "witnesses": [],
+      "humanReviewItems": []
+    },
+    "ruleBasedTasks": [],
+    "caseOrderTasks": []
+  }
+}

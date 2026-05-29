@@ -1,0 +1,60 @@
+{
+  "snapshotId": "after_doc_004",
+  "caseId": "synthetic_queens_tcf_001",
+  "afterDocNo": 4,
+  "currentPhase": "issue_joined",
+  "currentMiniPhase": "bp_demand_served",
+  "confirmedFacts": [
+    "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+    "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+    "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+    "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+    "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+    "Nature of suit: medical malpractice - prenatal and obstetrical care.",
+    "Index Number: 900001/2026.",
+    "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox.",
+    "Plaintiff filed Notice of Commencement of Action for Personal Injuries pursuant to CPLR 306-c on 2026-11-12.",
+    "Summons and complaint are referenced as initiating papers.",
+    "Defendants filed Verified Answer on 2026-12-03, denying liability and asserting affirmative defenses.",
+    "Issue joined as of 2026-12-03.",
+    "Defense counsel appears for both defendants.",
+    "Defendants served Demand for Bill of Particulars on 2026-12-03, demanding a verified bill of particulars within 30 days after service."
+  ],
+  "openTasks": [
+    "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND"
+  ],
+  "completedTasks": [
+    "ANSWER_RECEIVED"
+  ],
+  "deadlines": [
+    {
+      "deadlineType": "BP_RESPONSE_DEADLINE",
+      "date": "2027-01-02",
+      "sourceDocNo": 4,
+      "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars"
+    }
+  ],
+  "supersededDeadlines": [],
+  "conflicts": [],
+  "auditNotes": [
+    "Bootstrap case context from golden dataset for rule matching.",
+    "Extracted parties and case details from Summons and Verified Complaint. No specific deadlines set as service date unknown. Part rules applied but no immediate tasks triggered.",
+    "Processed 001-doc_001_SUMMONS_AND_VERIFIED_COMPLAINT.pdf as document 1",
+    "Document is a Notice of Commencement of Action for Personal Injuries under CPLR 306-c.",
+    "No new tasks or deadlines triggered by this filing.",
+    "All metadata and party information consistent with prior snapshot.",
+    "Processed 002-doc_002_NOTICE_OF_COMMENCEMENT_PERSONAL_INJURIES.pdf as document 2",
+    "Extracted ANSWER_RECEIVED task from document content.",
+    "Updated case phase to issue_joined and mini-phase to answer_filed.",
+    "Processed 003-doc_003_ANSWER.pdf as document 3",
+    "Detected Demand for Bill of Particulars (Doc 4). Computed response deadline as 2027-01-02 (30 days from 2026-12-03). Created task RESPOND_TO_BILL_OF_PARTICULARS_DEMAND with auto-saved status.",
+    "Processed 004-doc_004_DEMAND_FOR_BILL_OF_PARTICULARS.pdf as document 4"
+  ],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic snapshot expected output for eval testing.",
+  "expectedRuleAuthorityState": {
+    "activeRuleSetVersion": null,
+    "authorityHierarchy": {},
+    "ruleSourcesAvailable": []
+  }
+}

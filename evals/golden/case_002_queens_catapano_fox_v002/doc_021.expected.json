@@ -1,0 +1,63 @@
+{
+  "docIndex": 21,
+  "docKey": "doc-021",
+  "expectedDocumentType": "ORDER_COMPLIANCE_CONFERENCE",
+  "expectedTitle": "doc_021_ORDER_COMPLIANCE_CONFERENCE.pdf",
+  "expectedFilingDate": "2028-04-10",
+  "expectedReceivedDate": null,
+  "expectedNyscefDocNo": 21,
+  "expectedPageCount": 1,
+  "expectedExtractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1359,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "confidence": "high",
+    "issues": []
+  },
+  "expectedConfirmedFacts": [],
+  "expectedParties": [],
+  "expectedTasks": [
+    {
+      "taskId": "REVIEW_LATER_CC_ORDER_FOR_SUPERSESSION",
+      "description": "Review Compliance Conference Order (Doc. No. 21) for any supersession of prior deadlines.",
+      "status": "needs_review",
+      "sourceAuthority": "doc_021_later_cc_order",
+      "sourceName": "Compliance Conference Order (Doc. No. 21)",
+      "sourceDocNo": 21,
+      "ruleSourceApplied": "doc_021_later_cc_order",
+      "authorityRank": 100,
+      "supersedes": null,
+      "sourceText": "Compliance Conference Order is issued after post-EBT demands. Order continues court supervision of discovery. Use this as a later case-specific order if it modifies prior dates.",
+      "sourcePage": 1
+    }
+  ],
+  "expectedDeadlines": [],
+  "expectedHumanReviewItems": [
+    "Review Compliance Conference Order (Doc. No. 21) for any supersession of prior deadlines. The order does not set new dates; confirm it is a routine supervision order."
+  ],
+  "mustNotCreate": [],
+  "synthetic": true,
+  "syntheticDataNotice": "Synthetic expected output; no real NYSCEF file/data used.",
+  "expectedRuleSourcesApplied": [
+    "doc_021_later_cc_order",
+    "doc_013_pc_order",
+    "doc_015_cc_order",
+    "doc_017_so_ordered_stipulation",
+    "doc_018_cc_order",
+    "doc_019_duplicate_or_refiled_cc_order",
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "expectedRuleAuthorityBehavior": {
+    "mustIncludeSourceAuthorityOnFinalDeadlines": true,
+    "mustUseHighestApplicableAuthority": true,
+    "mustNotUseGeneralRuleWhenSpecificOrderControls": true
+  }
+}

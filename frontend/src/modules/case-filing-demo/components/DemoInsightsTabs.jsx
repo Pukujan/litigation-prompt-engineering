@@ -1,5 +1,7 @@
 import { useMemo, useState } from "react";
 import { DemoDashboardTab } from "./tabs/DemoDashboardTab.jsx";
+import { DemoBenchmarkTab } from "./tabs/DemoBenchmarkTab.jsx";
+import { DemoLegalOpsTab } from "./tabs/DemoLegalOpsTab.jsx";
 import { DemoOutputsTab } from "./tabs/DemoOutputsTab.jsx";
 import { DemoEvalsTab } from "./tabs/DemoEvalsTab.jsx";
 import { DemoAuditTab } from "./tabs/DemoAuditTab.jsx";
@@ -8,6 +10,8 @@ import { isLivePlayback } from "../utils/demoPlaybackHelpers.js";
 
 const TABS = [
   { id: "dashboard", label: "Dashboard" },
+  { id: "benchmark", label: "Benchmark" },
+  { id: "legal-ops", label: "Legal Ops" },
   { id: "outputs", label: "Outputs" },
   { id: "evals", label: "Evals" },
   { id: "audit", label: "Audit" },
@@ -34,8 +38,8 @@ export function DemoInsightsTabs({ bundle, caseDetail, playback }) {
       <header>
         <h3>Demo insights</h3>
         <p className="muted">
-          Explore dashboard metrics, processed outputs, golden evals, audit trail, and governance
-          manifest. Tabs update live during orchestration and show full data when the run completes.
+          Dashboard, benchmark charts, Legal Ops worklog tables, outputs, golden evals, audit trail,
+          and governance. Tabs update live during orchestration and show full data when complete.
         </p>
       </header>
 
@@ -63,7 +67,15 @@ export function DemoInsightsTabs({ bundle, caseDetail, playback }) {
         {activeTab === "dashboard" && (
           <DemoDashboardTab bundle={bundle} caseDetail={caseDetail} playback={playback} />
         )}
-        {activeTab === "outputs" && <DemoOutputsTab bundle={bundle} playback={playback} />}
+        {activeTab === "benchmark" && (
+          <DemoBenchmarkTab bundle={bundle} caseDetail={caseDetail} playback={playback} />
+        )}
+        {activeTab === "legal-ops" && (
+          <DemoLegalOpsTab bundle={bundle} caseDetail={caseDetail} playback={playback} />
+        )}
+        {activeTab === "outputs" && (
+          <DemoOutputsTab bundle={bundle} caseDetail={caseDetail} playback={playback} />
+        )}
         {activeTab === "evals" && <DemoEvalsTab bundle={bundle} playback={playback} />}
         {activeTab === "audit" && <DemoAuditTab bundle={bundle} playback={playback} />}
         {activeTab === "governance" && (

@@ -5,6 +5,7 @@ import { createDocumentPipelineRunner } from "../../case-filing-ai/services/docu
 import { buildPipelineVersions } from "../../case-filing-ai/contracts/pipelineVersions.js";
 import { buildBootstrapSnapshot } from "../../case-filing-ai/utils/goldenCaseBootstrap.js";
 import { snapshotEvalId } from "./goldenExporter.service.js";
+import { resolveConsolidatedInventory } from "../utils/resolveConsolidatedInventory.js";
 
 export function createAuthoringBatchService({
   stagingStore,
@@ -55,6 +56,7 @@ export function createAuthoringBatchService({
     const sorted = sortBatchFiles(files);
     const checkpoints = manifest.snapshotCheckpoints ?? [1, 2, 4, 8, 12, 14];
     const checkpointSet = new Set(checkpoints);
+    const startedAt = new Date().toISOString();
 
     let currentSnapshot =
       buildBootstrapSnapshot(caseIdentity) ?? runStore.emptySnapshot();
@@ -84,6 +86,8 @@ export function createAuthoringBatchService({
       goldenDataset: version
     });
 
+    const inventory = await resolveConsolidatedInventory(config.repoRoot);
+
     const authoringRun = {
       runId,
       caseId,
@@ -92,11 +96,18 @@ export function createAuthoringBatchService({
       importStamp,
       batchStatus: loopResult.batchStatus,
       authorModel: config.openRouter.model,
+      visionOcrModel: config.openRouter.visionOcrModel,
       masterPromptVersion: config.masterPrompt.version,
+      ruleSetVersion: config.ruleSetVersion,
+      pipelineVersions,
+      modelInventoryVersion: inventory.modelInventoryVersion,
+      promptInventoryVersion: inventory.promptInventoryVersion,
+      modelInventoryPath: inventory.modelInventoryPath,
+      promptInventoryPath: inventory.promptInventoryPath,
       processedCount: loopResult.processedCount,
       totalCount: loopResult.totalCount,
       failedDocuments: loopResult.failedDocuments,
-      startedAt: new Date().toISOString(),
+      startedAt,
       completedAt: new Date().toISOString()
     };
 

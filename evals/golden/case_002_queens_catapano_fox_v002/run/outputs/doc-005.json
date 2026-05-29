@@ -1,0 +1,351 @@
+{
+  "docKey": "doc-005",
+  "docIndex": 5,
+  "storedName": "005-doc_005_NOTICE_TO_TAKE_DEPOSITION.pdf",
+  "originalName": "doc_005_NOTICE_TO_TAKE_DEPOSITION.pdf",
+  "fileKind": "pdf",
+  "status": "completed",
+  "batchTraceId": "golden_adca49f7_77d7c6889abf",
+  "traceId": "golden_adca49f7_77d7c6889abf_doc005",
+  "model": "deepseek/deepseek-v4-pro-20260423",
+  "usage": {
+    "prompt_tokens": 1879,
+    "completion_tokens": 3756,
+    "total_tokens": 5635,
+    "cost": 0.013072272,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.013072272,
+      "upstream_inference_prompt_cost": 0.002615568,
+      "upstream_inference_completions_cost": 0.010456704
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2173,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "runMetadata": {
+    "promptVersion": "v001",
+    "promptTemplate": "v001_master-case-filing.prompt.md",
+    "promptLabel": "v001",
+    "snapshotMergeMode": "legacy",
+    "openRouterModel": "deepseek/deepseek-v4-pro-20260423",
+    "masterPromptJsonRetry": true,
+    "omitAuditNotesInPrompt": true
+  },
+  "pipelineVersions": null,
+  "parsedDocumentCacheUsed": false,
+  "textSourceUsed": "embedded_text",
+  "reviewStatusAtEvalTime": null,
+  "ruleSourcesChecked": [
+    "queens_medmal_part_rules_catapano_fox",
+    "queens_medmal_cc_form",
+    "queens_medmal_pc_form"
+  ],
+  "rankedRules": [
+    {
+      "ruleId": "queens_medmal_part_rules_catapano_fox",
+      "authority": "part",
+      "title": "Medical, Dental and Podiatric Malpractice Conference and Part Rules - Justice Tracy Catapano-Fox",
+      "text": "Medical, Dental and Podiatric Malpractice Conference and Part Rules - Justice Tracy Catapano-Fox",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    },
+    {
+      "ruleId": "queens_medmal_cc_form",
+      "authority": "county",
+      "title": "Queens Medical Malpractice Compliance Conference Order form",
+      "text": "Queens Medical Malpractice Compliance Conference Order form",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    },
+    {
+      "ruleId": "queens_medmal_pc_form",
+      "authority": "county",
+      "title": "Queens Medical Malpractice Preliminary Conference Order form",
+      "text": "Queens Medical Malpractice Preliminary Conference Order form",
+      "county": "Queens",
+      "part": null,
+      "court": "Supreme",
+      "phase": null,
+      "documentTypes": [],
+      "tags": [],
+      "minSourceDocNo": null
+    }
+  ],
+  "documentMetadata": {
+    "docIndex": 5,
+    "storedName": "005-doc_005_NOTICE_TO_TAKE_DEPOSITION.pdf",
+    "originalName": "doc_005_NOTICE_TO_TAKE_DEPOSITION.pdf",
+    "fileKind": "pdf",
+    "pageCount": 1,
+    "mimeType": "application/pdf",
+    "sizeBytes": 3169
+  },
+  "extractionQuality": {
+    "method": "embedded_text",
+    "fileKind": "pdf",
+    "textLength": 1527,
+    "ocr_needed": false,
+    "ocr_used": false,
+    "ocr_model": null,
+    "ocr_pages": null,
+    "reviewStatus": "ai_extracted_unreviewed",
+    "note": null,
+    "completeness": "high",
+    "confidence": 0.95,
+    "notes": "Synthetic notice content clear; noticed date inferred from expected deadlines."
+  },
+  "docketEntry": {
+    "filedDate": "2026-12-03",
+    "docType": "NOTICE_TO_TAKE_DEPOSITION",
+    "docTitle": "Notice to Take Deposition Upon Oral Examination",
+    "partyFiler": "Defendants",
+    "nyseefDocNo": 5
+  },
+  "caseUpdates": {
+    "newFacts": [
+      "Defendants served a Notice to Take Deposition Upon Oral Examination for plaintiff, setting a proposed deposition date of April 30, 2027.",
+      "The noticed deposition is conditional and subject to later PC/CC court orders."
+    ]
+  },
+  "parties": [],
+  "witnesses": [],
+  "tasks": [
+    {
+      "taskType": "TRACK_PLAINTIFF_DEPOSITION_NOTICE",
+      "status": "conditional",
+      "dueDate": null,
+      "description": "Defendants have noticed plaintiff's deposition for April 30, 2027. This is conditional and subject to court order at PC/CC.",
+      "sourceDocNo": 5,
+      "ruleSourceApplied": "cplr_article_31_disclosure",
+      "sourceAuthority": "CPLR Article 31",
+      "authorityRank": null,
+      "supersedes": null,
+      "sourceText": "Defendants notice plaintiff deposition, with date/time/location stated in the notice. In workflow handling, the noticed date should be treated as a proposed deposition event unless later court order controls.",
+      "sourcePage": null
+    }
+  ],
+  "deadlines": [
+    {
+      "deadlineType": "PLAINTIFF_EBT_NOTICE_DATE",
+      "date": "2027-04-30",
+      "sourceDocNo": 5,
+      "ruleSourceApplied": "cplr_article_31_disclosure",
+      "sourceAuthority": "Notice to Take Deposition",
+      "status": "conditional",
+      "note": "Proposed deposition date; may be superseded by PC/CC order.",
+      "authorityRank": null,
+      "supersedes": null,
+      "sourceText": "Expected PLAINTIFF_EBT_NOTICE_DATE from synthetic document.",
+      "sourcePage": null
+    }
+  ],
+  "humanReviewItems": [],
+  "auditNotes": [
+    "Processed Notice to Take Deposition (Doc 5). Added conditional task TRACK_PLAINTIFF_DEPOSITION_NOTICE and conditional deadline PLAINTIFF_EBT_NOTICE_DATE (2027-04-30)."
+  ],
+  "rawMasterResult": {
+    "documentMetadata": {
+      "docIndex": 5,
+      "storedName": "005-doc_005_NOTICE_TO_TAKE_DEPOSITION.pdf",
+      "originalName": "doc_005_NOTICE_TO_TAKE_DEPOSITION.pdf",
+      "fileKind": "pdf",
+      "pageCount": 1,
+      "mimeType": "application/pdf",
+      "sizeBytes": 3169
+    },
+    "extractionQuality": {
+      "completeness": "high",
+      "confidence": 0.95,
+      "notes": "Synthetic notice content clear; noticed date inferred from expected deadlines."
+    },
+    "docketEntry": {
+      "filedDate": "2026-12-03",
+      "docType": "NOTICE_TO_TAKE_DEPOSITION",
+      "docTitle": "Notice to Take Deposition Upon Oral Examination",
+      "partyFiler": "Defendants",
+      "nyseefDocNo": 5
+    },
+    "caseUpdates": {
+      "newFacts": [
+        "Defendants served a Notice to Take Deposition Upon Oral Examination for plaintiff, setting a proposed deposition date of April 30, 2027.",
+        "The noticed deposition is conditional and subject to later PC/CC court orders."
+      ]
+    },
+    "parties": [],
+    "witnesses": [],
+    "tasks": [
+      {
+        "taskType": "TRACK_PLAINTIFF_DEPOSITION_NOTICE",
+        "status": "conditional",
+        "dueDate": null,
+        "description": "Defendants have noticed plaintiff's deposition for April 30, 2027. This is conditional and subject to court order at PC/CC.",
+        "sourceDocNo": 5,
+        "ruleSourceApplied": "cplr_article_31_disclosure",
+        "sourceAuthority": "CPLR Article 31",
+        "authorityRank": null,
+        "supersedes": null,
+        "sourceText": "Defendants notice plaintiff deposition, with date/time/location stated in the notice. In workflow handling, the noticed date should be treated as a proposed deposition event unless later court order controls.",
+        "sourcePage": null
+      }
+    ],
+    "deadlines": [
+      {
+        "deadlineType": "PLAINTIFF_EBT_NOTICE_DATE",
+        "date": "2027-04-30",
+        "sourceDocNo": 5,
+        "ruleSourceApplied": "cplr_article_31_disclosure",
+        "sourceAuthority": "Notice to Take Deposition",
+        "status": "conditional",
+        "note": "Proposed deposition date; may be superseded by PC/CC order.",
+        "authorityRank": null,
+        "supersedes": null,
+        "sourceText": "Expected PLAINTIFF_EBT_NOTICE_DATE from synthetic document.",
+        "sourcePage": null
+      }
+    ],
+    "humanReviewItems": [],
+    "updatedCaseSnapshot": {
+      "snapshotId": "snapshot_after_doc_5",
+      "caseId": "synthetic_queens_tcf_001",
+      "afterDocNo": 5,
+      "currentPhase": "issue_joined",
+      "currentMiniPhase": "deposition_notice_served",
+      "county": "Queens",
+      "part": null,
+      "partName": "Medical, Dental and Podiatric Malpractice Part",
+      "court": "Supreme Court of the State of New York, County of Queens",
+      "judgeName": "Hon. Tracy Catapano-Fox",
+      "caseType": "medical_malpractice",
+      "case": {
+        "county": "Queens",
+        "part": null,
+        "partName": "Medical, Dental and Podiatric Malpractice Part",
+        "court": "Supreme Court of the State of New York, County of Queens",
+        "judgeName": "Hon. Tracy Catapano-Fox",
+        "caseType": "medical_malpractice"
+      },
+      "confirmedFacts": [
+        "Case commenced on 2026-11-12 by filing Summons and Verified Complaint.",
+        "Plaintiff: Jane Doe as Parent and Natural Guardian of A.D., an Infant.",
+        "Defendants: Jordan Smith, M.D. and Jordan Smith, M.D., P.C.",
+        "Plaintiff counsel: Hudson River Trial Law PLLC by Alex Morgan, Esq.",
+        "Defense counsel: Harbor Defense & Medical Liability LLP by Taylor Reed, Esq.",
+        "Nature of suit: medical malpractice - prenatal and obstetrical care.",
+        "Index Number: 900001/2026.",
+        "Venue: Supreme Court, Queens County, Medical Malpractice Part, Hon. Tracy Catapano-Fox.",
+        "Plaintiff filed Notice of Commencement of Action for Personal Injuries pursuant to CPLR 306-c on 2026-11-12.",
+        "Summons and complaint are referenced as initiating papers.",
+        "Defendants filed Verified Answer on 2026-12-03, denying liability and asserting affirmative defenses.",
+        "Issue joined as of 2026-12-03.",
+        "Defense counsel appears for both defendants.",
+        "Defendants served Demand for Bill of Particulars on 2026-12-03, demanding a verified bill of particulars within 30 days after service.",
+        "Defendants served a Notice to Take Deposition Upon Oral Examination for plaintiff, setting a proposed deposition date of April 30, 2027."
+      ],
+      "carriedForwardContext": [],
+      "openTasks": [
+        "RESPOND_TO_BILL_OF_PARTICULARS_DEMAND"
+      ],
+      "completedTasks": [
+        "ANSWER_RECEIVED"
+      ],
+      "conditionalTasks": [
+        "TRACK_PLAINTIFF_DEPOSITION_NOTICE"
+      ],
+      "deadlines": [
+        {
+          "deadlineType": "BP_RESPONSE_DEADLINE",
+          "date": "2027-01-02",
+          "sourceDocNo": 4,
+          "ruleSourceApplied": "cplr_3041_3042_bill_of_particulars"
+        },
+        {
+          "deadlineType": "PLAINTIFF_EBT_NOTICE_DATE",
+          "date": "2027-04-30",
+          "sourceDocNo": 5,
+          "ruleSourceApplied": "cplr_article_31_disclosure",
+          "status": "conditional"
+        }
+      ],
+      "supersededDeadlines": [],
+      "unresolvedHumanReviewItems": [],
+      "conflicts": [],
+      "_promptContextNote": "Updated with deposition notice; EBT date is conditional."
+    },
+    "auditNotes": [
+      "Processed Notice to Take Deposition (Doc 5). Added conditional task TRACK_PLAINTIFF_DEPOSITION_NOTICE and conditional deadline PLAINTIFF_EBT_NOTICE_DATE (2027-04-30)."
+    ],
+    "inferredPartRuleText": "",
+    "partRuleExtracts": [],
+    "ruleSourcesApplied": [
+      "queens_medmal_part_rules_catapano_fox",
+      "cplr_article_31_disclosure"
+    ],
+    "documentFacts": {
+      "documentMetadata": {
+        "docIndex": 5,
+        "storedName": "005-doc_005_NOTICE_TO_TAKE_DEPOSITION.pdf",
+        "originalName": "doc_005_NOTICE_TO_TAKE_DEPOSITION.pdf",
+        "fileKind": "pdf",
+        "pageCount": 1,
+        "mimeType": "application/pdf",
+        "sizeBytes": 3169
+      },
+      "extractionQuality": {
+        "completeness": "high",
+        "confidence": 0.95,
+        "notes": "Synthetic notice content clear; noticed date inferred from expected deadlines."
+      },
+      "docketEntry": {
+        "filedDate": "2026-12-03",
+        "docType": "NOTICE_TO_TAKE_DEPOSITION",
+        "docTitle": "Notice to Take Deposition Upon Oral Examination",
+        "partyFiler": "Defendants",
+        "nyseefDocNo": 5
+      },
+      "caseUpdates": {
+        "newFacts": [
+          "Defendants served a Notice to Take Deposition Upon Oral Examination for plaintiff, setting a proposed deposition date of April 30, 2027.",
+          "The noticed deposition is conditional and subject to later PC/CC court orders."
+        ]
+      },
+      "parties": [],
+      "witnesses": [],
+      "humanReviewItems": []
+    },
+    "ruleBasedTasks": [
+      {
+        "taskType": "TRACK_PLAINTIFF_DEPOSITION_NOTICE",
+        "status": "conditional",
+        "dueDate": null,
+        "description": "Defendants have noticed plaintiff's deposition for April 30, 2027. This is conditional and subject to court order at PC/CC.",
+        "sourceDocNo": 5,
+        "ruleSourceApplied": "cplr_article_31_disclosure",
+        "sourceAuthority": "CPLR Article 31",
+        "authorityRank": null,
+        "supersedes": null,
+        "sourceText": "Defendants notice plaintiff deposition, with date/time/location stated in the notice. In workflow handling, the noticed date should be treated as a proposed deposition event unless later court order controls.",
+        "sourcePage": null
+      }
+    ],
+    "caseOrderTasks": []
+  }
+}
