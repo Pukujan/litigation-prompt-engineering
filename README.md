@@ -214,3 +214,15 @@ Start a **new** greenfield app from the starter; fork or clone **this** repo to 
 **attribution required** if you share or fork any substantial portion. Platform
 files sync with [create-modular-monolith](https://github.com/Pukujan/create-modular-monolith)
 under its platform license. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
+
+---
+
+## Full repository tree
+
+Regenerate (excluding `node_modules`):
+
+```bash
+tree -I "node_modules" > file-exchange/exports/repo-tree-no-node_modules.txt
+```
+
+Latest export: [file-exchange/exports/repo-tree-no-node_modules.txt](file-exchange/exports/repo-tree-no-node_modules.txt)
